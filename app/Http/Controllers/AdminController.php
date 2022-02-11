@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Sellers;
 use App\Models\Address;
+use App\Models\AdsAddress;
+use App\Models\AdsPhoto;
+use App\Models\AdsVideo;
+use App\Models\Ads;
 use Mail;
 use Crypt;
 
@@ -121,7 +126,181 @@ class AdminController extends Controller
                 return back()->with('error','Try Agian to login');
             }
         }
+
+        public function changepassword(Request $req){
+            dd($req->id);
+        }
         
+
+        public function addads(Request $req){
+            
+        // $req->validate([
+        //     'image'=>'required|mimes:jpeg,png,jpg|max:2048',
+        //     'video'=>'required|mimes:mp4,mov,ogg | max:20000',
+        //     'animal_type'=>'required',
+        //     'price'=>'required',
+        //     'weight'=>'required|integer',
+        //     'age'=>'required|integer',
+        //     'no_animals'=>'required|integer',
+        //     'breed'=>'required',
+        //     'breed_type'=>'required',
+        //     'pregrant'=>'required',
+        //     'month_pregnancy'=>'required',
+        //     'area'=>'required',
+        //     'vaccinated'=>'required',
+        //     'milk_capacity'=>'required',
+        //     'certified_reg_no'=>'required',
+        //     'certified'=>'required',
+        //     'address_line1'=>'required',
+        //     'address_line2'=>'required',
+        //     'state'=>'required',
+        //     'district'=>'required',
+        //     'zipcode'=>'required',
+        //     'taluka'=>'required'
+
+        // ]);  
+
+
+            $ads=new Ads;
+            DB::beginTransaction();
+            try{
+
+                $adsphoto=new AdsPhoto;
+                DB::beginTransaction();
+                try{
+
+                    if($req->hasfile('image')) {
+                        $file=$req->image;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo1 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image1')) {
+                        $file=$req->image1;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo2 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image2')) {
+                        $file=$req->image2;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo3 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image3')) {
+                        $file=$req->image3;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo4 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image4')) {
+                        $file=$req->image4;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo5 = $filepath.$name;  
+                    
+                    }
+                   // dd($adsphoto);
+                   $adsphoto->save();
+                }catch(\Exception $e){
+           
+                    DB::rollback();
+                    return "failed1";
+                }
+                   $adsvideo=new AdsVideo;
+                   DB::beginTransaction();
+                try{
+
+                    if($req->hasfile('video')) {
+                        $file=$req->video;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/video/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsvideo->video= $filepath.$name;  
+                    
+                    }
+                   // dd($adsvideo);
+                    $adsvideo->save();
+
+                }catch(\Exception $e){
+           
+            DB::rollback();
+            return "failed2";
+             }
+
+
+
+             $adsaddress = new AdsAddress;
+             DB::beginTransaction();
+             try{
+
+                $adsaddress->addressline1=$req->address_line1;
+                $adsaddress->addressline2=$req->address_line2;
+                $adsaddress->area=$req->area;
+                $adsaddress->takula=$req->taluka;
+                $adsaddress->district=$req->district;
+                $adsaddress->zipcode=$req->zipcode;
+                $adsaddress->save();    
+
+             }catch(\Exception $e){
+           
+            DB::rollback();
+            return "failed3";
+             }
+
+
+
+                   
+              
+
+                $ads->user_id=Auth::user()->id;
+                $ads->animal_type=0;
+                $ads->age=$req->age;
+                $ads->price=$req->price;
+                $ads->breed=$req->breed;
+                $ads->milk_capacity=$req->milk_capacity;
+                $ads->pregnant=$req->pregnant;
+                $ads->due_month_pregnancy=$req->month_pregnancy;
+                $ads->gender=$req->gender;
+                $ads->breed_type=2;
+                $ads->vaccinated=1;
+                $ads->weight=$req->weight;
+                $ads->certified=$req->certified;
+                $ads->certified_reg_no=$req->certified_reg_no;
+                $ads->status=1;
+                $ads->ads_photo_id=$adsphoto->id;
+                $ads->ads_address_id=$adsaddress->id;
+                $ads->ads_video_id=$adsvideo->id;
+               
+                $ads->save();
+                dd($ads,$adsaddress,$adsphoto,$adsvideo);
+                
+               return back()->with('successMsg','Ad Added Successfully');
+            }catch(\Exception $e){
+           
+            DB::rollback();
+            return back()->with('warningMsg','There some Problem try again');
+        }
+           // $adsphoto=new AdsPhoto;
+
+        }
+
+
         public function user(){
 
             $data=User::join('user_address','users.address_id','=','user_address.id')

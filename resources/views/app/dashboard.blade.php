@@ -67,9 +67,15 @@
                           
                             </a>
                             <ul class="dropdown-menu secondary" aria-labelledby="navbarDropdown">
-                              <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>First  Last </span></a></li>
+                              <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a>
+                                @if(Auth::user()->first_name==null || Auth::user()->last_name==null)
+                                <span>First Last </span>
+                                @else
+                                <span>{{Auth::user()->first_name}} {{Auth::user()->last_name}} </span>
+                                @endif
+                               </a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
+                              <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange" >Change Password</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
                             </ul>
@@ -164,6 +170,31 @@
                   <!-- end offcanvas  -->
 
     </div> 
+
+<div class="modal fade" id="passwordchange" data-bs-toggle="modal" data-bs-target="#passwordchange">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="passwordchange"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+      
+
+        <div>
+            <form action="{{url('changepassword')}}" method="post">
+                <input type="hidden" value="{{Auth::user()->id}}" name="id">
+                <input type="text" placeholder="Enter Password" class="py-3 mt-5 form-control" name="" id="">
+                <input type="text" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="" id="">
+
+                <button type="" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
+            </form>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> --}}

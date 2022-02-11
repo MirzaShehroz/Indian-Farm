@@ -4,7 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\AdsAddress;
+use App\Models\AdsPhoto;
+use App\Models\AdsVideo;
+use App\Models\Ads;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,6 +49,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::post('add/vet',[AdminController::class,'addVet'])->name('addvet');
     });
 
+    Route::get('changepassword',[AdminController::class,'changepassword']);
+
+    Route::post('add/ads',[AdminCOntroller::class,'addads']);
 
 });
 
@@ -55,7 +61,13 @@ Route::get('logout',function(){
 
 
 Route::get('admin/ads',function(){
-    return view('admin.ads');
+
+    // $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')
+    // ->join('ads_photo','ads.ads_photo_id','=','ads_photo.id')->join('ads_videos','ads.ads_video_id','=','ads_videos.id')->get();
+    
+    $ads=Ads::all();
+
+    return view('admin.ads',compact('ads'));
 });
 
 Route::get('admin/vets',function(){
