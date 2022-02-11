@@ -5,14 +5,14 @@
 
                         <div class="row">
 
-                            <form action="" method="post">
-
+                            <form action="{{route('search')}}" method="post">
+                              @csrf
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Name" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Contact Number" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Email id " id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Area" id="">
+                                <input type="text" name="full_name" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Name" id="">
+                                <input type="text" name="contact_no" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Contact Number" id="">
+                                <input type="text" name="email" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Email id " id="">
+                                <input type="text" name="area" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Area" id="">
                                 
                                 
                             </div>
@@ -20,15 +20,15 @@
 
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+                                <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
+                                <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
+                                <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
+                                <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
 
-                                <select class="py-2 border" name="" id="">
+                                <select class="py-2 border" name="owner_status" id="">
                                     <option class="" disabled selected>Owner Status</option>
-                                    <option class=""  >Owner</option>
-                                    <option class="" >Owner Agent</option>
+                                    <option class="owner"  >Owner</option>
+                                    <option class="agent" >Owner Agent</option>
                                   </select>
                                 
                                 
@@ -37,9 +37,10 @@
 
                             <div class="col-12 mt-3">
 
-                                <button class="bg_danger px-5 py-2 rounded-pill text-light " name="">Search</button>
+                                <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit">Search</button>
 
                             </div>
+                          </form>
                            <!-- end of col   -->
 
                            <div class="col-12 mt-4">
@@ -77,6 +78,7 @@
                                       </tr>
                                     </thead>
                                     <tbody>
+                                      {{-- {{dd($data)}} --}}
                                       @foreach ($data as $item)
                                       <tr>
                                         <td>{{$item->user_id}}</td>
@@ -102,11 +104,301 @@
                                         <td scope="row">{{$item->taluka}}</td>
                                         <td>{{$item->zipcode}}</td>
                                         <td class="d-flex">
-                                            <button class="bg_danger text-light me-2"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight1" aria-controls="offcanvasRight1" type="button"><i class="fas fa-pencil-alt"></i></button>
-                                            <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2" aria-controls="offcanvasRight2" type="button"><i class="fas fa-eye"></i></button>
+                                            <button class="bg_danger text-light me-2"  data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight3{{$item->user_id}}"" aria-controls="offcanvasRight3{{$item->user_id}}"" type="button"><i class="fas fa-pencil-alt"></i></button>
+                                            <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight2{{$item->user_id}}" aria-controls="offcanvasRight2{{$item->user_id}}" type="button"><i class="fas fa-eye"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal{{$item->user_id}}" type="button"><i class="far fa-trash-alt"></i></button>
 
 
+
+                                            {{-- edit model --}}
+
+                                            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight3{{$item->user_id}}"" aria-labelledby="offcanvasRightLabel" style="width:70%;">
+                                              <div class="offcanvas-header">
+                                                <h5 id="offcanvasRightLabel">
+                          
+                                                </h5>
+                                                <button type="button" class="btn-close text-reset me-4" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                              </div>
+                                              <div class="offcanvas-body">
+                                                
+                                                <form action="{{route('update_user')}}" method="post" enctype="multipart/form-data" >
+                                                  @csrf
+                                                  <input type="hidden" value="{{$item->user_id}}" name="user_id">
+                                                  <div class="row pad-50 justify-content-around" id="edit_profile">
+                          
+                          
+                                                      <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
+                                            
+                                                        <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">Edit User</h4>
+                                            
+                                                        <img src="{{asset($item->image)}}" class="profile_img my-3" alt="img not found" >
+                                            
+                                                    
+                                                        <input type="file" name="profile" class="bg-transparent border border-light profilebtn btnhover px-3 py-2" style="border-radius: 5px;" value="Upload Profile Photo" />
+                                            
+                                            
+                                                      </div>
+                                                      <!-- end of col-3 -->
+                                            
+                                                      <div class="col-12 col-md-7">
+                                            
+                                                        <div class="row">
+                                            
+                                                          <div class="col-12">
+                                                              
+                                                              <div class="row">
+                                                                  <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                          
+                                                                  <div class="col-12 col-md-6 mb-3">
+                          
+                                                                      <input type="text" name="full_name" class="form-control mb-4" id="fullname" placeholder="Full Name" value="{{$item->first_name}}" required>
+                                                                  </div>
+                                                                  <!-- end of col  -->
+                                                                  
+                                                                  <div class="col-12 col-md-6 mb-3">
+                          
+                                                                      <input type="text" name="farm_name" class="Farm_name" class="form-control" id="fullname" placeholder="Farm Name " value="{{$item->farm_name}}" required>
+                          
+                                                                  </div>
+                                                                  <!-- end of col  -->
+                          
+                                                              </div>
+                                                      
+                                            
+                                                          </div>
+                                                          <!-- end of inner col  -->
+                                                          <hr class="my-3 bgcolor" style="opacity: 1;">
+                                            
+                                                          <div class="col-12 d-flex py-2 align-items-center">
+                                            
+                                                            <span class="fw-bold me-3"> Owner Status</span>
+                                            
+                                                            @if ($item->owner_status=='owner')
+                                                            <div class="form-check ms-3">
+                                                              <input class="form-check-input" type="radio" name="owner_Status" value="owner" id="flexRadioDefault1" required checked>
+                                                              <label class="form-check-label" for="flexRadioDefault1">
+                                                                Owner
+                                                              </label>
+                                                            </div>
+                                                            <div class="form-check ms-4">
+                                                              <input class="form-check-input" type="radio" name="owner_Status" value="agent" id="flexRadioDefault2" required >
+                                                              <label class="form-check-label" for="flexRadioDefault2">
+                                                                Agent
+                                                              </label>
+                                                            </div>
+                                                              @else
+                                                              <div class="form-check ms-3">
+                                                                <input class="form-check-input" type="radio" name="owner_Status" value="owner" id="flexRadioDefault1" required >
+                                                                <label class="form-check-label" for="flexRadioDefault1">
+                                                                  Owner
+                                                                </label>
+                                                              </div>
+                                                              <div class="form-check ms-4">
+                                                                <input class="form-check-input" type="radio" name="owner_Status" value="agent" id="flexRadioDefault2" required checked>
+                                                                <label class="form-check-label" for="flexRadioDefault2">
+                                                                  Agent
+                                                                </label>
+                                                              </div>
+                                                              @endif
+                                            
+                                            
+                                                          </div>
+                                                          <!-- end of col  -->
+                                                          <hr class="my-3 bgcolor" style="opacity: 1;">
+                                            
+                                                          <div class="col-12 d-flex py-2 align-items-center">
+                                            
+                                                            <span class="fw-bold me-3">Premium Member</span>
+                                            
+                                                            @if ($item->membership_type==1)
+                                                            <div class="form-check ms-3">
+                                                              <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" required checked>
+                                                              <label class="form-check-label" for="flexRadioDefault1">
+                                                                Yes
+                                                              </label>
+                                                            </div>
+                                                            <div class="form-check ms-4">
+                                                              <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault2" required >
+                                                              <label class="form-check-label" for="flexRadioDefault2">
+                                                                No
+                                                              </label>
+                                                            </div>
+                                                            @else
+                                                            <div class="form-check ms-3">
+                                                              <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" required >
+                                                              <label class="form-check-label" for="flexRadioDefault1">
+                                                                Yes
+                                                              </label>
+                                                            </div>
+                                                            <div class="form-check ms-4">
+                                                              <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault2" required checked>
+                                                              <label class="form-check-label" for="flexRadioDefault2">
+                                                                No
+                                                              </label>
+                                                            </div>
+
+                                                            @endif
+                                            
+                                                          </div>
+                                                          <!-- end of col  -->
+                                                          
+                                            
+                                                                       
+                                                          <hr class="my-3 bgcolor" style="opacity: 1;">
+                                                          
+                                                        </div>
+                                                        <!-- end of row inner -->
+                                                        <div class="row">
+                                            
+                                                          <div class="col-12 col-lg-10 ">
+                                            
+                                                            <label class="form-label fw-bold fs-5">Contact Details</label>
+                                            
+                                                        <div class="row">
+                          
+                                                          <div class="col-12 col-md-6 mb-3">
+                                                              <input type="text" name="contact_no" class="form-control inputno1" placeholder="Contact Number" value="{{$item->contact_no}}"  aria-describedby="basic-addon4" required>
+                          
+                                                            </div>
+                                            
+                                                            <div class="col-12 col-md-6 mb-3">
+                                                              <input type="email" name="email" class="form-control inputno1" placeholder="Email Id" value="{{$item->email}}"  aria-describedby="basic-addon4" required>
+                          
+                                                            </div>
+                          
+                                                        </div>              
+                                                        
+                                            
+                                            
+                                                          </div>
+                                                          <!-- end of col  -->
+                                        
+                                                          
+                                                        </div>
+                                                        <!-- end of inner row  -->
+                                            
+                                                        <hr class="my-3 bgcolor" style="opacity: 1;">
+                                            
+                                                        <div class="row">
+                                            
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <input type="text" name="address1" class="form-control" placeholder="Address First Line" value="{{$item->address_line1}}" aria-label="addressfirst" required>
+                                                          </div>
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <input type="text" name="address2" class="form-control" placeholder="Address Second Line"  value="{{$item->address_line2}}"aria-label="addresssecode" >
+                                                          </div>
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <input type="text" name="area" class="form-control" placeholder="Enter Area"  value="{{$item->area}}" aria-label="area" required>
+                                                          </div>
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <select id="inputCity" name="city" class="form-select overflow-scroll " required>
+                                                              @if ($item->city=='Pune')
+                                                              <option value="Pune" selected>Pune</option>
+                                                              @else
+                                                              <option value=""  selected disabled>City</option>
+                                                              <option value="Pune">Pune</option>
+                                                              @endif
+                                                            </select>
+                                                          </div>
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <select id="inputState" name="state" class="form-select overflow-scroll " required>
+                                                              @if ($item->state)
+                                                              <option value="{{$item->state}}" selected>{{$item->state}}</option>     
+                                                              @else
+                                                              <option value="" selected disabled>State</option>
+                                                              @endif
+                                                              <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                              <option value="Assam">Assam</option>
+                                                              <option value="Bihar">Bihar</option>
+                                                              <option value="Chandigarh">Chandigarh</option>
+                                                              <option value="Chhattisgarh">Chhattisgarh</option>
+                                                              <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                                              <option value="Daman and Diu">Daman and Diu</option>
+                                                              <option value="Delhi">Delhi</option>
+                                                              <option value="Lakshadweep">Lakshadweep</option>
+                                                              <option value="Puducherry">Puducherry</option>
+                                                              <option value="Goa">Goa</option>
+                                                              <option value="Gujarat">Gujarat</option>
+                                                              <option value="Haryana">Haryana</option>
+                                                              <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                              <option value="Jharkhand">Jharkhand</option>
+                                                              <option value="Karnataka">Karnataka</option>
+                                                              <option value="Kerala">Kerala</option>
+                                                              <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                              <option value="Maharashtra">Maharashtra</option>
+                                                              <option value="Manipur">Manipur</option>
+                                                              <option value="Meghalaya">Meghalaya</option>
+                                                              <option value="Mizoram">Mizoram</option>
+                                                              <option value="Nagaland">Nagaland</option>
+                                                              <option value="Odisha">Odisha</option>
+                                                              <option value="Punjab">Punjab</option>
+                                                              <option value="Rajasthan">Rajasthan</option>
+                                                              <option value="Sikkim">Sikkim</option>
+                                                              <option value="Tamil Nadu">Tamil Nadu</option>
+                                                              <option value="Telangana">Telangana</option>
+                                                              <option value="Tripura">Tripura</option>
+                                                              <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                              <option value="Uttarakhand">Uttarakhand</option>
+                                                              <option value="West Bengal">West Bengal</option>
+                                            
+                                                            </select>
+                                                          </div>
+                                            
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <select id="inputDistrict" name="district" class="form-select overflow-scroll " required>
+                                                              @if ($item->district=='Pune')
+                                                              <option value="Pune" selected>Pune</option>    
+                                                              @else
+                                                              <option value="" selected disabled>District</option>
+                                                              <option value="Pune">Pune</option>
+                                                              @endif
+                                            
+                                                            </select>
+                                                          </div>
+                                            
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <select id="inputTaluka" name="taluka" class="form-select overflow-scroll " required>
+                                                             @if ($item->taluka=='Pune')
+                                                             <option value="Pune" selected>Pune</option>
+                                                             @else
+                                                             <option value="" selected disabled>Taluka</option>
+                                                             <option value="Pune">Pune</option>
+                                                             @endif
+                                            
+                                                            </select>
+                                                          </div>
+                                            
+                                                          <div class="col-12 col-md-6 mt-3">
+                                                            <input type="number" name="pin_code" class="form-control" placeholder="Pin Code" aria-label="pincode" value="{{$item->zipcode}}" required>
+                                                          </div>
+                                            
+                                                          <hr class="mt-5 mb-3 bgcolor" style="opacity: 0.6;">
+                                                          <div class="col-12 text-center mx-auto col-md-3 mb-5">
+                                                             <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">Update</button>
+                                                          </div>
+                                                        </div>
+                                                        <!-- end of inner row  -->
+                                                      </form>
+                                                      <!-- end of form  -->
+                                            
+                                                      
+                                            
+                                                      </div>
+                                                      <!-- end of col-9  -->
+                                            
+                                                     
+                                            
+                                                      </div>
+                                                      <!-- end of edit profile row  -->
+                                            
+                          
+                          
+                                              </div>
+                                            </div>
+                                            {{-- end model --}}
                                             <div class="modal fade" id="exampleModal{{$item->user_id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{$item->user_id}}" aria-hidden="true">
                                               <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -207,7 +499,7 @@
 
                             <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
                   
-                              <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">Edit User</h4>
+                              <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">Add User</h4>
                   
                               <img src="{{asset('images/user-img.png')}}" class="profile_img my-3" alt="img not found" >
                   
@@ -444,7 +736,7 @@
    <!-- user edit canvas  -->
 
     @foreach ($data as $users)
-     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2" aria-labelledby="offcanvasRightLabel">
+     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight2{{$users->user_id}}" aria-labelledby="offcanvasRightLabel" style="  width: 70%;">
                     <div class="offcanvas-header">
                       <h5 id="offcanvasRightLabel">
 

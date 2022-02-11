@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\VetController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -42,11 +43,28 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::get('admin/index',function(){
             return view('admin.index');
         });
+        // search route
+        Route::any('/search',[AdminController::class,'search'])->name('search');
         // user routes
         Route::post('admin/user/register',[AdminController::class,'registerUser'])->name('register_user');
+        Route::post('admin/user/update',[AdminController::class,'update'])->name('update_user');
         Route::get('admin/users',[AdminController::class,'user'])->name('user');
         Route::post('admin/user/delete',[AdminController::class,'deleteUser'])->name('deleteUser');
-        Route::post('add/vet',[AdminController::class,'addVet'])->name('addvet');
+        
+        // vet routes
+        Route::post('add/vet',[VetController::class,'addVet'])->name('addvet');
+        Route::Get('admin/vets',[VetController::class,'index'])->name('index');
+        Route::post('admin/vet/delete',[VetController::class,'delete'])->name('deleteVet');
+        // search vet
+        Route::any('/search/vet',[VetController::class,'search'])->name('vet_search');
+        // vet update
+        Route::post('admin/vet/update',[VetController::class,'update'])->name('update_vet');
+        // password reset
+        Route::post('admin/vet/update/password',[VetController::class,'chnagePassword'])->name('change_password');
+
+
+
+
     });
 
     Route::get('changepassword',[AdminController::class,'changepassword']);
@@ -70,9 +88,7 @@ Route::get('admin/ads',function(){
     return view('admin.ads',compact('ads'));
 });
 
-Route::get('admin/vets',function(){
-    return view('admin.vet');
-});
+
 Route::get('admin/transportdriver',function(){
     return view('admin.transport_driver');
 });
