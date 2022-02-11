@@ -35,18 +35,22 @@
 @if(session('error'))
 <div class="alert alert-danger">{{session('error')}}</div>
 @endif 
-           <form action="{{url('verify/otp')}}" method="post">
+@if(session('success'))
+<div class="alert alert-success">{{session('success')}}</div>
+@endif
+           <form action="{{url('verify/otp')}}" method="post" id="otpform">
             @csrf
-            <input type="hidden" value="{{Session::get('email')}}" name="email">
-            <input type="text" class="mobileno_input border_color form-control py-3 " maxlength="10" name="otp" placeholder="Enter Your Verification Code" required>
-              <?php 
-              $email=Session::get('email');
+            <?php 
+              $id= request()->segment(2);
               ?>
+            <input type="hidden" value="{{$id}}" name="id">
+            <input type="text" class="mobileno_input border_color form-control py-3 " maxlength="10" name="otp" placeholder="Enter Your Verification Code" required>
+              
            
             <span class="d-block text-dark mt-5 mb-3 d-flex">
-              <a href="{{url('resend/otp/'.$email)}}" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2"> Resend OTP </a>
+              <a href="{{url('resend/otp/'.$id)}}" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2" id="resend"> Resend OTP </a>
 
-              <button type="submit" id="submit" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2"> Submit </button>
+              <button type="submit" id="submit" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2" onclick="check_submit()"> Submit </button>
             </span>
             
             <p class="text-start text-secondary" ><span id="countdowntimer">160</span> Seconds</p>
@@ -111,25 +115,24 @@
       
     </script>
 <script type="text/javascript">
-    var timeleft = 10;
+    var timeleft = 160;
     var downloadTimer = setInterval(function(){
     timeleft--;
     document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft==0){
+      
+      $("#submit").attr("disabled", true)
+      }
+      else{
+        $("#resend").attr("disabled", true)
+      }
     if(timeleft <= 0)
         clearInterval(downloadTimer);
     },1000);
+   
+   
     
 </script>
-<script>
-  $('submit').onclick(function (e) {
-    if(document.getElementById("countdowntimer").textContent==0){
-    alert(document.getElementById("countdowntimer").textContent)
-      e.preventDefault();
-    }
-  
 
-  
-});
-</script>
   </body>
 </html>

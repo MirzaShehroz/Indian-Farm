@@ -28,11 +28,11 @@ Route::post('login/admin',[AdminController::class,'login']);
 Route::match(['get', 'post'],'verify/otp',[AdminController::class,'verifyotp']);
 
 
-Route::get('verify-otp',function(){
+Route::get('verify-otp/{id}',function(){
     return view('admin.login_verify');
 })->name('verify-otp');
 //Route::view('admin/dashboard','app.dashboard');
-Route::get('resend/otp/{email}',[AdminController::class,'resendotp']);
+Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
 Route::group(['middleware' => 'prevent-back-history'],function(){
 
     Route::group(['middleware'=>['AdminAuth']],function(){
