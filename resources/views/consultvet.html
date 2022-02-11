@@ -1,0 +1,771 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- fontawsome link  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <title>Sell</title>
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+             
+      <div class="row pad-50 fixed-top" id="header">
+
+        <div class="col-12 py-lg-2 px-0">
+
+            <!-- header section start  -->
+            
+            <header>
+
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                      <a class="navbar-brand me-lg-5" href="user-login.html"><img src="../../public/images/India-Farm-Logo.png" alt="img not found" class="brand-logo w-100"></a>
+
+                      <div class="dropdown d-lg-none">
+                        <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                           <img src="../../public/images/admin.jpg" style="width: 30px; height: 30px;" alt="img not found">
+                        </button>
+                        <ul class="dropdown-menu" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
+                        
+                          <li>
+                         <a class="dropdown-item" href="#">
+
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <img src="../../public/images/user-img.png" style="width: 40px; height: 40px;" alt="img not found">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                               <h5>Hello !</h5>
+                               <h6 class="text-decoration-underline">User Full Name</h6>
+                                </div>
+                              </div>
+                          </a>
+                        </li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="edit_profile.html"><i class="fas fa-user-edit me-3"></i>Edit Your Profile</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="your_ad.html"><i class="fas fa-ad me-3"></i>Your Ads</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="post_ad.html"><i class="fas fa-address-card me-3"></i>Post an Ad</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="your_subscription.html"><i class="fas fa-vote-yea me-3"></i>Your Subscription </a></li>
+                          <li class="my-3"><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-3"></i>Log Out</a></li>
+                        </ul>
+                      </div>
+                      <!-- user dropdown  -->
+                     
+                      <div class="col-12 py-0 d-none d-md-block d-lg-none col-md-6 mx-auto">
+                        <form class="d-flex">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-dark rounded-pill" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"  id="basic-addon2"><i class="fas fa-search"></i></span>
+                              </div>
+                          </form>
+        
+                    </div>
+                    <!-- end of col -->
+
+                    <!-- off canvas start  -->
+
+                      <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">  <span class="navbar-toggler-icon"></span></button>
+
+                    <div class="offcanvas offcanvas-end  d-lg-none" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      
+                      <ul class="list-unstyled mt-3">
+                        <li class="nav-item">
+                          <select class="form-select border-0" aria-label="Default select example">
+                            <option selected disabled class="text-secondary">Language</option>
+                            <option value="Marathi">मराठी</option>
+                            <option value="Hindi">हिन्दी</option>
+                            <option value="English">English</option>
+                          </select>
+
+                          </li>      
+
+                    </ul>
+                    <!-- language selecter  -->
+                      
+                          
+                     
+                      
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body py-0">
+                        <ul class="list-unstyled mb-lg-0 align-items-center">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                All Categories
+                              </a>
+                              <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item border-bottom" href="cows.html">Cows</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="sheeps.html">Sheeps</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="goat.html">Goat</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="buffalo.html">Buffalo</a></li>
+                                <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                              
+                              </ul>
+                              </li>
+                         
+        <hr class="bg-dark py-0" style="opacity: 1;">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Vet Services
+                              </a>
+                              <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+      
+                                
+                        <li><a class="dropdown-item border-bottom" href="search_vet.html">Search Vet</a></li>
+                        <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
+                        <li><a class="dropdown-item border-bottom" href="book_appointment.html">Book An Appointment</a></li>
+                        <li><a class="dropdown-item border-bottom" href="certify_animal.html">Certify My Animal</a></li>
+                        <li><a class="dropdown-item" href="vet_ragistration.html">Vet Registration</a></li>
+                             
+                              
+                              </ul>
+                              </li>
+
+                              <hr class="bg-dark" style="opacity: 0.4;">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Transport
+                               </a>
+                               <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item border-bottom" href="search_transport.html">Search Transport</a></li>
+                                <li><a class="dropdown-item border-bottom" href="book_transport.html"> Book Your Transport</a></li>
+                                <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+                          
+                               
+                               </ul>
+                              </li>
+                   
+        <hr class="bg-dark  py-0" style="opacity: 1;">
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Education
+                                </a>
+                                <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                  <li><a class="dropdown-item" href="online_courses.html">Online Courses</a></li>
+                               
+                                
+                                </ul>
+                              </li>
+                             
+                       <hr class="bg-dark py-0" style="opacity: 1;">
+                                <li class="nav-item">
+                                  <a class="nav-link text-dark" href="forum_disscussion.html">
+                                   Community & Forum
+                                  </a>
+                                
+                                </li>
+                                <hr class="bg-dark py-0" style="opacity: 1;">
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="news_updates.html">
+                                    News & Updates
+                                  </a>
+
+                                </li>
+                              <hr class="bg-dark" style="opacity: 0.4;">
+                        </ul>
+                        
+                        
+                       
+
+
+                    </div>
+                    </div>
+                    <!-- end of canvas  -->
+
+                      <div class="collapse navbar-collapse pe-lg-4" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+                            <li class="nav-item">
+                              <select class="form-select border-0" aria-label="Default select example">
+                                <option selected disabled class="text-secondary">Language</option>
+                                <option value="Marathi">मराठी</option>
+                                <option value="Hindi">हिन्दी</option>
+                                <option value="English">English</option>
+                              </select>
+                              </li>           
+                        </ul>
+
+                        
+                        <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                            <form class="d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control rounded-pill py-3 px-5" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <span class="input-group-text btn bg-transparent rounded-pill " style="z-index: 1200;" id="basic-addon2"><i class="fas fa-search"></i></span>
+                                  </div>
+                              </form>
+            
+                        </div>
+                        <!-- end of col -->
+
+                        <div class="btn1 d-flex align-items-center justify-content-around mt-4 mt-lg-0 ms-xl-5">
+                            
+                          <div class="me-5">
+                               
+                            <a href="chat.html" class="text-decoration-none">
+                             <img src="../../public//images/chat.png" alt="img not found">
+                            </a>
+
+                        </div>  
+                        <!-- chat div  -->                                               
+                       
+
+                        <div class="dropdown dropstart">
+                            <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../../public/images/admin.jpg" style="width: 30px; height: 30px;" alt="img not found">
+                            </button>
+                            <ul class="dropdown-menu p-1 mt-5" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
+                            
+                              <li>
+                             <a class="dropdown-item" href="#">
+
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                      <img src="../../public/images/user-img.png" style="width: 40px; height: 40px;" alt="img not found">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                   <h5>Hello !</h5>
+                                   <h6 class="text-decoration-underline">User Full Name</h6>
+                                    </div>
+                                  </div>
+                              </a>
+                            </li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="edit_profile.html"><i class="fas fa-user-edit me-3"></i>Edit Your Profile</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="your_ad.html"><i class="fas fa-ad me-3"></i>Your Ads</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="post_ad.html"><i class="fas fa-address-card me-3"></i>Post an Ad</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="your_subscription.html"><i class="fas fa-vote-yea me-3"></i>Your Subscription </a></li>
+                              <li class="my-3"><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-3"></i>Log Out</a></li>
+                            </ul>
+                          </div>
+                          <!-- user dropdown  -->
+                          
+
+                        </div>
+                        <!-- end of btn1  -->
+            
+                       
+                      </div>
+                    </div>
+                  </nav>
+                
+                
+            </header>
+            
+            <!-- header section end -->
+            
+
+
+        </div>
+        <!-- end of col  -->
+
+ 
+
+        <div class="col-12 py-0 d-md-none col-md-6 mx-auto">
+            <form class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control border-dark rounded-pill" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                    <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"  id="basic-addon2"><i class="fas fa-search"></i></span>
+                  </div>
+              </form>
+
+        </div>
+        <!-- end of col -->
+  
+
+    </div>
+    <!-- end of row header -->
+    
+
+
+    <div class="row d-none d-lg-flex text-center pad-50 justify-content-around" id="top-menu-bar">
+      <hr class="" style="opacity: 1; background-color: #0572B2;">
+      
+      <div class="col-lg-11 mb-2 col-xl-9 col-xxl-8 text-center">
+
+          <ul class="list-unstyled d-flex  mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    All Categories
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="cows.html">Cows</a></li>
+                    <li><a class="dropdown-item" href="sheeps.html">Sheeps</a></li>
+                    <li><a class="dropdown-item" href="goat.html">Goat</a></li>
+                    <li><a class="dropdown-item" href="buffalo.html">Buffalo</a></li>
+                    <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                  
+                  </ul>
+                </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Vet Services
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li><a class="dropdown-item" href="search_vet.html">Search A Vet</a></li>
+                    <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
+                    <li><a class="dropdown-item" href="book_appointment.html">Book An Appointment</a></li>
+                    <li><a class="dropdown-item" href="certify_animal.html">Certify My Animal</a></li>
+                    <li><a class="dropdown-item" href="vet_ragistration.html"> Register as a Vet</a></li>
+                 
+                  
+                  </ul>
+                </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   Transport
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="search_transport.html">Search Transport</a></li>
+                      <li><a class="dropdown-item" href="book_transport.html"> Book Transport</a></li>
+                      <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+             
+                  
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="online_courses.html" id="navbarDropdown">
+                    Education
+                  </a>
+                   </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="forum_disscussion.html">
+                    Community & Forum
+                  </a>
+                 
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="news_updates.html">
+                    News & Updates
+                  </a>
+
+                </li>
+          </ul>
+
+
+
+
+
+      </div>
+      <!-- end of col  -->
+
+
+      <hr class="" style="opacity: 1; background-color: #0572B2;">
+
+  </div>
+  <!-- end of row  -->
+
+
+  
+  <div class="row pad-50">
+
+    <div class="col-12 mt-4">
+
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none tcolor fw-bold"><i class="fas fa-home me-2"></i>Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Consult Vet</li>
+          </ol>
+        </nav>
+
+
+  </div>
+  <!-- end of col  -->
+
+
+  </div>
+  <!-- end of row  -->
+
+
+
+
+        <div class="row pad-50 mt-5 mt-md-3 py-5 py-md-0 justify-content-around" >
+
+          
+
+            <div class="col-12 mt-md-0 col-md-10">
+
+                <h3 class="tcolor fw-bold mb-5 text-center">Book Appointment </h3>
+
+                <form action="" method="" class="p-3 p-md-5" style="border-radius: 15px; box-shadow: 1px 1px 20px lightgray;">
+
+                    <div class="row my-3">
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="FirstName" class="form-label tcolor fw-bold">First Name</label>
+                          <input type="text" class="form-control" placeholder="Enter First name" aria-label="First name" required>
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="MiddleName" class="form-label tcolor fw-bold">Middle Name</label>
+                          <input type="text" class="form-control" placeholder="Enter Middle name" aria-label="Last name" required>
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="LastName" class="form-label tcolor fw-bold">Last Name</label>
+                          <input type="text" class="form-control" placeholder="Enter Last name" aria-label="Last name" required>
+                        </div>
+
+                
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="email" class="form-label tcolor fw-bold">Email</label>
+                          <input type="email" class="form-control" placeholder="Enter Email ID" aria-label="email" >
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="MobileNo" class="form-label tcolor fw-bold">Mobile No.</label>
+                          <input type="text" class="form-control" maxlength="10" placeholder="Enter Mobile No." aria-label="MobileNo">
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="animalno" class="form-label tcolor fw-bold">No Of Animals</label>
+                          <input type="text" class="form-control" placeholder="Enter No." aria-label="animalno">
+                        </div>
+
+           
+
+            
+                        <div class="col-md-4 my-3">
+                            <label for="animaltype" class="form-label tcolor fw-bold">Animal Type</label>
+                            <select id="animaltype" class="form-select" name="animaltype">
+                              <option value="" disabled  selected>Select Animal Type...</option>
+                              <option value="Cow">Cow</option>
+                              <option value="Buffalo">Buffalo</option>
+                              <option value="Bull">Bull</option>
+                              <option value="Sheep">Sheep</option>
+                              <option value="Goat">Goat</option>
+                            </select>
+                          </div>
+
+                          <div class="col-md-4 my-3">
+                            <label for="Gender" class="form-label tcolor fw-bold">Animal Gender</label>
+                            <br>
+                            <input type="radio" name="gender" id="male">
+                            <label for="male">Male</label>
+                            
+                            <input type="radio" name="gender" class="ms-4" id="female">
+                            <label for="female">Female</label>
+                          </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="date" class="form-label tcolor fw-bold">Date</label>
+                          <input type="date" class="form-control" placeholder="Choose Date" aria-label="email" >
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="time" class="form-label tcolor fw-bold">Time</label>
+                          <input type="time" class="form-control" min="09:00" max="06:00"  placeholder="Choose Time" aria-label="time">
+                        </div>
+                        <div class="col-12 col-md-4 my-3">
+                            <label for="address" class="form-label tcolor fw-bold">Address</label>
+                          <input type="text" class="form-control"  placeholder="Enter Your Address" aria-label="address">
+                        </div>
+
+                         <div class="col-12 col-md-4 my-3 startdropdown">
+                          <label for="inputState" class="form-label fw-bold tcolor">State</label>
+                          <select id="inputState"  class="form-select  ">
+                            <option selected disabled>Select State</option>
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu">Daman and Diu</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Lakshadweep">Lakshadweep</option>
+                            <option value="Puducherry">Puducherry</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madhya Pradesh">Madhya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Odisha">Odisha</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telangana">Telangana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="Uttarakhand">Uttarakhand</option>
+                            <option value="West Bengal">West Bengal</option>
+                          
+                          </select>
+                        </div>
+                        <!-- end of state  -->
+
+                        <div class="col-12 col-md-4 Districdropdown my-3">
+                          <label for="inputDistrict" class="form-label fw-bold tcolor">District</label>
+                          <select id="inputDistrict" class="form-select">
+                            <option value="">Select District</option>
+                           
+                          
+                          </select>
+                        </div>
+                        <!-- end of district  -->
+                
+                        
+                        <div class="col-12 col-md-4 Districdropdown my-3">
+                          <label for="inputTaluka" class="form-label fw-bold tcolor">Taluka</label>
+                          <select id="inputTaluka" class="form-select ">
+                            <option value="" selected disabled>Taluka</option>
+                           
+                          
+                          </select>
+                        </div>
+                        <!-- end of district  -->
+        
+
+                      
+              
+
+                        
+                <div class="col-12 my-3">
+                    <label for="visit" class="form-label tcolor fw-bold">Reason For Visit</label>
+                  <input type="text" class="form-control py-3" placeholder="Enter Your Reason For Visit" aria-label="visit">
+                </div>
+
+        
+
+
+                      <div class="row justify-content-around my-3 text-center">
+
+                        <div class="col-12 text-start pb-5">
+                            <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                            <br>
+                            <textarea name="comment" placeholder="   Enter Your Message..." class="comment" id="" rows="5"></textarea>
+
+                        </div>
+                        <!-- end of col  -->
+
+                        <div class="col-12 col-md-3">
+
+                            <button id="submitbtn" type="button" class="btnsubmit px-5 pt-3">
+                                <p id="btnText">Submit</p>
+                                <div class="check-box">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                        <path fill="transparent" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                    </svg>
+                                </div>
+                            </button>
+
+
+                        </div>
+                        <!-- end of col  -->
+
+                    </div>
+                    <!-- end of row  -->
+
+
+
+
+
+
+
+
+                </form>
+                <!-- end of form  -->
+
+
+
+
+
+            </div>
+            <!-- end of col  -->
+
+
+        </div>
+<!-- end of row  -->
+
+
+
+
+        <footer class="" style="margin-top: 150px;">
+
+        <div class="row pad-50 mt-5" id="footer">
+
+          <hr class="" style="opacity: 1; background-color: #0572B2;">
+            
+            <div class="col-12 col-md-3 my-3">
+
+
+                <ul class="list-unstyled d-flex">
+                    <li class="me-3">
+                        <a href="#" class="text-decoration-none text-dark fs-4"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-decoration-none text-dark fs-4"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-decoration-none text-dark fs-4"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-decoration-none text-dark fs-4"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li class="me-3">
+                        <a href="#" class="text-decoration-none text-dark fs-4"><i class="fab fa-google-plus-g"></i></a>
+                    </li>
+                </ul>
+
+
+                <small>Ⓒ Copyright 2022, India Farm Animal, All Right Reserved</small>
+                
+                
+            </div>
+            <!-- end of col  -->
+
+            <div class="col-12 col-md-2">
+
+                <strong style="border-bottom: 2px solid #0572B2;">Vision</strong>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, veniam?</p>
+
+
+
+            </div>
+            <!-- end of col  -->
+
+            <div class="col-12 col-md-2">
+
+                <strong  style="border-bottom: 2px solid #0572B2;">Mission</strong>
+
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, veniam?</p>
+
+
+
+            </div>
+            <!-- end of col  -->
+
+            <div class="col-12 col-md-3">
+
+                <div class="position-relative">
+                    <strong> Newsletter</strong>
+                     <form class="newsletter"  method="post" enctype="multipart/form-data">
+                  <i class="far fa-envelope tcolor"></i>
+                  <input type="email" name="email" Placeholder="Enter your email address" class="border-0" style="border-bottom: 2px solid #0572B2 !important;" required="">
+                  <button type="submit" class="border-0 bg-transparent tcolor" name="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+          
+                  </div>
+
+
+
+            </div>
+            <!-- end of col  -->
+
+            <div class="col-12 col-md-2">
+
+                <img src="assets/images/India-Farm-Logo.png" class="footer-logo mb-2" alt="img not found">
+
+                <p class="my-0"><strong>Email:</strong><a href="#" type="email" class="text-decoration-none text-dark ms-2">abc@gmail.com</a></p>
+                <p class="my-0"><strong>Phone:</strong><a href="#" type="tel" class="text-decoration-none text-dark ms-2">123456789</a></p>
+
+            </div>
+            <!-- end of col  -->
+            
+        </div>
+        <!-- end of row  -->
+
+        
+    </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- sell button mobile mode  -->
+        <!-- <a href="sell.html" class="text-decoration-none position-fixed bottom-0 end-0 mb-5 border ms-lg-5 d-lg-none me-2 px-2 py-2 bg-white rounded-pill">
+            <button class="bg-transparent border-0"><i class="fas fa-plus me-2"></i>Sell </button>
+        </a> -->
+        <!-- end of button  -->
+
+
+     
+
+    </div>
+    <!-- end of container fluid  -->
+   
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- jquery link  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="assets/js/script.js"></script>
+
+ 
+    <script>
+      window.addEventListener("scroll", function () {
+        if (pageYOffset >= 100) {
+          // document.getElementById("header").style.position = "fixed";
+          document.getElementById("header").style.background = "url(assets/images/footer_bg.png) center center no-repeat";
+
+        } else {
+          // document.getElementById("header").style.position = "static";
+          document.getElementById("header").style.background = "white";
+          
+  
+        }
+      });
+    </script>
+
+
+<script>
+    $(document).ready(function() {
+        $('[name="animaltype"]').change(function() {
+          if ($(this).val() == "Cow" || $(this).val() == "Buffalo" || $(this).val() == "Sheep" || $(this).val() == "Goat") {
+            $("#female").prop("checked", true);
+          } else if ($(this).val() == "Bull") {
+            $("#male").prop("checked", true);
+          }
+        });
+    });
+  </script>
+
+
+<!-- form submit animation submit button  -->
+<script type="text/javascript">
+    const submitbtn = document.querySelector("#submitbtn");
+    const btnText = document.querySelector("#btnText");
+
+    submitbtn.onclick = () => {
+        btnText.innerHTML = "Successfully";
+        submitbtn.classList.add("myactive");
+    };
+</script>
+
+  </body>
+</html>

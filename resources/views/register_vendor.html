@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../../public/images/India-Farm-Logo.png" sizes="16x16" type="image/png"> 
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- fontawsome link  -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../public/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../../public/css/bootstrap.css">
+
+    <title>IFA</title>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+
+        
+            
+      <div class="row pad-50 fixed-top" id="header">
+
+        <div class="col-12 py-lg-2 px-0">
+
+            <!-- header section start  -->
+            
+            <header>
+
+                <nav class="navbar navbar-expand-lg navbar-light">
+                    <div class="container-fluid">
+                      <a class="navbar-brand me-lg-5" href="user-login.html"><img src="../../public/images/India-Farm-Logo.png" alt="img not found" class="brand-logo w-100"></a>
+
+                      <div class="dropdown d-lg-none">
+                        <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                           <img src="../../public/images/admin.jpg" style="width: 30px; height: 30px;" alt="img not found">
+                        </button>
+                        <ul class="dropdown-menu" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
+                        
+                          <li>
+                         <a class="dropdown-item" href="#">
+
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0">
+                                  <img src="../../public/images/user-img.png" style="width: 40px; height: 40px;" alt="img not found">
+                                </div>
+                                <div class="flex-grow-1 ms-3">
+                               <h5>Hello !</h5>
+                               <h6 class="text-decoration-underline">User Full Name</h6>
+                                </div>
+                              </div>
+                          </a>
+                        </li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="edit_profile.html"><i class="fas fa-user-edit me-3"></i>Edit Your Profile</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="your_ad.html"><i class="fas fa-ad me-3"></i>Your Ads</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="post_ad.html"><i class="fas fa-address-card me-3"></i>Post an Ad</a></li>
+                          <li class="my-3"><a class="dropdown-item border-bottom" href="your_subscription.html"><i class="fas fa-vote-yea me-3"></i>Your Subscription </a></li>
+                          <li class="my-3"><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-3"></i>Log Out</a></li>
+                        </ul>
+                      </div>
+                      <!-- user dropdown  -->
+                     
+                      <div class="col-12 py-0 d-none d-md-block d-lg-none col-md-6 mx-auto">
+                        <form class="d-flex">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-dark rounded-pill" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"  id="basic-addon2"><i class="fas fa-search"></i></span>
+                              </div>
+                          </form>
+        
+                    </div>
+                    <!-- end of col -->
+
+                    <!-- off canvas start  -->
+
+                      <button class="btn d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">  <span class="navbar-toggler-icon"></span></button>
+
+                    <div class="offcanvas offcanvas-end  d-lg-none" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                    <div class="offcanvas-header">
+                      
+                      <ul class="list-unstyled mt-3">
+                        <li class="nav-item">
+                          <select class="form-select border-0" aria-label="Default select example">
+                            <option selected disabled class="text-secondary">Language</option>
+                            <option value="Marathi">मराठी</option>
+                            <option value="Hindi">हिन्दी</option>
+                            <option value="English">English</option>
+                          </select>
+
+                          </li>      
+
+                    </ul>
+                    <!-- language selecter  -->
+                      
+                          
+                     
+                      
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body py-0">
+                        <ul class="list-unstyled mb-lg-0 align-items-center">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                All Categories
+                              </a>
+                              <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item border-bottom" href="cows.html">Cows</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="sheeps.html">Sheeps</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="goat.html">Goat</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="buffalo.html">Buffalo</a></li>
+                                <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                              
+                              </ul>
+                              </li>
+                         
+        <hr class="bg-dark py-0" style="opacity: 1;">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Vet Services
+                              </a>
+                              <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+      
+                                
+                        <li><a class="dropdown-item border-bottom" href="search_vet.html">Search Vet</a></li>
+                        <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
+                        <li><a class="dropdown-item border-bottom" href="book_appointment.html">Book An Appointment</a></li>
+                        <li><a class="dropdown-item border-bottom" href="certify_animal.html">Certify My Animal</a></li>
+                        <li><a class="dropdown-item" href="vet_ragistration.html">Vet Registration</a></li>
+                             
+                              
+                              </ul>
+                              </li>
+
+                              <hr class="bg-dark" style="opacity: 0.4;">
+                            <li class="nav-item dropdown">
+                              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Transport
+                               </a>
+                               <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item border-bottom" href="search_transport.html">Search Transport</a></li>
+                                <li><a class="dropdown-item border-bottom" href="book_transport.html"> Book Your Transport</a></li>
+                                <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+                          
+                               
+                               </ul>
+                              </li>
+                   
+        <hr class="bg-dark  py-0" style="opacity: 1;">
+                              <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                  Education
+                                </a>
+                                <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
+                                  <li><a class="dropdown-item" href="online_courses.html">Online Courses</a></li>
+                               
+                                
+                                </ul>
+                              </li>
+                             
+                       <hr class="bg-dark py-0" style="opacity: 1;">
+                                <li class="nav-item">
+                                  <a class="nav-link text-dark" href="forum_disscussion.html">
+                                   Community & Forum
+                                  </a>
+                                
+                                </li>
+                                <hr class="bg-dark py-0" style="opacity: 1;">
+                              <li class="nav-item">
+                                  <a class="nav-link text-dark" href="news_updates.html">
+                                    News & Updates
+                                  </a>
+
+                                </li>
+                              <hr class="bg-dark" style="opacity: 0.4;">
+                        </ul>
+                        
+                        
+                       
+
+
+                    </div>
+                    </div>
+                    <!-- end of canvas  -->
+
+                      <div class="collapse navbar-collapse pe-lg-4" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+                            <li class="nav-item">
+                              <select class="form-select border-0" aria-label="Default select example">
+                                <option selected disabled class="text-secondary">Language</option>
+                                <option value="Marathi">मराठी</option>
+                                <option value="Hindi">हिन्दी</option>
+                                <option value="English">English</option>
+                              </select>
+                              </li>           
+                        </ul>
+
+                        
+                        <div class="col-12 col-md-5 col-xl-6 mx-auto">
+                            <form class="d-flex">
+                                <div class="input-group">
+                                    <input type="text" class="form-control rounded-pill py-3 px-5" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <span class="input-group-text btn bg-transparent rounded-pill " style="z-index: 1200;" id="basic-addon2"><i class="fas fa-search"></i></span>
+                                  </div>
+                              </form>
+            
+                        </div>
+                        <!-- end of col -->
+
+                        <div class="btn1 d-flex align-items-center justify-content-around mt-4 mt-lg-0 ms-xl-5">
+                            
+                          <div class="me-5">
+                               
+                            <a href="chat.html" class="text-decoration-none">
+                             <img src="../../public//images/chat.png" alt="img not found">
+                            </a>
+
+                        </div>  
+                        <!-- chat div  -->                                               
+                       
+
+                        <div class="dropdown dropstart">
+                            <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                               <img src="../../public/images/admin.jpg" style="width: 30px; height: 30px;" alt="img not found">
+                            </button>
+                            <ul class="dropdown-menu p-1 mt-5" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
+                            
+                              <li>
+                             <a class="dropdown-item" href="#">
+
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                      <img src="../../public/images/user-img.png" style="width: 40px; height: 40px;" alt="img not found">
+                                    </div>
+                                    <div class="flex-grow-1 ms-3">
+                                   <h5>Hello !</h5>
+                                   <h6 class="text-decoration-underline">User Full Name</h6>
+                                    </div>
+                                  </div>
+                              </a>
+                            </li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="edit_profile.html"><i class="fas fa-user-edit me-3"></i>Edit Your Profile</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="your_ad.html"><i class="fas fa-ad me-3"></i>Your Ads</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="post_ad.html"><i class="fas fa-address-card me-3"></i>Post an Ad</a></li>
+                              <li class="my-3"><a class="dropdown-item border-bottom" href="your_subscription.html"><i class="fas fa-vote-yea me-3"></i>Your Subscription </a></li>
+                              <li class="my-3"><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-3"></i>Log Out</a></li>
+                            </ul>
+                          </div>
+                          <!-- user dropdown  -->
+                          
+
+                        </div>
+                        <!-- end of btn1  -->
+            
+                       
+                      </div>
+                    </div>
+                  </nav>
+                
+                
+            </header>
+            
+            <!-- header section end -->
+            
+
+
+        </div>
+        <!-- end of col  -->
+
+ 
+
+        <div class="col-12 py-0 d-md-none col-md-6 mx-auto">
+            <form class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control border-dark rounded-pill" placeholder="Search..." aria-label="Search" aria-describedby="basic-addon2">
+                    <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"  id="basic-addon2"><i class="fas fa-search"></i></span>
+                  </div>
+              </form>
+
+        </div>
+        <!-- end of col -->
+  
+
+    </div>
+    <!-- end of row header -->
+    
+
+
+    <div class="row d-none d-lg-flex text-center pad-50 justify-content-around" id="top-menu-bar">
+      <hr class="" style="opacity: 1; background-color: #0572B2;">
+      
+      <div class="col-lg-11 mb-2 col-xl-9 col-xxl-8 text-center">
+
+          <ul class="list-unstyled d-flex  mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    All Categories
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="cows.html">Cows</a></li>
+                    <li><a class="dropdown-item" href="sheeps.html">Sheeps</a></li>
+                    <li><a class="dropdown-item" href="goat.html">Goat</a></li>
+                    <li><a class="dropdown-item" href="buffalo.html">Buffalo</a></li>
+                    <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                  
+                  </ul>
+                </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Vet Services
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li><a class="dropdown-item" href="search_vet.html">Search A Vet</a></li>
+                    <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
+                    <li><a class="dropdown-item" href="book_appointment.html">Book An Appointment</a></li>
+                    <li><a class="dropdown-item" href="certify_animal.html">Certify My Animal</a></li>
+                    <li><a class="dropdown-item" href="vet_ragistration.html"> Register as a Vet</a></li>
+                 
+                  
+                  </ul>
+                </li>
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   Transport
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="search_transport.html">Search Transport</a></li>
+                      <li><a class="dropdown-item" href="book_transport.html"> Book Transport</a></li>
+                      <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+             
+                  
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" href="online_courses.html" id="navbarDropdown">
+                    Education
+                  </a>
+                   </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="forum_disscussion.html">
+                    Community & Forum
+                  </a>
+                 
+                </li>
+              <li class="nav-item">
+                  <a class="nav-link text-dark" href="news_updates.html">
+                    News & Updates
+                  </a>
+
+                </li>
+          </ul>
+
+
+
+
+
+      </div>
+      <!-- end of col  -->
+
+
+      <hr class="" style="opacity: 1; background-color: #0572B2;">
+
+  </div>
+  <!-- end of row  -->
+
+
+        <div class="row pad-50 justify-content-between mt-5 pt-5 mt-lg-0" id="edit_profile">
+
+
+          <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5 h-100 pb-5" style="
+          background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
+           border-radius: 20px;  box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;">
+
+    
+
+            <img src="../../public/images/user-img.png" class="profile_img my-3" alt="img not found">
+
+        
+            <button type="file" class="bg-transparent  profilebtn btnhover px-3 py-2" style="border-radius: 5px;">Upload Profile Picture</button>
+
+
+          </div>
+          <!-- end of col-3 -->
+
+          <div class="col-12 col-md-8">
+
+            <form action="" method="post" >
+
+         <h5 class="mb-4">Personal Details</h5>
+              <div class="row">
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="First Name" aria-label="First name">
+                </div>
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Middle Name" aria-label="Middle name">
+                </div>
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Last Name" aria-label="Last name">
+                </div>
+              </div>
+
+            
+              <div class="row my-2">
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="License No" aria-label="License">
+                </div>
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Vehicle Type " aria-label="Vehicle">
+                </div>
+                <div class="col-12 col-md-4 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Vehicle Make & Model" aria-label="Model">
+                </div>
+              </div>
+
+              <h5 class="my-4">Contact Details</h5>
+              <div class="row">
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Contact Number" aria-label="Contact Number">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Email Id" aria-label="Email Id">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Password" aria-label="Password">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Confirm Password" aria-label="Confirm Password">
+                </div>
+              </div>
+
+
+              <div class="row my-2">
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Address Line 1 " aria-label="Address Line 1 ">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Address Line 2" aria-label="Address Line 2">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Area" aria-label="Password">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <select id="inputCity" class="form-select overflow-scroll ">
+                    <option value="" selected disabled>City</option>
+                    <option value="Pune">Pune</option>
+  
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="row my-2">
+                <div class="col-12 col-md-3 my-2">
+                  <select id="inputState" class="form-select overflow-scroll ">
+                    <option value="" selected disabled>State</option>
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+  
+                  </select>
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <select id="inputDistrict" class="form-select overflow-scroll ">
+                    <option value="" selected disabled>District</option>
+                    <option value="Pune">Pune</option>
+  
+                  </select>
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <select id="inputTaluka" class="form-select overflow-scroll ">
+                    <option value="" selected disabled>Taluka</option>
+                    <option value="Pune">Pune</option>
+  
+                  </select>
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="text" class="form-control" name="" placeholder="Pin Code" aria-label="Pin Code">
+                </div>
+              </div>
+
+            
+              <h5 class="my-4">  Upload Documents</h5>
+              <div class="row">
+                <div class="col-12 col-md-3 my-2">
+                  <input type="file" class="form-control" name="">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="file" class="form-control" name="">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="file" class="form-control" name="">
+                </div>
+                <div class="col-12 col-md-3 my-2">
+                  <input type="file" class="form-control" name="">
+                </div>
+              </div>
+            
+              <div class="col-12 text-center ">
+
+                <a href="transport_post_submit.html" class="text-decoration-none  text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2 hoverbtna" type="button">Submit</button></a>
+
+              </div>
+              <!-- end of col  -->
+          
+          </form>
+          <!-- end of form  -->
+
+          
+
+          </div>
+          <!-- end of col-9  -->
+
+         
+
+          </div>
+          <!-- end of edit profile row  -->
+
+    
+
+
+
+
+
+
+
+        <footer class="" style="margin-top: 150px;">
+
+          <div class="row pad-50 mt-5" id="footer">
+  
+            <hr class="" style="opacity: 1; background-color: #0572B2;">
+              
+              <div class="col-12 col-md-1 text-center">
+  
+  
+                  <ul class="list-unstyled justify-content-around d-flex d-md-block">
+                    <li class="my-2">
+                      <a href="#" class="text-decoration-none text-dark fs-5"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="my-2">
+                        <a href="#" class="text-decoration-none text-dark fs-5"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                      <li class="my-2">
+                          <a href="#" class="text-decoration-none text-dark fs-5"><i class="fab fa-linkedin-in"></i></a>
+                      </li>
+                      <li class="my-2">
+                          <a href="#" class="text-decoration-none text-dark fs-5"><i class="fab fa-instagram"></i></a>
+                      </li>
+                      <li class="my-2">
+                          <a href="#" class="text-decoration-none text-dark fs-5"><i class="fab fa-youtube"></i></a>
+                      </li>
+                  </ul>
+  
+  
+               
+                  
+                  
+              </div>
+              <!-- end of col  -->
+  
+              <div class="col-12 col-md-3">
+  
+                  <strong style="border-bottom: 2px solid #0572B2;">Our Vision</strong>
+  
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, veniam?</p>
+  
+  
+ 
+                  <strong  style="border-bottom: 2px solid #0572B2;">Our Mission</strong>
+  
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, veniam?</p>
+  
+  
+  
+              </div>
+              <!-- end of col  -->
+
+              
+  
+              <div class="col-12 col-md-2" id="info-page">
+  
+                <ul class="list-unstyled mt-3">
+                  <li class="my-2">
+                    <a href="about_us.html" class="text-decoration-none text-dark">About Us</a>
+                  </li>
+                  <li class="my-2">
+                    <a href="contact_us.html" class="text-decoration-none text-dark">Contact Us</a>
+                  </li>
+                  <li class="my-2">
+                    <a href="privacy_policy.html" class="text-decoration-none text-dark">Privacy Policy</a>
+                  </li>
+                  <li class="my-2">
+                    <a href="terms_condition.html" class="text-decoration-none text-dark">Terms & Condition</a>
+                  </li>
+                  <li class="my-2">
+                    <a href="faq.html" class="text-decoration-none text-dark">FAQ</a>
+                  </li>
+                </ul>
+          
+  
+  
+              </div>
+              <!-- end of col  -->
+  
+              <div class="col-12 col-md-3 pt-3 overflow-hidden">
+
+                <p class="my-0">
+                  <strong>Phone: <br class="d-none d-md-block d-lg-none">  </strong><a href="#" type="tel" class="text-decoration-none text-dark ms-2">123456789</a>
+                </p>
+                <p class="my-0">
+                  <strong>Email: <br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="email" class="text-decoration-none text-dark ms-2">abc@gmail.com</a>
+                </p>
+                <address class="my-0">
+                  <strong>Address: <br class="d-none d-md-block d-lg-none">  </strong><a href="#" type="address" class="text-decoration-none text-dark ms-2">XYZ Street</a>
+                </address>
+
+              </div>
+              <!-- end of col  -->
+
+              <div class="col-12 col-md-3 overflow-hidden order-first order-md-last py-3 pb-md-0 border-start text-center" style="border-color: #0572B2 !important;">
+  
+                  <img src="../../public/images/India-Farm-Logo.png" class="footer-logo" alt="img not found">
+  
+
+                  <div class="position-relative mt-3">
+                    <strong class="text-start"> Subscribe to our Newsletter</strong>
+                     <form class="newsletter mt-2"  method="post" enctype="multipart/form-data">
+                  <i class="far fa-envelope tcolor"></i>
+                  <input type="email" name="email" Placeholder="Enter your email address" class="border-0" style="border-bottom: 2px solid #0572B2 !important;" required="">
+                  <button type="submit" class="border-0 bg-transparent tcolor" name="submit"><i class="fas fa-arrow-right"></i></button>
+                </form>
+          
+                  </div>
+
+  
+              </div>
+              <!-- end of col  -->
+
+              <div class="col-12 text-center my-2 order-last">
+
+                   <small class="">All Rights Reserved Ⓒ India Farm Animal </small>
+
+
+              </div>
+              <!-- end of col  -->
+              
+          </div>
+          <!-- end of row  -->
+
+
+  
+          
+      </footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- sell button mobile mode  -->
+        <!-- <a href="sell.html" class="text-decoration-none position-fixed bottom-0 end-0 mb-5 border ms-lg-5 d-lg-none me-2 px-2 py-2 bg-white rounded-pill">
+            <button class="bg-transparent border-0"><i class="fas fa-plus me-2"></i>Sell </button>
+        </a> -->
+        <!-- end of button  -->
+
+
+    </div>
+    <!-- end of container fluid  -->
+   
+
+
+
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- jquery link  -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+
+
+    <script src="../../public/js/script.js"></script>
+    <script src="../../public/js/owl.carousel.js"></script>
+    <!-- <script src="../../public/js/bootstarp.js"></script> -->
+
+    <script>
+      window.addEventListener("scroll", function () {
+        if (pageYOffset >= 100) {
+          // document.getElementById("header").style.position = "fixed";
+          document.getElementById("header").style.background = "url(../../public/images/footer_bg.png) center center no-repeat";
+          // document.getElementById("header").style.zIndex = "1300";
+        } else {
+          // document.getElementById("header").style.position = "static";
+          document.getElementById("header").style.background = "white";
+          
+  
+        }
+      });
+    </script>
+
+
+  </body>
+</html>

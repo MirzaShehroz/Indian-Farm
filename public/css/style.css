@@ -1,0 +1,1003 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Roboto&display=swap');
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Lato', sans-serif;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+}
+.tcolor{
+    color: #0572B2 !important; 
+}
+.bgcolor{
+    background: #0572B2 !important;
+}
+.bggary{
+background-image: linear-gradient(315deg, #54b5ee 0%, #b99fb9 74%);
+}
+.yellow{
+    background-image: linear-gradient(315deg, #dfee54 0%, #ffa837 74%) !important;
+}
+.greencolor{
+    background-image: linear-gradient(315deg, #2f8000 0%, #07d400 74%) !important;
+}
+table thead tr{
+
+    background-image: linear-gradient(315deg, #eff7ff 0%, #e7cfff 74%);
+
+}
+table tr:hover    {
+
+    background-image: linear-gradient(315deg, #a9e0ff 0%, #f7c9f7 74%);
+
+}
+input:hover{
+  
+    box-shadow: 1px 1px 10px rgb(120, 212, 255) !important;
+}
+select:hover{
+  
+    box-shadow: 1px 1px 10px rgb(120, 212, 255) !important;
+}
+textarea:hover{
+  
+    box-shadow: 1px 1px 10px rgb(120, 212, 255) !important;
+}
+input{
+    border-radius: 15px !important;
+    box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;
+}
+select{
+    border-radius: 15px !important;
+    box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;
+}
+textarea{
+    border-radius: 15px !important;
+    box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;
+}
+.dropdown .dropdown-menu{
+
+    background-image: linear-gradient(315deg, #ffb6b9 0%, #d3e0ff 74%);
+
+}
+.hoverbtna:hover{
+    background: transparent !important;
+    box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;
+    color: #0572B2 !important;
+    transition: 0.5s !important;
+}
+.green{
+    color: #08BE54 !important;
+}
+
+.bg_green{
+    background: #08BE54 !important;
+}
+.border_color{
+    border-color: #0572B2 !important;
+}
+.border_color2{
+    border: 1px solid #0572B2 !important;
+}
+.btnhover:hover{
+    background-image: linear-gradient(315deg, #ffb6b9 0%, #d3e0ff 74%);
+    color: #0572B2 !important;
+    font-weight: 500;
+    transition: 0.5s all;
+}
+.card:hover img{
+    transform: scale(1.1,1.1);
+    transition: 1s all !important;
+}
+#basic-addon2{
+    z-index: 1200 !important;
+}
+.card:hover{
+    box-shadow: 1px 1px 10px lightgray;
+    border-radius: 10px;
+    transition: 0.5s;
+    background-image: linear-gradient(315deg, #58ff90 0%, #4fd9ff 74%);
+}
+#header{
+
+background-image: linear-gradient(315deg, #fde7f9 0%, #aacaef 74%) !important;
+
+}
+.btnhover2:hover{
+    background-color: transparent !important;
+    color: #0572B2 !important;
+    transition: 0.5s all;
+}
+.btnhover3:hover{
+    background-color: transparent !important;
+    color: #0572B2 !important;
+    transition: 0.5s all;
+}
+.btnhover3:hover a{
+    color: #0572B2 !important;
+    transition: 0.5s all;
+}
+.btnhover4:hover{
+   background: #0572B2 !important;
+    transition: 0.5s all;
+}
+.btnhover4:hover a{
+    color: #ffffff !important;
+    transition: 0.5s all;
+}
+.btnclick:hover{
+    text-decoration: underline !important;
+    color: #08BE54 !important;
+}
+#header .navbar-brand{
+    width: 70px;
+    height: 60px;
+}
+.nav-item:hover a{
+    color: #0572B2 !important;
+}
+.nav-item:hover {
+    border-bottom: 1px solid #0572B2;
+}
+.nav-pills a:hover {
+    background: #0572B2 !important;
+}
+#banner-section .carousel-item img{
+    height: 200px;
+}
+#banner-section .carousel-item img{
+    border-radius: 20px;
+      
+}
+input{
+    outline: none !important;
+}
+button{
+    outline: none !important;
+}
+#product-list .card .card-img-top{
+    width: 100%;
+    height: 180px;
+    /* object-fit: cover; */
+}
+#product-list{
+   
+    background-attachment: fixed;
+  
+    background-image: linear-gradient(315deg, #bfebff 0%, #f6ebe6 74%);
+
+
+}
+#product-list .card {
+    height: 300px;
+}
+.card img {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+.card{
+    border-radius: 15px !important;
+}
+#footer .footer-logo{
+    width: 120px;
+    height: 90px;
+}
+#footer{
+    background: url(../images/footer_bg.png) center center no-repeat;
+}
+#footer-copy{
+    background: url(../images/footer_bg.png) center center no-repeat;
+}
+
+#myModal{
+    top: 30%;
+
+}
+#footer ul li i{
+    color: #0572B2;
+}
+#footer ul li i:hover{
+    transition: all ease 0.6s;
+    transform: rotate(360deg);
+
+
+
+}
+#info-page ul li a:hover{
+    color: #0572B2 !important;
+    font-weight: 500;
+}
+/* filter drop down start */
+/* .filter-dropdown{
+    height: 200px;
+    width: 150px;
+    border-radius: 10px;
+    padding: 10px;
+    position: fixed;
+    bottom: 5%;
+    z-index: 1300;
+    left: 5px;
+} */
+/* filter drop down end  */
+
+/* index css start */
+.index_ad_card .card{
+height: 420px !important;
+overflow:hidden !important;
+}
+.index_ad_card .card p{
+height: 60px !important;
+overflow:hidden !important;
+}
+select:hover{
+box-shadow: 1px 1px 10px rgb(190, 190, 190);
+}
+select:hover option{
+color: #0572B2;
+}
+/* index css end */
+
+
+
+.btnsell {
+    border-radius: 4px;
+   width: 100px;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .btnsell span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .btnsell span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.3s;
+  }
+  
+  .btnsell:hover span {
+    padding-right: 20px;
+    color: #08BE54;
+    transform: scale(1.1, 1.1);
+  }
+  
+  .btnsell:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+  .btnlogin:hover{
+    transform: scale(1.1, 1.1);
+    border-color: #0572B2 !important;
+  }
+/* sell page css start  */
+/* sell page css start  */
+
+.btnsubmit{
+    border: none;
+    outline: none;
+    background: #0572B2;
+    color: #fff;
+    font-size: 22px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 6px 20px -5px rgba(0,0,0,0.4);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.check-box{
+    width: 60px;
+    height: 60px;
+    border-radius: 40px;
+    box-shadow: 0 0 12px -2px rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: -40px;
+    opacity: 0;
+}
+
+.check-box svg{
+    width: 20px;
+    margin: 20px;
+}
+
+svg path{
+    stroke-width: 3;
+    stroke: #fff;
+    stroke-dasharray: 34;
+    stroke-dashoffset: 34;
+    stroke-linecap: round;
+}
+
+.myactive{
+    background: #08BE54;
+    transition: 1s;
+}
+
+.myactive .check-box{
+    right: 0;
+    opacity: 1;
+    transition: 1s;
+}
+
+.myactive p{
+    margin-right: 50px;
+    transition: 1s;
+}
+
+.myactive svg path{
+    stroke-dashoffset: 0;
+    transition: 1s;
+    transition-delay: 1s;
+}
+.comment{
+    width: 100%;
+}
+/* sell page css end  */
+/* sell page css end  */
+
+
+
+/* cows page css start  */
+
+#cows-item input:checked{
+    background: #0572B2 !important;
+}
+#cows-item .bannerad{
+    width: 100%;
+    height: 300px;
+    border-radius: 15px;
+}
+#cows-item .card-img-top{
+    width: 100%;
+    height: 200px;
+}
+
+/* cows page css end  */
+
+/* news css start  */
+ .cardnews{
+    height: 200px;
+    position: relative;
+}
+ .bignews1 .cardnews{
+    height: 300px;
+    position: relative;
+}
+#blog-news .owl-carousel .cardnews{
+    height: 350px;
+    position: relative;
+}
+.cardnews:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,#141414af,#3a3a3af8);
+    opacity: .6; 
+}
+.viewbtn{
+    display: none;
+    transform: 1s all !important;
+}
+.cardnews:hover .viewbtn{
+    display: block !important;
+    transform: 1s all !important;
+}
+
+.cardnews .viewbtn:hover{
+  border-color: #0572B2 !important;
+  text-decoration: underline !important;
+}
+.objectnews_img{
+    width: 100%;
+    height: 80px;
+    border-radius: 15px;
+}
+ .objecttext{
+    line-height: -20px;
+   
+}
+.bignews2 .cardnews{
+    height: 400px;
+    position: relative;
+}
+/* news css end  */
+
+/* forums FAQ css start  */
+.accordion-button:not(.collapsed)::after {
+  filter: brightness(50);
+}
+/* forums FAQ css end  */
+
+/* ads-item css start  */
+.user-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}
+.item-main-img{
+    width: 100%;
+    height: 400px;
+    border-radius: 15px;
+}
+#video_col{
+    height: 450px;
+}
+/* ads-item css end  */
+
+/* profile selle css start  */
+
+.selleradscard .card-img-top{
+    height: 150px;
+}
+.selleradscard{
+    height: 350px;
+}
+#seller_cards .card{
+    height: 355px !important;
+}
+/* profile selle css end  */
+
+
+/* user css start  */
+
+
+#app-row{
+    background-size: cover;
+    height: 450px;
+
+}
+/* user css end  */
+
+
+/* login page css start */
+#login-page .card-img-top{
+    width: 150px;
+    height: 120px;
+}
+/* login page css end */
+
+/* edit profile page css start */
+.profile_img{
+    width: 150px;
+    height: 150px;
+}
+.inputno1{
+    width: 100% !important;
+}
+/* edit profile page css end */
+
+/* your ad page css start */
+.your_ad_img{
+    width: 100px;
+    height: 100px;
+    border-radius: 15px;
+}
+.btnfast{
+    font-size: 12px;
+}
+/* your ad page css end */
+
+
+/* post ad page css start */
+
+#post_ad .btn{
+    width: 100%;
+    padding: 10px 10px;
+    border: 1px solid rgb(122, 122, 122) !important;
+}
+#post_ad .btn span{
+  float: left;
+}
+#post_ad .dropdown-toggle{
+ text-align: end;
+}
+.upload_img{
+    width: 60px;
+    height: 60px;
+}
+.video_upload{
+    height: 180px;
+}
+.video_upload .imgvideo{
+    width: 70px;
+    height: 70px;
+}
+#exampleModal{
+    top: 25%;
+}
+#post_ad .dropdown button:hover{
+      
+    background-image: linear-gradient(315deg, #bfebff 0%, #f6ebe6 74%) !important;
+}
+/* post ad page css end */
+
+/* subscribtion css start  */
+#sub_card .card:hover{
+    box-shadow: 1px 1px 10px #88d4ff !important;
+}
+/* subscribtion css end  */
+
+/* chat css start  */
+
+#v-pills-tabContent .container {
+    border: 2px solid #dedede;
+  background-image: linear-gradient(315deg, #96c8fb 0%, #ddbdfc 74%);
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+ #v-pills-tabContent .darker {
+    border-color: #ccc;
+    background-color: #ddd;
+  }
+  
+ #v-pills-tabContent .container::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+ #v-pills-tabContent .container img {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+  }
+  
+ #v-pills-tabContent .container img.right {
+    float: right;
+    margin-left: 20px;
+    margin-right:0;
+  }
+  
+  .time-right {
+    float: right;
+    color: #aaa;
+  }
+  
+  .time-left {
+    float: left;
+    color: #999;
+  }
+
+#v-pills-tab .active{
+  
+    background-image: linear-gradient(315deg, #6aa2da 0%, #b46afd 74%);
+  color: white !important;
+}
+#v-pills-tab    {
+  
+    background-image: linear-gradient(315deg, #eff7ff 0%, #e7cfff 74%);
+  color: white !important;
+}
+#v-pills-tab .nav-link{
+    color: gray;
+}
+#v-pills-tab{
+    height: 500px;
+    overflow: scroll;
+}
+#v-pills-tabContent{
+    height: 500px;
+    overflow: scroll;
+    padding: 5px 10px;
+    
+}
+
+  /* chat css end  */
+
+  /* single ad css start  */
+  .tham-slideimag{
+      width: 50px;
+      height: 50px;
+  }
+  .img-slide{
+      height: 200px;
+      width: 100%;
+      border-radius: 15px;
+  }
+  /* single ad css end  */
+
+
+  /* form ad css start  */
+  .queryrow{
+      height: 350px;
+      overflow: hidden !important;
+      background-image: linear-gradient(315deg, #ffddde 0%, #e1eaff 74%);
+  }
+  .queryrow1    {
+    
+      overflow: hidden !important;
+      background-image: linear-gradient(315deg, #ffddde 0%, #e1eaff 74%);
+  }
+
+  /* form ad css end  */
+
+  /* about us css start  */
+
+  
+ #vision .fontbig1 {
+    font-size: 6vw;
+    color: #08BE54;
+    font-weight: bolder;
+  }
+  #vision .eye1 {
+    font-size: 6vw;
+    background: #08BE54;
+    border-radius: 100%;
+    margin: 26px 0px 0px -20px !important;
+  }
+  
+  #vision .eye1 i {
+    padding: 0px 20px 20px 20px;
+    font-size: 6vw;
+  }
+  #vision .last1 {
+    margin-left: 120px;
+  }
+  
+  @media (min-width: 768px) {
+    #vision .fontbig1 {
+      font-size: 6vw;
+      color: #08BE54;
+      font-weight: bolder;
+    }
+    #vision .eye1 {
+      font-size: 2vw;
+      background: #08BE54;
+      border-radius: 100%;
+      margin: 0px 0px 0px 0px !important;
+    }
+  
+    #vision .eye1 i {
+      padding: 20px 20px 20px 20px;
+      font-size: 2vw;
+    }
+    #vision .last1 {
+      margin-left: 60px;
+    }
+  }
+  @media (min-width: 1024px) {
+    #vision .fontbig1 {
+      font-size: 6vw;
+      color: #08BE54;
+      font-weight: bolder;
+    }
+    #vision .eye1 {
+      font-size: 5vw;
+      background: #08BE54;
+      border-radius: 100%;
+      margin: 0px 0px 0px -10px !important;
+    }
+  
+    #vision .eye1 i {
+      padding: 0px 20px 20px 20px;
+      font-size: 3vw;
+    }
+    #vision .last1 {
+      margin-left: 65px;
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    #vision .fontbig1 {
+      font-size: 8vw;
+      color: #08BE54;
+      font-weight: bolder;
+    }
+    #vision .eye1 {
+      font-size: 6vw;
+      background: #08BE54;
+      border-radius: 100%;
+      margin: 14px 0px 0px -10px !important;
+    }
+  
+    #vision .eye1 i {
+      padding: 0px 20px 20px 20px;
+      font-size: 5vw;
+    }
+    #vision .last1 {
+      margin-left: 120px;
+    }
+  }
+  .img-about:hover{
+      transform: scale(1.2,1.2);
+      overflow: hidden;
+      transition: 1s all;
+  }
+  #about_us div{
+      overflow: hidden !important;
+  }
+  .fontbig1:hover{
+    background-image: linear-gradient(315deg, #eff7ff 0%, #e7cfff 74%);
+    border-radius: 20px;
+  }
+  /* about us css end */
+
+  /* contact us css start */
+
+#contact-row .card1{
+    height: 100px;
+    overflow: hidden;
+}
+#contact-row .card1:hover{
+    box-shadow: 1px 1px 20px #c0e8ff !important;
+}
+.offcanvas{
+    z-index: 1300 !important;
+    background-image: linear-gradient(315deg, #eff7ff 0%, #e7cfff 74%);
+    width: 90% !important;
+}
+  /* contact us css end */
+
+  .dropdown-menu .dropdown-item{
+      font-weight: 600 !important;
+}
+#single_ad table tr:first-child{
+    font-weight: 800 !important;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+    #filter input{
+        width: 100% !important;
+    }
+    
+    .index_ad_card .card{
+        height: 420px !important;
+        overflow:hidden !important;
+        }
+    #footer input{
+        width: 70% !important;
+    }
+    .inputno1{
+       width: auto !important;
+    }
+
+    #app-row{
+        background: url(/assets/images/bg-app.jpg) center center no-repeat;
+        background-size: cover;
+        height: 250px;
+    
+    }
+    .your_ad_img{
+        width: 80px;
+        height: 100px;
+        border-radius: 15px;
+
+    }
+    #v-pills-tab{
+        width: 25%; 
+        height: 500px;
+        overflow: scroll;
+    }
+    #v-pills-tabContent{
+        width: 75%; 
+        height: 500px;
+        overflow-y: scroll;
+        padding: 10px 20px;
+        
+    }
+    .tham-slideimag{
+        width: 60px;
+        height: 60px;
+        border-radius: 10px;
+    }
+    .img-slide{
+        height: 300px;
+        width: 100%;
+        border-radius: 15px;
+    }
+    .queryrow{
+        height: 200px;
+        overflow: hidden
+    }
+    #post_ad .btn{
+        width: 50% !important;
+        padding: 10px 10px;
+        border: 1px solid rgb(122, 122, 122) !important;
+    }
+    .shadow1{
+        box-shadow: 1px 1px 20px lightgray !important;
+    }
+    .offcanvas{
+    
+        width: 50% !important;
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .pad-50{
+        padding: 0px 20px !important;
+        background-color: rgb(250, 250, 250);
+    }
+    .pad-80{
+        padding: 20px 20px !important;
+    }
+    #header .navbar-brand{
+        width: 120px;
+        height: 80px;
+    }
+    #header  #basic-addon2{
+        margin: auto -50px;
+   
+    }
+    #top-menu-bar .dropdown:hover .dropdown-menu{
+        display: block;
+        border-top: 3px solid #0572B2;
+        border-bottom: 3px solid #0572B2;
+        transition: 0.6s all !important;
+    }
+    .dropdown-menu .dropdown-item:hover {
+        background-image: linear-gradient(315deg, #67b3ff 0%, #9d3bff 74%);
+        color: white !important;
+    }
+    #top-menu-bar .dropdown{
+        border-bottom: 2px solid white;
+    }
+
+    #banner-section .carousel-item{
+        height: 400px;
+          
+    }
+
+    #product-list .card .card-img-top{
+        width: 100%;
+        height: 180px;
+        /* object-fit: cover; */
+    }
+    #product-list .card {
+        height: 300px;
+    }
+    #top-menu-bar{
+        margin-top: 120px;
+
+    }
+
+    .comment{
+        width: 50%;
+    }
+    .your_ad_img{
+        width: 120px;
+        height: 100px;
+        border-radius: 15px;
+
+    }
+    .queryrow{
+        height: 180px;
+        overflow: hidden;
+        background-image: linear-gradient(315deg, #ffddde 0%, #e1eaff 74%);
+    }
+
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .pad-50{
+        padding: 0px 50px !important;
+    }
+    .pad-60{
+        padding: 20px 20px !important;
+    }
+    #header .navbar-brand{
+        width: 120px;
+        height: 80px;
+    }
+    #header  #basic-addon2{
+        margin: auto -70px;
+    }
+    .btnfast{
+        font-size: 15px;
+    }
+    .tham-slideimag{
+        width: 80px;
+        height: 80px;
+    }
+    .img-slide{
+        height: 450px;
+        width: 100%;
+        border-radius: 15px;
+    }
+
+}
+@media only screen and (min-width: 1400px) {
+    .pad-50{
+        padding: 0px 100px !important;
+    }
+    .pad-60{
+        padding: 20px 20px !important;
+    }
+    #header  #basic-addon2{
+        margin: auto -70px;
+    }
+}
+
+
+
+
+
+
+
+
+/* social media css  */
+
+#social{
+    background: transparent !important;
+    position: fixed;
+    bottom: 22% !important;
+    left: 30px  !important;
+    background-color: #0014d8;
+    z-index: 1200;
+    font-size:20px !important;
+  }
+  #social a:hover{
+    color: #051242!important;
+  }
+  @media (min-width: 1024px){
+      #social{
+    background: transparent !important;
+    position: fixed;
+    bottom: 20% !important;
+    left: 30px  !important;
+    background-color: #0014d8;
+    z-index: 1200;
+    font-size:20px !important;
+  }
+  }
+  @media (min-width: 1200px){
+      #social{
+    background: transparent !important;
+    position: fixed;
+    bottom: 25% !important;
+    left: 30px  !important;
+    background-color: #0014d8;
+    z-index: 1200;
+    font-size:20px !important;
+  }
+  }
+  .footer-social-icon {
+      margin-top: 20px;
+  }
+  .footer-social-icon li {
+      display: inline-block;
+      margin-right: 10px;
+  }
+  .footer-social-icon li a {
+      color: #fff;
+      font-size: 13px;
+      width: 33px;
+      height: 33px;
+      line-height: 33px;
+     background:#8f01a9;
+      text-align: center;
+      display: block;
+      border-radius: 3px;
+  }
+  .footer-social-icon li a:hover {
+      color: #000;
+      transition: all ease 0.3s;
+      -webkit-transition: all ease 0.3s;
+      -webkit-transform: rotate(360deg);
+      transform: rotate(360deg);
+  }
+  

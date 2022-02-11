@@ -1,0 +1,493 @@
+/* dashborad css  */
+.primary{
+   
+    color: #ff8138 !important;
+}
+.bg_primary{
+
+    background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 74%) ;
+
+}
+.danger{
+    color: #0572B2 !important;
+   
+}
+.bg_danger{
+   
+background-image: linear-gradient(315deg, #7f53ac 0%, #647dee 74%) !important;
+
+}
+button{
+    border: none !important;
+    font-weight: 500 !important;
+}
+button:hover{
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%) !important;
+    font-weight: 500 !important;
+}
+/* added */
+a:hover{
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%) !important;
+    font-weight: 500 !important;
+}
+.white{
+    color: #fff !important;
+}
+.bg-white{
+    background: #fff !important;
+}
+.secondary{
+    color: #888888 !important;
+}
+.bg_secondary{
+    background: #888888 !important;
+}
+.bg_light{
+    background: rgb(230, 230, 230) !important;
+}
+#dashboard-header{
+
+
+background-image: linear-gradient(315deg, #dbc339 0%, #ff85a9 74%);
+}
+/* #v-pills-tab{
+ 
+    background-image: linear-gradient(315deg, #ffbc81 0%, #ec364e 74%) !important;
+
+} */
+.btn-or{
+    background: #ff5d00;
+    color: white;
+    border: 1px solid #ff5d00;
+    border-radius: 10px;
+    font-size: 14px !important;
+    font-weight: normal !important;
+    transition: 0.5s all;
+}
+
+.btnhover:hover{
+    background-image: linear-gradient(315deg, #63a4ff 0%, #83eaf1 74%) !important;
+    color: white !important;
+    transition: 0.5s all;
+}
+.btnhover2:hover{
+    background: transparent !important;
+    color: #0572B2 !important;
+    border: 1px solid #0572B2;
+    transition: 0.5s all;
+}
+.offcanvas{
+
+background-image: linear-gradient(315deg, #e288f9 0%, #ffc988 74%);
+}
+.modal .modal-header{
+    background-image: linear-gradient(315deg, #e296f5 0%, #f09d38 74%);
+    color: white;
+    font-weight: 600;
+}
+.modal .modal-body{
+    background-image: linear-gradient(315deg, #e288f9 0%, #ffc988 74%);
+}
+button{
+    outline: none !important;
+}
+/* end  */
+
+.brand-logo{
+    width: 120px;
+    height: 80px;
+}
+.dropdown .dropdown-menu{
+background-image: linear-gradient(315deg, #fba8a4 0%, #dad2f3 74%);
+color: black !important;
+font-weight: 500 !important;
+}
+.dropdown .dropdown-menu a:hover{
+
+    background-image: linear-gradient(315deg, #bbf0f3 0%, #f6d285 74%) !important;
+    color: black !important;
+   
+}
+#dashboard-pills .nav-pills .btn-p.active, .nav-pills .btn-p>.nav-link {
+ 
+background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%) !important;
+color: #000000 !important;
+        /* This is a code for Nav_pills  */
+}
+#dashboard-pills #dashboard-fix #tab_pill_main .nav-pills .btn-p.active, .nav-pills .btn-p>.nav-link {
+ 
+background-image: linear-gradient(315deg, #f39f86 0%, #f9d976 74%) !important;
+color: #000000 !important;
+        /* This is a code for Nav_pills  */
+}
+
+#tab_pill_main{
+background-image: linear-gradient(319deg, #faa499 0%, #f7dd85 37%, #ffc55c 100%) !important;
+
+}
+table {
+    border-color: black !important;
+}
+table thead{
+
+background-image: linear-gradient(315deg, #ef5734 0%, #ffcc2f 74%);
+}
+input{
+    border-radius: 15px;
+    background-image: linear-gradient(315deg, #fffcf9 0%, #ffdc8b 50%);
+    box-shadow: 1px 1px 10px rgb(255, 194, 102);
+}
+textarea{
+    border-radius: 15px;
+    background-image: linear-gradient(315deg, #fffcf9 0%, #ffdc8b 50%) !important   ;
+    box-shadow: 1px 1px 10px rgb(255, 194, 102);
+}
+select{
+    border-radius: 15px;
+    background: linear-gradient(315deg, #fffcf9 0%, #ffdc8b 50%) !important;
+}
+input::placeholder{
+   color: rgb(58, 58, 58);
+}
+/* 
+body::-webkit-scrollbar{
+    display: none;
+} */
+
+#dashboard-pills .form-control:focus {
+    box-shadow: none;
+    border-color: #f8f8f8
+}
+
+#dashboard-pills .profile-button {
+    background: #007ea8;
+    box-shadow: none;
+    border: none
+}
+
+#dashboard-pills .profile-button:hover {
+    background: #682773
+}
+
+#dashboard-pills .profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+#dashboard-pills .profile-button:active {
+    background: #007ea8;
+    box-shadow: none
+}
+
+#dashboard-pills .back:hover {
+    color: #007ea8;
+    cursor: pointer
+}
+
+#dashboard-pills .labels {
+    font-size: 11px
+}
+
+#dashboard-pills .add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+.table-trip{
+    font-size: 9px;
+}  
+#dashboard-pills .offer-img{
+    width: 70px;
+   } 
+#dashboard-pills .edit-img{
+   width: 8px;
+   height: 8px;
+   } 
+#dashboard-pills .table-my-trip{
+ font-size: 5px;
+   } 
+   #offcanvasExample{
+       width: 90%;
+   }
+   #notic .noticecol{
+    background-image: linear-gradient(315deg, #fc9842 0%, #fe5f75 100%) ;
+   }
+   #notic .noticecol:hover{
+    background-image: linear-gradient(315deg, #ffcb9b 0%, #ffa2ae 100%) !important;
+    color: black !important;
+   }
+   #v-pills-profile .inputs1{
+    width: 100%;
+   }
+   #offcanvasRight1{
+       width: 100%;
+   }
+   #offcanvasRight2{
+       width: 100%;
+   }
+   #add_ads{
+       width: 100%;
+   }
+   #view_ads{
+       width: 100%;
+   }
+   #edit_vet{
+    width: 100%;
+}
+   #view_vet{
+    width: 100%;
+}
+   #edit_transport{
+    width: 100%;
+}
+   #view_transport{
+    width: 100%;
+}
+   #edit_appointment{
+    width: 100%;
+}
+   #view_appointment{
+    width: 100%;
+}
+#edit_certified{
+    width: 100%;
+}
+   #view_certified{
+    width:  100%;     
+   }
+#edit_transportbook{
+    width: 100%;
+}
+   #view_transportbook{
+    width:  100%;     
+   }
+   #forms{
+    width: 100%;
+}
+   #education{
+    width:  100%;     
+   }
+   #news{
+    width:  100%;     
+   }
+   #edit-forms{
+    width:  100%;     
+   }
+   #view-forms{
+    width:  100%;     
+   }
+   #upload{
+    width:  100%;     
+   }
+   #newsupdate{
+    width:  100%;     
+   }
+   #readmore{
+    width:  100%;     
+   }
+   #view_news{
+    width: 100%;     
+   }
+   #editnews{
+    width: 100%;     
+   }
+/* edit profile page css start */
+.profile_img{
+    width: 150px;
+    height: 150px;
+}
+.inputno1{
+    width: 100% !important;
+}
+#exampleModal1{
+    top: 30%;
+}
+table{
+    height: 200px;
+    overflow: scroll;
+}
+/* edit profile page css end */
+
+
+/* ads tab  css start*/
+.adimg2{
+    height: 100px;
+    width: 150px;
+}
+.imgupload{
+    width: 100%;
+    height: 200px;
+}
+/* news css start  */
+.cardnews{
+    height: 200px;
+    position: relative;
+}
+ .bignews1 .cardnews{
+    height: 300px;
+    position: relative;
+}
+#blog-news .owl-carousel .cardnews{
+    height: 350px;
+    position: relative;
+}
+.cardnews:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom right,#141414af,#3a3a3af8);
+    opacity: .6; 
+}
+.viewbtn{
+    display: none;
+    transform: 1s all !important;
+}
+.cardnews:hover .viewbtn{
+    display: block !important;
+    transform: 1s all !important;
+}
+
+.cardnews .viewbtn:hover{
+  border-color: #0572B2 !important;
+  text-decoration: underline !important;
+}
+.objectnews_img{
+    width: 100%;
+    height: 80px;
+    border-radius: 15px;
+}
+ .objecttext{
+    line-height: -20px;
+   
+}
+.bignews2 .cardnews{
+    height: 400px;
+    position: relative;
+}
+/* news css end  */
+/* edit profile page css end */
+
+   @media only screen and (min-width: 768px) {
+       
+       #offcanvasExample{
+           width: 50%;
+        }
+        #offcanvasRight1{
+            width: 90%;
+        }
+        #offcanvasRight2{
+            width: 90%;
+        }
+        #add_ads{
+            width: 90%;
+        }
+        #view_ads{
+            width: 90%;
+        }
+        #edit_vet{
+            width: 90%;
+        }
+        #view_vet{
+            width: 90%;
+        }
+        #edit_transport{
+            width: 90%;
+        }
+        #view_transport{
+            width: 90%;
+        }
+        #edit_appointment{
+            width: 90%;
+        }
+           #view_appointment{
+            width:  90%;     
+           }
+        #edit_certified{
+            width: 90%;
+        }
+           #view_certified{
+            width:  90%;     
+           }
+           #edit_transportbook{
+            width: 90%;
+        }
+           #view_transportbook{
+            width:  90%;     
+           }
+           #forms{
+            width: 90%;
+        }
+           #education{
+            width:  90%;     
+           }
+           #news{
+            width:  90%;     
+           }
+           #edit-forms{
+            width:  90%;     
+           }
+           #view-forms{
+            width:  90%;     
+           }
+           #upload{
+            width:  70%;     
+           }
+           #newsupdate{
+            width:  90%;     
+           }
+           #readmore{
+            width:  90%;     
+           }
+           /* #editnews{
+            width:  100%;    
+            margin: auto 0px; 
+           } */
+           #dashboard-fix #v-pills-tab{
+            z-index: 999;
+            position: fixed !important;
+        }
+        #v-pills-tabContent{
+            margin-left: auto;
+         
+        }
+        #dashboard-pills #v-pills-tab {
+            padding-bottom: 100%;
+        }
+        #dashboard-pills #v-pills-tabContent {
+            padding-bottom: 100%;
+        }
+         
+       
+    }
+    
+    @media only screen and (min-width: 1024px) {
+
+        #dashboard-pills #v-pills-tab {
+            padding-bottom: 59%;
+        }
+        #dashboard-pills #v-pills-tabContent {
+            padding-bottom: 59%;
+        }
+         
+    }
+
+    @media only screen and (min-width: 1200px) {
+        #offcanvasRight1{
+            width: 83%;
+        }
+        #offcanvasRight2{
+            width: 83%;
+        }
+
+    
+    }
+
+
+
+
+/* Dashboard css end  */
+
