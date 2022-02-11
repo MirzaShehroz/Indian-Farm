@@ -10,6 +10,7 @@ use App\Models\Sellers;
 use App\Models\Address;
 use Illuminate\Support\Facades\Redis;
 use Mail;
+use Crypt;
 
 class AdminController extends Controller
 {
@@ -23,9 +24,11 @@ class AdminController extends Controller
             $inputVal['password']=$req->password;
             
            $nonreg=User::where('email',$inputVal['email'])->count();
-           $user=User::where('email',$inputVal['email'])->first();
-           $name=  $user->first_name.''.$user->middle_name.''.$user->last_name;
-           if($nonreg!=null){
+          
+          
+           if($nonreg>0){
+                $user=User::where('email',$inputVal['email'])->first();
+                $name=  $user->first_name.''.$user->middle_name.''.$user->last_name;
             if (auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
                 
                 if($user->status==1){
@@ -49,9 +52,13 @@ class AdminController extends Controller
                         $message->to($email)->subject('Login OTP');
             
                     } );
- 
-                   // return view('admin.login_verify',compact('email'));
-                    return redirect()->route('verify-otp')->with(['email'=>$inputVal['email']]);
+                    $email=Crypt::encryptString($inputVal['email']);
+                    $id=Crypt::encryptString($user->id);
+                    // dd($id );
+                    // dd($email);
+                    //return view('admin.login_verify',compact('email'));
+                    return redirect()->route('verify-otp',$id)->with(['email'=>$inputVal['email']]);
+
                    }
                 }
                 else{
@@ -69,18 +76,20 @@ class AdminController extends Controller
         }
 
         public function verifyotp(Request $req){
-            $email=$req->email;
-            $user=User::where('email',$email)->first();
+            $id=$req->id;
+            $id=Crypt::decryptstring($id);
+            
+            $user=User::where('id',$id)->first();
 
-            if($email==null){
-            return back()->with('error','Try Again or Click Resend otp')->with(['email'=>$req->email]);
+            if($id==null){
+            return back()->with('error','Try Again or Click Resend otp');
 
             }
             elseif( $user->email_otp==$req->otp){
              return redirect('admin/index');
             }
             else{
-                return back()->with('error','Wrong Otp Please Enter Right Otp')->with(['email'=>$req->email]);
+                return back()->with('error','Wrong Otp Please Enter Right Otp');
             }
 
         }
@@ -109,6 +118,35 @@ class AdminController extends Controller
             }
         }
 
+        public function resendotp($id){
+            $user_id=Crypt::decryptstring($id);
+            if($user_id!=null){
+                $otp=mt_rand( 100000, 999999 );
+                $user=User::where('id',$user_id)->first();
+                $name=$user->first_name.' '.$user->middle_name.' '.$user->last_name;
+
+               $query= User::where('id',$user_id)->update(['email_otp'=>$otp]);
+               
+                    $email=$user->email;
+                    $messagedata=[
+            
+                        'otp'=>$otp,
+                        'name'=>$name
+                         
+                    ];
+        
+                    Mail::send('admin.verify_mail',$messagedata,function($message)use($email){
+        
+                        $message->to($email)->subject('Login OTP');
+            
+                    } );
+                    return back()->with('success','Check Your Mail for OTP');
+
+            }else{
+                return back()->with('error','Try Agian to login');
+            }
+        }
+        
         public function user(){
 
             $data=User::join('user_address','users.address_id','=','user_address.id')
