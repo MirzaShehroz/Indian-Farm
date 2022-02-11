@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Sellers;
 use App\Models\Address;
+use Illuminate\Support\Facades\Redis;
 use Mail;
 
 class AdminController extends Controller
@@ -32,7 +33,7 @@ class AdminController extends Controller
                    $otp=mt_rand( 100000, 999999 );
                    $user->email_otp=$otp;
                    
-                   if(auth()->user()->user_role==1){
+                   if(auth()->user()->user_role=='admin'){
 
                     User::where('email',$inputVal['email'])->update(['email_otp'=>$otp]);
                     $email=$inputVal['email'];
@@ -83,7 +84,31 @@ class AdminController extends Controller
             }
 
         }
-        
+
+        // search
+        public function search(Request $req){
+            $data=User::join('user_address','users.address_id','=','user_address.id')
+            ->join('sellers','users.id','sellers.user_id')
+            ->where('first_name',$req->full_name)
+            ->orWhere('contact_no',$req->contact_no)
+            ->orWhere('email',$req->email)
+            ->orWhere('area',$req->area)
+            ->orWhere('city',$req->city)
+            ->orWhere('state',$req->state)
+            ->orWhere('district',$req->district)
+            ->orWhere('taluka',$req->taluka)
+            ->get();
+            // dd($data);
+            $count=$data->count();
+            // dd($count);
+            if($count!=0){
+                return view('admin.user',compact("data"))->with('successMsg','Item found successfully');
+            }
+            else{
+                return view('admin.user',compact("data"))->with('errorMsg','Item not found!');
+            }
+        }
+
         public function user(){
 
             $data=User::join('user_address','users.address_id','=','user_address.id')
@@ -129,10 +154,10 @@ class AdminController extends Controller
             $user=new User;
             $user->first_name=$req->full_name;
             // $user->=$req->full_name;
-            $user->user_role=2;
+            $user->user_role='seller';
             $user->membership_type=$req->status;
             $user->owner_status=$req->owner_Status;
-            $user->first_name=$req->full_name;
+            // $user->first_name=$req->full_name;
             $user->contact_no=$req->contact_no;
             $user->email=$req->email;
             $user->address_id=$address_id;
@@ -165,7 +190,53 @@ class AdminController extends Controller
 
             return back()->with('successMsg','Seller added successfully!');
         }
+        // update user
 
+        public function update(Request $req){
+            // dd($req->user_id); 
+            $user=User::where('id',$req->user_id)->first();
+            $user_address=Address::where('id',$user->address_id)->first();
+            $seller=Sellers::where('user_id',$req->user_id)->first();
+            // dd($user_address);
+            // user table update
+            $user->first_name=$req->full_name;
+            $user->membership_type=$req->status;
+            $user->owner_status=$req->owner_Status;
+            $user->contact_no=$req->contact_no;
+            $user->email=$req->email;
+            $user->status=0;
+
+            if($req->hasFile('profile')){
+                $file=$req->profile;
+                $name = time().''.rand(1000000,999999999999);
+                $filepath='/uploads/'.$req->user_id.'/profile/';
+                $ext= $file->getClientOriginalExtension();
+                $file->move(public_path() .$filepath,$name.'.'.$ext);
+                $fileName=$name.'.'.$ext;
+                $imgData=  $filepath.$fileName;
+
+                $user->image=$imgData;
+            }
+            $user->save();
+
+            // address update
+            $user_address->address_line1=$req->address1;
+            $user_address->address_line2=$req->address2;
+            $user_address->area=$req->area;
+            $user_address->city=$req->city;
+            $user_address->state=$req->state;
+            $user_address->district=$req->district;
+            $user_address->taluka=$req->taluka;
+            $user_address->zipcode=$req->pin_code;
+            $user_address->save();
+
+            // seller detail update
+            $seller->farm_name=$req->farm_name;
+            $seller->status=1;
+            $seller->save();
+
+            return back()->with('successMsg','User Updated Successfully!');
+        }
         // delete user
         public function deleteUser(Request $req){
             // dd($req->user_id);
@@ -173,10 +244,7 @@ class AdminController extends Controller
             // dd($user);
             return back()->with('infoMsg','User deleted Successfully!');
         } 
-        public function addVet(){
-            return 'submitted';
-        }
-
+       
         
 }
 

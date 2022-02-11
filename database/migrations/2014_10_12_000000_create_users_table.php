@@ -18,8 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('last_name')->nullable();
-            $table->integer('user_role');
-            $table->integer('membership_type');
+            $table->enum('user_role',['admin','seller','buyer','vet' ,'transport','expert']);
+            $table->integer('membership_type')->nullable();
             $table->string('contact_no', 100);
             $table->string('email');
             $table->string('password');
