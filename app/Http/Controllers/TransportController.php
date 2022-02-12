@@ -4,36 +4,52 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Documents;
-use App\Models\User;
-use App\Models\Vet;
 use App\Models\Address;
+use App\Models\Transport;
+use App\Models\User;
+use App\Models\Documents;
 use Illuminate\Support\Facades\Hash;
+use PDO;
 
-class VetController extends Controller
+class TransportController extends Controller
 {
-    // view vet
+    // search
+    public function search(Request $req){
+        $data=Transport::join('users','users.id','=','transports.user_id')
+        ->join('user_address','user_address.id','=','users.address_id')
+        ->join('user_documents','users.document_id','=','user_documents.id')
+        ->where('first_name',$req->first_name)
+        ->orWhere('city',$req->city)
+        ->orWhere('state',$req->state)
+        ->orWhere('district',$req->district)
+        ->orWhere('taluka',$req->taluka)
+        ->get();
+        // dd($data);
+
+        return view('admin.transport_driver',compact('data'))->with('infoMsg','Driver founded');
+    }
+
     public function index(){
         $data=User::join('user_address','users.address_id','=','user_address.id')
         ->join('user_documents','users.document_id','=','user_documents.id')
-        ->join('vets','users.id','vets.user_id')
+        ->join('transports','users.id','transports.user_id')
         ->get();
-        // dd($data);
-        return view('admin.vet',compact('data'));
+
+        return view('admin.transport_driver',compact('data'));
     }
 
-    // add vet
-    public function addVet(Request $req){
-        // dd($req->doc1);
-       $address=new Address;
+    public function register(Request $req){
+        // dd($req);
+
+        $address=new Address;
        $address->address_line1=$req->address_line1;
        $address->address_line2=$req->address_line2;
        $address->area=$req->area;
        $address->city=$req->city;
        $address->state=$req->state;
        $address->district=$req->district;
-       $address->taluka=$req->taluke;
-       $address->zipcode=$req->pincode;
+       $address->taluka=$req->taluka;
+       $address->zipcode=$req->zipcode;
        $address->save();
        $address_id=$address->id;
     
@@ -42,7 +58,7 @@ class VetController extends Controller
        if($req->hasFile('doc1')){
         $doc1=$req->doc1;
         $name1 = time().''.rand(1000000,999999999999);
-        $filepath1='/vets/'.$req->user_id.'/documents/';
+        $filepath1='/transport/'.$req->user_id.'/documents/';
         $ext1= $doc1->getClientOriginalExtension();
         $doc1->move(public_path() .$filepath1,$name1.'.'.$ext1);
         $fileName1=$name1.'.'.$ext1;
@@ -54,7 +70,7 @@ class VetController extends Controller
         if($req->hasFile('doc2')){
             $doc2=$req->doc2;
             $name2 = time().''.rand(1000000,999999999999);
-            $filepath2='/vets/'.$req->user_id.'/documents/';
+            $filepath2='/transport/'.$req->user_id.'/documents/';
             $ext2= $doc2->getClientOriginalExtension();
             $doc2->move(public_path() .$filepath2,$name2.'.'.$ext2);
             $fileName2=$name2.'.'.$ext2;
@@ -65,7 +81,7 @@ class VetController extends Controller
         if($req->hasFile('doc3')){
                 $doc3=$req->doc3;
                 $name3 = time().''.rand(1000000,999999999999);
-                $filepath3='/vets/'.$req->user_id.'/documents/';
+                $filepath3='/transport/'.$req->user_id.'/documents/';
                 $ext3= $doc3->getClientOriginalExtension();
                 $doc3->move(public_path() .$filepath3,$name3.'.'.$ext3);
                 $fileName3=$name3.'.'.$ext3;
@@ -73,18 +89,6 @@ class VetController extends Controller
         
                 $document->document3=$DocData3;
             }
-            if($req->hasFile('doc4')){
-                $doc4=$req->doc4;
-                $name4 = time().''.rand(1000000,999999999999);
-                $filepath4='/vets/'.$req->user_id.'/documents/';
-                $ext4= $doc4->getClientOriginalExtension();
-                $doc4->move(public_path() .$filepath4,$name4.'.'.$ext4);
-                $fileName4=$name4.'.'.$ext4;
-                $DocData4=  $filepath4.$fileName4;
-        
-                $document->document4=$DocData4;
-            }
-
             $document->save();
             $document_id=$document->id;
 
@@ -98,62 +102,36 @@ class VetController extends Controller
             if($req->hasFile('profile')){
                 $file=$req->profile; 
                 $name = time().''.rand(1000000,999999999999);
-                $filepath='/vets/'.$req->user_id.'/profile/';
+                $filepath='/transport/'.$req->user_id.'/profile/';
                 $ext= $file->getClientOriginalExtension();
                 $file->move(public_path() .$filepath,$name.'.'.$ext);
                 $fileName=$name.'.'.$ext;
                 $imgData=  $filepath.$fileName;
                 $user->image=$imgData;
             }
-            $user->user_role='vet';
+            $user->user_role='transport';
             $user->status=1;
             $user->address_id=$address_id;
             $user->document_id=$document_id;
             $user->save();
             $user_id=$user->id;
+
+            $transport=new Transport();
+            $transport->user_id=$user_id;
+            $transport->vehicle_type=$req->type;
+            $transport->vehicle_make_model=$req->make;
+            $transport->license_no=$req->license_no;
+            $transport->save();
             
-            $vet=new Vet;
-            $vet->user_id=$user_id;
-            $vet->license_no=$req->license_no;
-            $vet->reg_vet_council=$req->reg_vet_council;
-            $vet->vc_reg_no=$req->vc_reg_no;
-            $vet->save();
-
-            return back()->with('successMsg','Vet Added Successfully!');
+            return back()->with('successMsg','Transport Driver Added Succecssfully!');
     }
-
-    // delete user
-    public function delete(Request $req){
-        // dd($req->user_id);
-        $vet=Vet::where('user_id',$req->user_id)->delete();
-        $user=User::where('id',$req->user_id)->delete();
-
-        return back()->with('errorMsg','Vet Deleted Successfully!');
-
-    }
-    // search vet
-    public function search(Request $req){
-        $data=Vet::join('users','users.id','=','vets.user_id')
-        ->join('user_address','user_address.id','=','users.address_id')
-        ->where('first_name',$req->full_name)
-        ->orWhere('city',$req->city)
-        ->orWhere('state',$req->state)
-        ->orWhere('district',$req->district)
-        ->orWhere('taluka',$req->taluka)
-        ->get();
-        // dd($data);
-
-        return view('admin.vet',compact('data'))->with('infoMsg','Vet founded');
-    }
-
-    // update vet
+    // update
     public function update(Request $req){
-        // dd($req);
-
+        // dd($req->user_id);
         $user=User::where('id',$req->user_id)->first();
         $document=Documents::where('id',$user->document_id)->first();
         $address=Address::where('id',$user->address_id)->first();
-        $vet=Vet::where('user_id',$user->id)->first();
+        $transport=Transport::where('user_id',$user->id)->first();
 
         // user table
         $user->first_name=$req->first_name;
@@ -218,20 +196,15 @@ class VetController extends Controller
             $address->city=$req->city;
             $address->state=$req->state;
             $address->district=$req->district;
-            $address->taluka=$req->taluke;
-            $address->zipcode=$req->pincode;
+            $address->taluka=$req->taluka;
+            $address->zipcode=$req->zipcode;
             $address->save();
 
-            $vet->license_no=$req->license_no;
-            $vet->reg_vet_council=$req->reg_vet_council;
-            $vet->vc_reg_no=$req->vc_reg_no;
-            $vet->save();
+            $transport->license_no=$req->license_no;
+            $transport->vehicle_type=$req->type;
+            $transport->vehicle_make_model=$req->make;
+            $transport->save();
 
-        return back()->with('successMsg','Vet details updated successfully');
+        return back()->with('successMsg','Transport details updated successfully');
     }
-    public function chnagePassword(Request $req){
-        dd($req->all);
-    }
-
-
 }

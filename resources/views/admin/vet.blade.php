@@ -402,7 +402,6 @@
                         <img src="{{ asset($item->image) }}" class="profile_img my-3"
                           alt="img not found">
               
-              
                           <input type="file" name="profile" class="form-control d-block mt-3" id="doc1" >
               
                         <div class="row mt-5">
