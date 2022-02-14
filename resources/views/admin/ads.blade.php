@@ -56,7 +56,7 @@
                                 <table class="table table-bordered">
                                     <thead>
                                       <tr>
-                                        <th scope="col">Add Id </th>
+                                        <th scope="col">Ad Id </th>
                                         <th scope="col">User Name</th>
                                         <th scope="col">Date Of Add Poasted</th>
                                         <th scope="col">Status</th>
@@ -76,9 +76,9 @@
                                         <th scope="col">District</th>
                                         <th scope="col">Taluka</th>
                                         <th scope="col">Pincode</th>
-                                        <th scope="col">Premium</th>
+                                       <!-- // <th scope="col">Premium</th> -->
                                         <th scope="col">Certified </th>
-                                        <th scope="col">Certified By</th>
+                                        <!-- <th scope="col">Certified By</th> -->
                                         <th scope="col">Vet Reg No</th>
                                         <th scope="col">Action</th>
                                       </tr>
@@ -87,31 +87,64 @@
                                       @if($ads!=null)
                                         @foreach($ads as $ad)
                                       <tr>
-                                        <td scope="row">{{$ad->id}}</td>
-                                        <td>admin</td>
+                                        <td scope="row">{{getadsid($ad->id)}}</td>
+                                        <td>{{getname($ad->user_id)}}</td>
                                         <td>{{$ad->created_at}}</td>
                                         <td>{{$ad->status}}</td>
                                         <td>{{$ad->price}}</td>
                                         <td>{{$ad->ownership_status}}</td>
-                                        <td>{{$ad->animal_type}}</td>
-                                        <td>{{$ad->breed}}</td>
-                                        <td>{{$ad->gender}}</td>
-                                        <td>{{$ad->pregnant}}</td>
+                                        @if($ad->animal_type==0)
+                                        <td>Bull</td>
+                                        @elseif($ad->animal_type==1)
+                                        <td>Buffalo</td>
+                                        @elseif($ad->animal_type==2)
+                                        <td>Cow</td>
+                                        @elseif($ad->animal_type==3)
+                                        <td>Sheep</td>
+                                        @elseif($ad->animal_type==4)
+                                        <td>Goat</td>
+                                        @endif
+
+                                        @if($ad->breed_type==0)
+                                        <td>Pure</td>
+                                        @elseif($ad->breed_type==1)
+                                        <td>Mixed</td>
+                                        @endif
+                                      <td></td>
+                                       
+
+                                        @if($ad->pregnant==0)
+                                        <td>No</td>
+                                        @elseif($ad->pregnant==1)
+                                        <td>yes</td>
+                                        @endif
                                         <td>{{$ad->due_month_pregnancy}}</td>
                                         <td>{{$ad->milk_capacity}}</td>
-                                        <td>{{$ad->vaccinated}}</td>
+
+                                        @if($ad->vaccinated==0)
+                                        <td>No</td>
+                                        @elseif($ad->vaccinated==1)
+                                        <td>Yes</td>
+                                        @endif
+
+
+
                                         <td>{{$ad->area}}</td>
                                         <td>{{$ad->city}}</td>
                                         <td>{{$ad->state}}</td>
                                         <td>{{$ad->district}}</td>
                                         <td>{{$ad->takula}}</td>
                                         <td>{{$ad->zipcode}}</td>
-                                        <td>{{$ad->certified}}</td>
-                                        <td>{{$ad->id}}</td>
-                                        <td>{{$ad->certify_reg_no}}</td>
-                                        <td></td>
+                                        @if($ad->certified==0)
+                                        <td>No</td>
+                                        @elseif($ad->certified==1)
+                                        <td>Yes</td>
+                                        @endif
+                                        
+                                        <td>{{$ad->certified_reg_no}}</td>
+                                        
                                         <td class="d-flex">
-                                            <button class="bg_danger text-light me-2" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i  onclick="hello(12)" class="fas fa-pencil-alt"></i></button>
+                                            <button  class="bg_danger text-light me-2"  onclick="hello({{getadsid($ad->id)}})" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i " class="fas fa-pencil-alt"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="view_ads"  type="button"><i class="fas fa-eye"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2"  type="button"><i class="far fa-trash-alt"></i></button>
                                         </td>
@@ -388,7 +421,7 @@
         
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon9">Address line 1</span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" required>
+                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line1" required>
                                       </div>
                                       
                                 </div>
@@ -565,55 +598,85 @@
 
                             <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
 
-
-                                <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
-
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
-
-                            </div>
-                            <!-- end of col  -->
-                            <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
-
-
-                                <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
-
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
+                                <!-- <input accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+                                <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                                <img id="output" class=" adimg2" alt="img not found"> -->
+                                <p><input type="file"  accept="image/*" name="image" id="file5"  onchange="loadFile5(event)" style="display: none;" required></p>
+                                <p><label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" for="file5" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output5" width="200" class=" adimg2" src="{{asset('images/Overview.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(5)">Delete</button>
 
                             </div>
                             <!-- end of col  -->
                             <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
 
 
-                                <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
+                                <!-- <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
 
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button> -->
+                                <p ><input type="file"  accept="image/*" name="image1" id="file6"  onchange="loadFile6(event)" style="display: none;"></p>
+                                <p class="bg_danger px-3 py-2 mt-4 rounded-pill text-light"><label for="file6" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output6" width="200" class=" adimg2" src="{{asset('images/Overview.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(6)">Delete</button>
+                            </div>
+                            <!-- end of col  -->
+                            <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
+
+
+                                <!-- <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
+
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button> -->
+                                <p><input type="file"  accept="image/*" name="image2" id="file7"  onchange="loadFile7(event)" style="display: none;"></p>
+                                <p  class="bg_danger px-3 py-2 mt-4 rounded-pill text-light"><label for="file7" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output7" width="200" class=" adimg2" src="{{asset('images/Overview.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(7)">Delete</button>
 
                             </div>
                             <!-- end of col  -->
                             <div class="col-12 col-md-3  col-md-3 col-lg-2 my-3 text-center">
 
 
-                                <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
+                                <!-- <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
 
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button> -->
+                                <p><input type="file"  accept="image/*" name="image3" id="file8"  onchange="loadFile8(event)" style="display: none;"></p>
+                                <p class="bg_danger px-3 py-2 mt-4 rounded-pill text-light"><label  for="file8" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output8" width="200" class=" adimg2" src="{{asset('images/Overview.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(8)">Delete</button>
+                            </div>
+                            <!-- end of col  -->
+                            <div class="col-12 col-md-3  col-lg-2 my-3 text-center">
+
+
+                                <!-- <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
+
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button> -->
+
+                                <p><input type="file"  accept="image/*" name="image4" id="file9"  onchange="loadFile9(event)" style="display: none;"></p>
+                                <p class="bg_danger px-3 py-2 mt-4 rounded-pill text-light"><label for="file9" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output9" width="200" class=" adimg2" src="{{asset('images/Overview.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(9)">Delete</button>
 
                             </div>
                             <!-- end of col  -->
                             <div class="col-12 col-md-3  col-lg-2 my-3 text-center">
 
 
-                                <img src="{{asset('images/Overview.png')}}" class=" adimg2" alt="img not found">
+                                <!-- <img src="{{asset('images/video-camera.png')}}" class=" adimg2" alt="img not found">
 
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg()">Delete</button> -->
+                                <!-- <p><input type="file"   name="image" id="videouplaod"  style="display: none;"></p>
+                                <p><label for="videouplaod" style="cursor: pointer;">Upload Video</label></p>
+                                <video width="320" height="240" controls>
+                                       Your browser does not support the video tag.
+                                </video>
+                                <p><img id="output4" width="200" class=" adimg2" src="{{asset('images/video-camera.png')}}" /><br></p>
+                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="(4)">Delete</button> -->
+                                <input type='file' name="video1"  id='videoUpload1' required/>
 
-                            </div>
-                            <!-- end of col  -->
-                            <div class="col-12 col-md-3  col-lg-2 my-3 text-center">
-
-
-                                <img src="{{asset('images/video-camera.png')}}" class=" adimg2" alt="img not found">
-
-                                <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light">Delete</button>
+                                <video width="320" height="240" controls style="margin-right:20px">
+                                 Your browser does not support the video tag.
+                                </video>
 
                             </div>
                             <!-- end of col  -->
@@ -629,240 +692,237 @@
 
                         <div class="row px-lg-5">
 
-<div class="col-12">
+                          <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">Animal Type </span>
+                            <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon1">Animal Type </span>
        
-        <select name="animal_type" class="form-control py-2" aria-describedby="basic-addon1" type="text" required>
-          <option disable>Select Animal Type</option>
-          <option value="0">Bull</option>
-          <option value="1">Buffalo</option>
-          <option value="2">Cow</option>
-          <option value="3">Sheep</option>
-          <option value="4">Goat</option>
-        </select>
-      </div>
+                                  <select name="animal_type" class="form-control py-2" aria-describedby="basic-addon1" type="text" id="animal_type" required>
+                                    <option disable>Select Animal Type</option>
+                                     <option value="0">Bull</option>
+                                     <option value="1">Buffalo</option>
+                                     <option value="2">Cow</option>
+                                     <option value="3">Sheep</option>
+                                     <option value="4">Goat</option>
+                                  </select>
+                            </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                          </div>
+                          <!-- end of col  -->
+                          <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon2">Weight</span>
-        <input type="text" name="weight" class="form-control py-2" aria-describedby="basic-addon2" required>
-      </div>
+                             <div class="input-group mb-3">
+                               <span class="input-group-text" id="basic-addon2">Weight</span>
+                                <input type="text" name="weight" id="weight" class="form-control py-2" aria-describedby="basic-addon2" required>
+                              </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                          </div>
+                          <!-- end of col  -->
+                          <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon3">No Of Animals </span>
-        <input type="text" name="no_animals" class="form-control py-2" aria-describedby="basic-addon3" required>
-      </div>
+                              <div class="input-group mb-3">
+                               <span class="input-group-text" id="basic-addon3">No Of Animals </span>
+                                <input type="text" name="no_animals"  id="no_animals" class="form-control py-2" aria-describedby="basic-addon3" required>
+                             </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                          </div>
+                         <!-- end of col  -->
+                          <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon4">Breed Type </span>
-        <!-- <input type="text" name="breed_type" class="form-control py-2" aria-describedby="basic-addon4"> -->
-         <select name="breed_type" class="form-control py-2" aria-describedby="basic-addon4" required>
-            <option>Select Bread Type</option>
-            <option value="0">Pure</option>
-            <option value="1">Mixed</option>
-         </select> 
-      </div>
+                            <div class="input-group mb-3">
+                             <span class="input-group-text" id="basic-addon4">Breed Type </span>
+                              <!-- <input type="text" name="breed_type" class="form-control py-2" aria-describedby="basic-addon4"> -->
+                              <select name="breed_type" class="form-control py-2" aria-describedby="basic-addon4" id="breed_type" required>
+                              <option>Select Bread Type</option>
+                              <option value="0">Pure</option>
+                              <option value="1">Mixed</option>
+                              </select> 
+                            </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                          </div>
+                          <!-- end of col  -->
+                          <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon5">Due Month  </span>
-        <input type="date" name="month_pregnancy" class="form-control py-2" aria-describedby="basic-addon5" required>
-      </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon5">Due Month  </span>
+                           <input type="date" name="month_pregnancy" id="month_pregnancy" class="form-control py-2" aria-describedby="basic-addon5" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-{{-- <div class="col-12">
+                          </div>
+                          <!-- end of col  -->
+                          {{-- <div class="col-12">
 
-    <!-- <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon5">Due Month  </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon5">
-      </div> -->
+                           <!-- <div class="input-group mb-3">
+                           <span class="input-group-text" id="basic-addon5">Due Month  </span>
+                          <input type="text" class="form-control py-2" aria-describedby="basic-addon5">
+                           </div> -->
       
-</div> --}}
-<!-- end of col  -->
-<div class="col-12">
+                          </div> --}}
+                          <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon7">Vacinated </span>
-        <!-- <input type="text" name="vaccinated" class="form-control py-2" aria-describedby="basic-addon7"> -->
-        <select name="vaccinated" class="form-control py-2" aria-describedby="basic-addon4" required >
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-         </select> 
-      </div>
+                          <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon7">Vacinated </span>
+                               <!-- <input type="text" name="vaccinated" class="form-control py-2" aria-describedby="basic-addon7"> -->
+                            <select name="vaccinated" id="vaccinated" class="form-control py-2" aria-describedby="basic-addon4" required >
+                             <option value="0">No</option>
+                             <option value="1">Yes</option>
+                            </select> 
+                          </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                        <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon8">Certified By Reg No </span>
-        <input type="text" name="certified_reg_no" class="form-control py-2" aria-describedby="basic-addon8" required>
-      </div>
+                           <div class="input-group mb-3">
+                           <span class="input-group-text" id="basic-addon8">Certified By Reg No </span>
+                          <input type="text" name="certified_reg_no"  id="certified_reg_no" class="form-control py-2" aria-describedby="basic-addon8"  required>
+                          </div>
       
-</div>
-<!-- end of col  -->
+                        </div>
+                        <!-- end of col  -->
 
-<div class="col-12">
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon9">Address line 1</span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" required>
-      </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon9">Address line 1</span>
+                            <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line1" required>
+                         </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                        <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon10">State </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" required>
-      </div>
+                          <div class="input-group mb-3">
+                             <span class="input-group-text" id="basic-addon10">State </span>
+                           <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" id="state" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                        <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon11">Pincode </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" required>
-      </div>
+                          <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon11">Pincode </span>
+                              <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" id="zipcode" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-
-
-
-</div>
+                        </div>
+                        <!-- end of col  -->
+                      </div>
                             <!-- end of row  -->
 
 
                         </div>
                         <!-- end of col  -->
 
-                        <div class="col-12 col-md-6 mt-4">
+                      <div class="col-12 col-md-6 mt-4">
 
                         <div class="row px-lg-5">
 
-<div class="col-12">
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon12">Price </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon12" name="price" required>
-      </div>
+                          <div class="input-group mb-3">
+                           <span class="input-group-text" id="basic-addon12">Price </span>
+                           <input type="text" class="form-control py-2" aria-describedby="basic-addon12" name="price" id="price" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                        <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon13">Age</span>
-        <input type="number" class="form-control py-2" aria-describedby="basic-addon13" name="age" required>
-      </div>
+                          <div class="input-group mb-3">
+                           <span class="input-group-text" id="basic-addon13">Age</span>
+                            <input type="number" class="form-control py-2" aria-describedby="basic-addon13" name="age"  id="age" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                          <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon14">Breed </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon14" name="breed" required>
-      </div>
+                          <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon14">Breed </span>
+                            <input type="text" class="form-control py-2" aria-describedby="basic-addon14" name="breed" id="breed" required>
+                          </div>
       
-</div>
+                        </div>
 <!-- end of col  -->
-<div class="col-12">
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon15">Pregnant </span>
-        <!-- <input type="text" class="form-control py-2" aria-describedby="basic-addon15" name="pregnant"> -->
-        <select name="pregnant" type="text" class="form-control py-2" aria-describedby="basic-addon15" required>
-          <option value="0">No</option>
-          <option value="1">Yes</option>
-        </select>
-      </div>
+                         <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon15">Pregnant </span>
+                           <!-- <input type="text" class="form-control py-2" aria-describedby="basic-addon15" name="pregnant"> -->
+                           <select name="pregnant" type="text" class="form-control py-2" aria-describedby="basic-addon15" id="pregnant" required>
+                             <option value="0">No</option>
+                             <option value="1">Yes</option>
+                           </select>
+                           </div>
       
-</div>
-<!-- end of col  -->
+                        </div>
+                          <!-- end of col  -->
 
-<div class="col-12">
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon16">Area</span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="area" required>
-      </div>
+                              <div class="input-group mb-3">
+                               <span class="input-group-text" id="basic-addon16">Area</span>
+                               <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="area" id="area" required>
+                              </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                          <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon17">Daily Milk Capacity  </span>
-        <input type="number" class="form-control py-2" aria-describedby="basic-addon17" name="milk_capacity" required>
-      </div>
+                          <div class="input-group mb-3">
+                             <span class="input-group-text" id="basic-addon17">Daily Milk Capacity  </span>
+                              <input type="number" class="form-control py-2" aria-describedby="basic-addon17" name="milk_capacity" id="milk_capacity" required>
+                          </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                                <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon18">Certified </span>
-        <select name="certified" type="text" class="form-control py-2" aria-describedby="basic-addon15" required>
-          <option value="0">No</option>
-          <option value="1">Yes</option>
-        </select>
-      </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon18">Certified </span>
+                                <select name="certified" type="text" class="form-control py-2" aria-describedby="basic-addon15" id="certified" required>
+                                 <option value="0">No</option>
+                                 <option value="1">Yes</option>
+                                </select>
+                            </div>
       
-</div>
-<!-- end of col  -->
+                        </div>
+                            <!-- end of col  -->
 
-<div class="col-12">
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon19">Address line 2 </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon19" name="address_line2" required>
-      </div>
+                           <div class="input-group mb-3">
+                              <span class="input-group-text" id="basic-addon19">Address line 2 </span>
+                             <input type="text" class="form-control py-2" aria-describedby="basic-addon19" id="address_line2" name="address_line2" required>
+                              </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                          <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon10">District </span>
-        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="district" required>
-      </div>
+                            <div class="input-group mb-3">
+                             <span class="input-group-text" id="basic-addon10">District </span>
+                             <input type="text" class="form-control py-2" aria-describedby="basic-addon10" id="district" name="district" required>
+                            </div>
       
-</div>
-<!-- end of col  -->
-<div class="col-12">
+                        </div>
+                        <!-- end of col  -->
+                        <div class="col-12">
 
-    <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon11">Taluka </span>
-        <input type="text" class="form-control py-2" aria-describedby="taluka" name="taluka" required>
-      </div>
+                              <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon11">Taluka </span>
+                                 <input type="text" class="form-control py-2" aria-describedby="taluka" id="taluka" name="taluka" required>
+                               </div>
       
-</div>
-<!-- end of col  -->
+                          </div>
+                            <!-- end of col  -->
 
 
 
-</div>
+                      </div>
                             <!-- end of row  -->
 
 
@@ -931,6 +991,31 @@ var loadFile4 = function(event) {
 	image.src = URL.createObjectURL(event.target.files[0]);
  
 };
+var loadFile5 = function(event) {
+	var image = document.getElementById('output5');
+	image.src = URL.createObjectURL(event.target.files[0]);
+ 
+};
+var loadFile6 = function(event) {
+	var image = document.getElementById('output6');
+	image.src = URL.createObjectURL(event.target.files[0]);
+ 
+};
+var loadFile7= function(event) {
+	var image = document.getElementById('output7');
+	image.src = URL.createObjectURL(event.target.files[0]);
+ 
+};
+var loadFile8 = function(event) {
+	var image = document.getElementById('output8');
+	image.src = URL.createObjectURL(event.target.files[0]);
+ 
+};
+var loadFile9 = function(event) {
+	var image = document.getElementById('output9');
+	image.src = URL.createObjectURL(event.target.files[0]);
+ 
+};
 
 var deleteimg=function(id){
  
@@ -954,6 +1039,26 @@ var deleteimg=function(id){
     img=document.getElementById('output4');
     img.removeAttribute("src");
   }
+  else if(id==5){
+    img=document.getElementById('output');
+    img.removeAttribute("src");
+  }
+  else if(id==6){
+    img=document.getElementById('output1');
+    img.removeAttribute("src");
+  }
+  else if(id==7){
+    img=document.getElementById('output2');
+    img.removeAttribute("src");
+  }
+  else if(id==8){
+    img=document.getElementById('output3');
+    img.removeAttribute("src");
+  }
+  else if(id==9){
+    img=document.getElementById('output4');
+    img.removeAttribute("src");
+  }
   
 }
 
@@ -964,18 +1069,49 @@ document.getElementById("videoUpload")
   document.querySelector("video").src = blobURL;
 }
 
+document.getElementById("videoUpload1")
+.onchange = function(event) {
+  let file = event.target.files[0];
+  let blobURL = URL.createObjectURL(file);
+  document.querySelector("video1").src = blobURL;
+}
 
 function hello(id){
   $.ajax({
                type:'POST',
-               url:'/getads/'.id,
-               dataType: 'JSON',
-               data: {},
+               url:"{{url('/getads/')}}"+ '/'+id,
+               data:{_token: "{{ csrf_token() }}"},
                success:function(data) {
-                  // $("#msg").html(data.msg);
-                  console.log(data.ads);
+                  
+                   console.log(data.adsvideo);
+                  document.getElementById('animal_type').value=data.ads.animal_type;
+                  document.getElementById('price').value=data.ads.price;
+                  document.getElementById('weight').value=data.ads.weight;
+                  document.getElementById('age').value=data.ads.age;
+                  document.getElementById('no_animals').value=data.ads.no_animals;
+                  document.getElementById('breed').value=data.ads.breed;
+                  document.getElementById('breed_type').value=data.ads.breed_type;
+                  document.getElementById('vaccinated').value=data.ads.vaccinated;
+                  var date=data.ads.due_month_pregnancy;
+                  console.log(date);
+                  document.getElementById('month_pregnancy').value=date;
+                  document.getElementById('area').value= data.ads.area;
+                  
+                   document.getElementById('milk_capacity').value=data.ads.milk_capacity;
+                   document.getElementById('certified_reg_no').value=data.ads.certified_reg_no;
+                  
+                   document.getElementById('area').value=data.adsaddress.area;
+                   document.getElementById('address_line1').value=data.adsaddress.addressline1;
+                   document.getElementById('address_line2').value=data.adsaddress.addressline2;
+                   document.getElementById('district').value=data.adsaddress.district;
+                   document.getElementById('zipcode').value=data.adsaddress.zipcode;
+                   document.getElementById('taluka').value=data.adsaddress.taluka;
+                  let photo=data.adsphoto.photo1;
+                  document.getElementById('output5').src='{{asset('+photo+')}}';
                }
             });
+
+
 }
 </script>
 @endsection

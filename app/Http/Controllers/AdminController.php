@@ -266,7 +266,7 @@ class AdminController extends Controller
                 }catch(\Exception $e){
            
             DB::rollback();
-            return "failed2";
+            return back()->with('warningMsg','There some Problem try again');;
              }
 
 
@@ -286,7 +286,7 @@ class AdminController extends Controller
              }catch(\Exception $e){
            
             DB::rollback();
-            return "failed3";
+            return back()->with('warningMsg','There some Problem try again');;
              }
 
 
@@ -295,7 +295,8 @@ class AdminController extends Controller
               
 
                 $ads->user_id=Auth::user()->id;
-                $ads->animal_type=0;
+                $ads->animal_type=$req->animal_type;
+                $ads->no_animals=$req->no_animals;
                 $ads->age=$req->age;
                 $ads->price=$req->price;
                 $ads->breed=$req->breed;
@@ -303,8 +304,8 @@ class AdminController extends Controller
                 $ads->pregnant=$req->pregnant;
                 $ads->due_month_pregnancy=$req->month_pregnancy;
                 $ads->gender=$req->gender;
-                $ads->breed_type=2;
-                $ads->vaccinated=1;
+                $ads->breed_type=$req->breed_type;
+                $ads->vaccinated=$req->vaccinated;
                 $ads->weight=$req->weight;
                 $ads->certified=$req->certified;
                 $ads->certified_reg_no=$req->certified_reg_no;
@@ -469,7 +470,10 @@ class AdminController extends Controller
 
         public function getads($id){
             $ads=Ads::where('id',$id)->first();
-            return response()->json(array('msg'=> $ads), 200);
+            $adsadress=AdsAddress::where('id',$ads->ads_address_id)->first();
+            $adsphoto=AdsPhoto::where('id',$ads->ads_photo_id)->first();
+            $adsvideo=AdsVideo::where('id',$ads->ads_video_id)->first();
+            return response()->json(array('ads'=> $ads,'adsaddress'=>$adsadress,'adsphoto'=>$adsphoto,'adsvideo'=>$adsvideo), 200);
         }
        
         public function updateprofile(Request $req){

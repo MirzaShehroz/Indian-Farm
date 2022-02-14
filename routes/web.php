@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\VetController;
+use App\Http\Controllers\AppointmentBookController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -11,6 +12,7 @@ use App\Models\AdsPhoto;
 use App\Models\AdsVideo;
 use App\Models\Ads;
 use App\Models\User;
+use App\Models\AppointmentBook;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -91,16 +93,16 @@ Route::get('logout',function(){
 
 Route::get('admin/ads',function(){
 
-    $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')
-    ->join('ads_photo','ads.ads_photo_id','=','ads_photo.id')->join('ads_videos','ads.ads_video_id','=','ads_videos.id')->get();
-    
+    $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->get();
+
     //$ads=Ads::all();
 
     return view('admin.ads',compact('ads'));
 });
 
 Route::get('admin/appointmentbooked',function(){
-    return view('admin.appointment_booked');
+    $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->get();
+    return view('admin.appointment_booked',compact('appointment'));
 });
 Route::get('admin/certifyanimal',function(){
     return view('admin.certify_animal');
@@ -137,3 +139,10 @@ Route::post('getads/{id}',[AdminController::class,'getads']);
 
 //admin update profile
 Route::post('admin/profile/update',[AdminController::class,'updateprofile']);
+
+
+Route::post('add/appointments',[AppointmentBookController::class,'add']);
+
+Route::post('getappointment/{id}',[AppointmentBookController::class,'getappointment']);
+Route::post('update/appointment',[AppointmentBookController::class,'updateappointment']);
+Route::post('delete/appointment',[AppointmentBookController::class,'delete']);

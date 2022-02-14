@@ -36,6 +36,7 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'ed962a97bd972bc82007176b647d4e36' => __DIR__ . '/..' . '/facade/ignition/src/helpers.php',
+        'fdb3b5f01b3ed818a713c5450349237f' => __DIR__ . '/../..' . '/app/Helpers/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -544,7 +545,9 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
+        'App\\Http\\Controllers\\AppointmentBookController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppointmentBookController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\TransportController' => __DIR__ . '/../..' . '/app/Http/Controllers/TransportController.php',
         'App\\Http\\Controllers\\VetController' => __DIR__ . '/../..' . '/app/Http/Controllers/VetController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\AdminAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/AdminAuth.php',
@@ -562,8 +565,11 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         'App\\Models\\AdsAddress' => __DIR__ . '/../..' . '/app/Models/AdsAddress.php',
         'App\\Models\\AdsPhoto' => __DIR__ . '/../..' . '/app/Models/AdsPhoto.php',
         'App\\Models\\AdsVideo' => __DIR__ . '/../..' . '/app/Models/AdsVideo.php',
+        'App\\Models\\AppointmentAddress' => __DIR__ . '/../..' . '/app/Models/AppointmentAddress.php',
+        'App\\Models\\AppointmentBook' => __DIR__ . '/../..' . '/app/Models/AppointmentBook.php',
         'App\\Models\\Documents' => __DIR__ . '/../..' . '/app/Models/Documents.php',
         'App\\Models\\Sellers' => __DIR__ . '/../..' . '/app/Models/Sellers.php',
+        'App\\Models\\Transport' => __DIR__ . '/../..' . '/app/Models/Transport.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Vet' => __DIR__ . '/../..' . '/app/Models/Vet.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

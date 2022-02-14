@@ -5,12 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Ads extends Model
+class AppointmentAddress extends Model
 {
     use HasFactory;
-    protected $table='ads';
-    public function adsaddress()
-    {
-        return $this->belongsTo(AdsAddress::class);
-    }
+    protected $table='appointment_address';
 }
