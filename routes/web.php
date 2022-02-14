@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TransportController;
 use App\Http\Controllers\VetController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,16 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         // vet update
         Route::post('admin/vet/update',[VetController::class,'update'])->name('update_vet');
         // password reset
-        Route::post('admin/vet/update/password',[VetController::class,'chnagePassword'])->name('change_password');
+        Route::post('admin/vet/update/password',[VetController::class,'changePassword'])->name('change_password');
+
+        // transport driver
+        // register
+        Route::get('admin/transport-driver',[TransportController::class,'index'])->name('view_transport');
+        Route::post('admin/transport/register',[TransportController::class,'register'])->name('register_transport');
+        Route::any('/search/transport',[TransportController::class,'search'])->name('transport_search');
+        Route::post('admin/transport/update',[TransportController::class,'update'])->name('update_transport');
+
+
 
 
 
@@ -89,10 +99,6 @@ Route::get('admin/ads',function(){
     return view('admin.ads',compact('ads'));
 });
 
-
-Route::get('admin/transportdriver',function(){
-    return view('admin.transport_driver');
-});
 Route::get('admin/appointmentbooked',function(){
     return view('admin.appointment_booked');
 });
