@@ -111,7 +111,7 @@
                                         <td>{{$ad->certify_reg_no}}</td>
                                         <td></td>
                                         <td class="d-flex">
-                                            <button class="bg_danger text-light me-2" type="button"  data-bs-toggle="offcanvas" data-bs-target="#add_ads" aria-controls="add_ads"><i class="fas fa-pencil-alt"></i></button>
+                                            <button class="bg_danger text-light me-2" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i  onclick="hello(12)" class="fas fa-pencil-alt"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="view_ads"  type="button"><i class="fas fa-eye"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2"  type="button"><i class="far fa-trash-alt"></i></button>
                                         </td>
@@ -182,18 +182,18 @@
 
 
 
-                      <div class="offcanvas offcanvas-end" tabindex="-1" id="add_ads" aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="add_ads" aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-header">
                       <h5 class="offcanvas-title" id="offcanvasExampleLabel">Add Ad</h5>
               
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-@if ($errors->any())
-@foreach ($errors->all() as $error)
-         <div class="text-danger">{{$error}}<br></div>
-     @endforeach
- @endif                         
+                    @if ($errors->any())
+                      @foreach ($errors->all() as $error)
+                        <div class="text-danger">{{$error}}<br></div>
+                      @endforeach
+                    @endif                         
                     <form method="post" action="{{url('add/ads')}}" enctype="multipart/form-data">
                       @csrf
                         <div class="row">
@@ -334,7 +334,7 @@
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon4">Breed Type </span>
                                         <!-- <input type="text" name="breed_type" class="form-control py-2" aria-describedby="basic-addon4"> -->
-                                         <select name="bread_type" class="form-control py-2" aria-describedby="basic-addon4" required>
+                                         <select name="breed_type" class="form-control py-2" aria-describedby="basic-addon4" required>
                                             <option>Select Bread Type</option>
                                             <option value="0">Pure</option>
                                             <option value="1">Mixed</option>
@@ -627,112 +627,129 @@
 
                         <div class="col-12 col-md-6 p-lg-4">
 
-                            <div class="row px-lg-5">
+                        <div class="row px-lg-5">
 
-                                <div class="col-12">
+<div class="col-12">
 
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon1">Animal Type </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon1">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon2">Weight</span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon2">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon3">No Of Animals </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon3">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon4">Breed Type </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon4">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon5">Due Month  </span>
-                                        <input type="date" class="form-control py-2" aria-describedby="basic-addon5" name="month_pregnancy">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon5">Due Month  </span>
-                                        <input type="date" class="form-control py-2" aria-describedby="basic-addon5" name="month_pregnancy">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon7">Vacinated </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon7">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon8">Certified By Reg No </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon8" name="cer">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                             
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon9">Address line 1 </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon10">State </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon10">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon11">Pincode </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon11">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon1">Animal Type </span>
+       
+        <select name="animal_type" class="form-control py-2" aria-describedby="basic-addon1" type="text" required>
+          <option disable>Select Animal Type</option>
+          <option value="0">Bull</option>
+          <option value="1">Buffalo</option>
+          <option value="2">Cow</option>
+          <option value="3">Sheep</option>
+          <option value="4">Goat</option>
+        </select>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon2">Weight</span>
+        <input type="text" name="weight" class="form-control py-2" aria-describedby="basic-addon2" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon3">No Of Animals </span>
+        <input type="text" name="no_animals" class="form-control py-2" aria-describedby="basic-addon3" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon4">Breed Type </span>
+        <!-- <input type="text" name="breed_type" class="form-control py-2" aria-describedby="basic-addon4"> -->
+         <select name="breed_type" class="form-control py-2" aria-describedby="basic-addon4" required>
+            <option>Select Bread Type</option>
+            <option value="0">Pure</option>
+            <option value="1">Mixed</option>
+         </select> 
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon5">Due Month  </span>
+        <input type="date" name="month_pregnancy" class="form-control py-2" aria-describedby="basic-addon5" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+{{-- <div class="col-12">
+
+    <!-- <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon5">Due Month  </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon5">
+      </div> -->
+      
+</div> --}}
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon7">Vacinated </span>
+        <!-- <input type="text" name="vaccinated" class="form-control py-2" aria-describedby="basic-addon7"> -->
+        <select name="vaccinated" class="form-control py-2" aria-describedby="basic-addon4" required >
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+         </select> 
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon8">Certified By Reg No </span>
+        <input type="text" name="certified_reg_no" class="form-control py-2" aria-describedby="basic-addon8" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon9">Address line 1</span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon10">State </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon11">Pincode </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
 
 
 
-                            </div>
+</div>
                             <!-- end of row  -->
 
 
@@ -741,104 +758,111 @@
 
                         <div class="col-12 col-md-6 mt-4">
 
-                            <div class="row px-lg-5">
+                        <div class="row px-lg-5">
 
-                                <div class="col-12">
+<div class="col-12">
 
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon12">Price </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon12">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon13">Age</span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon13">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon14">Breed </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon14">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon15">Pregnant </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon15">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                            
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon16">Due Month  </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="month_pregnancy">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon17">Daily Milk Capacity  </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon17">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon18">Certified </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon18">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                             
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon19">Address line 1  </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon19" name="address_line1">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon10">District </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon10">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon11">Taluka </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="taluka">
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon12">Price </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon12" name="price" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon13">Age</span>
+        <input type="number" class="form-control py-2" aria-describedby="basic-addon13" name="age" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon14">Breed </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon14" name="breed" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon15">Pregnant </span>
+        <!-- <input type="text" class="form-control py-2" aria-describedby="basic-addon15" name="pregnant"> -->
+        <select name="pregnant" type="text" class="form-control py-2" aria-describedby="basic-addon15" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      
+</div>
+<!-- end of col  -->
+
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon16">Area</span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="area" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon17">Daily Milk Capacity  </span>
+        <input type="number" class="form-control py-2" aria-describedby="basic-addon17" name="milk_capacity" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon18">Certified </span>
+        <select name="certified" type="text" class="form-control py-2" aria-describedby="basic-addon15" required>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </select>
+      </div>
+      
+</div>
+<!-- end of col  -->
+
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon19">Address line 2 </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon19" name="address_line2" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon10">District </span>
+        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="district" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
+<div class="col-12">
+
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="basic-addon11">Taluka </span>
+        <input type="text" class="form-control py-2" aria-describedby="taluka" name="taluka" required>
+      </div>
+      
+</div>
+<!-- end of col  -->
 
 
 
-                            </div>
+</div>
                             <!-- end of row  -->
 
 
@@ -875,7 +899,10 @@
   </div>
        @endsection
 @section('script')
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
+  
+
 var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
@@ -937,5 +964,18 @@ document.getElementById("videoUpload")
   document.querySelector("video").src = blobURL;
 }
 
+
+function hello(id){
+  $.ajax({
+               type:'POST',
+               url:'/getads/'.id,
+               dataType: 'JSON',
+               data: {},
+               success:function(data) {
+                  // $("#msg").html(data.msg);
+                  console.log(data.ads);
+               }
+            });
+}
 </script>
 @endsection

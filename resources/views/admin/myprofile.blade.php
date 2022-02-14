@@ -9,27 +9,31 @@
     <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
 
       <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">Edit Your Profile</h4>
-
-      <img src="{{asset('images/user-img.png')}}" class="profile_img my-3" alt="img not found">
-
-  
-      <button type="file" class="bg-transparent border border-light  profilebtn btnhover px-3 py-2" style="border-radius: 5px;">Upload Profile Picture</button>
-
-
+      @if($user->image==null)
+      <img src="{{asset('images/user-img.png')}}" id="output" class="profile_img my-3" alt="img not found">
+      @else
+      <img src="{{$user->image}}" id="output" class="profile_img my-3" alt="img not found">
+      @endif
+      <form action="{{url('admin/profile/update')}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <input type="hidden" name="id" value="{{Auth::user()->id}}">
+      <!-- <button type="file" class="bg-transparent border border-light  profilebtn btnhover px-3 py-2" style="border-radius: 5px;">Upload Profile Picture</button> -->
+      <p ><input type="file"  accept="image/*" name="profile" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+      <p class="bg-transparent border border-light  profilebtn btnhover px-3 py-2" style="border-radius: 5px;"><label for="file" style="cursor: pointer;">Upload Image</label></p>
     </div>
     <!-- end of col-3 -->
 
     <div class="col-12 col-md-8">
 
-      <form action="" method="post" >
+      
 
       <div class="row">
 
           <label for="" class="form-label fw-bold fs-5">Personal Details</label>
         <div class="col-12 col-md-6 mb-3">
 
-       
-            <input type="text" class="form-control"  placeholder="Full Name">
+
+            <input type="text" class="form-control"  placeholder="Full Name" value="{{$user->first_name}}" name="first_name">
         
         
       
@@ -39,7 +43,7 @@
 
         <div class="col-12 col-md-6 mb-3">
 
-            <input type="text" class="form-control"  placeholder="Middle Name">
+            <input type="text" class="form-control"  placeholder="Middle Name" value="{{$user->middle_name}}" name="middle_name">
         
     
 
@@ -48,7 +52,7 @@
 
         <div class="col-12 col-md-6 mb-3">
 
-            <input type="text" class="form-control"  placeholder="Last Name">
+            <input type="text" class="form-control"  placeholder="Last Name" value="{{$user->last_name}}" name="last_name">
         
     
 
@@ -70,7 +74,7 @@
           <label class="form-label fw-bold fs-5">Contact Details</label>
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" placeholder="Contact Number">
+            <input type="text" class="form-control inputno1 mb-3" placeholder="Contact Number" value="{{$user->contact_no}}" name="contact_no">
             
             <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#numberchange">Update/Change</button>
             <br class="d-md-none">
@@ -80,7 +84,7 @@
           </div>
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" placeholder="Email Id"  >
+            <input type="text" class="form-control inputno1 mb-3" placeholder="Email Id" value="{{$user->email}}" name="email">
             
             <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#emailchange">Update/Change</button>
             <br class="d-md-none">
@@ -89,7 +93,7 @@
           </div>
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" placeholder="Change Password" >
+            <input type="text" class="form-control inputno1 mb-3" placeholder="Change Password" name="password">
             
             <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#passwordchange">Password/Change</button>
             <br class="d-md-none">
@@ -115,24 +119,26 @@
       <div class="row">
 
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" placeholder="Address First Line" aria-label="addressfirst">
+          <input type="text" class="form-control" placeholder="Address First Line" aria-label="addressfirst" value="{{$user->address_line1}}" name="address_line1">
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" placeholder="Address Second Line" aria-label="addresssecode">
+          <input type="text" class="form-control" placeholder="Address Second Line" aria-label="addresssecode" value="{{$user->address_line2}}" name="address_line2">
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" placeholder="Enter Area" aria-label="area">
+          <input type="text" class="form-control" placeholder="Enter Area" aria-label="area" value="{{$user->area}}" name="area">
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <select id="inputCity" class="form-select overflow-scroll ">
+          <select id="inputCity" class="form-select overflow-scroll " name="city">
             <option value="" selected disabled>City</option>
+            <option value="{{$user->city}}" selected>{{$user->city}}</option>
             <option value="Pune">Pune</option>
 
           </select>
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <select id="inputState" class="form-select overflow-scroll ">
-            <option value="" selected disabled>State</option>
+          <select id="inputState" class="form-select overflow-scroll " name="state">
+            <option value="{{$user->state}}" selected>{{$user->state}}</option>
+            <option value="" >State</option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -174,28 +180,30 @@
         </div>
 
         <div class="col-12 col-md-6 mt-3">
-          <select id="inputDistrict" class="form-select overflow-scroll ">
-            <option value="" selected disabled>District</option>
+          <select id="inputDistrict" class="form-select overflow-scroll " name="district">
+            <option value="{{$user->district}}" selected >{{$user->district}}</option>
+            <option value="" disabled>District</option>
             <option value="Pune">Pune</option>
 
           </select>
         </div>
 
         <div class="col-12 col-md-6 mt-3">
-          <select id="inputTaluka" class="form-select overflow-scroll ">
-            <option value="" selected disabled>Taluka</option>
+          <select id="inputTaluka" class="form-select overflow-scroll " name="taluka">
+          <option value="{{$user->district}}" selected >{{$user->taluka}}</option>
+            <option value="" disable>Taluka</option>
             <option value="Pune">Pune</option>
 
           </select>
         </div>
 
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" placeholder="Pin Code" aria-label="pincode">
+          <input type="text" class="form-control" placeholder="Pin Code" aria-label="pincode" value="{{$user->zipcode}}" name="zipcode">
         </div>
 
         <hr class="mt-5 mb-3 bgcolor" style="opacity: 0.6;">
         <div class="col-12 text-center mx-auto col-md-3">
-           <button type="button"  class="px-3 btnhover py-2 border border-secondary bg-transparent">Update/Change</button>
+           <button type="submit"  class="px-3 btnhover py-2 border border-secondary bg-transparent">Update/Change</button>
         </div>
 
       </div>
@@ -294,4 +302,12 @@
     </div>
   </div>
 </div>
+@section('script')
+<script>
+  var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+</script>
+@endsection
        @endsection

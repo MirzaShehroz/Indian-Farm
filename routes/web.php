@@ -9,6 +9,7 @@ use App\Models\AdsAddress;
 use App\Models\AdsPhoto;
 use App\Models\AdsVideo;
 use App\Models\Ads;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -80,10 +81,10 @@ Route::get('logout',function(){
 
 Route::get('admin/ads',function(){
 
-    // $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')
-    // ->join('ads_photo','ads.ads_photo_id','=','ads_photo.id')->join('ads_videos','ads.ads_video_id','=','ads_videos.id')->get();
+    $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')
+    ->join('ads_photo','ads.ads_photo_id','=','ads_photo.id')->join('ads_videos','ads.ads_video_id','=','ads_videos.id')->get();
     
-    $ads=Ads::all();
+    //$ads=Ads::all();
 
     return view('admin.ads',compact('ads'));
 });
@@ -103,7 +104,10 @@ Route::get('admin/transportbooked',function(){
 });
 
 Route::get('admin/profile',function(){
-    return view('admin.myprofile');
+    $id=User::where('id',Auth::user()->id)->first();
+    $user=$id->join('user_address', 'users.address_id' ,'=','user_address.id')->first();
+   
+    return view('admin.myprofile',compact('user'));
 });
 
 Route::get('admin/contentmanagement',function(){
@@ -122,3 +126,8 @@ Route::get('transport/appointment',function(){
 Route::get('transport/profile',function(){
     return view('transport.myprofile');
 });
+
+Route::post('getads/{id}',[AdminController::class,'getads']);
+
+//admin update profile
+Route::post('admin/profile/update',[AdminController::class,'updateprofile']);

@@ -159,31 +159,31 @@ class AdminController extends Controller
 
         public function addads(Request $req){
             
-        // $req->validate([
-        //     'image'=>'required|mimes:jpeg,png,jpg|max:2048',
-        //     'video'=>'required|mimes:mp4,mov,ogg | max:20000',
-        //     'animal_type'=>'required',
-        //     'price'=>'required',
-        //     'weight'=>'required|integer',
-        //     'age'=>'required|integer',
-        //     'no_animals'=>'required|integer',
-        //     'breed'=>'required',
-        //     'breed_type'=>'required',
-        //     'pregrant'=>'required',
-        //     'month_pregnancy'=>'required',
-        //     'area'=>'required',
-        //     'vaccinated'=>'required',
-        //     'milk_capacity'=>'required',
-        //     'certified_reg_no'=>'required',
-        //     'certified'=>'required',
-        //     'address_line1'=>'required',
-        //     'address_line2'=>'required',
-        //     'state'=>'required',
-        //     'district'=>'required',
-        //     'zipcode'=>'required',
-        //     'taluka'=>'required'
+        $req->validate([
+            'image'=>'required|mimes:jpeg,png,jpg|max:2048',
+            'video'=>'required|mimes:mp4,mov,ogg | max:20000',
+            'animal_type'=>'required',
+            'price'=>'required',
+            'weight'=>'required|integer',
+            'age'=>'required|integer',
+            'no_animals'=>'required|integer',
+            'breed'=>'required',
+            'breed_type'=>'required',
+            'pregnant'=>'required',
+            'month_pregnancy'=>'required',
+            'area'=>'required',
+            'vaccinated'=>'required',
+            'milk_capacity'=>'required',
+            'certified_reg_no'=>'required',
+            'certified'=>'required',
+            'address_line1'=>'required',
+            'address_line2'=>'required',
+            'state'=>'required',
+            'district'=>'required',
+            'zipcode'=>'required',
+            'taluka'=>'required'
 
-        // ]);  
+        ]);  
 
 
             $ads=new Ads;
@@ -241,6 +241,7 @@ class AdminController extends Controller
                     }
                    // dd($adsphoto);
                    $adsphoto->save();
+                   DB::commit();
                 }catch(\Exception $e){
            
                     DB::rollback();
@@ -261,7 +262,7 @@ class AdminController extends Controller
                     }
                    // dd($adsvideo);
                     $adsvideo->save();
-
+                    DB::commit();
                 }catch(\Exception $e){
            
             DB::rollback();
@@ -281,7 +282,7 @@ class AdminController extends Controller
                 $adsaddress->district=$req->district;
                 $adsaddress->zipcode=$req->zipcode;
                 $adsaddress->save();    
-
+                DB::commit();
              }catch(\Exception $e){
            
             DB::rollback();
@@ -313,8 +314,8 @@ class AdminController extends Controller
                 $ads->ads_video_id=$adsvideo->id;
                
                 $ads->save();
-                dd($ads,$adsaddress,$adsphoto,$adsvideo);
-                
+              //  dd($ads,$adsaddress,$adsphoto,$adsvideo);
+              DB::commit();
                return back()->with('successMsg','Ad Added Successfully');
             }catch(\Exception $e){
            
@@ -323,7 +324,7 @@ class AdminController extends Controller
         }
            // $adsphoto=new AdsPhoto;
 
-        }
+    } 
 
 
         public function user(){
@@ -454,6 +455,9 @@ class AdminController extends Controller
 
             return back()->with('successMsg','User Updated Successfully!');
         }
+
+        
+
         // delete user
         public function deleteUser(Request $req){
             // dd($req->user_id);
@@ -461,8 +465,73 @@ class AdminController extends Controller
             // dd($user);
             return back()->with('infoMsg','User deleted Successfully!');
         } 
+
+
+        public function getads($id){
+            $ads=Ads::where('id',$id)->first();
+            return response()->json(array('msg'=> $ads), 200);
+        }
        
-        
+        public function updateprofile(Request $req){
+            $user=User::where('id',$req->id)->first();
+            $user_address=Address::where('id',$user->address_id)->first();
+            
+            DB::beginTransaction();
+            try{
+               
+                DB::beginTransaction();
+                try{
+
+                    $user_address->address_line1=$req->address_line1;
+                    $user_address->address_line2=$req->address_line2;
+                    $user_address->state=$req->state;
+                    $user_address->city=$req->city;
+                    $user_address->area=$req->area;
+                    $user_address->district=$req->district;
+                    $user_address->taluka=$req->taluka;
+                    $user_address->zipcode=$req->zipcode;
+                    $user_address->save();
+                  
+                    DB::commit();
+
+
+                }catch(\Exception $e){
+           
+                DB::rollback();
+                return back()->with('warningMsg','Something Went Wrong');
+            }
+
+
+
+              $user->first_name=$req->first_name;
+              $user->middle_name=$req->middle_name;
+              $user->last_name=$req->last_name;
+              
+              if($req->hasFile('profile')){
+                $file=$req->profile;
+                $name = time().''.rand(1000000,999999999999);
+                $filepath='/uploads/'.$user->id.'/profile/';
+                $ext= $file->getClientOriginalExtension();
+                $file->move(public_path() .$filepath,$name.'.'.$ext);
+                $fileName=$name.'.'.$ext;
+                $imgData=  $filepath.$fileName;
+
+                $user->image=$imgData;
+            }
+            $user->save();
+
+              
+
+                DB::commit();
+                return back()->with('successMsg','Profile Updated Successfull');
+            }catch(\Exception $e){
+           
+                DB::rollback();
+                return back()->with('warningMsg','Something Went Wrong');
+            }
+            
+        }
 }
+    
 
 
