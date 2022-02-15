@@ -6,6 +6,7 @@ use App\Http\Controllers\TransportController;
 use App\Http\Controllers\VetController;
 use App\Http\Controllers\AppointmentBookController;
 use App\Http\Controllers\TransportBookedController;
+use App\Http\Controllers\EducationVideoController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -17,6 +18,7 @@ use App\Models\AppointmentBook;
 use App\Models\TransportBooked;
 use App\Models\TransportFrom;
 use App\Models\TransportTo;
+use App\Models\EducationVideo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -127,7 +129,8 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     });
     
     Route::get('admin/contentmanagement',function(){
-        return view('admin.contentmanagement');
+        $education=EducationVideo::all();
+        return view('admin.contentmanagement',compact('education'));
     });
     
     //////////////////////////////////////Transport////////////////////////////
@@ -168,16 +171,19 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     //transport book
     Route::post('update/transport/book',[TransportBookedController::class,'update']);
 
+    //search book transport
+    Route::post('search/booked/transport',[TransportBookedController::class,'search']);
+
+    //content education video
+    Route::post('upload/video',[EducationVideoController::class,'add']);
+
+    //delete video
+    Route::post('delete/education/video',[EducationVideoController::class,'delete']);
 
 
 
 
 
-
-
-
-
-    
     });
 
     

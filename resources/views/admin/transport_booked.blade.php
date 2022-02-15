@@ -4,7 +4,7 @@
        <div class="px-4 pt-4 position-relative" id="v-pills-settings4" role="tabpanel" aria-labelledby="v-pills-settings4-tab">
                         <div class="row">
 
-                            <form action="" method="">
+                            <form action="{{url('search/booked/transport')}}" method="post">
 
                             <div class="col-12 d-md-flex mt-3">
 
@@ -682,8 +682,9 @@
                
           <form  action="{{url('update/transport/book')}}" method="post">
               @csrf
+              
             <div class="row">
-
+            <input name="transportbook" id="transportid" type="hidden">
             
                     <div class="col-md-4 col-lg-3 my-3">
                        
@@ -1152,20 +1153,20 @@
 
                     <div class="col-md-4 col-lg-3 my-3">
                        
-                        <select id="aanimaltype"  class="form-select"  name="animaltype">
+                        <select id="vanimaltype"  class="form-select"  name="animaltype">
                           <option value="" disabled  >Select Animal Type...</option>
-                          <option value="Cow">Cow</option>
-                          <option value="Buffalo">Buffalo</option>
-                          <option value="Bull">Bull</option>
-                          <option value="Sheep" >Sheep</option>
-                          <option  value="Goat"> Goat</option>
+                          <option value="0">Bull</option>
+                          <option value="1">Buffalo</option>
+                          <option value="2">Cow</option>
+                          <option value="3" >Sheep</option>
+                          <option  value="4"> Goat</option>
                         </select>
                         
                       </div>
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="No Of Animals ">
+                        <input type="text" name="" id="vnoanimal" class="form-control" placeholder="No Of Animals ">
 
 
                       </div>
@@ -1173,13 +1174,13 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Breed ">
+                        <input type="text" name="" id="vbreed" class="form-control" placeholder="Breed ">
 
 
                       </div>
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Contact Person Name ">
+                        <input type="text" name="" id="vcontactperson" class="form-control" placeholder="Contact Person Name ">
 
 
                       </div>
@@ -1187,13 +1188,18 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Contact Number ">
+                        <input type="text" name="" id="vcontactno" class="form-control" placeholder="Contact Number ">
 
 
                       </div>
                       <!-- end of col  -->
 
-                
+                      <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="date" name="date_transport" id="vdate_transport" class="form-control" placeholder="Date Of Transport">
+
+
+                      </div>
                       
                     </div>
                     <!-- end of row  -->
@@ -1206,7 +1212,7 @@
                  
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
+                        <input type="text" name="" id="vfaddressline1" class="form-control" placeholder="Address Line 1 ">
 
 
                       </div>
@@ -1214,7 +1220,7 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
+                        <input type="text" name="" id="vfaddressline2" class="form-control" placeholder="Address Line 2">
 
 
                       </div>
@@ -1222,7 +1228,7 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Area ">
+                        <input type="text" name="" id="vfarea" class="form-control" placeholder="Area ">
 
 
                       </div>
@@ -1231,9 +1237,13 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                              <option value="">City</option>
-                             
+                            <select id="vfcity" class="form-select overflow-scroll  ">
+                              
+                              <option value="" disabled> Select City</option>
+                              <option value="chandigarh" >Chandigarh</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="delhi"> Delhi</option>
+                        
                             
                             </select>
                           </div>
@@ -1246,7 +1256,7 @@
                         
                         <div class="startdropdown">
                        
-                            <select id="inputState"  class="form-select overflow-scroll ">
+                            <select id="vfstate"  class="form-select overflow-scroll ">
                               <option selected disabled> State</option>
                               <option value="Andhra Pradesh">Andhra Pradesh</option>
                               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -1297,9 +1307,12 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                              <option value=""> District</option>
+                            <select id="vfdistrict" class="form-select overflow-scroll  ">
                              
+                              <option value="" disabled> District</option>
+                          <option value="xyz"> XYZ</option>
+                          <option value="lmno"> LMNO</option>
+                          <option value="abc">ABC</option>
                             
                             </select>
                           </div>
@@ -1311,9 +1324,8 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputTaluka"  class="form-select overflow-scroll  ">
-                              <option value="">Taluka</option>
-                              <option value="">Taluka</option>
+                            <select id="vftaluka"  class="form-select overflow-scroll  ">
+                              <option value="" disbaled>Taluka</option>
                               <option value="Taluka AND">Taluka AND</option>
                               <option value="Taluka AND">Taluka OR</option>
                               <option value="Taluka AND">Taluka IF</option>
@@ -1328,7 +1340,7 @@
                       
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
+                        <input type="text" name="" id="vfzipcode" class="form-control" placeholder="Pin Code ">
 
 
                       </div>
@@ -1336,7 +1348,7 @@
                       
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Appointment Date ">
+                        <input type="text" name="" id="vfappoint_date" class="form-control" placeholder="Appointment Date ">
 
 
                       </div>
@@ -1344,7 +1356,7 @@
                       
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Appointment Time ">
+                        <input type="text" name="" id="vfappoint_time" class="form-control" placeholder="Appointment Time ">
 
 
                       </div>
@@ -1364,7 +1376,7 @@
                  
                 <div class="col-md-4 col-lg-3 my-3">
                         
-                    <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
+                    <input type="text" name="" id="vtaddressline1" class="form-control" placeholder="Address Line 1 ">
 
 
                   </div>
@@ -1372,7 +1384,7 @@
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
+                    <input type="text" name="" id="vtaddressline2" class="form-control" placeholder="Address Line 2">
 
 
                   </div>
@@ -1380,7 +1392,7 @@
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Area ">
+                    <input type="text" name="" id="vtarea" class="form-control" placeholder="Area ">
 
 
                   </div>
@@ -1389,8 +1401,12 @@
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputDistrict" class="form-select overflow-scroll  ">
-                          <option value="">City</option>
+                        <select id="vtcity" class="form-select overflow-scroll  ">
+                              <option value="" disabled> Select City</option>
+                              <option value="chandigarh" >Chandigarh</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="delhi"> Delhi</option>
+                        
                          
                         
                         </select>
@@ -1404,7 +1420,7 @@
                     
                     <div class="startdropdown">
                    
-                        <select id="inputState"  class="form-select overflow-scroll ">
+                        <select id="vtstate"  class="form-select overflow-scroll ">
                           <option selected disabled> State</option>
                           <option value="Andhra Pradesh">Andhra Pradesh</option>
                           <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -1455,8 +1471,11 @@
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputDistrict" class="form-select overflow-scroll  ">
-                          <option value=""> District</option>
+                        <select id="vtdistrict" class="form-select overflow-scroll  ">
+                          <option value="" disabled> District</option>
+                          <option value="xyz"> XYZ</option>
+                          <option value="lmno"> LMNO</option>
+                          <option value="abc">ABC</option>
                          
                         
                         </select>
@@ -1469,9 +1488,11 @@
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputTaluka" class="form-select overflow-scroll  ">
+                        <select id="vttaluka" class="form-select overflow-scroll  ">
                           <option value="">Taluka</option>
-                         
+                          <option value="Taluka AND">Taluka AND</option>
+                              <option value="Taluka AND">Taluka OR</option>
+                              <option value="Taluka AND">Taluka IF</option>
                         
                         </select>
                       </div>
@@ -1483,7 +1504,7 @@
                   
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
+                    <input type="text" name="" id="vtzipcode" class="form-control" placeholder="Pin Code ">
 
 
                   </div>
@@ -1491,7 +1512,7 @@
                   
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Appointment Date ">
+                    <input type="text" name="" id="vtappoint_date" class="form-control" placeholder="Appointment Date ">
 
 
                   </div>
@@ -1499,7 +1520,7 @@
                   
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Appointment Time ">
+                    <input type="text" name="" id="vtappoint_time" class="form-control" placeholder="Appointment Time ">
 
 
                   </div>
@@ -1516,10 +1537,10 @@
                         <div class="col-md-4 my-3">
                     
                             <div class="Districdropdown">
-                                <select id="" class="form-select overflow-scroll  ">
-                                  <option value="" selected disabled>Driver Assigned</option>
-                                 
-                                
+                                <select id="vdriverassign" class="form-select overflow-scroll  ">
+                                  <option value=""  disabled>Driver Assigned</option>
+                                  <option value="0"  >Driver ABC</option>
+                                  <option value="1"  >Driver XYZ</option>
                                 </select>
                               </div>
             
@@ -1529,9 +1550,11 @@
                         <div class="col-md-4 my-3">
                     
                             <div class="Districdropdown">
-                                <select id="" class="form-select overflow-scroll  ">
+                                <select id="vstatus" class="form-select overflow-scroll  ">
                                   <option value="" selected disabled>Status </option>
-                                 
+                                  <option value="0" >Assigned</option>
+                                  <option value="1" >Pending </option>
+                                  <option value="2" >Delivered</option>
                                 
                                 </select>
                               </div>
@@ -1630,6 +1653,56 @@
 
         document.getElementById('driverassign').value=data.trans.driver_id;
         document.getElementById('status').value=data.trans.status;
+
+        document.getElementById('transportid').value=data.trans.id;
+        
+
+
+
+
+
+
+
+
+         document.getElementById('vanimaltype').value=data.trans.animal_type;
+         document.getElementById('vnoanimal').value=data.trans.no_of_animal;
+        document.getElementById('vbreed').value=data.trans.breed;
+        document.getElementById('vcontactperson').value=data.trans.contact_name;
+        document.getElementById('vcontactno').value=data.trans.contact_no;
+        document.getElementById('vdate_transport').value=data.trans.date_of_transport;
+        document.getElementById('vfaddressline1').value=data.fromaddress.address_line1;
+        document.getElementById('vfaddressline2').value=data.fromaddress.address_line2;
+        document.getElementById('vfarea').value=data.fromaddress.area;
+        document.getElementById('vfcity').value=data.fromaddress.city;
+        document.getElementById('vfdistrict').value=data.fromaddress.district;
+        document.getElementById('vfstate').value=data.fromaddress.state;
+        document.getElementById('vftaluka').value=data.fromaddress.taluka;
+        document.getElementById('vfzipcode').value=data.fromaddress.zipcode;
+        document.getElementById('vfappoint_date').value=data.fromaddress.appointment_date;
+        document.getElementById('vfappoint_time').value=data.fromaddress.appointment_time;
+      
+
+        document.getElementById('vtaddressline1').value=data.toaddress.address_line1;
+        document.getElementById('vtaddressline2').value=data.toaddress.address_line2;
+        document.getElementById('vtarea').value=data.toaddress.area;
+        document.getElementById('vtcity').value=data.toaddress.city;
+        document.getElementById('vtdistrict').value=data.toaddress.district;
+        document.getElementById('vtstate').value=data.toaddress.state;
+        document.getElementById('vttaluka').value=data.toaddress.taluka;
+        document.getElementById('vtzipcode').value=data.toaddress.zipcode;
+        document.getElementById('vtappoint_date').value=data.toaddress.appointment_date;
+        document.getElementById('vtappoint_time').value=data.toaddress.appointment_time;
+
+
+        document.getElementById('vdriverassign').value=data.trans.driver_id;
+        document.getElementById('vstatus').value=data.trans.status;
+
+        document.getElementById('transportid').value=data.trans.id;
+   
+
+
+
+
         }
 
       });

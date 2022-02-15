@@ -61,14 +61,22 @@
                          
                           @if(Auth::check()=='true')
                           <li class="nav-item">
+                            @if(Auth::user()->image!=null)
                             <a class="nav-link border border-light rounded-circle" href="#"><img src="{{asset(Auth::user()->image)}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a>
+                            @else
+                            <a class="nav-link border border-light rounded-circle" href="#"><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a>
+                            @endif
                           </li>
                           <li class="nav-item dropdown dropstart">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           
                             </a>
                             <ul class="dropdown-menu secondary" aria-labelledby="navbarDropdown">
+                              @if(Auth::user()->image!=null)
                               <li><img src="{{asset(Auth::user()->image)}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
+                              @else
+                              <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
+                              @endif
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
                               <li><hr class="dropdown-divider"></li>
@@ -77,18 +85,32 @@
                           </li>
                           @else
                           <li class="nav-item">
-                            <a class="nav-link border border-light rounded-circle" href="#"><img src="../../../public/images/user-img.png" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a>
+                            <a class="nav-link border border-light rounded-circle" href="#"><img src="{{asset('images/user-img.png')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a>
                           </li>
                           <li class="nav-item dropdown dropstart">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           
                             </a>
                             <ul class="dropdown-menu secondary" aria-labelledby="navbarDropdown">
-                              <li><img src="../../../public/images/admin.jpg" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>First  Last </span></a></li>
+                              @if(Auth::check=='true')
+                                @if(Auth::user()->image!=null)
+                               <li><img src="{{asset(Auth::user()->image)}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
+                                @else
+                                <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
+
+                                @endif
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
+                              @else
+                              <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>First  Last </span></a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
+                              <li><hr class="dropdown-divider"></li>
+                              <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
+                              @endif
+                             
                             </ul>
                           </li>
                           @endif
@@ -159,11 +181,23 @@
                         
                           </a>
                           <ul class="dropdown-menu secondary" aria-labelledby="navbarDropdown">
-                            <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>First  Last </span></a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item secondary" href="#">Change Password</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
+                            @if(Auth::check()=='true')
+                                @if(Auth::user()->image!=null)
+                               <li><img src="{{asset(Auth::user()->image)}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}}</span></a></li>
+                                @else
+                                <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
+                                @endif
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item secondary" href="#">Change Password</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
+                            @else
+                                <li><img src="{{asset('images/admin.jpg')}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>First  Last </span></a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item secondary" href="#">Change Password</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
+                            @endif
                           </ul>
                         </li>
                        

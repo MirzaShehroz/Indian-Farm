@@ -230,6 +230,7 @@
                     <form method="post" action="{{url('add/ads')}}" enctype="multipart/form-data">
                       @csrf
                         <div class="row">
+                            <input id="id" type="hidden" value="" name="id">
 
                             <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
 
@@ -310,8 +311,11 @@
                                 <input type='file' name="video"  id='videoUpload' required/>
 
                                 <video width="320" height="240" controls style="margin-right:20px">
+                                    <source  src="" type="video/mp4">
                                  Your browser does not support the video tag.
                                 </video>
+                                    <p><a id="video1" href="#" target="_blank">To view your previous video click here</a></p>
+                                    <p><a>if you upload new video previous will be replaced</a></p>
 
                             </div>
                             <!-- end of col  -->
@@ -421,7 +425,7 @@
         
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon9">Address line 1</span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line1" required>
+                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line11" required>
                                       </div>
                                       
                                 </div>
@@ -593,7 +597,7 @@
                     <div class="offcanvas-body">
                       
                 
-
+                    <form action="{{url('ads/update')}}" method="post" enctype="multipart/form-data">
                         <div class="row">
 
                             <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
@@ -672,11 +676,15 @@
                                 </video>
                                 <p><img id="output4" width="200" class=" adimg2" src="{{asset('images/video-camera.png')}}" /><br></p>
                                 <button class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="(4)">Delete</button> -->
-                                <input type='file' name="video1"  id='videoUpload1' required/>
+                                <input type='file' name="video1"  id='videoUpload1' />
+
 
                                 <video width="320" height="240" controls style="margin-right:20px">
+                                    <source  src="" type="video/mp4">
                                  Your browser does not support the video tag.
                                 </video>
+                                    <p><a id="video" href="https://www.w3schools.com" target="_blank">To view your previous video click here</a></p>
+                                    <p><a>if you upload new video previous will be replaced</a></p>
 
                             </div>
                             <!-- end of col  -->
@@ -786,7 +794,7 @@
 
                           <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon9">Address line 1</span>
-                            <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line1" required>
+                            <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line11" required>
                          </div>
       
                         </div>
@@ -931,8 +939,11 @@
 
 
                       </div>
+                      <div class="col-12 text-center mx-auto col-md-3 mb-5">
+                            <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">Save </button>
+                      </div>
                       <!-- end of row  -->
-
+                    </form>          
 
                     </div>
                   </div>
@@ -1083,7 +1094,8 @@ function hello(id){
                data:{_token: "{{ csrf_token() }}"},
                success:function(data) {
                   
-                   console.log(data.adsvideo);
+                  console.log(data.adsaddress.addressline1);
+                  // alert("Your Data : "+data.ads.id);
                   document.getElementById('animal_type').value=data.ads.animal_type;
                   document.getElementById('price').value=data.ads.price;
                   document.getElementById('weight').value=data.ads.weight;
@@ -1101,13 +1113,22 @@ function hello(id){
                    document.getElementById('certified_reg_no').value=data.ads.certified_reg_no;
                   
                    document.getElementById('area').value=data.adsaddress.area;
-                   document.getElementById('address_line1').value=data.adsaddress.addressline1;
+                   document.getElementById('address_line11').value=data.adsaddress.addressline2;
                    document.getElementById('address_line2').value=data.adsaddress.addressline2;
                    document.getElementById('district').value=data.adsaddress.district;
                    document.getElementById('zipcode').value=data.adsaddress.zipcode;
                    document.getElementById('taluka').value=data.adsaddress.taluka;
+                   document.getElementById('state').value=data.adsaddress.state;
                   let photo=data.adsphoto.photo1;
-                  document.getElementById('output5').src='{{asset('+photo+')}}';
+                  {{--document.getElementById('output5').src='{{asset('+photo+')}}';--}}
+                   $('#output5').attr('src',"http://localhost:8000/"+data.adsphoto.photo1)
+                   $('#output6').attr('src',"http://localhost:8000/"+data.adsphoto.photo2)
+                   $('#output7').attr('src',"http://localhost:8000/"+data.adsphoto.photo3)
+                   $('#output8').attr('src',"http://localhost:8000/"+data.adsphoto.photo4)
+                   $('#output9').attr('src',"http://localhost:8000/"+data.adsphoto.photo5)
+                   $('#video').attr('href',"http://localhost:8000/"+data.adsvideo.video)
+                   $('#video1').attr('href',"http://localhost:8000/"+data.adsvideo.video)
+                   $('#id').attr('value',data.ads.id)
                }
             });
 

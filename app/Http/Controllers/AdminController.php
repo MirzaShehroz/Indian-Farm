@@ -284,6 +284,7 @@ class AdminController extends Controller
                 $adsaddress->takula=$req->taluka;
                 $adsaddress->district=$req->district;
                 $adsaddress->zipcode=$req->zipcode;
+                $adsaddress->state=$req->state;
                 $adsaddress->save();    
                 DB::commit();
              }catch(\Exception $e){

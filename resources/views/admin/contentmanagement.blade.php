@@ -435,107 +435,32 @@
 
                           </div>
                           <!-- end of col  -->
+                        @if($education!=null)
 
+
+                          @foreach($education as $edu)
                           <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
                             
                       
               
-                              <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-              
-                              <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
+                              <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/{{$edu->url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                                <form action="{{url('delete/education/video')}}" method="post">
+                                  @csrf
+                                  <input type="hidden" value="{{$edu->id}}" name="videoid">
+                              <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">{{$edu->title}}</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0" type="submit"><i class="fas fa-trash-alt" ></i></button></p>
                          
-              
+                              </form>
               
                           </div>
+                          @endforeach
                           <!-- end of col  -->
-                      
-                          <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                            <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            
-                            <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-                       
-            
-            
-                        </div>
-                        <!-- end of col  -->
-                      
-                        <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                          <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          
-                          <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-                     
-          
-          
-                      </div>
-                      <!-- end of col  -->
-                      
-                      <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                        <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        
-                        <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-                   
-        
-        
-                    </div>
-                    <!-- end of col  -->
-                      
-                    <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                      <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      
-                      <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-                 
-      
-      
-                  </div>
-                  <!-- end of col  -->
-                      
-                  <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                    <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    
-                    <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-               
-    
-    
-                </div>
-                <!-- end of col  -->
-                <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                  <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  
-                  <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-             
-  
-  
-              </div>
+                        @else
+                        No video
+                        @endif
+                          
               <!-- end of col  -->
-              <div class="col-12 col-md-4 col-lg-3 mt-5 mb-3 my-md-4" style="height: 350px;">
-                            
-                      
-              
-                <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/zgM0F6UmC70" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">Lorem, ipsum dolor.</span> <button class="px-4 py-2 text-danger ms-auto fs-5 bg-transparent border-0"><i class="fas fa-trash-alt"></i></button></p>
-           
-
-
-            </div>
+             
             <!-- end of col  -->
                       
               
@@ -604,13 +529,13 @@
                                       <!-- end of row  -->
 
                                       <div class="row">
-                                        <form action="{{url('hello')}}" method="post">
+                                        <form action="{{url('upload/video')}}" method="post">
                                              @csrf
                                         <div class="col-12 col-md-8 col-lg-6 mx-auto mt-5 mb-4">
 
                                           <input type="text" class="ps-md-4 form-control border border-dark border py-3" placeholder="Youtube URL
-                                          " name="video" id="" style="border-radius: 15px;">
-
+                                          " id="" name="url" style="border-radius: 15px;"> <br>
+                                          <input type="text" name="title" class="ps-md-4 form-control border border-dark border py-3" placeholder="Youtube Video Title" style="border-radius: 15px;">
                                          <button type="submit" class="mt-5 rounded-pill form-control bg_danger text-light py-3">Upload Video</button>
 
                                          </form>
@@ -1317,3 +1242,19 @@
                           </div>
                                     
        @endsection
+
+@section('script')
+<script>
+function deletevideo(id){
+  $.ajax({
+    type:'GET',
+    url:"{{url('/delete/education/video')}}"+ '/'+id,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 console.log(data.msg);
+               }
+  });
+}
+</script>
+
+@endsection       
