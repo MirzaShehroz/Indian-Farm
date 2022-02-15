@@ -207,4 +207,10 @@ class TransportController extends Controller
 
         return back()->with('successMsg','Transport details updated successfully');
     }
+
+    public function delete(Request $req){
+        $transport=Transport::where('user_id',$req->user_id)->delete();
+        return back()->with('infoMsg','Transport driver deleted Successfully!');
+
+    }
 }

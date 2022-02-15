@@ -121,8 +121,8 @@
 
                                       @csrf
                                       <input type="hidden" value="{{$item->user_id}}" name="user_id">
-                                      <a href="#" class="text-decoration-none col-6"><button type="submit"
-                                          class="btn border form-control btnhover">Yes</button></a>
+                                     <button type="submit"
+                                          class="btn border form-control btnhover">Yes</button>
                                     </form>
 
                               </div>
@@ -639,30 +639,6 @@
               </div>
               {{-- end edit vet --}}
 
-              <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Change password</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form action="{{route('change_password')}}" method="POST">
-                    <div class="modal-body text-center p-4">
-                      <p class="fw-bold text-secondary">Are You sure to Change your Password </p>
-                    </div>
-                    <div class="modal-foote d-flex">
-                      <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover"
-                          data-bs-dismiss="modal">No</button></a>
-
-                            @csrf
-                            <input type="hidden" value="{{$item->user_id}}" name="user_id">
-                            <a href="#" class="text-decoration-none col-6"><button type="submit"
-                                class="btn border form-control btnhover">Yes</button></a>
-                          </form>
-
-                    </div>
-                  </div>
-                </div>
               @endforeach
             </tbody>
           </table>

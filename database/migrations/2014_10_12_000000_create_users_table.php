@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('contact_no', 100);
             $table->string('email');
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer('address_id');
             $table->integer('document_id')->nullable();
             $table->integer('email_otp')->nullable();
