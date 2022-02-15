@@ -475,7 +475,6 @@
                              
                             </div>
                             <!-- end of col  -->
-                            
                             <div class="row">
                                 
                                 <div class="col-12 col-md-4 mt-3">
@@ -483,10 +482,9 @@
                                     <div class="Districdropdown">
                                         <select id="assignvet" class="form-select overflow-scroll  " name="vet_assign">
                                             <option value="" disabled selected> Vet Assigned </option>
-                                            <option value="1">Vet A </option>
-                                            <option value="2">Vet B</option>
-                                            <option value="3">Vet C</option>
-                                            
+                                            @foreach ($vets as $data)
+                                            <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
+                                            @endforeach    
                                         </select>
                                     </div>
                                     

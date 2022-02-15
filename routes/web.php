@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\VetController;
 use App\Http\Controllers\AppointmentBookController;
+use App\Http\Controllers\CertifyController;
 use App\Http\Controllers\TransportBookedController;
 use App\Http\Controllers\EducationVideoController;
 use App\Http\Middleware\AdminAuth;
@@ -14,7 +15,9 @@ use App\Models\AdsPhoto;
 use App\Models\AdsVideo;
 use App\Models\Ads;
 use App\Models\User;
+use App\Models\Vet;
 use App\Models\AppointmentBook;
+use App\Models\certifyAnimal;
 use App\Models\TransportBooked;
 use App\Models\TransportFrom;
 use App\Models\TransportTo;
@@ -78,13 +81,18 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::post('admin/transport/register',[TransportController::class,'register'])->name('register_transport');
         Route::any('/search/transport',[TransportController::class,'search'])->name('transport_search');
         Route::post('admin/transport/update',[TransportController::class,'update'])->name('update_transport');
+        Route::post('admin/transport-driver/delete',[TransportController::class,'delete'])->name('deletetransport');
 
+        // certify animal
+        Route::Get('admin/certify/animal',[CertifyController::class,'index'])->name('certify_index');
+        Route::post('admin/cerfiy/appointment/register',[CertifyController::class,'registerAppoint'])->name('register_cappointment');
+        Route::post('admin/certify-appointment/delete',[certifyAnimal::class,'delete'])->name('deleteCertify');
 
 
 
         Route::get('changepassword',[AdminController::class,'changepassword']);
 
-    Route::post('add/ads',[AdminCOntroller::class,'addads']);
+        Route::post('add/ads',[AdminCOntroller::class,'addads']);
 
 
 
@@ -111,10 +119,8 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     Route::get('admin/appointmentbooked',function(){
         $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->get();
-        return view('admin.appointment_booked',compact('appointment'));
-    });
-    Route::get('admin/certifyanimal',function(){
-        return view('admin.certify_animal');
+        $vets=Vet::all();
+        return view('admin.appointment_booked',compact('appointment','vets'));
     });
     Route::get('admin/transportbooked',function(){
         $transport=TransportBooked::all();
