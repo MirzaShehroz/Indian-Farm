@@ -72,7 +72,7 @@
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item secondary" href="#">Logout</a></li>
+                              <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
                             </ul>
                           </li>
                           @else
@@ -88,7 +88,7 @@
                               <li><hr class="dropdown-divider"></li>
                               <li><a class="dropdown-item secondary" type="button" data-bs-toggle="modal" data-bs-target="#passwordchange">Change Password</a></li>
                               <li><hr class="dropdown-divider"></li>
-                              <li><a class="dropdown-item secondary" href="#">Logout</a></li>
+                              <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
                             </ul>
                           </li>
                           @endif
@@ -163,7 +163,7 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item secondary" href="#">Change Password</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item secondary" href="#">Logout</a></li>
+                            <li><a class="dropdown-item secondary" href="{{url('logout')}}">Logout</a></li>
                           </ul>
                         </li>
                        

@@ -5,18 +5,25 @@
 
 <div class="row">
 
-    <form action="" method="">
+    <form action="{{url('search/appointment')}}" method="GET">
 
     <div class="col-12 d-md-flex mt-3">
 
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id="">
-       
+        <!-- <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id=""> -->
+        <select id="animaltype"  class="me-3 border ps-2 mb-3 py-2 inputs1"  name="animal">
+                           <option value="" disabled  selected>Select Animal Type...</option>
+                           <option value="0">Bull</option>
+                           <option value="1">Buffalo</option>
+                           <option value="2">cow</option>
+                           <option value="3" >Sheep</option>
+                           <option  value="4"> Goat</option>
+          </select>
         
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id="">
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
-        <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+        <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id="">
+        <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
+        <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
+        <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
+        <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
 
      
         
@@ -25,8 +32,8 @@
 
     <div class="col-12 mt-3">
 
-       <button class="bg_danger px-5 py-2 rounded-pill text-light " name=""><a href="{{url('hello')}}">Search</a> </button>
-
+    <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit" name="submit">Search</button>
+    </form>
     </div>
    <!-- end of col   -->
 
@@ -119,30 +126,13 @@
                 <td class="d-flex">
                     <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#edit_appointment" aria-controls="edit_appointment" type="button" onclick="getdata({{getappoint($appoint->id)}})" ><i  class="fas fa-pencil-alt"></i></button>
                     <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_appointment" aria-controls="view_appointment" type="button" onclick="getdata({{getappoint($appoint->id)}})" ><i class="fas fa-eye"></i></button>
-                    <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal5" type="button"><i class="far fa-trash-alt"></i></button>
+                    <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal5" type="button" onclick="deleteappoint({{getappoint($appoint->id)}})"><i class="far fa-trash-alt"></i></button>
                 </td>
               </tr>
 
 
 
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center p-4">
-          <p class="fw-bold text-secondary">Are You sure to Delete this Appoinment </p>
-        </div>
-        <div class="modal-foote d-flex">
-         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
-         <a href="{{url('delete/appointment/'.getappoint($appoint->id))}}" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover">Yes</button></a> 
-        
-        </div>
-      </div>
-    </div>
-</div>
+
               @endforeach
               @else
               No data
@@ -212,7 +202,27 @@
 </div>
 
 
-
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="{{url('delete/appointment')}}" method="post">
+          @csrf
+        <div class="modal-body text-center p-4">
+          <p class="fw-bold text-secondary">Are You sure to Delete this Appoinment </p>
+        </div>
+        <div class="modal-foote d-flex">
+          <input type="hidden" name="id" id="id">
+         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
+         <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a> 
+         </form>
+        </div>
+      </div>
+    </div>
+</div>
 
 
    <!-- Appoinment tab  add off anvas  -->
@@ -557,7 +567,7 @@
                                   <input type="hidden" name="address_id" id="address_id">
                                            <div class="col-md-4 col-lg-3 my-3">
                                               
-                                               <select id="animaltype"  class="form-select"  name="animaltype" disabled>
+                                               <select id="vanimaltype"  class="form-select"  name="animaltype" disabled>
                                                <option value="" disabled >Select Animal Type...</option>
                                                  <option value="0">Bull</option>
                                                  <option value="1">Buffalo</option>
@@ -570,7 +580,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="no_animal" id="no_animal" class="form-control" placeholder="No Of Animals " disabled>
+                                               <input type="text" name="no_animal" id="vno_animal" class="form-control" placeholder="No Of Animals " disabled>
                        
                        
                                              </div>
@@ -578,7 +588,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="breed" id="breed" class="form-control" placeholder="Breed" disabled>
+                                               <input type="text" name="breed" id="vbreed" class="form-control" placeholder="Breed" disabled>
                        
                        
                                              </div>
@@ -586,7 +596,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="personname" id="personname" class="form-control" placeholder="Contact Person Name " disabled>
+                                               <input type="text" name="personname" id="vpersonname" class="form-control" placeholder="Contact Person Name " disabled>
                        
                        
                                              </div>
@@ -602,21 +612,13 @@
                        
                                            <div class="col-md-4 col-lg-3 my-3">
                                          
-                                               <input type="text" name="mobileno" id="mobileno" class="form-control" placeholder="Contact Number" disabled>
+                                               <input type="text" name="mobileno" id="vmobileno" class="form-control" placeholder="Contact Number" disabled>
                                                
                                              </div>
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="addressline1" id="addressline1" class="form-control" placeholder="Address Line 1 " disabled>
-                       
-                       
-                                             </div>
-                                             <!-- end of col  -->
-                           
-                                           <div class="col-md-4 col-lg-3 my-3">
-                                               
-                                               <input type="text" name="addressline2" id="addressline2" class="form-control" placeholder="Address Line 2" disabled>
+                                               <input type="text" name="addressline1" id="vaddressline1" class="form-control" placeholder="Address Line 1 " disabled>
                        
                        
                                              </div>
@@ -624,7 +626,15 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="area" id="area" class="form-control" placeholder="Area " disabled>
+                                               <input type="text" name="addressline2" id="vaddressline2" class="form-control" placeholder="Address Line 2" disabled>
+                       
+                       
+                                             </div>
+                                             <!-- end of col  -->
+                           
+                                           <div class="col-md-4 col-lg-3 my-3">
+                                               
+                                               <input type="text" name="area" id="varea" class="form-control" placeholder="Area " disabled>
                        
                        
                                              </div>
@@ -641,7 +651,7 @@
                                            <div class="col-md-4 col-lg-3 my-3">
                                          
                                                <div class="Districdropdown">
-                                                   <select id="city" class="form-select overflow-scroll  " name="city" disabled>
+                                                   <select id="vcity" class="form-select overflow-scroll  " name="city" disabled>
                                                      <option value="" disabled>Select City</option>
                                                      <option value="delhi">Delhi</option>
                                                      <option value="mumbai">Mumbai</option>
@@ -658,7 +668,7 @@
                                                
                                                <div class="startdropdown">
                                               
-                                                   <select id="state"  class="form-select overflow-scroll " name="state" disabled>
+                                                   <select id="vstate"  class="form-select overflow-scroll " name="state" disabled>
                                                      <option  disabled> State</option>
                                                      <option value="Andhra Pradesh">Andhra Pradesh</option>
                                                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -707,7 +717,7 @@
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
                                                <div class="Districdropdown">
-                                                   <select id="district" class="form-select overflow-scroll" name="district" disabled>
+                                                   <select id="vdistrict" class="form-select overflow-scroll" name="district" disabled>
                                                      <option value="" disabled>Select  District</option>
                                                      <option value=" abcs"> abcs</option>
                                                      <option value="xyzs"> xyzs</option>
@@ -724,7 +734,7 @@
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
                                                <div class="Districdropdown">
-                                                   <select id="taluka" class="form-select overflow-scroll  " name="taluka" disabled>
+                                                   <select id="vtaluka" class="form-select overflow-scroll  " name="taluka" disabled>
                                                    <option value="" disabled>Select Taluka</option>
                                                      <option value=" abcs">Taluka abcs</option>
                                                      <option value="xyzs"> Taluka xyzs</option>
@@ -749,14 +759,14 @@
                        
                                            <div class="col-md-4 col-lg-3 my-3">
                                          
-                                                    <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="Pin Code" disabled>
+                                                    <input type="text" name="zipcode" id="vzipcode" class="form-control" placeholder="Pin Code" disabled>
                                
                                                
                                              </div>
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                              <input type="date" name="appoint_date" id="appoint_date" class="form-control" placeholder="Appointment Date" disabled>
+                                              <input type="date" name="appoint_date" id="vappoint_date" class="form-control" placeholder="Appointment Date" disabled>
                        
                        
                                              </div>
@@ -764,7 +774,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="time" name="appoint_time"  id="appoint_time" class="form-control" placeholder="Appointment Time" disabled>
+                                               <input type="time" name="appoint_time"  id="vappoint_time" class="form-control" placeholder="Appointment Time" disabled>
                        
                                              </div>
                                              <!-- end of col  -->
@@ -780,7 +790,7 @@
                                                <div class="col-12 col-md-6 text-start pb-5">
                                                    <label for="price" class="form-label tcolor fw-bold">Comments</label>
                                                    <br>
-                                                   <textarea name="comment" placeholder="Comments" class="comment form-control" id="comment" rows="5" disabled></textarea>
+                                                   <textarea name="comment" placeholder="Comments" class="comment form-control" id="vcomment" rows="5" disabled></textarea>
                                                    
                                                   </div>
                                                   <!-- end of col  -->
@@ -790,7 +800,7 @@
                                                       <div class="col-12 col-md-4 mt-3">
                                                           
                                                           <div class="Districdropdown">
-                                                              <select id="assignvet" class="form-select overflow-scroll " name="assignvet" disabled>
+                                                              <select id="vassignvet" class="form-select overflow-scroll " name="assignvet" disabled>
                                                               <option value="" disabled> Vet Assigned </option>
                                                                   <option value="1">Vet A </option>
                                                                   <option value="2">Vet B</option>
@@ -804,7 +814,7 @@
                                                       <div class="col-12 col-md-4 mt-3">
                                                           
                                                           <div class="Districdropdown">
-                                                              <select id="appointstatus" class="form-select overflow-scroll  " name="appoint_status" disabled>
+                                                              <select id="vappointstatus" class="form-select overflow-scroll  " name="appoint_status" disabled>
                                                                   <option value="" disabled >Appointment Status </option>
                                                                   <option value="0">Done</option>
                                                                   <option value="1">Pending</option>
@@ -816,7 +826,7 @@
                       
                                                       <div class="col-12 col-md-4 mt-3">
                                                           
-                                                          <textarea name="vet_comment" id="vet_comment" placeholder="   Comments By Vet..." class="comment form-control" id="" rows="5" disabled></textarea>
+                                                          <textarea name="vet_comment" id="vvet_comment" placeholder="   Comments By Vet..." class="comment form-control" id="" rows="5" disabled></textarea>
                                                           
                                                       </div>
                                                       
@@ -877,8 +887,7 @@
            @csrf
                             <div class="row">
  
-            <input type="hidden" name="appoint_id" id="appoint_id" >
-            <input type="hidden" name="address_id" id="address_id">
+            
                      <div class="col-md-4 col-lg-3 my-3">
                         
                          <select id="animaltype"  class="form-select"  name="animaltype">
@@ -1160,6 +1169,8 @@
  
                      </div>
                      <!-- end of row  -->
+                     <input type="hidden" name="appoint_id" id="appoint_idd">
+                     <input type="hidden"  name="address_id" id="address_idd">
             </form>
  
             </div>
@@ -1188,7 +1199,7 @@
                data:{_token: "{{ csrf_token() }}"},
                success:function(data) {
                   console.log(data.appoint); 
-                  console.log(data.address.district  );  
+                  console.log(data.appoint.id ,data.address.id  );  
                   
                   document.getElementById('animaltype').value=data.appoint.animal_type  ; 
                   document.getElementById('no_animal').value= data.appoint.no_of_animal  ;    
@@ -1206,8 +1217,8 @@
                   document.getElementById('appoint_date').value=   data.appoint.appointment_date  ;
                   document.getElementById('appoint_time').value=   data.appoint.appointment_time  ;
                   document.getElementById('assignvet').value=   data.appoint.vet_id ;
-                  document.getElementById('appoint_id').value=   data.appoint.id ;
-                  document.getElementById('address_id').value=   data.address.id ;
+                  document.getElementById('appoint_idd').value=data.appoint.id ;
+                  document.getElementById('address_idd').value=data.address.id ;
                   if(data.appoint.vet_comment==null){
                     document.getElementById('vet_comment').value= '' ;
                   }
@@ -1217,9 +1228,40 @@
                  
                   document.getElementById('appointstatus').value=   data.appoint.status ;
                                  
+
+
+
+                  document.getElementById('vanimaltype').value=data.appoint.animal_type  ; 
+                  document.getElementById('vno_animal').value= data.appoint.no_of_animal  ;    
+                  document.getElementById('vbreed').value=   data.appoint.breed  ;
+                  document.getElementById('vpersonname').value=   data.appoint.contact_name  ;
+                  document.getElementById('vmobileno').value=   data.appoint.contact_no  ;
+                  document.getElementById('vaddressline1').value=   data.address.address_line1 ;
+                  document.getElementById('vaddressline2').value=   data.address.address_line2  ;
+                  document.getElementById('varea').value=   data.address.area ;
+                  document.getElementById('vcity').value=   data.address.city  ;
+                  document.getElementById('vstate').value=   data.address.state  ;
+                  document.getElementById('vdistrict').value=   data.address.district  ;
+                  document.getElementById('vtaluka').value=   data.address.taluka ;
+                  document.getElementById('vzipcode').value=   data.address.zipcode  ;
+                  document.getElementById('vappoint_date').value=   data.appoint.appointment_date  ;
+                  document.getElementById('vappoint_time').value=   data.appoint.appointment_time  ;
+                  document.getElementById('vassignvet').value=   data.appoint.vet_id ;
+                  // document.getElementById('vappoint_id').value=   data.appoint.id ;
+                  // document.getElementById('vaddress_id').value=   data.address.id ;
+                  if(data.appoint.vet_comment==null){
+                    document.getElementById('vvet_comment').value= '' ;
+                  }
+                  else{
+                    document.getElementById('vvet_comment').value= data.appoint.vet_comment ;
+                  }
+                 
+                  document.getElementById('vappointstatus').value=   data.appoint.status ;               
               }
             });
   }
-  
+  function deleteappoint(id){
+    document.getElementById('id').value=id;
+  }
 </script>
 @endsection

@@ -71,7 +71,7 @@ class AppointmentBookController extends Controller
                $appointement->appointment_date=$req->appoint_date; 
                $appointement->comment=$req->comment; 
                $appointement->vet_id=$req->vet_assign; 
-               $appointement->vet_comment; 
+               $appointement->vet_commnet=$req->vet_comment; 
                $appointement->status=1; 
                 $appointement->save();
          DB::commit();
@@ -93,7 +93,7 @@ class AppointmentBookController extends Controller
     public function updateappointment(Request $req){
         $appointement=AppointmentBook::where('id',$req->appoint_id)->first();
         $address=AppointmentAddress::where('id',$req->address_id)->first();
-        
+        //dd($appointement,$address);
         DB::beginTransaction();
         try{
 
@@ -114,7 +114,7 @@ class AppointmentBookController extends Controller
                  DB::commit();
     
             }catch(\Exception $e){
-                dd($e);
+                //dd($e);
                     DB::rollback();
                     return back()->with('warningMsg','There sooooooome Problem try again');
             }
@@ -148,6 +148,22 @@ class AppointmentBookController extends Controller
     }
 
     public function delete(Request $req){
-        dd($req->appoint_id);
+       $appointment=AppointmentBook::find($req->id);
+       $appointment->delete();
+       return back()->with('successMsg','Deleted Succesffully');
+    }
+
+    public function search(Request $req){
+        $animal=$req->animal;
+        $city=$req->city;
+        $district=$req->district;
+        $state=$req->state;
+        $taluka=$req->taluka;
+        $vet=$req->vet;
+
+        $appointment=AppointmentBook::join('appointment_address','appointment_address.id','=','appointments.appointment_address_id')
+        ->where('animal_type',$animal)->orWhere('city',$city)->orWhere('district',$district)->orWhere('taluka',$taluka)
+        ->orWhere('vet_id',$vet)->get();
+        return view('admin.appointment_booked',compact('appointment'));
     }
 }

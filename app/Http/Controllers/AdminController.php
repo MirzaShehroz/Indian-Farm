@@ -57,12 +57,13 @@ class AdminController extends Controller
                         $message->to($email)->subject('Login OTP');
             
                     } );
-                    $email=Crypt::encryptString($inputVal['email']);
+                    
                     $id=Crypt::encryptString($user->id);
                     // dd($id );
                     // dd($email);
                     //return view('admin.login_verify',compact('email'));
-                    return redirect()->route('verify-otp',$id)->with(['email'=>$inputVal['email']]);
+                   // return redirect()->route('verify-otpp',$id)->with(['email'=>$inputVal['email']]);
+                   return redirect('verify-otp/'.$id)->with(['email'=>$inputVal['email']]);
 
                    }
                 }
@@ -90,7 +91,9 @@ class AdminController extends Controller
             return back()->with('error','Try Again or Click Resend otp');
 
             }
-            elseif( $user->email_otp==$req->otp){
+            elseif( $user->email_otp==$req->otp ){
+                    $user->login_status=1;
+                    $user->save();
              return redirect('admin/index');
             }
             else{
@@ -382,6 +385,7 @@ class AdminController extends Controller
             $user->address_id=$address_id;
             $user->password=Hash::make('07070707');
             $user->status=0;
+            $user->login_status=0;
             $user->save();
             $user_id=$user->id;
             // dd($user_id);

@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\VetController;
 use App\Http\Controllers\AppointmentBookController;
+use App\Http\Controllers\TransportBookedController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -13,6 +14,9 @@ use App\Models\AdsVideo;
 use App\Models\Ads;
 use App\Models\User;
 use App\Models\AppointmentBook;
+use App\Models\TransportBooked;
+use App\Models\TransportFrom;
+use App\Models\TransportTo;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,7 +42,7 @@ Route::match(['get', 'post'],'verify/otp',[AdminController::class,'verifyotp']);
 
 Route::get('verify-otp/{id}',function(){
     return view('admin.login_verify');
-})->name('verify-otp');
+})->name('verify-otpp');
 //Route::view('admin/dashboard','app.dashboard');
 Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
 Route::group(['middleware' => 'prevent-back-history'],function(){
@@ -76,73 +80,106 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
 
-
-
-    });
-
-    Route::get('changepassword',[AdminController::class,'changepassword']);
+        Route::get('changepassword',[AdminController::class,'changepassword']);
 
     Route::post('add/ads',[AdminCOntroller::class,'addads']);
 
+
+
+
+
+    Route::get('logout',function(){
+        $user=User::where('id',Auth::user()->id)->first();
+        $user->login_status=0;
+        $user->save();
+        Auth::logout();
+
+        return redirect('admin/login');
+    });
+    
+    
+    Route::get('admin/ads',function(){
+    
+        $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->get();
+    
+        //$ads=Ads::all();
+    
+        return view('admin.ads',compact('ads'));
+    });
+    
+    Route::get('admin/appointmentbooked',function(){
+        $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->get();
+        return view('admin.appointment_booked',compact('appointment'));
+    });
+    Route::get('admin/certifyanimal',function(){
+        return view('admin.certify_animal');
+    });
+    Route::get('admin/transportbooked',function(){
+        $transport=TransportBooked::all();
+        return view('admin.transport_booked',compact('transport'));
+    });
+    
+    Route::get('admin/profile',function(){
+        $id=User::where('id',Auth::user()->id)->first();
+        $user=$id->join('user_address', 'users.address_id' ,'=','user_address.id')->first();
+       
+        return view('admin.myprofile',compact('user'));
+    });
+    
+    Route::get('admin/contentmanagement',function(){
+        return view('admin.contentmanagement');
+    });
+    
+    //////////////////////////////////////Transport////////////////////////////
+    Route::get('transport/index',function(){
+        return view('transport.index');
+    });
+    
+    Route::get('transport/appointment',function(){
+        return view('transport.appointments');
+    });
+    
+    Route::get('transport/profile',function(){
+        return view('transport.myprofile');
+    });
+    
+    Route::post('getads/{id}',[AdminController::class,'getads']);
+    
+    //admin update profile
+    Route::post('admin/profile/update',[AdminController::class,'updateprofile']);
+    
+    
+    Route::post('add/appointments',[AppointmentBookController::class,'add']);
+    
+    Route::post('getappointment/{id}',[AppointmentBookController::class,'getappointment']);
+    Route::post('update/appointment',[AppointmentBookController::class,'updateappointment']);
+    Route::post('delete/appointment',[AppointmentBookController::class,'delete']);
+    Route::any('search/appointment',[AppointmentBookController::class,'search']);
+    
+    
+    //transport booked
+    Route::post('add/transport/booked',[TransportBookedController::class,'add']);
+
+    //delete transport booking
+    Route::post('delete/transport/booking',[TransportBookedController::class,'delete']);
+
+    Route::post('gettransport/booking/{id}',[TransportBookedController::class,'getdata']);
+
+    //transport book
+    Route::post('update/transport/book',[TransportBookedController::class,'update']);
+
+
+
+
+
+
+
+
+
+
+    
+    });
+
+    
 });
 
-Route::get('logout',function(){
-    Auth::logout();
-});
-
-
-Route::get('admin/ads',function(){
-
-    $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->get();
-
-    //$ads=Ads::all();
-
-    return view('admin.ads',compact('ads'));
-});
-
-Route::get('admin/appointmentbooked',function(){
-    $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->get();
-    return view('admin.appointment_booked',compact('appointment'));
-});
-Route::get('admin/certifyanimal',function(){
-    return view('admin.certify_animal');
-});
-Route::get('admin/transportbooked',function(){
-    return view('admin.transport_booked');
-});
-
-Route::get('admin/profile',function(){
-    $id=User::where('id',Auth::user()->id)->first();
-    $user=$id->join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-   
-    return view('admin.myprofile',compact('user'));
-});
-
-Route::get('admin/contentmanagement',function(){
-    return view('admin.contentmanagement');
-});
-
-//////////////////////////////////////Transport////////////////////////////
-Route::get('transport/index',function(){
-    return view('transport.index');
-});
-
-Route::get('transport/appointment',function(){
-    return view('transport.appointments');
-});
-
-Route::get('transport/profile',function(){
-    return view('transport.myprofile');
-});
-
-Route::post('getads/{id}',[AdminController::class,'getads']);
-
-//admin update profile
-Route::post('admin/profile/update',[AdminController::class,'updateprofile']);
-
-
-Route::post('add/appointments',[AppointmentBookController::class,'add']);
-
-Route::post('getappointment/{id}',[AppointmentBookController::class,'getappointment']);
-Route::post('update/appointment',[AppointmentBookController::class,'updateappointment']);
-Route::post('delete/appointment',[AppointmentBookController::class,'delete']);

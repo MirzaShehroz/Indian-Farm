@@ -39,7 +39,7 @@
             @csrf
             <input type="text" class="mobileno_input border_color form-control py-3 " name="email" placeholder="Email Id" required>
 
-            <input type="text" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
+            <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
 
             <a href="#" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
 
