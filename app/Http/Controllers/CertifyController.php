@@ -13,8 +13,8 @@ use Auth;
 class CertifyController extends Controller
 {
     public function index(){
-        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->get();
-        $vets=Vet::all();
+        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->paginate(5);
+        $vets=Vet::paginate(5);
         return view('admin.certify_animal',compact('vets','certify'));
     }
     public function registerAppoint(Request $req){
@@ -24,11 +24,11 @@ class CertifyController extends Controller
             'state'=>'required',
             'city'=>'required',
             'district'=>'required',
-            'addressline1'=>'required',
+            'address1'=>'required',
             'taluka'=>'required',
-            'zipcode'=>'required',
+            'pincode'=>'required',
             'animaltype'=>'required',
-            'no_animal'=>'required',
+            'animalsno'=>'required|numeric',
             'breed'=>'required',
             'personname'=>'required',
             'mobileno'=>'required',

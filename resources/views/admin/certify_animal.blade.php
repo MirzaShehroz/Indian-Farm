@@ -37,7 +37,7 @@
             data-bs-target="#edit_certified" aria-controls="edit_certified" type="button">
             Add An Appoinment
           </button>
-          <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
+          <button onclick="exportTableToCSV('record.csv')" class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
             Export TO CSV
           </button>
 
@@ -490,23 +490,24 @@
 
         <div class="col-7 col-md-4 col-lg-3 col-xl-2 text-center">
 
-          <nav aria-label="Page navigation example">
-            <ul class="pagination">
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo;</span>
-                </a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">&raquo;</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
+{{--          <nav aria-label="Page navigation example">--}}
+{{--            <ul class="pagination">--}}
+{{--              <li class="page-item">--}}
+{{--                <a class="page-link" href="#" aria-label="Previous">--}}
+{{--                  <span aria-hidden="true">&laquo;</span>--}}
+{{--                </a>--}}
+{{--              </li>--}}
+{{--              <li class="page-item active"><a class="page-link" href="#">1</a></li>--}}
+{{--              <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--              <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--              <li class="page-item">--}}
+{{--                <a class="page-link" href="#" aria-label="Next">--}}
+{{--                  <span aria-hidden="true">&raquo;</span>--}}
+{{--                </a>--}}
+{{--              </li>--}}
+{{--            </ul>--}}
+{{--          </nav>--}}
+          {{ $vets->render("pagination::bootstrap-4") }}
 
 
         </div>
@@ -544,6 +545,9 @@
     <div class="row pad-50 p-2 px-lg-5 justify-content-around">
 
       <h4 class="mt-5 mb-4 mt-md-0">Edit Certify</h4>
+      @if($errors->any())
+        {{$errors}}}
+        @endif
 
       <div class="col-12">
 
