@@ -17,7 +17,7 @@ class VetController extends Controller
         $data=User::join('user_address','users.address_id','=','user_address.id')
         ->join('user_documents','users.document_id','=','user_documents.id')
         ->join('vets','users.id','vets.user_id')
-        ->get();
+        ->paginate(5);
         // dd($data);
         return view('admin.vet',compact('data'));
     }

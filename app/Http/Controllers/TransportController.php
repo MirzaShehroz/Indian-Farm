@@ -33,7 +33,7 @@ class TransportController extends Controller
         $data=User::join('user_address','users.address_id','=','user_address.id')
         ->join('user_documents','users.document_id','=','user_documents.id')
         ->join('transports','users.id','transports.user_id')
-        ->get();
+        ->paginate(5);
 
         return view('admin.transport_driver',compact('data'));
     }

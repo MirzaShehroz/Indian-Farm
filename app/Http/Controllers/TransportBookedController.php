@@ -250,11 +250,17 @@ class TransportBookedController extends Controller
         $district=$req->district;
         $state=$req->state;
         $taluka=$req->taluka;
-        $vet=$req->vet;
+      //  $vet=$req->vet;
 
-        $appointment=Trans::join('appointment_address','appointment_address.id','=','appointments.appointment_address_id')
-        ->where('animal_type',$animal)->orWhere('city',$city)->orWhere('district',$district)->orWhere('taluka',$taluka)
-        ->orWhere('vet_id',$vet)->get();
-        return view('admin.appointment_booked',compact('appointment'));
+        $transport=TransportBooked::join('from_address','from_address.id','=','book_transport.from_address_id')
+        ->join('to_address','to_address.id','=','book_transport.to_address_id')
+        ->where('animal_type',$animal)->orWhere('from_address.city',$city)->orWhere('to_address.city',$city)
+        ->orWhere('from_address.state',$state)->orWhere('to_address.state',$state)
+        ->orWhere('from_address.district',$district)->orWhere('to_address.district',$district)
+        ->orWhere('from_address.taluka',$taluka)->orWhere('to_address.taluka',$taluka)
+        ->get();
+        
+        return view('admin.transport_booked',compact('transport'));
+       
     }
 }

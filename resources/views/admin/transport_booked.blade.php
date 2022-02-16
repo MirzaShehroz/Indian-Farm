@@ -5,13 +5,19 @@
                         <div class="row">
 
                             <form action="{{url('search/booked/transport')}}" method="post">
-
+                              @csrf
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id="">
-                               
+                                <!-- <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id=""> -->
+                               <select name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1">
+                                 <option value="0">Bull</option>
+                                 <option value="1">Buffalo</option>
+                                 <option value="2">Cow</option>
+                                 <option value="3">Sheep</option>
+                                 <option value="4">Goat</option>
+                               </select>
                                 
-                                <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id="">
+                                <!-- <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id=""> -->
                                 <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
                                 <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
                                 <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
@@ -35,7 +41,7 @@
                             <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light"  data-bs-toggle="offcanvas" data-bs-target="#add_transportbook" aria-controls="edit_transportbook" type="button">
                                 Add An Appoinment
                             </button>
-                            <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
+                            <button onclick="exportTableToCSV('record.csv')" class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
                                 Export TO CSV
                             </button>
 
@@ -138,23 +144,24 @@
 
                             <div class="col-7 col-md-4 col-lg-3 col-xl-2 text-center">
                         
-                              <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                  <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Previous">
-                                      <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                  </li>
-                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                  <li class="page-item">
-                                    <a class="page-link" href="#" aria-label="Next">
-                                      <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                  </li>
-                                </ul>
-                              </nav>
+{{--                              <nav aria-label="Page navigation example">--}}
+{{--                                <ul class="pagination">--}}
+{{--                                  <li class="page-item">--}}
+{{--                                    <a class="page-link" href="#" aria-label="Previous">--}}
+{{--                                      <span aria-hidden="true">&laquo;</span>--}}
+{{--                                    </a>--}}
+{{--                                  </li>--}}
+{{--                                  <li class="page-item active"><a class="page-link" href="#">1</a></li>--}}
+{{--                                  <li class="page-item"><a class="page-link" href="#">2</a></li>--}}
+{{--                                  <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                                  <li class="page-item">--}}
+{{--                                    <a class="page-link" href="#" aria-label="Next">--}}
+{{--                                      <span aria-hidden="true">&raquo;</span>--}}
+{{--                                    </a>--}}
+{{--                                  </li>--}}
+{{--                                </ul>--}}
+{{--                              </nav>--}}
+                                {{ $transport->render("pagination::bootstrap-4") }}
                         
                         
                             </div>
@@ -1707,5 +1714,10 @@
 
       });
   }
+</script>
+@endsection
+@section('script')
+<script>
+ 
 </script>
 @endsection

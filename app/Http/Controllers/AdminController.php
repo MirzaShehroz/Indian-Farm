@@ -646,32 +646,63 @@ class AdminController extends Controller
        
         public function updateprofile(Request $req){
             $user=User::where('id',$req->id)->first();
+            
             $user_address=Address::where('id',$user->address_id)->first();
             
             DB::beginTransaction();
             try{
                
-                DB::beginTransaction();
-                try{
+                if($user_address!=null){
+                    DB::beginTransaction();
+                    try{
+                       
+                        $user_address->address_line1=$req->address_line1;
+                        $user_address->address_line2=$req->address_line2;
+                        $user_address->state=$req->state;
+                        $user_address->city=$req->city;
+                        $user_address->area=$req->area;
+                        $user_address->district=$req->district;
+                        $user_address->taluka=$req->taluka;
+                        
+                        $user_address->zipcode=$req->zipcode;
+                        
+                        $user_address->save();
+                        
+                        DB::commit();
+    
+    
+                    }catch(\Exception $e){
+                   
+                    DB::rollback();
+                    return back()->with('warningMsg','Something Went Wrong');
+                    }
+                }else{
+                    $user_address=new Address;
+                    DB::beginTransaction();
+                    try{
+                       
+                        $user_address->address_line1=$req->address_line1;
+                        $user_address->address_line2=$req->address_line2;
+                        $user_address->state=$req->state;
+                        $user_address->city=$req->city;
+                        $user_address->area=$req->area;
+                        $user_address->district=$req->district;
+                        $user_address->taluka=$req->taluka;
+                        $user_address->zipcode=$req->zipcode;
+                        
+                        $user_address->save();
+                        
+                        DB::commit();
+                        $user->address_id=$user->address->id;
+    
+                    }catch(\Exception $e){
+                   
+                    DB::rollback();
+                    return back()->with('warningMsg','Something Went Wrong');
+                    }
+                }
 
-                    $user_address->address_line1=$req->address_line1;
-                    $user_address->address_line2=$req->address_line2;
-                    $user_address->state=$req->state;
-                    $user_address->city=$req->city;
-                    $user_address->area=$req->area;
-                    $user_address->district=$req->district;
-                    $user_address->taluka=$req->taluka;
-                    $user_address->zipcode=$req->zipcode;
-                    $user_address->save();
-                  
-                    DB::commit();
-
-
-                }catch(\Exception $e){
-           
-                DB::rollback();
-                return back()->with('warningMsg','Something Went Wrong');
-            }
+               
 
 
 

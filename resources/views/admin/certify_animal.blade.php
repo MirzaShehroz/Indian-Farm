@@ -885,6 +885,9 @@
     <div class="row pad-50 p-2 px-lg-5 justify-content-around">
 
       <h4 class="mt-5 mb-4 mt-md-0">Edit Certify</h4>
+      @if($errors->any())
+        {{$errors}}}
+        @endif
 
       <div class="col-12">
 
