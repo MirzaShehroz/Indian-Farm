@@ -179,9 +179,7 @@
                           <!-- end of col-3 -->
                     
                           <div class="col-12 col-md-7">
-                    
-                            <form action="" method="post">
-                    
+                                        
                               <div class="row">
                     
                                 <div class="col-12">
@@ -368,7 +366,6 @@
                               </div>
                               <!-- end of inner row  -->
                     
-                            </form>
                             <!-- end of form  -->
                           </div>
                           <!-- end of col-9  -->

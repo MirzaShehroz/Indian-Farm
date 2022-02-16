@@ -7,9 +7,16 @@ use App\Models\AppointmentBook;
 use App\Models\TransportBooked;
 use App\Models\TransportFrom;
 use App\Models\TransportTo;
+use App\Models\Vet;
+
 function getname($id){
     $name =User::where('id',$id)->first();
     return $name->first_name.' '.$name->last_name;
+}
+function getuserFromVet($id){
+    $vet=Vet::where('id',$id)->first();
+    $user=User::where('id',$vet->user)->first();
+    return $user;
 }
 
 function getadsid($id){

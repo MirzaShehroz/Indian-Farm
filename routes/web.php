@@ -89,13 +89,20 @@ Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
         // certify animal
         Route::Get('admin/certify/animal',[CertifyController::class,'index'])->name('certify_index');
         Route::post('admin/cerfiy/appointment/register',[CertifyController::class,'registerAppoint'])->name('register_cappointment');
-        Route::post('admin/certify-appointment/delete',[certifyAnimal::class,'delete'])->name('deleteCertify');
+        Route::post('admin/certify-appointment/update',[CertifyController::class,'update'])->name('update');
+        Route::post('admin/certify-appointment/delete',[CertifyController::class,'deleteCertify'])->name('deleteCertify');
+        Route::any('/search/certify-appointments',[CertifyController::class,'search'])->name('certify_search');
+
 
 
 
         Route::get('changepassword',[AdminController::class,'changepassword']);
-
+        // adds 
         Route::post('add/ads',[AdminCOntroller::class,'addads']);
+        Route::any('adds/search',[AdminController::class,'searchAdd'])->name('search');
+        Route::post('admin/add/delete',[AdminController::class,'deleteadd'])->name('deleteadd');
+        Route::post('admin/adds/update',[AdminController::class,'updateAdds'])->name('updateAdds');
+
 
 
 

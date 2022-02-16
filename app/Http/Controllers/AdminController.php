@@ -288,15 +288,11 @@ class AdminController extends Controller
                 $adsaddress->save();    
                 DB::commit();
              }catch(\Exception $e){
-           
+                dd($e);
             DB::rollback();
             return back()->with('warningMsg','There some Problem try again');;
              }
-
-
-
-                   
-              
+ 
 
                 $ads->user_id=Auth::user()->id;
                 $ads->animal_type=$req->animal_type;
@@ -331,7 +327,29 @@ class AdminController extends Controller
 
     } 
 
-
+    // search add
+    public function searchAdd(Request $req){
+        // dd($req);
+        $ads=Ads::join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_videos','ads.ads_video_id','ads_videos.id')
+        ->where('breed',$req->breed)
+        ->orWhere('animal_type',$req->animaltype)
+        ->orWhere('pregnant',$req->pragnent)
+        ->orWhere('city',$req->city)
+        ->orWhere('state',$req->state)
+        ->orWhere('district',$req->district)
+        ->orWhere('takula',$req->taluka)
+        ->get();
+        // dd($ads);
+        return view('admin.ads',compact('ads'))->with('successMsg','Found successfully');
+    }
+    // delete
+    public function deleteadd(Request $req){
+        // dd($req->id)
+        $ads=Ads::where('ads_address_id',$req->id)->delete();
+        return back()->with('errorMsg','Add deleted!');
+    }
         public function user(){
 
             $data=User::join('user_address','users.address_id','=','user_address.id')
@@ -339,6 +357,150 @@ class AdminController extends Controller
             ->get();
             // dd($data);
             return view('admin.user',compact("data"));
+        }
+
+        public function updateAdds(Request $req){
+            // dd($req->id);
+
+            
+            $ads=Ads::where('id',$req->id)->first();
+            // dd($ads);
+            DB::beginTransaction();
+            try{
+
+                $adsphoto=AdsPhoto::where('id',$ads->ads_photo_id)->first();
+                // dd($adsphoto);
+                DB::beginTransaction();
+                try{
+
+                    if($req->hasfile('image')) {
+                        $file=$req->image;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo1 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image1')) {
+                        $file=$req->image1;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo2 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image2')) {
+                        $file=$req->image2;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo3 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image3')) {
+                        $file=$req->image3;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo4 = $filepath.$name;  
+                    
+                    }
+                    if($req->hasfile('image4')) {
+                        $file=$req->image4;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/images/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsphoto->photo5 = $filepath.$name;  
+                    
+                    }
+                //    dd($adsphoto);
+                   $adsphoto->save();
+                   DB::commit();
+                }catch(\Exception $e){
+                    dd($e);
+                    DB::rollback();
+                    return "failed1";
+                }
+                   $adsvideo=AdsVideo::where('id',$ads->ads_video_id)->first();
+
+                   DB::beginTransaction();
+                try{
+
+                    if($req->hasfile('video')) {
+                        $file=$req->video;
+                        $ran=mt_rand( 10000000, 99999999 );
+                        $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                        $filepath='Ads/video/';
+                        $file->move(public_path().'/'.$filepath,$name);  
+                        $adsvideo->video= $filepath.$name;  
+                    
+                    }
+                //    dd($adsvideo);
+                    $adsvideo->save();
+                    DB::commit();
+                }catch(\Exception $e){
+                    dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','There some Problem try again');;
+             }
+
+
+
+             $adsaddress =AdsAddress::where('id',$ads->ads_address_id)->first();
+             DB::beginTransaction();
+             try{
+
+                $adsaddress->addressline1=$req->address_line1;
+                $adsaddress->addressline2=$req->address_line2;
+                $adsaddress->area=$req->area;
+                $adsaddress->takula=$req->taluka;
+                $adsaddress->district=$req->district;
+                $adsaddress->zipcode=$req->zipcode;
+                $adsaddress->state=$req->state;
+                $adsaddress->save();    
+                DB::commit();
+             }catch(\Exception $e){
+                dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','There some Problem try again');;
+             }
+ 
+
+                $ads->user_id=Auth::user()->id;
+                $ads->animal_type=$req->animal_type;
+                $ads->no_animals=$req->no_animals;
+                $ads->age=$req->age;
+                $ads->price=$req->price;
+                $ads->breed=$req->breed;
+                $ads->milk_capacity=$req->milk_capacity;
+                $ads->pregnant=$req->pregnant;
+                $ads->due_month_pregnancy=$req->month_pregnancy;
+                $ads->gender=$req->gender;
+                $ads->breed_type=$req->breed_type;
+                $ads->vaccinated=$req->vaccinated;
+                $ads->weight=$req->weight;
+                $ads->certified=$req->certified;
+                $ads->certified_reg_no=$req->certified_reg_no;
+                $ads->status=1;
+                $ads->ads_photo_id=$adsphoto->id;
+                $ads->ads_address_id=$adsaddress->id;
+                $ads->ads_video_id=$adsvideo->id;
+               
+                $ads->save();
+              //  dd($ads,$adsaddress,$adsphoto,$adsvideo);
+              DB::commit();
+               return back()->with('successMsg','Ad updated Successfully');
+            }catch(\Exception $e){
+                dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','There some Problem try again');
+        }
+
         }
         
 
@@ -474,6 +636,7 @@ class AdminController extends Controller
 
 
         public function getads($id){
+            // dd($id);
             $ads=Ads::where('id',$id)->first();
             $adsadress=AdsAddress::where('id',$ads->ads_address_id)->first();
             $adsphoto=AdsPhoto::where('id',$ads->ads_photo_id)->first();

@@ -6,37 +6,54 @@
 
                         <div class="row">
 
-                            
-
+                          {{-- {{dd($ads)}} --}}
+                            <form action="{{route('search')}}" method="POST">
+                            @csrf
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal Type" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Breed" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Gender " id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Pregnant
-                                " id="">
+                              <div class="col-md-3 col-lg-2 my-1">
+                                <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
+                                  <option value="" disabled  selected>Select Animal Type...</option>
+                                  <option value="0">Bull</option>
+                                  <option value="1">Buffalo</option>
+                                  <option value="2">cow</option>
+                                  <option value="3" >Sheep</option>
+                                  <option  value="4"> Goat</option>
+                                </select>
+                              </div>                                
+                              <input type="text" name="breed" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Breed" id="">
+                                <input type="text" name="gender" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Gender " id="">
                                 
-                                
+                                <div class="col-md-4 col-lg-3 my-1">
+                        
+                                  <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="pragnent">
+                                    <option value="" disabled  selected>Pregnant</option>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                               
+                                  </select>
+                                  
+                                </div>
+                               
                             </div>
                             <!-- end of col  -->
 
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
-                                <input type="text" name="" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
-
-                             
-                                
+                                <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
+                                <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
+                                <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
+                                <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+          
                             </div>
                             <!-- end of col  -->
 
                             <div class="col-12 mt-3">
 
-                                <button class="bg_danger px-5 py-2 rounded-pill text-light " name="">Search</button>
+                                <button type="submit" class="bg_danger px-5 py-2 rounded-pill text-light " name="">Search</button>
 
                             </div>
+                          </form>
                            <!-- end of col   -->
 
                            <div class="col-12 mt-4">
@@ -105,11 +122,7 @@
                                         <td>Goat</td>
                                         @endif
 
-                                        @if($ad->breed_type==0)
-                                        <td>Pure</td>
-                                        @elseif($ad->breed_type==1)
-                                        <td>Mixed</td>
-                                        @endif
+                                       <td>{{$ad->breed}}</td>
                                       <td></td>
                                        
 
@@ -146,7 +159,33 @@
                                         <td class="d-flex">
                                             <button  class="bg_danger text-light me-2"  onclick="hello({{getadsid($ad->id)}})" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i " class="fas fa-pencil-alt"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="view_ads"  type="button"><i class="fas fa-eye"></i></button>
-                                            <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2"  type="button"><i class="far fa-trash-alt"></i></button>
+                                            <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2{{$ad->id}}"  type="button"><i class="far fa-trash-alt"></i></button>
+                                        </td>
+
+                                        <td>
+                                          <div class="modal fade" id="exampleModal2{{$ad->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                              <div class="modal-content">
+                                                <form action="{{route('deleteadd')}}" method="POST">
+                                                  @csrf
+                                                  <input type="hidden" value="{{$ad->id}}" name="id">
+                                                <div class="modal-header">
+
+                                                    <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                  </div>
+                                                <div class="modal-body text-center p-4">
+                                                  <p class="fw-bold text-secondary">Are You sure to Delete this Ads </p>
+                                                </div>
+                                                <div class="modal-foote d-flex">
+                                                  <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
+                                                  <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a> 
+                                                  
+                                                </div>
+                                              </form>
+                                              </div>
+                                            </div>
+                                          </div>
                                         </td>
                                       </tr>
                                       @endforeach
@@ -597,9 +636,10 @@
                     <div class="offcanvas-body">
                       
                 
-                    <form action="{{url('ads/update')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('updateAdds')}}" method="POST" enctype="multipart/form-data">
+                      @csrf
                         <div class="row">
-
+                          <input type="hidden" name="id" id="add_id" value="">
                             <div class="col-12 col-md-3 col-lg-2 my-3 text-center">
 
                                 <!-- <input accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
@@ -949,25 +989,6 @@
                   </div>
 
 
-
-                  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body text-center p-4">
-          <p class="fw-bold text-secondary">Are You sure to Delete this Ads </p>
-        </div>
-        <div class="modal-foote d-flex">
-         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
-         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover">Yes</button></a> 
-        
-        </div>
-      </div>
-    </div>
-  </div>
        @endsection
 @section('script')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -1096,6 +1117,8 @@ function hello(id){
                   
                   console.log(data.adsaddress.addressline1);
                   // alert("Your Data : "+data.ads.id);
+                  // console.log(id);
+                  document.getElementById('add_id').value=id;
                   document.getElementById('animal_type').value=data.ads.animal_type;
                   document.getElementById('price').value=data.ads.price;
                   document.getElementById('weight').value=data.ads.weight;
