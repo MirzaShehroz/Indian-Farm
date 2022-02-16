@@ -22,7 +22,7 @@ class AppointmentBookController extends Controller
             'taluka'=>'required',
             'zipcode'=>'required',
             'animaltype'=>'required',
-            'no_animal'=>'required',
+            'no_animal'=>'required|numeric',
             'breed'=>'required',
             'personname'=>'required',
             'mobileno'=>'required',

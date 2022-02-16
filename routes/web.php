@@ -113,7 +113,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     Route::get('admin/ads',function(){
     
-        $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->get();
+        $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->paginate(5);
     
         //$ads=Ads::all();
     
@@ -121,12 +121,12 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     });
     
     Route::get('admin/appointmentbooked',function(){
-        $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->get();
+        $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->paginate(5);
         $vets=Vet::all();
         return view('admin.appointment_booked',compact('appointment','vets'));
     });
     Route::get('admin/transportbooked',function(){
-        $transport=TransportBooked::all();
+        $transport=TransportBooked::paginate(5);
         return view('admin.transport_booked',compact('transport'));
     });
     
