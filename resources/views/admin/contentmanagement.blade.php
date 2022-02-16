@@ -585,226 +585,85 @@
                             
                                             <div class="row justify-content-around">
                             
+                                                @foreach($news as $new)
                                                 <div class="col-12 col-md-6 my-3 bignews1" >
                             
-                                                    <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                            
-                                       
-                                                   <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">Lorem ipsum dolor sit.</p>
-                            
-                                                   <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                            
-                                                   <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;">VIEW MORE</a>
-                            
-                                                 
-
-                                                   <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;"><i class="fas fa-edit text-light"></i></a>
-
-                                                   <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-eye text-light"></i></a>
-                                                  
-
-                                                   <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-trash-alt text-light"></i></a>
-                            
-                                                </div>
-                                                <!-- overlay div  -->
-                            
-                                                </div>
-                                                <!-- end of col card -->
-                                          
-                                                <div class="col-12 col-md-6 my-3 bignews1" >
-                            
-                                                  <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
+                                                <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url({{asset($new->photo)}}) center center no-repeat; background-size: cover; border-radius: 10px;">
                           
-                                     
-                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">Lorem ipsum dolor sit.</p>
+
+                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">{{trimstring($new->topic)}}...</p>
                           
-                                                 <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
+                                                 <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
                           
-                                                 <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;">VIEW MORE</a>
+                                                 <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">VIEW MORE</a>
                           
                                                
 
                                                  <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;"><i class="fas fa-edit text-light"></i></a>
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-eye text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;" onclick="viewsnewdetail({{$new->id}})"><i class="fas fa-eye text-light"></i></a>
                                                 
 
                                                  <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-trash-alt text-light"></i></a>
                           
-                                              </div>
-                                              <!-- overlay div  -->
-                          
-                                              </div>
-                                              <!-- end of col card -->
-                                          
-                                               
-                            
-                                                <div class="col-12 col-md-4 my-3" >
-                            
-                                                    <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                            
-                                                    <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                                   <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                            
-                                                   <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                          
+                                                 </div>
+                                              
+                                                </div>
+                                                @endforeach
 
-                                                   <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
+
+                                                @foreach($latestnews as $new)
+                                                <div class="col-12 col-md-4 my-3 " >
+                            
+                                                <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url({{asset($new->photo)}}) center center no-repeat; background-size: cover; border-radius: 10px;">
+                          
+                                     
+                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">{{trimstring($new->topic)}}...</p>
+                          
+                                                 <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
+                          
+                                                 <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">VIEW MORE</a>
                           
                                                
 
-                                                   <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-  
-                                                   <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
-                                                  
-  
-                                                   <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
-                            
-                            
-                                                </div>
-                                                <!-- overlay div  -->
-                            
-                                                </div>
-                                                <!-- end of col card -->
-                                          
-                                                <div class="col-12 col-md-4 my-3" >
-                            
-                                                  <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                          
-                                                  <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                          
-                                                 <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                        
+                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;"><i class="fas fa-edit text-light"></i></a>
 
-                                                 <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
-                        
-                                             
-
-                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-
-                                                 <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;" onclick="viewsnewdetail({{$new->id}})"><i class="fas fa-eye text-light"></i></a>
                                                 
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-trash-alt text-light"></i></a>
                           
-                          
-                                              </div>
-                                              <!-- overlay div  -->
-                          
-                                              </div>
+                                                 </div>
+                                              
+                                                </div>
+                                                @endforeach
+
                                               <!-- end of col card -->
                                           
-                                              <div class="col-12 col-md-4 my-3" >
+                                               
                             
-                                                <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                        
-                                                <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                               <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                        
-                                               <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                      
-
-                                               <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
-                      
-                                           
-
-                                               <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-
-                                               <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
-                                              
-
-                                               <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
-                        
-                        
-                                            </div>
-                                            <!-- overlay div  -->
-                        
-                                            </div>
+                                                
+                                                <!-- overlay div  -->
+                            
+                                                
+                                                <!-- end of col card -->
+                                          
+                                               
+                                              <!-- overlay div  -->
+                          
+                                                
+                                              <!-- end of col card -->
+                                          
+                                             
                                             <!-- end of col card -->
                                           
-                                            <div class="col-12 col-md-4 my-3" >
-                            
-                                              <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                      
-                                              <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                             <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                      
-                                             <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                    
-
-                                             <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
-                    
-                                         
-
-                                             <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-
-                                             <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
-                                            
-
-                                             <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
-                      
-                      
-                                          </div>
-                                          <!-- overlay div  -->
-                      
-                                          </div>
+                                           
                                           <!-- end of col card -->
                                           
-                                          <div class="col-12 col-md-4 my-3" >
-                            
-                                            <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                    
-                                            <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                           <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                    
-                                           <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                  
-
-                                           <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
-                  
-                                       
-
-                                           <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-
-                                           <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
                                           
-
-                                           <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
-                    
-                    
-                                        </div>
-                                        <!-- overlay div  -->
-                    
-                                        </div>
                                         <!-- end of col card -->
                                           
-                                        <div class="col-12 col-md-4 my-3" >
                             
-                                          <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
-                  
-                                          <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
-                                         <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
-                  
-                                         <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
-                
-
-                                         <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 30%;">VIEW MORE</a>
-                
-                                     
-
-                                         <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-2 py-1 rounded-pill" style="right: 3%; top: 30%;"><i class="fas fa-edit text-light"></i></a>
-
-                                         <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-eye text-light"></i></a>
-                                        
-
-                                         <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light  px-2 py-1 rounded-pill" style="right: 3%; top: 70%;"><i class="fas fa-trash-alt text-light"></i></a>
-                  
-                  
-                                      </div>
-                                      <!-- overlay div  -->
-                  
-                                      </div>
                                       <!-- end of col card -->
                                             
                                           
@@ -827,117 +686,30 @@
                                             <div class="row p-lg-2">
                             
                             
-                                                
+                                                @foreach($latestnews as $news1)
                             
                                                 <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
                             
-                                                    <a href="#" class="text-decoration-none">
+                                                    <a data-bs-toggle="modal" data-bs-target="#viewnews" href="#" class="text-decoration-none" onclick="viewsnewdetail({{$news1->id}})">
                                                     <div class="d-flex cardobject">
                                                         <div class="flex-shrink-0">
-                                                          <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
+                                                          <img src="{{asset($news1->photo)}}" alt="image not found" class="objectnews_img">
                                                         </div>
                                                         <div class="flex-grow-1 ms-2">
-                                                        <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
+                                                        <small class="text-secondary objecttext d-block"> {{trimstring($news1->topic)}}...</small>
                             
                                                         
-                                                        <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
+                                                        <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : {{$news1->created_at->format('Y-m-d')}}</small>
                                                         </div>
                                                       </div>
                                                     </a>
                             
                             
                                                 </div>
+
+                                                @endforeach
                                                 <!-- end of inner col  -->
                             
-                                                
-                                          
-                            
-                                                <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                            
-                                                  <a href="#" class="text-decoration-none">
-                                                        <div class="d-flex cardobject">
-                                                            <div class="flex-shrink-0">
-                                                              <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-2">
-                                                            <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                
-                                                            
-                                                            <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                            </div>
-                                                          </div>
-                                                        </a>
-                            
-                            
-                                                </div>
-                                                <!-- end of inner col  -->
-                            
-                            
-                                                   
-                            
-                                                <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                            
-                                                  <a href="#" class="text-decoration-none">
-                                                        <div class="d-flex cardobject">
-                                                            <div class="flex-shrink-0">
-                                                              <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-2">
-                                                            <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                
-                                                            
-                                                            <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                            </div>
-                                                          </div>
-                                                        </a>
-                            
-                            
-                                                </div>
-                                                <!-- end of inner col  -->
-                            
-                                                   
-                            
-                                                <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                            
-                                                  <a href="#" class="text-decoration-none">
-                                                        <div class="d-flex cardobject">
-                                                            <div class="flex-shrink-0">
-                                                              <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-2">
-                                                            <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                
-                                                            
-                                                            <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                            </div>
-                                                          </div>
-                                                        </a>
-                            
-                            
-                                                </div>
-                                                <!-- end of inner col  -->
-                            
-                                                   
-                            
-                                                <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                            
-                                                  <a href="#" class="text-decoration-none">
-                                                        <div class="d-flex cardobject">
-                                                            <div class="flex-shrink-0">
-                                                              <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                            </div>
-                                                            <div class="flex-grow-1 ms-2">
-                                                            <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                
-                                                            
-                                                            <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                            </div>
-                                                          </div>
-                                                        </a>
-                            
-                            
-                                                </div>
-                                                <!-- end of inner col  -->
                             
                                                 
                             
@@ -1009,21 +781,21 @@
                                           
                                                               <div class="col-12 my-3 bignews2" >
                                           
-                                                                  <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;">
+                                                                  <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover; border-radius: 10px;" id="vphoto">
                                           
                                                      
-                                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">Lorem ipsum dolor sit.</p>
+                                                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3" id="vcaption">Lorem ipsum dolor sit.</p>
                                           
-                                                                 <small class="position-absolute text-light mt-3 end-0 me-3 fw-bold">Date: <span>20/01/2022</span> </small>
+                                                                 <small class="position-absolute text-light mt-3 end-0 me-3 fw-bold">Date: <span id="vdate">20/01/2022</span> </small>
                                           
                                                             
                                           
                                                               </div>
                                                               <!-- overlay div  -->
                                           
-                                                              <h4 class="tcolor mt-4 fw-bold">Heading 1</h4>
+                                                              <h4 class="tcolor mt-4 fw-bold" id="vtopic">Heading 1</h4>
                                                               
-                                                              <p class="text-secondary mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit <br> repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores <br> debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores</p>
+                                                              <p class="text-secondary mt-4" id="vdetail">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit <br> repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores <br> debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur doloresLorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nemo qui repellendus facere quasi architecto, cum ab neque. Asperiores debitis ad sint fugit repellat quae nulla aperiam deleniti tenetur dolores</p>
                                           
                                                               </div>
                                                               <!-- end of col card -->
@@ -1051,114 +823,38 @@
                                           
                                             
                                           
-                                                              <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                                          
-                                                                <a href="#" class="text-decoration-none">
-                                                                  <div class="d-flex cardobject">
-                                                                      <div class="flex-shrink-0">
-                                                                        <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                                      </div>
-                                                                      <div class="flex-grow-1 ms-2">
-                                                                      <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                          
-                                                                      
-                                                                      <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                                      </div>
-                                                                    </div>
-                                                                  </a>
-                                          
-                                          
-                                                              </div>
+                                                              @foreach($latestnews as $news1)
+                            
+                                                <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
+                            
+                                                    <a data-bs-toggle="modal" data-bs-target="#viewnews" href="#" class="text-decoration-none" onclick="viewsnewdetail({{$news1->id}})">
+                                                    <div class="d-flex cardobject">
+                                                        <div class="flex-shrink-0">
+                                                          <img src="{{asset($news1->photo)}}" alt="image not found" class="objectnews_img">
+                                                        </div>
+                                                        <div class="flex-grow-1 ms-2">
+                                                        <small class="text-secondary objecttext d-block"> {{trimstring($news1->topic)}}...</small>
+                            
+                                                        
+                                                        <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : {{$news1->created_at->format('Y-m-d')}}</small>
+                                                        </div>
+                                                      </div>
+                                                    </a>
+                            
+                            
+                                                </div>
+
+                                                @endforeach
                                                               <!-- end of inner col  -->
                                           
                                                               
                                                         
                                           
-                                                              <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                                          
-                                                                <a href="#" class="text-decoration-none">
-                                                                      <div class="d-flex cardobject">
-                                                                          <div class="flex-shrink-0">
-                                                                            <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                                          </div>
-                                                                          <div class="flex-grow-1 ms-2">
-                                                                          <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                              
-                                                                          
-                                                                          <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                                          </div>
-                                                                        </div>
-                                                                      </a>
-                                          
-                                          
-                                                              </div>
-                                                              <!-- end of inner col  -->
-                                          
+                                                            
                                           
                                                                  
                                           
-                                                              <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                                          
-                                                                  <a href="#" class="text-decoration-none">
-                                                                      <div class="d-flex cardobject">
-                                                                          <div class="flex-shrink-0">
-                                                                            <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                                          </div>
-                                                                          <div class="flex-grow-1 ms-2">
-                                                                          <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                              
-                                                                          
-                                                                          <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                                          </div>
-                                                                        </div>
-                                                                      </a>
-                                          
-                                          
-                                                              </div>
-                                                              <!-- end of inner col  -->
-                                          
-                                                                 
-                                          
-                                                              <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                                          
-                                                                <a href="#" class="text-decoration-none">
-                                                                      <div class="d-flex cardobject">
-                                                                          <div class="flex-shrink-0">
-                                                                            <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                                          </div>
-                                                                          <div class="flex-grow-1 ms-2">
-                                                                          <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                              
-                                                                          
-                                                                          <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                                          </div>
-                                                                        </div>
-                                                                      </a>
-                                          
-                                          
-                                                              </div>
-                                                              <!-- end of inner col  -->
-                                          
-                                                                 
-                                          
-                                                              <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
-                                          
-                                                                <a href="#" class="text-decoration-none">
-                                                                      <div class="d-flex cardobject">
-                                                                          <div class="flex-shrink-0">
-                                                                            <img src="https://images.unsplash.com/photo-1636538191394-7c360a55fa96?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80" alt="image not found" class="objectnews_img">
-                                                                          </div>
-                                                                          <div class="flex-grow-1 ms-2">
-                                                                          <small class="text-secondary objecttext d-block"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, mollitia!</small>
-                                              
-                                                                          
-                                                                          <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : 23/05/2022</small>
-                                                                          </div>
-                                                                        </div>
-                                                                      </a>
-                                          
-                                          
-                                                              </div>
+                                                             
                                                               <!-- end of inner col  -->
                                           
                                                               
@@ -1185,30 +881,40 @@
 
 
 
-                                                  <div class="modal fade" id="addnew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editnews" aria-hidden="true">
+                                                  <div class="modal fade" id="addnew" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addnews" aria-hidden="true">
                             <div class="modal-dialog modal-xl modal-dialog-centered">
+                               
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h5 class="modal-title" id="editnews">View News</h5>
+                                  <h5 class="modal-title" id="editnews">Add News</h5>
                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="text-danger">{{$error}}<br></div>
+@endforeach
+@endif                              
                                 <div class="modal-body text-center p-md-4">
-                                 
+                                  
                               <div class="row my-4">
-
+                              <form action="{{url('add/news')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="col-12 col-md-8 mx-auto">
 
                                   <label for="textareas" class="fs-5 text-dark fw-bold">Topic</label>
-                                  <input type="text" name="" placeholder="Enter Topic Name" class="py-3 form-control border border-secondary"  id="textareas">
+                                  <input type="text" name="topic" placeholder="Enter Topic Name" class="py-3 form-control border border-secondary"  id="textareas">
 
                                 </div>
                                 <!-- end of col  -->
 
-                                <div class="col-12 mx-auto col-md-10 mt-4 col-lg-7 p-md-4 position-relative" style="height: 250px; border-radius: 20px; background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover;">
+                                <div class="col-12 mx-auto col-md-10 mt-4 col-lg-7 p-md-4 position-relative" style=" border-radius: 20px;   center center no-repeat;">
                                     
 
                                     
-                                  <button class="px-5 border border-light py-2 btnhover2 fw-bold bg_danger text-light btnhover position-absolute bottom-0 end-0" style="border-top-left-radius:20px;">Change</button>
+                                <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                                <p><label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" for="file" style="cursor: pointer;">Upload Image</label></p>
+                                <p><img id="output" width="200" class=" adimg2" src="https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" /><br></p>
+                                <label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(0)">Delete</label>
 
                                 
   
@@ -1218,7 +924,7 @@
                                 <div class="col-12 col-md-10 mt-4 mx-auto">
 
 
-                                  <textarea name="" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
+                                  <textarea name="detail" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
 
                                 </div>
                                 <!-- end of col  -->
@@ -1227,11 +933,11 @@
                                 <div class="col-12 mx-auto col-md-6 col-lg-3 mt-3">
 
 
-                                  <button class="form-control bg_danger rounded-pill text-light btnhover2">Save & Update</button>
-
+                                  <!-- <button class="form-control bg_danger rounded-pill text-light btnhover2" type="submit">Save</button> -->
+                                  <input type="submit" class="form-control bg_danger rounded-pill text-light btnhover2">
                                 </div>
                                 <!-- end of col  -->
-
+                              </form>
                               </div>
                              <!-- end of row  -->
   
@@ -1243,6 +949,161 @@
                                     
        @endsection
 
+
+
+       <div class="modal fade" id="editnews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editnews" aria-hidden="true">
+                          <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="editnews">Edit News</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-center p-md-4">
+                               
+                                <div class="row">
+
+                                <div class="col-12 col-md-10 mx-auto">
+
+                                  <h4>Topic Name</h4>
+
+                                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed sequi, minima doloribus, expedita odit blanditiis distinctio saepe praesentium eligendi nostrum voluptatum facere corporis cupiditate repellat cum. Pariatur consectetur architecto ex?</p>
+
+                                </div>
+                                <!-- end of col  -->
+
+                                </div>
+                              <!-- end of row  -->
+
+                              <div class="row my-4">
+
+                                <div class="col-12 mx-auto col-md-10 col-lg-7 p-md-4 position-relative" style="height: 250px; border-radius: 20px; background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover;">
+                                  
+                                  <button class="px-5 border border-light py-2 btnhover2 fw-bold bg_danger text-light btnhover position-absolute bottom-0 end-0" style="border-top-left-radius:20px;">Change</button>
+
+                                </div>
+                                <!-- end of col  -->
+
+                                <div class="col-12 col-md-10 mt-4 mx-auto">
+
+
+                                  <textarea name="" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
+
+                                </div>
+                                <!-- end of col  -->
+                             
+                              </div>
+                              <!-- end of row  -->
+
+                              <div class="row">
+
+                                <div class="col-12 mx-auto col-md-6 col-lg-3 mt-2">
+
+
+                                  <button class="form-control bg_danger rounded-pill text-light btnhover2">Save & Update</button>
+
+                                </div>
+                                <!-- end of col  -->
+
+                              </div>
+                              <!-- end of row  -->
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+
+
+
+
+                        <div class="modal fade" id="viewnews" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="viewnews" aria-hidden="true">
+                          <div class="modal-dialog modal-xl modal-dialog-centered">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="viewnews">View News</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body text-center p-md-4">
+                               
+                                <div class="row">
+
+                                <div class="col-12 col-md-10 mx-auto">
+
+                                  <h4 >Topic Name</h4>
+
+                                  <p id="vnewstopic"> </p>
+
+                                </div>
+                                <!-- end of col  -->
+
+                                </div>
+                              <!-- end of row  -->
+
+                              <div class="row my-4">
+
+                                <div class="col-12 mx-auto col-md-10 col-lg-7 p-md-4 position-relative" style="height: 250px; border-radius: 20px; background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover;" id="newsphoto">
+                                  
+                                  <!-- <button class="px-5 border border-light py-2 btnhover2 fw-bold bg_danger text-light btnhover position-absolute bottom-0 end-0" style="border-top-left-radius:20px;">Change</button> -->
+
+                                </div>
+                                <!-- end of col  -->
+
+                                <div class="col-12 col-md-10 mt-4 mx-auto">
+
+
+                                  <textarea name="" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="vnewsdetail" rows="6"></textarea>
+
+                                </div>
+                                <!-- end of col  -->
+                             
+                              </div>
+                              <!-- end of row  -->
+
+                              <div class="row">
+
+                                <div class="col-12 mx-auto col-md-6 col-lg-3 mt-2">
+
+
+                                  <!-- <button class="form-control bg_danger rounded-pill text-light btnhover2">Save & Update</button> -->
+
+                                </div>
+                                <!-- end of col  -->
+
+                              </div>
+                              <!-- end of row  -->
+
+
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+
+
+
+
+                        <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <form action="{{url('delete/news')}}">
+                                <input type="hidden" method="post" id="newsid">
+                              <div class="modal-body text-center p-4">
+                                <p class="fw-bold text-secondary">Are You sure to Delete this Post </p>
+                              </div>
+                              <div class="modal-foote d-flex">
+                               <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
+                               <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover">Yes</button></a> 
+                               </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
 @section('script')
 <script>
 function deletevideo(id){
@@ -1256,5 +1117,71 @@ function deletevideo(id){
   });
 }
 </script>
+<script>
+var loadFile = function(event) {
+	var image = document.getElementById('output');
+	image.src = URL.createObjectURL(event.target.files[0]);
+};
+var deleteimg=function(id){
+ 
+  
+  
+ if(id==0){
+   img=document.getElementById('output');
+  // img.removeAttribute("src");
+   img.src="https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+ }
+ }
 
+  function newsdetail(id){
+    
+    $.ajax({
+               type:'POST',
+               url:"{{url('/getnewsdetail/')}}"+ '/'+id,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 console.log(data.newsupdate);
+                //  let topic=datadata.newsupdate.topic;
+                //  let topiclength=datadata.newsupdate.topic;
+                  
+                //   var caption=topic.slice('20',topiclength);
+                 document.getElementById('vcaption').innerHTML=data.newsupdate.topic;
+                 document.getElementById('vtopic').innerHTML=data.newsupdate.topic;
+                 var photo=data.newsupdate.photo;
+                 var http1="{{asset("  ")}}";
+                 var photourl="url("+http1.concat(photo)+")";
+                 let date= new Date(data.newsupdate.created_at);
+                
+                 document.getElementById('vphoto').style.backgroundImage=photourl.replaceAll(' ','');
+                 document.getElementById('vdate').innerHTML=date.getFullYear()+"-"+date.getMonth()+"-"+date.getDay();
+                 document.getElementById('vdetail').innerHTML=data.newsupdate.detail;
+               }
+    });           
+
+  }
+
+  function viewsnewdetail(id){
+    
+    $.ajax({
+               type:'POST',
+               url:"{{url('/viewnewsdetail/')}}"+ '/'+id,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 console.log(data.newsupdate.topic);
+                
+                 document.getElementById('vnewstopic').innerHTML=data.newsupdate.topic;
+                 document.getElementById('vnewsdetail').innerHTML=data.newsupdate.detail;
+                 var photo=data.newsupdate.photo;
+                 var http1="{{asset("  ")}}";
+                 var photourl="url("+http1.concat(photo)+")";
+                 
+                 document.getElementById('newsphoto').style.backgroundImage=photourl.replaceAll(' ','');
+               //  $("#newsphoto").css('background',)
+                //  {{asset($new->photo) vnewsdetail
+               }
+    });           
+
+  }
+
+</script>
 @endsection       

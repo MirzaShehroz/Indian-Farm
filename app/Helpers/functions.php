@@ -39,4 +39,16 @@ function to_address($id){
     return $to_address;
 }
 
+function trimstring($string){
+
+    $length=strlen($string) ;
+    if($length>=30){
+        return substr($string,10,$length);
+    }
+    else{
+        return $string;
+    }
+   // 
+ 
+}
 ?>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AppointmentBookController;
 use App\Http\Controllers\CertifyController;
 use App\Http\Controllers\TransportBookedController;
 use App\Http\Controllers\EducationVideoController;
+use App\Http\Controllers\NewsUpdateController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -22,6 +23,8 @@ use App\Models\TransportBooked;
 use App\Models\TransportFrom;
 use App\Models\TransportTo;
 use App\Models\EducationVideo;
+use App\Models\NewsUpdate;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,7 +53,7 @@ Route::get('verify-otp/{id}',function(){
 })->name('verify-otpp');
 //Route::view('admin/dashboard','app.dashboard');
 Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
-Route::group(['middleware' => 'prevent-back-history'],function(){
+//Route::group(['middleware' => 'prevent-back-history'],function(){
 
     Route::group(['middleware'=>['AdminAuth']],function(){
         Route::get('admin/index',function(){
@@ -136,7 +139,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     Route::get('admin/contentmanagement',function(){
         $education=EducationVideo::all();
-        return view('admin.contentmanagement',compact('education'));
+        $news=NewsUpdate::orderBy('id', 'desc')->limit(2)->get();
+        $latestnews=NewsUpdate::orderBy('id', 'desc')->get();
+        return view('admin.contentmanagement',compact('education','news','latestnews'));
     });
     
     //////////////////////////////////////Transport////////////////////////////
@@ -187,10 +192,30 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::post('delete/education/video',[EducationVideoController::class,'delete']);
 
 
+    //news and update
+    Route::post('add/news',[NewsUpdateController::class,'add']);
+
+    //news details
+    Route::post('getnewsdetail/{id}',[NewsUpdateController::class,'getdata']);
+
+    Route::post('viewnewsdetail/{id}',[NewsUpdateController::class,'getdata']);
 
 
 
-    });
+
+
+
+
+
+
+
+
+
+    
+
+
+
+   // });
 
     
 });
