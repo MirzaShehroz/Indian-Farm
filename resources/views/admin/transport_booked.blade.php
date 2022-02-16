@@ -5,13 +5,19 @@
                         <div class="row">
 
                             <form action="{{url('search/booked/transport')}}" method="post">
-
+                              @csrf
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id="">
-                               
+                                <!-- <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id=""> -->
+                               <select name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1">
+                                 <option value="0">Bull</option>
+                                 <option value="1">Buffalo</option>
+                                 <option value="2">Cow</option>
+                                 <option value="3">Sheep</option>
+                                 <option value="4">Goat</option>
+                               </select>
                                 
-                                <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id="">
+                                <!-- <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id=""> -->
                                 <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
                                 <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
                                 <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
@@ -1707,5 +1713,10 @@
 
       });
   }
+</script>
+@endsection
+@section('script')
+<script>
+ 
 </script>
 @endsection

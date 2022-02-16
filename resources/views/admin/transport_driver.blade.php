@@ -80,6 +80,7 @@
             </tr>
           </thead>
           <tbody>
+            
             @foreach($data as $item)
               <tr>
                 <td scope="row">{{ $item->user_id }}</td>

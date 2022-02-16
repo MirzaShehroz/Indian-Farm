@@ -403,22 +403,24 @@
 
                               <div class="col-12 col-md-3 my-2">
 
-                                <input type="text" class="form-control py-3" placeholder="Search By Topic">
+                            <form action="{{url('searcheducation')}}" method="post">
+
+                                <input type="text" name="topic" class="form-control py-3" placeholder="Search By Topic">
 
                               </div>
                               <!-- end of col  -->
 
                               <div class="col-12 col-md-3 my-2">
 
-                                <input type="date" class="form-control py-3" placeholder="Search By Date">
+                                <input type="date" name="date" class="form-control py-3" placeholder="Search By Date">
 
                               </div>
                               <!-- end of col  -->
 
                               <div class="col-12 col-md-3 my-2">
 
-                            <button class="bg_danger btnhover2 px-5 rounded-pill py-3 text-light" type="button">Search</button>
-
+                            <button class="bg_danger btnhover2 px-5 rounded-pill py-3 text-light" type="submit">Search</button>
+                            </form>
                               </div>
                               <!-- end of col  -->
                               
@@ -584,7 +586,7 @@
                             
                             
                                             <div class="row justify-content-around">
-                            
+                                            @if($news!=null)
                                                 @foreach($news as $new)
                                                 <div class="col-12 col-md-6 my-3 bignews1" >
                             
@@ -599,19 +601,23 @@
                           
                                                
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;"><i class="fas fa-edit text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;" onclick="editnewdetail({{$new->id}})"><i class="fas fa-edit text-light"></i></a>
 
                                                  <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;" onclick="viewsnewdetail({{$new->id}})"><i class="fas fa-eye text-light"></i></a>
                                                 
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-trash-alt text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;" onclick="deletenewdetail({{$new->id}})"><i class="fas fa-trash-alt text-light"></i></a>
                           
                                                  </div>
                                               
                                                 </div>
                                                 @endforeach
+                                            @else
+                                            No Content 
+                                            @endif
 
 
+                                            @if($latestnews!=null)
                                                 @foreach($latestnews as $new)
                                                 <div class="col-12 col-md-4 my-3 " >
                             
@@ -626,18 +632,19 @@
                           
                                                
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;"><i class="fas fa-edit text-light"></i></a>
-
+                                                 <a data-bs-toggle="modal" data-bs-target="#editnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 10%;" onclick="editnewdetail({{$new->id}})"><i class="fas fa-edit text-light"></i></a>
                                                  <a data-bs-toggle="modal" data-bs-target="#viewnews" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 30%;" onclick="viewsnewdetail({{$new->id}})"><i class="fas fa-eye text-light"></i></a>
                                                 
 
-                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;"><i class="fas fa-trash-alt text-light"></i></a>
+                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal9" type="button" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="right: 3%; top: 50%;" onclick="deletenewdetail({{$new->id}})"><i class="fas fa-trash-alt text-light"></i></a>
                           
                                                  </div>
                                               
                                                 </div>
                                                 @endforeach
-
+                                              @else
+                                              No Content 
+                                              @endif
                                               <!-- end of col card -->
                                           
                                                
@@ -685,7 +692,7 @@
                             
                                             <div class="row p-lg-2">
                             
-                            
+                                              @if($latestnews!=null)
                                                 @foreach($latestnews as $news1)
                             
                                                 <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
@@ -709,8 +716,9 @@
 
                                                 @endforeach
                                                 <!-- end of inner col  -->
-                            
-                            
+                                              @else
+                                              No Content
+                                              @endif
                                                 
                             
                             
@@ -823,7 +831,7 @@
                                           
                                             
                                           
-                                                              @foreach($latestnews as $news1)
+                                            @foreach($latestnews as $news1)
                             
                                                 <div class="col-12 border-bottom border-2 border_color pb-3 my-3">
                             
@@ -844,7 +852,8 @@
                             
                                                 </div>
 
-                                                @endforeach
+                                            @endforeach
+                                           
                                                               <!-- end of inner col  -->
                                           
                                                               
@@ -963,11 +972,11 @@
                                 <div class="row">
 
                                 <div class="col-12 col-md-10 mx-auto">
-
-                                  <h4>Topic Name</h4>
-
-                                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed sequi, minima doloribus, expedita odit blanditiis distinctio saepe praesentium eligendi nostrum voluptatum facere corporis cupiditate repellat cum. Pariatur consectetur architecto ex?</p>
-
+                        <form action="{{url('update/url')}}" method="post" enctype="multipart/form-data">
+                          @csrf
+                                  <h4 >Topic Name</h4>
+                                  <input type="hidden" name="editid" id="editnewid">
+                                  <input type="text" id="etopic" name="topic" class="py-3 form-control border border-secondary">
                                 </div>
                                 <!-- end of col  -->
 
@@ -976,17 +985,22 @@
 
                               <div class="row my-4">
 
-                                <div class="col-12 mx-auto col-md-10 col-lg-7 p-md-4 position-relative" style="height: 250px; border-radius: 20px; background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover;">
+                                <div class="col-12 mx-auto col-md-10 col-lg-7 p-md-4 position-relative" style="height: 250px; border-radius: 20px; background: url(https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80) center center no-repeat; background-size: cover;" id="ephoto">
                                   
-                                  <button class="px-5 border border-light py-2 btnhover2 fw-bold bg_danger text-light btnhover position-absolute bottom-0 end-0" style="border-top-left-radius:20px;">Change</button>
+                                  <!-- <button data-toggle="modal" data-target="#photoupload" type="button" class="px-5 border border-light py-2 btnhover2 fw-bold bg_danger text-light btnhover position-absolute bottom-0 end-0" style="border-top-left-radius:20px;">Change</button> -->
 
                                 </div>
                                 <!-- end of col  -->
-
                                 <div class="col-12 col-md-10 mt-4 mx-auto">
 
 
-                                  <textarea name="" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
+                                  <input type="file" name="image" class="py-3 form-control border border-secondary">
+                                  <span class="text-danger">When you upload new photo old will delete</span>
+                                </div>
+                                <div class="col-12 col-md-10 mt-4 mx-auto">
+
+
+                                  <textarea name="detail" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="edetail" rows="6"></textarea>
 
                                 </div>
                                 <!-- end of col  -->
@@ -999,11 +1013,11 @@
                                 <div class="col-12 mx-auto col-md-6 col-lg-3 mt-2">
 
 
-                                  <button class="form-control bg_danger rounded-pill text-light btnhover2">Save & Update</button>
+                                  <button class="form-control bg_danger rounded-pill text-light btnhover2">Update</button>
 
                                 </div>
                                 <!-- end of col  -->
-
+                                </form>
                               </div>
                               <!-- end of row  -->
 
@@ -1091,14 +1105,15 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
-                              <form action="{{url('delete/news')}}">
-                                <input type="hidden" method="post" id="newsid">
+                              <form action="{{url('delete/news')}}" method="post">
+                                @csrf
+                                <input type="hidden" method="post" id="newsid" name="newsupdate_id">
                               <div class="modal-body text-center p-4">
                                 <p class="fw-bold text-secondary">Are You sure to Delete this Post </p>
                               </div>
                               <div class="modal-foote d-flex">
                                <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
-                               <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover">Yes</button></a> 
+                               <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a> 
                                </form>
                               </div>
                             </div>
@@ -1176,12 +1191,34 @@ var deleteimg=function(id){
                  var photourl="url("+http1.concat(photo)+")";
                  
                  document.getElementById('newsphoto').style.backgroundImage=photourl.replaceAll(' ','');
-               //  $("#newsphoto").css('background',)
-                //  {{asset($new->photo) vnewsdetail
+               
                }
     });           
 
   }
+  function deletenewdetail(id){
+    document.getElementById('newsid').value=id;
+  }
 
+  function editnewdetail(id){
+    $.ajax({
+               type:'POST',
+               url:"{{url('/viewnewsdetail/')}}"+ '/'+id,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 console.log(data.newsupdate.topic);
+                
+                 document.getElementById('etopic').value=data.newsupdate.topic;
+                 document.getElementById('edetail').innerHTML=data.newsupdate.detail;
+                 document.getElementById('editnewid').value=data.newsupdate.id;
+                 var photo=data.newsupdate.photo;
+                 var http1="{{asset("  ")}}";
+                 var photourl="url("+http1.concat(photo)+")";
+                 
+                 document.getElementById('ephoto').style.backgroundImage=photourl.replaceAll(' ','');
+               
+               }
+    });    
+  }
 </script>
 @endsection       

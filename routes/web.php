@@ -53,7 +53,7 @@ Route::get('verify-otp/{id}',function(){
 })->name('verify-otpp');
 //Route::view('admin/dashboard','app.dashboard');
 Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
-//Route::group(['middleware' => 'prevent-back-history'],function(){
+Route::group(['middleware' => 'prevent-back-history'],function(){
 
     Route::group(['middleware'=>['AdminAuth']],function(){
         Route::get('admin/index',function(){
@@ -131,9 +131,11 @@ Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
     });
     
     Route::get('admin/profile',function(){
-        $id=User::where('id',Auth::user()->id)->first();
-        $user=$id->join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-       
+       // $id=User::where('id',Auth::user()->id)->first();
+        $user=User::where('id',Auth::user()->id)->first();
+       $user= $user::join('user_address', 'users.address_id' ,'=','user_address.id')->first();
+       dd($user);
+
         return view('admin.myprofile',compact('user'));
     });
     
@@ -191,6 +193,8 @@ Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
     //delete video
     Route::post('delete/education/video',[EducationVideoController::class,'delete']);
 
+    //search education
+   // Route::post('searcheducation',[EducationVideoController::class,'search']);
 
     //news and update
     Route::post('add/news',[NewsUpdateController::class,'add']);
@@ -200,8 +204,11 @@ Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
 
     Route::post('viewnewsdetail/{id}',[NewsUpdateController::class,'getdata']);
 
+    //delete news update
+    Route::post('delete/news',[NewsUpdateController::class,'deletenew']);
 
-
+    //update news update
+    Route::post('update/url',[NewsUpdateController::class,'editnews']);
 
 
 
@@ -215,7 +222,7 @@ Route::get('resend/otp/{id}',[AdminController::class,'resendotp']);
 
 
 
-   // });
+    });
 
     
 });

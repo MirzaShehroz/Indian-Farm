@@ -12,7 +12,7 @@
       @if($user->image==null)
       <img src="{{asset('images/user-img.png')}}" id="output" class="profile_img my-3" alt="img not found">
       @else
-      <img src="{{$user->image}}" id="output" class="profile_img my-3" alt="img not found">
+      <img src="{{asset(Auth::user()->image)}}" id="output" class="profile_img my-3" alt="img not found">
       @endif
       <form action="{{url('admin/profile/update')}}" method="post" enctype="multipart/form-data">
         @csrf
@@ -191,7 +191,7 @@
         <div class="col-12 col-md-6 mt-3">
           <select id="inputTaluka" class="form-select overflow-scroll " name="taluka">
           <option value="{{$user->district}}" selected >{{$user->taluka}}</option>
-            <option value="" disable>Taluka</option>
+            <option value="" disabled>Taluka</option>
             <option value="Pune">Pune</option>
 
           </select>
