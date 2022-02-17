@@ -235,7 +235,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     // guest vendor registration
     route::post('transport/vendor/register',[TransportController::class,'guestRegister'])->name('guestRegister');
-    route::post('trasport/vendor/verify',[TransientController::class,'verifyotp'])->name('transport-verifyotp');
+    route::match(['get', 'post'],'trasport/vendor/verify',[TransportController::class,'verifyotp'])->name('transport-verifyotp');
 
     Route::get('transport/appointment',function(){
         $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
