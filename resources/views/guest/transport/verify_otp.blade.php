@@ -57,3 +57,7 @@
   <!-- end of row  -->
 
 @endsection
+
+@section('script')
+      
+@endsection

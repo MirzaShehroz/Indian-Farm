@@ -12,29 +12,28 @@ use DB;
 class TransportBookedController extends Controller
 {
     public function add(Request $req){
+        // dd($req);
         $data=$req->all();
+        // dd($data);
         $req->validate([
-            'area'=>'required',
-            'city'=>'required',
+            'fromarea'=>'required',
+            'fromcity'=>'required',
             'faddressline1'=>'required',
-            'district'=>'required',
-            'taluka'=>'required',
-            'zipcode'=>'required',
-            'appoint_time'=>'required',
-            'appoint_date'=>'required',
+            'fromdistrict'=>'required',
+            'fromtaluka'=>'required',
+            'frompincode'=>'required',
+            'dot'=>'required',
 
-            'tarea'=>'required',
-            'tcity'=>'required',
-            'taddressline1'=>'required',
-            'tdistrict'=>'required',
-            'ttaluka'=>'required',
-            'tzipcode'=>'required',
-            'tappoint_time'=>'required',
-            'tappoint_date'=>'required',
+            'toarea'=>'required',
+            'tocity'=>'required',
+            'toaddressline1'=>'required',
+            'todistrict'=>'required',
+            'totaluka'=>'required',
+            'topincode'=>'required',
 
             'breed'=>'required',
             'animaltype'=>'required',
-            'no_animals'=>'required|numeric',
+            'animalsno'=>'required|numeric',
             'contact_person'=>'required',
             'contact_no'=>'required',
             'date_transport'=>'required',
@@ -52,19 +51,19 @@ class TransportBookedController extends Controller
 
                 $transportfrom->address_line1=$data['faddressline1'];
                 $transportfrom->address_line2=$data['faddressline2'];
-                $transportfrom->area=$data['area'];
-                $transportfrom->city=$data['city'];
-                $transportfrom->district=$data['district'];
-                $transportfrom->state=$data['state'];
-                $transportfrom->taluka=$data['taluka'];
-                $transportfrom->zipcode=$data['zipcode'];
-                $transportfrom->appointment_time=$data['appoint_time'];
-                $transportfrom->appointment_date=$data['appoint_date'];
+                $transportfrom->area=$data['fromarea'];
+                $transportfrom->city=$data['fromcity'];
+                $transportfrom->district=$data['fromdistrict'];
+                $transportfrom->state=$data['fromstate'];
+                $transportfrom->taluka=$data['fromtaluka'];
+                $transportfrom->zipcode=$data['frompincode'];
+                $transportfrom->appointment_time=$data['fromappoint_time'];
+                $transportfrom->appointment_date=$data['fromappoint_date'];
                // dd($transportfrom);
                 $transportfrom->save();
                 DB::commit();
             }catch(\Exception $e){
-                //dd($e);
+                dd($e);
                 DB::rollback();
                 return back()->with('warningMsg','There sooooooome Problem try again');
             }
@@ -77,14 +76,14 @@ class TransportBookedController extends Controller
 
                 $transportto->address_line1=$data['taddressline1'];
                 $transportto->address_line2=$data['taddressline2'];
-                $transportto->area=$data['tarea'];
-                $transportto->city=$data['tcity'];
-                $transportto->district=$data['tdistrict'];
-                $transportto->state=$data['tstate'];
-                $transportto->taluka=$data['ttaluka'];
-                $transportto->zipcode=$data['tzipcode'];
-                $transportto->appointment_time=$data['tappoint_time'];
-                $transportto->appointment_date=$data['tappoint_date'];
+                $transportto->area=$data['toarea'];
+                $transportto->city=$data['tocity'];
+                $transportto->district=$data['todistrict'];
+                $transportto->state=$data['tostate'];
+                $transportto->taluka=$data['totaluka'];
+                $transportto->zipcode=$data['topincode'];
+                $transportto->appointment_time=$data['toappoint_time'];
+                $transportto->appointment_date=$data['toappoint_date'];
                // dd($transportto);
                 $transportto->save();
                 DB::commit();

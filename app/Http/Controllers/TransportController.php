@@ -512,6 +512,8 @@ class TransportController extends Controller
         else{
             return back()->with('error','Wrong Otp Please Enter Right Otp');
         }
-
+    }
+    public function bookTransport(Request $req){
+        dd($req);
     }
 }

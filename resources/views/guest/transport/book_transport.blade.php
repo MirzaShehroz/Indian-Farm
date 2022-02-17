@@ -6,7 +6,8 @@
 
    <div class="col-12">
        
-       <form action="" method="post">
+  <form action="{{route('book-vendor')}}" method="POST">
+    @csrf
 
     <div class="row">
 
@@ -15,11 +16,11 @@
                
                 <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
                   <option name="animal_type" value="" disabled  selected>Select Animal Type...</option>
-                  <option value="Cow">Cow</option>
-                  <option value="Buffalo">Buffalo</option>
-                  <option value="Bull">Bull</option>
-                  <option value="Sheep" >Sheep</option>
-                  <option  value="Goat"> Goat</option>
+                  <option value="2">Cow</option>
+                  <option value="1">Buffalo</option>
+                  <option value="0">Bull</option>
+                  <option value="3" >Sheep</option>
+                  <option  value="4"> Goat</option>
                 </select>
                 
               </div>
@@ -50,7 +51,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="date" name="4" id="" class="form-control" placeholder="Date Of Transport ">
+                <input type="date" name="dot" id="" class="form-control" placeholder="Date Of Transport ">
 
 
               </div>
@@ -68,7 +69,7 @@
          
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address1" id="" class="form-control" placeholder="Address Line 1 ">
+                <input type="text" name="faddressline1" id="" class="form-control" placeholder="Address Line 1 ">
 
 
               </div>
@@ -76,7 +77,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address2" id="" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="faddressline2" id="" class="form-control" placeholder="Address Line 2">
 
 
               </div>
@@ -84,7 +85,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="area" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="fromarea" id="" class="form-control" placeholder="Area ">
 
 
               </div>
@@ -93,8 +94,12 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" name="city" class="form-select overflow-scroll  ">
-                      <option value="">City</option>
+                    <select id="inputDistrict" name="fromcity" class="form-select overflow-scroll  ">
+                      <option value="" selected>City</option>
+                      <option value="goa">Goa</option>
+                      <option value="lahore">Lahore</option>
+                      <option value="islamabad">Islamabad</option>
+
                      
                     
                     </select>
@@ -108,7 +113,7 @@
                 
                 <div class="startdropdown">
                
-                    <select id="inputState" name="state" class="form-select overflow-scroll ">
+                    <select id="inputState" name="fromstate" class="form-select overflow-scroll ">
                       <option selected disabled> State</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -159,8 +164,11 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
+                    <select id="inputDistrict" name="fromdistrict" class="form-select overflow-scroll  ">
                       <option value=""> District</option>
+                      <option value="Bihar">Bihar</option>
+                      <option value="punjab">Punjab</option>
+                      <option value="sindh">Sindh</option>
                      
                     
                     </select>
@@ -173,9 +181,11 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
+                    <select id="inputTaluka" name="fromtaluka" class="form-select overflow-scroll  ">
                       <option value="">Taluka</option>
-                     
+                      <option value="Taluka1">Taluka1</option>
+                      <option value="Taluka2">Taluka2</option>
+                      <option value="Taluka13">Taluka3</option>
                     
                     </select>
                   </div>
@@ -187,7 +197,7 @@
               
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="pincode" id="" class="form-control" placeholder="Pin Code ">
+                <input type="text" name="frompincode" id="" class="form-control" placeholder="Pin Code ">
 
 
               </div>
@@ -207,7 +217,7 @@
          
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address1" id="" class="form-control" placeholder="Address Line 1 ">
+                <input type="text" name="taddressline1" id="" class="form-control" placeholder="Address Line 1 ">
 
 
               </div>
@@ -215,7 +225,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address2" id="" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="taddressline2" id="" class="form-control" placeholder="Address Line 2">
 
 
               </div>
@@ -223,7 +233,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="Area" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="toarea" id="" class="form-control" placeholder="Area ">
 
 
               </div>
@@ -232,9 +242,12 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" class="form-select overflow-scroll  ">
+                    <select id="inputDistrict" name="tocity" class="form-select overflow-scroll  ">
                       <option value="">City</option>
-                     
+                      <option value="goa">Goa</option>
+                      <option value="lahore">Lahore</option>
+                      <option value="islamabad">Islamabad</option>
+
                     
                     </select>
                   </div>
@@ -247,7 +260,7 @@
                 
                 <div class="startdropdown">
                
-                    <select id="inputState"  class="form-select overflow-scroll ">
+                    <select id="inputState"  name="tostate" class="form-select overflow-scroll ">
                       <option selected disabled> State</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -298,10 +311,12 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" class="form-select overflow-scroll  ">
+                    <select id="inputDistrict" name="todistrict" class="form-select overflow-scroll  ">
                       <option value=""> District</option>
-                     
-                    
+                      <option value="bihar">Bihar</option>
+                      <option value="punjab">Punjab</option>
+                      <option value="kpk">kpk</option>
+
                     </select>
                   </div>
 
@@ -312,9 +327,12 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputTaluka" class="form-select overflow-scroll  ">
+                    <select id="inputTaluka" name="totaluka" class="form-select overflow-scroll  ">
                       <option value="">Taluka</option>
-                     
+                      <option value="Taluka1">Taluka1</option>
+                      <option value="Taluka2">Taluka2</option>
+                      <option value="Taluka3">Taluka3</option>
+
                     
                     </select>
                   </div>
@@ -326,7 +344,7 @@
               
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="number" name="pincode" id="" class="form-control" placeholder="Pin Code ">
+                <input type="number" name="topincode" id="" class="form-control" placeholder="Pin Code ">
 
 
               </div>
@@ -343,7 +361,7 @@
 
                 <div class="col-12">
 
-                    <button id="submitbtn" type="button" class="btn btnsubmit bgcolor px-5 text-light border_color2 py-2 btnhover2"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <button id="submitbtn" type="submit" class="btn btnsubmit bgcolor px-5 text-light border_color2 py-2 btnhover2" >
                         Submit
                     </button>
 

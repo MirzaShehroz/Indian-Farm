@@ -9,6 +9,7 @@ use App\Http\Controllers\AppointmentBookController;
 use App\Http\Controllers\CertifyController;
 use App\Http\Controllers\TransportBookedController;
 use App\Http\Controllers\EducationVideoController;
+use App\Http\Controllers\GuestController;
 use App\Http\Controllers\NewsUpdateController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
@@ -173,7 +174,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     
     //transport booked
-    Route::post('add/transport/booked',[TransportBookedController::class,'add']);
+    Route::post('add/transport/booked',[TransportBookedController::class,'add'])->name('transport_book');
 
     //delete transport booking
     Route::post('delete/transport/booking',[TransportBookedController::class,'delete']);
@@ -220,9 +221,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     });
 
     // guest accounts route
-    Route::get('transport/search',function (){
-        return view('guest.transport.search_transport');
-    })->name('transport-search');
+    Route::get('transport/search',[GuestController::class,'search'])->name('transport-search');
     Route::get('transport/book',function(){
         return view('guest.transport.book_transport');
     })->name('transport-book');
@@ -238,26 +237,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     route::match(['get', 'post'],'trasport/vendor/verify',[TransportController::class,'verifyotp'])->name('transport-verifyotp');
 
     Route::get('transport/appointment',function(){
-        $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
-        //dd($booked);
-        return view('transport.appointments',compact('detail'));
+        return view('transport.appointments');
     });
-
-    Route::post('transport/booking/detail/{id}',[TransportController::class,'getdata']);
+    Route::post('transport/vendor/booked',[GuestController::class,'add'])->name('book-vendor');
     
-    Route::post('transport/update/detail',[TransportController::class,'updatedata']);
-
-
-    Route::get('trans/profile',function(){
-        $user=User::join('transports','transports.user_id','=','users.id')
-        ->join('user_address','user_address.id','=','users.address_id')
-        ->where('users.id',Auth::user()->id)->first();
-        return view('transport.myprofile',compact('user'));
-    })->name('transportprofile');
-
-
-    Route::post('update/trasport/profile',[TransportController::class,'updateprofile']);
-
+    Route::get('transport/profile',function(){
+        return view('transport.myprofile');
+    });
 
     Route::get('logout',function(){
        
