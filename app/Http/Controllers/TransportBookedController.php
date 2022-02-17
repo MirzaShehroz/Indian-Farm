@@ -159,7 +159,7 @@ class TransportBookedController extends Controller
             'contact_person'=>'required',
             'contact_no'=>'required',
             'date_transport'=>'required',
-            'estatus'=>'required',
+            
             'edriverassign'=>'required'
             
         ]);
@@ -240,7 +240,7 @@ class TransportBookedController extends Controller
                 DB::rollback();
                 return back()->with('warningMsg','There sooooooome Problem try again');
         }
-        dd($req->all());
+        //dd($req->all());
 
     }
 
