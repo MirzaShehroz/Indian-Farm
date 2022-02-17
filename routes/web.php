@@ -216,21 +216,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
     //update news update
     Route::post('update/url',[NewsUpdateController::class,'editnews']);
-
-
-
-
-
-
-
-
-
-    
-
-
-
     });
 
+    // guest accounts route
+
+    Route::get('transport/search',function (){
+        return view('guest.transport.search_transport');
+    })->name('transport-search');
     
 });
 
