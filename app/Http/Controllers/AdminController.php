@@ -353,7 +353,7 @@ class AdminController extends Controller
 
             $data=User::join('user_address','users.address_id','=','user_address.id')
             ->join('sellers','users.id','sellers.user_id')
-            ->get();
+            ->paginate(5);
             // dd($data);
             return view('admin.user',compact("data"));
         }
