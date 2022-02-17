@@ -46,26 +46,45 @@
                                       </tr>
                                     </thead>
                                     <tbody>
+                                      @if($detail!=null)
                                       <tr>
-                                        <td scope="row">ABC</td>
+                                        <td scope="row">{{$detail->contact_name}}</td>
                                        
                                    
-                                        <td>1234567</td>
-                                        <td>Pune</td>
-                                        <td>Cow</td>
-                                        <td>1/9/2022</td>
+                                        <td>{{$detail->contact_no}}</td>
+                                        <td>{{from_address($detail->id)->city}}</td>
+                                          @if($detail->animal_type==0)
+                                            <td>Bull</td>
+                                          @elseif($detail->animal_type==1)  
+                                            <td>Buffalo</td>
+                                          @elseif($detail->animal_type==2)  
+                                            <td>Cow</td>
+                                          @elseif($detail->animal_type==3)  
+                                            <td>Sheep</td>  
+                                          @elseif($detail->animal_type==4)  
+                                            <td>Goat</td>
+                                          @endif  
+                                        <td>{{$detail->created_at->format('Y-m-d')}}</td>
+                                        @if($detail->status==0)
+                                        <td>Assigned</td>
+                                        @elseif($detail->status==1)
                                         <td>Pending</td>
+                                        @elseif($detail->status==2)
+                                        <td>Delivered</td>
+                                        @endif
                                         
                                       
                                    
                                       
                                         <td class="d-flex justify-content-around">
-                                            <button class="bg_danger text-light me-2 p-1"  data-bs-toggle="offcanvas" data-bs-target="#edit_transportbook" aria-controls="edit_appointment" type="button"><i class="fas fa-pencil-alt"></i></button>
-                                            <button class="bg_danger text-light me-2 p-1" data-bs-toggle="offcanvas" data-bs-target="#view_appointment" aria-controls="view_appointment" type="button"><i class="fas fa-eye"></i></button>
+                                            <button class="bg_danger text-light me-2 p-1"  data-bs-toggle="offcanvas" data-bs-target="#edit_transportbook" aria-controls="edit_appointment" type="button" onclick="editdetail({{$detail->id}})"><i class="fas fa-pencil-alt"></i></button>
+                                            <button class="bg_danger text-light me-2 p-1" data-bs-toggle="offcanvas" data-bs-target="#view_appointment" aria-controls="view_appointment" type="button" onclick="viewdetail({{$detail->id}})"><i class="fas fa-eye"></i></button>
                                          
                                         </td>
                                       </tr>
-                                   
+                                      @else
+                                      no data
+                                      @endif
                                      
                                     
                                     </tbody>
@@ -139,27 +158,27 @@
 
            <div class="col-12 col-md-9">
                
-               <form action="" method="post">
+          <form action="{{url('transport/update/detail')}}" method="post">
 
             <div class="row">
 
 
                     <div class="col-md-4 col-lg-3 my-3">
                        
-                        <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                          <option value="" disabled  selected>Select Animal Type...</option>
-                          <option value="Cow">Cow</option>
-                          <option value="Buffalo">Buffalo</option>
-                          <option value="Bull">Bull</option>
-                          <option value="Sheep" >Sheep</option>
-                          <option  value="Goat"> Goat</option>
+                        <select id="eanimaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="eanimaltype">
+                          <option value="" disabled  >Select Animal Type...</option>
+                          <option value="0">Bull</option>
+                          <option value="1">Buffalo</option>
+                          <option value="2">Cow</option>
+                          <option value="3" >Sheep</option>
+                          <option  value="4"> Goat</option>
                         </select>
                         
                       </div>
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="No Of Animals ">
+                        <input type="text" name="no_animals" id="eno_animals" class="form-control" placeholder="No Of Animals ">
 
 
                       </div>
@@ -168,7 +187,7 @@
                   
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Contact Person Name ">
+                        <input type="text" name="contact_person" id="econtact_person" class="form-control" placeholder="Contact Person Name ">
 
 
                       </div>
@@ -176,7 +195,7 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Contact Number ">
+                        <input type="text" name="contact_no" id="econtact_no" class="form-control" placeholder="Contact Number ">
 
 
                       </div>
@@ -195,7 +214,7 @@
                  
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
+                        <input type="text" name="faddresline1" id="efaddressline1" class="form-control" placeholder="Address Line 1 ">
 
 
                       </div>
@@ -203,39 +222,43 @@
     
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
+                        <input type="text" name="faddressline2" id="efaddressline2" class="form-control" placeholder="Address Line 2">
 
 
                       </div>
                       <!-- end of col  -->
     
-                    <div class="col-md-4 col-lg-3 my-3">
+                      <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Area ">
+                        <input type="text" name="" id="efarea" class="form-control" placeholder="Area ">
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                              <option value="">City</option>
-                             
+                            <select id="efcity" class="form-select overflow-scroll  ">
+                              
+                              <option value="" disabled> Select City</option>
+                              <option value="chandigarh" >Chandigarh</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="delhi"> Delhi</option>
+                        
                             
                             </select>
                           </div>
         
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="startdropdown">
                        
-                            <select id="inputState"  class="form-select overflow-scroll ">
+                            <select id="efstate"  class="form-select overflow-scroll ">
                               <option selected disabled> State</option>
                               <option value="Andhra Pradesh">Andhra Pradesh</option>
                               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -280,44 +303,50 @@
 
                    
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                              <option value=""> District</option>
+                            <select id="efdistrict" class="form-select overflow-scroll  ">
                              
+                              <option value="" disabled> District</option>
+                          <option value="xyz"> XYZ</option>
+                          <option value="lmno"> LMNO</option>
+                          <option value="abc">ABC</option>
                             
                             </select>
                           </div>
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="inputTaluka" class="form-select overflow-scroll  ">
-                              <option value="">Taluka</option>
-                             
+                            <select id="eftaluka"  class="form-select overflow-scroll  ">
+                              <option value="" disbaled>Taluka</option>
+                              <option value="Taluka AND">Taluka AND</option>
+                              <option value="Taluka AND">Taluka OR</option>
+                              <option value="Taluka AND">Taluka IF</option>
                             
                             </select>
                           </div>
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
                       
                       
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
+                        <input type="text" name="" id="efzipcode" class="form-control" placeholder="Pin Code ">
 
 
-                      </div>
+                    </div>
+                    
                       <!-- end of col  -->
                       
                 
@@ -336,37 +365,40 @@
                  
                 <div class="col-md-4 col-lg-3 my-3">
                         
-                    <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
+                    <input type="text" name="taddressline1" id="teaddressline1" class="form-control" placeholder="Address Line 1 ">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
+                    <input type="text" name="taddressline2" id="teaddressline2" class="form-control" placeholder="Address Line 2">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Area ">
+                    <input type="text" name="tarea" id="tearea" class="form-control" placeholder="Area ">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputDistrict" class="form-select overflow-scroll  ">
-                          <option value="">City</option>
+                        <select id="tecity" name="tcity" class="form-select overflow-scroll  ">
                          
+                          <option value="" disabled> Select City</option>
+                              <option value="chandigarh" >Chandigarh</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="delhi"> Delhi</option>
                         
                         </select>
-                      </div>
+                </div>
     
 
                   </div>
@@ -376,7 +408,7 @@
                     
                     <div class="startdropdown">
                    
-                        <select id="inputState"  class="form-select overflow-scroll ">
+                        <select id="etstate" name="tstate"  class="form-select overflow-scroll ">
                           <option selected disabled> State</option>
                           <option value="Andhra Pradesh">Andhra Pradesh</option>
                           <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -421,45 +453,48 @@
 
                
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputDistrict" class="form-select overflow-scroll  ">
-                          <option value=""> District</option>
-                         
-                        
+                        <select id="etdistrict" class="form-select overflow-scroll  " name="tdistrict">
+                          <option value="" disabled> District</option>
+                          <option value="xyz"> XYZ</option>
+                          <option value="lmno"> LMNO</option>
+                          <option value="abc">ABC</option>
                         </select>
                       </div>
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
                     <div class="Districdropdown">
-                        <select id="inputTaluka" class="form-select overflow-scroll  ">
+                        <select id="ettaluka" class="form-select overflow-scroll  " name="ttaluka">
                           <option value="">Taluka</option>
-                         
+                          
+                              <option value="Taluka AND">Taluka AND</option>
+                              <option value="Taluka AND">Taluka OR</option>
+                              <option value="Taluka AND">Taluka IF</option>
                         
                         </select>
                       </div>
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
                   
                   
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
+                    <input type="text" name="tzipcode" id="etzipcode" class="form-control" placeholder="Pin Code ">
 
 
-                  </div>
-                  <!-- end of col  -->
+                </div>                  <!-- end of col  -->
                   
              
                       
@@ -476,11 +511,11 @@
                     
                             <div class="Districdropdown">
                               
-                                <select id="" class="form-select overflow-scroll  ">
+                                <select id="" class="form-select overflow-scroll  " name="status">
                                   <option value="" selected disabled>Appointment Status</option>
-                                 <option value="">Confirmed</option>
-                                 <option value="">Completed</option>
-                                 <option value="">Cancelled</option>
+                                 <option value="0">Confirmed</option>
+                                 <option value="1">Completed</option>
+                                 <option value="2">Cancelled</option>
                                 
                                 </select>
                               </div>
@@ -491,7 +526,7 @@
                         <div class="col-md-6 my-3">
                     
                             <div class="Districdropdown">
-                               <textarea name="" placeholder="Your Comments" class="form-control" id=""  rows="4"></textarea>
+                               <textarea name="" placeholder="Your Comments" class="form-control" id="" name="comment"  rows="4"></textarea>
                               </div>
             
         
@@ -506,10 +541,11 @@
 
                         <div class="col-12">
 
-                            <button id="submitbtn" type="button" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <!-- <button id="submitbtn" type="submit" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Submit
-                            </button>
-
+                            </button> -->
+                        <input type="button" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2" value="submit"
+                        >
 
                         </div>
                         <!-- end of col  -->
@@ -953,4 +989,52 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
     
     <script src="{{asset('js/calander.js')}}" type="text/javascript"></script>
+
+
+
+<script>
+function editdetail(id){
+  $.ajax({
+
+    type:'POST',
+    url:"{{url('/transport/booking/detail')}}"+ '/'+id,
+    data:{_token: "{{ csrf_token() }}"},
+  success:function(data) {
+
+        console.log(data);
+
+        document.getElementById('eanimaltype').value=data.trans.animal_type;
+         document.getElementById('eno_animals').value=data.trans.no_of_animal;
+       // document.getElementById('ebreed').value=data.trans.breed;
+        document.getElementById('econtact_person').value=data.trans.contact_name;
+        document.getElementById('econtact_no').value=data.trans.contact_no;
+       // document.getElementById('date_transport').value=data.trans.date_of_transport;
+        document.getElementById('efaddressline1').value=data.fromaddress.address_line1;
+        document.getElementById('efaddressline2').value=data.fromaddress.address_line2;
+        document.getElementById('efarea').value=data.fromaddress.area;
+        document.getElementById('efcity').value=data.fromaddress.city;
+        document.getElementById('efdistrict').value=data.fromaddress.district;
+        document.getElementById('efstate').value=data.fromaddress.state;
+        document.getElementById('eftaluka').value=data.fromaddress.taluka;
+        document.getElementById('efzipcode').value=data.fromaddress.zipcode;
+        // document.getElementById('eappoint_date').value=data.fromaddress.appointment_date;
+        // document.getElementById('eappont_time').value=data.fromaddress.appointment_time;
+      
+
+        document.getElementById('teaddressline1').value=data.toaddress.address_line1;
+        document.getElementById('teaddressline2').value=data.toaddress.address_line2;
+        document.getElementById('tearea').value=data.toaddress.area;
+        document.getElementById('tecity').value=data.toaddress.city;
+        document.getElementById('etdistrict').value=data.toaddress.district;
+        document.getElementById('etstate').value=data.toaddress.state;
+        document.getElementById('ettaluka').value=data.toaddress.taluka;
+        document.getElementById('etzipcode').value=data.toaddress.zipcode;
+        // document.getElementById('etappoint_date').value=data.toaddress.appointment_date;
+        // document.getElementById('etappoint_time').value=data.toaddress.appointment_time;
+
+    }
+  });
+
+}
+</script>
 @endsection
