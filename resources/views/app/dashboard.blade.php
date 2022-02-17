@@ -92,7 +92,7 @@
                           
                             </a>
                             <ul class="dropdown-menu secondary" aria-labelledby="navbarDropdown">
-                              @if(Auth::check=='true')
+                              @if(Auth::check()=='true')
                                 @if(Auth::user()->image!=null)
                                <li><img src="{{asset(Auth::user()->image)}}" class="rounded-pill" style="width: 30px; height: 30px;" alt="img not found"></a> <span>{{Auth::user()->first_name}}  {{Auth::user()->last_name}} </span></a></li>
                                 @else
@@ -232,13 +232,23 @@
       
 
         <div>
-            <form action="{{url('changepassword')}}" method="post">
+            @if(Auth::check()=='true')
+            <!-- <form action="{{url('changepassword')}}" method="post">
                 <input type="hidden" value="{{Auth::user()->id}}" name="id">
                 <input type="text" placeholder="Enter Password" class="py-3 mt-5 form-control" name="" id="">
                 <input type="text" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="" id="">
 
                 <button type="" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
+            </form> -->
+            @else
+            <form >
+                <input type="hidden"  name="id">
+                <input type="text" placeholder="Enter Password" class="py-3 mt-5 form-control" name="" id="">
+                <input type="text" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="" id="">
+
+                <button type="" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
             </form>
+            @endif
         </div>
       </div>
      

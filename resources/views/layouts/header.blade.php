@@ -95,9 +95,9 @@
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item border-bottom"
                                         href="{{route('transport-search')}}">Search Transport</a></li>
-                                <li><a class="dropdown-item border-bottom" href="book_transport.html">
+                                <li><a class="dropdown-item border-bottom" href="{{route('transport-book')}}">
                                         Book Transport</a></li>
-                                <li><a class="dropdown-item" href="register_vendor.html">Register As
+                                <li><a class="dropdown-item" href="{{route('vendor-register')}}">Register As
                                         Vendor</a></li>
 
 
@@ -269,8 +269,8 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="{{route('transport-search')}}">Search Transport</a></li>
-                    <li><a class="dropdown-item" href="book_transport.html"> Book Transport</a></li>
-                    <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+                    <li><a class="dropdown-item" href="{{route('transport-book')}}"> Book Transport</a></li>
+                    <li><a class="dropdown-item" href="{{route('vendor-register')}}">Register As Vendor</a></li>
 
 
                 </ul>
