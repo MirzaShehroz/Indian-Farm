@@ -26,4 +26,14 @@ class BuyerAndSellerController extends Controller
     public function yourSubscription() {
         return view('seller_and_buyer_wireframe.your_subscription');
     }
+
+    // post ad cow one
+    public function postAdCowOne() {
+        return view('seller_and_buyer_wireframe.post_ad_cow_one');
+    }
+
+    // post ad cow multiple
+    public function postAdCowMultiple() {
+        return view('seller_and_buyer_wireframe.post_ad_cow_multiple');
+    }
 }

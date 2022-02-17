@@ -264,5 +264,11 @@ Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])
 // B&S Your Subscription
 Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourSubscription'])->name('B&SYourSubscriptionPage');
 
+// B&S Post Ad Cow One
+Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOne');
+
+// B&S Post Ad Cow Multiple
+Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiple');
+
 
 //---------------------------------------------------------------------------------------------

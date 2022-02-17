@@ -4,7 +4,7 @@
     <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
 
 
-        <div class="row justify-content-around  shadow py-3">
+        <div class="row justify-content-around shadow py-3">
 
             <h5 class="mb-3">Upload photos of your animal <i class="fas fa-images ms-3"></i></h5>
 
@@ -56,7 +56,7 @@
 
         <hr class="my-4">
 
-        <div class="row  shadow py-3">
+        <div class="row shadow py-3">
 
             <h5 class="mb-3">Upload Video of your animal<i class="fas fa-file-video ms-3"></i></h5>
 
@@ -88,23 +88,16 @@
     </div>
     <!-- end of col-4 main -->
 
-    <div class="col-12 col-md-6 col-lg-3 pt-3  shadow">
+    <div class="col-12 col-md-6 col-lg-3 pt-3 shadow">
 
         <div class="mb-2">
-            <input type="text" class="form-control" name="" id="age" placeholder="Age">
+            <input type="text" class="form-control" name="" id="number" placeholder="No Of Animals">
         </div>
         <div class="mb-2">
             <input type="text" class="form-control" name="" id="Price" placeholder="Price">
         </div>
         <div class="mb-2">
-            <input type="text" class="form-control" name="" id="monthpregnent" placeholder="Due Month If Pregnant">
-        </div>
-        <div class="mb-2">
             <input type="text" class="form-control" name="" id="breed" placeholder="Breed">
-        </div>
-        <div class="mb-2">
-            <input type="text" class="form-control" name="" id="milk" placeholder="Daily Milk Capacity
-                ">
         </div>
         <div class="mb-2">
             <input type="text" class="form-control" name="" id="area" placeholder="Area">
@@ -132,56 +125,17 @@
             </select>
         </div>
 
+
         <div class="mb-2">
             <input type="text" class="form-control" name="" id="pincode" placeholder="Pin Code">
         </div>
 
-
     </div>
     <!-- end of col -4 main -->
 
-    <div class="col-12 col-md-6 col-lg-3 mt-4 mt-lg-0  shadow">
+    <div class="col-12 col-md-6 col-lg-3 mt-4 mt-lg-2 shadow">
 
 
-
-        <span class="fw-bold me-3 fs-6 text-secondary">Gender Set as Female</span>
-
-        <div class="d-flex justify-content-aroun mt-3">
-
-            <label for="status" class="fw-bold me-auto text-dark">Gender</label>
-            <div class="form-check ">
-                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">
-                    Female
-                </label>
-            </div>
-            <div class="form-check ms-4">
-                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">
-                    Male
-                </label>
-            </div>
-
-        </div>
-
-
-        <div class="d-flex justify-content-around mt-3">
-
-            <label for="pregnant" class="fw-bold me-auto text-dark">Pregnant</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="pregnant" id="Pregnant1">
-                <label class="form-check-label" for="Pregnant1">
-                    Yes
-                </label>
-            </div>
-            <div class="form-check ms-4">
-                <input class="form-check-input" type="radio" name="pregnant" id="Pregnant2">
-                <label class="form-check-label" for="Pregnant2">
-                    No
-                </label>
-            </div>
-
-        </div>
 
 
 
@@ -224,7 +178,7 @@
         </div>
 
 
-        <div class="d-flex justify-content-around mt-3 mb-4">
+        <div class="d-flex justify-content-around mt-3 mb-5">
 
             <label for="vacinated" class="fw-bold me-auto text-dark">Vacinated</label>
             <div class="form-check">
@@ -242,7 +196,7 @@
 
         </div>
 
-        <div class="mb-4">
+        <div class="mb-4 mt-5">
             <textarea name="message" id="" class="form-control" placeholder="  Comments/Description" rows="6"></textarea>
         </div>
 

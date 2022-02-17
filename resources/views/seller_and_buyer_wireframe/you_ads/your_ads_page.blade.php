@@ -32,7 +32,7 @@
                 <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
 
                     <span> <small>3</small> / <small>12</small> / <small>2022</small></span>
-                    <span><img src="../../public/images/calendar.png" class="d-md-none d-lg-flex" alt="img not found"></span>
+                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
 
@@ -172,7 +172,7 @@
                 <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
 
                     <span> <small>3</small> / <small>12</small> / <small>2022</small></span>
-                    <span><img src="../../public/images/calendar.png" class="d-md-none d-lg-flex" alt="img not found"></span>
+                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
 
@@ -312,7 +312,7 @@
                 <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
 
                     <span> <small>3</small> / <small>12</small> / <small>2022</small></span>
-                    <span><img src="../../public/images/calendar.png" class="d-md-none d-lg-flex" alt="img not found"></span>
+                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
 
@@ -452,7 +452,7 @@
                 <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
 
                     <span> <small>3</small> / <small>12</small> / <small>2022</small></span>
-                    <span><img src="../../public/images/calendar.png" class="d-md-none d-lg-flex" alt="img not found"></span>
+                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
 
@@ -592,7 +592,7 @@
                 <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
 
                     <span> <small>3</small> / <small>12</small> / <small>2022</small></span>
-                    <span><img src="../../public/images/calendar.png" class="d-md-none d-lg-flex" alt="img not found"></span>
+                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
 

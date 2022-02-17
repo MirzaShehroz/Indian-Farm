@@ -7,7 +7,7 @@
 
         <div class="btn-group dropend d-block mb-3">
             <button type="button" class="btn bg-transparent  btnhover border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-md-5 "> <img src="../../public/images/cow.png" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Cow</span>
+                <span class="me-md-5 "> <img src="{{asset('images/cow.png')}}" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Cow</span>
             </button>
             <ul class="dropdown-menu ms-md-3">
                 <li><a class="dropdown-item border-bottom" href="post_one.html">One Animal</a></li>
@@ -16,7 +16,7 @@
         </div>
         <div class="btn-group dropend d-block mb-3">
             <button type="button" class="btn bg-transparent  btnhover border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-md-4"><img src="../../public/images/buffalo.png" class=" me-1 me-md-3" style="width: 30%;" alt="img not found">Buffalo</span>
+                <span class="me-md-4"><img src="{{asset('images/buffalo.png')}}" class=" me-1 me-md-3" style="width: 30%;" alt="img not found">Buffalo</span>
             </button>
             <ul class="dropdown-menu ms-md-3">
                 <li><a class="dropdown-item border-bottom" href="post_one.html">One Animal</a></li>
@@ -25,7 +25,7 @@
         </div>
         <div class="btn-group dropend d-block mb-3">
             <button type="button" class="btn bg-transparent  btnhover border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-md-5"><img src="../../public/images/bull.png" class=" me-1 me-md-3" style="width: 30%;" alt="img not found">Bull</span>
+                <span class="me-md-5"><img src="{{asset('images/bull.png')}}" class=" me-1 me-md-3" style="width: 30%;" alt="img not found">Bull</span>
             </button>
             <ul class="dropdown-menu ms-md-3">
                 <li><a class="dropdown-item border-bottom" href="post_one_bull.html">One Animal</a></li>
@@ -34,7 +34,7 @@
         </div>
         <div class="btn-group dropend d-block mb-3">
             <button type="button" class="btn bg-transparent  btnhover border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-md-4"><img src="../../public/images/sheep.png" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Sheep</span>
+                <span class="me-md-4"><img src="{{asset('images/sheep.png')}}" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Sheep</span>
             </button>
             <ul class="dropdown-menu ms-md-3">
                 <li><a class="dropdown-item border-bottom" href="post_one_sheep.html">One Animal</a></li>
@@ -43,7 +43,7 @@
         </div>
         <div class="btn-group dropend d-block  mb-3">
             <button type="button" class="btn bg-transparent btnhover border dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="me-md-5"><img src="../../public/images/goat.png" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Goat</span>
+                <span class="me-md-5"><img src="{{asset('images/goat.png')}}" class=" me-1 me-md-3" style="width: 30%;" alt="img not found"> Goat</span>
             </button>
             <ul class="dropdown-menu ms-md-3">
                 <li><a class="dropdown-item border-bottom" href="post_one.html">One Animal</a></li>
