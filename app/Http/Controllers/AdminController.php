@@ -84,6 +84,7 @@ class AdminController extends Controller
             $id=$req->id;
             $id=Crypt::decryptstring($id);
             
+            
             $user=User::where('id',$id)->first();
 
             if($id==null){

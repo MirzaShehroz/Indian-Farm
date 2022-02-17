@@ -381,8 +381,10 @@ class TransportController extends Controller
     }
 
     public function verifyotp(Request $req){
+        // dd($req);
         $id=$req->id;
         $id=Crypt::decryptstring($id);
+        // dd($id);
         
         $user=User::where('id',$id)->first();
 
@@ -393,7 +395,7 @@ class TransportController extends Controller
         elseif( $user->email_otp==$req->otp ){
                 $user->login_status=1;
                 $user->save();
-         return redirect('admin/index');
+         return redirect('transport/index');
         }
         else{
             return back()->with('error','Wrong Otp Please Enter Right Otp');
