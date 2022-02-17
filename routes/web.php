@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuyerAndSellerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
@@ -253,3 +254,26 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 });
 
+
+//-------------------------------------- 47-Code-----------------------------------------------
+
+// B&S Edit Profile Form
+Route::get('/b&s/edit-profile-form',[BuyerAndSellerController::class,'editProfilePage'])->name('B&SEditProfilePage');
+
+// B&S Your Add Form
+Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
+
+// B&S Post an Add Form
+Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
+
+// B&S Your Subscription
+Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourSubscription'])->name('B&SYourSubscriptionPage');
+
+// B&S Post Ad Cow One
+Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOne');
+
+// B&S Post Ad Cow Multiple
+Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiple');
+
+
+//---------------------------------------------------------------------------------------------
