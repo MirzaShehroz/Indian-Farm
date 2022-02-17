@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row d-none d-lg-flex text-center pad-50 justify-content-around" id="top-menu-bar">
+{{-- <div class="row d-none d-lg-flex text-center pad-50 justify-content-around" id="top-menu-bar">
     <hr class="" style="opacity: 1; background-color: #0572B2;">
 
     <div class="col-lg-11 mb-2 col-xl-9 col-xxl-8 text-center">
@@ -79,7 +79,7 @@
 
     <hr class="" style="opacity: 1; background-color: #0572B2;">
 
-</div>
+</div> --}}
 <!-- end of row  -->
 
 

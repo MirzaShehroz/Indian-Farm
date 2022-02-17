@@ -218,11 +218,18 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::post('update/url',[NewsUpdateController::class,'editnews']);
     });
 
-    // guest accounts route
 
+    // guest accounts route
     Route::get('transport/search',function (){
         return view('guest.transport.search_transport');
     })->name('transport-search');
+    Route::get('transport/book',function(){
+        return view('guest.transport.book_transport');
+    })->name('transport-book');
+    Route::get('transport/vendor/register',function(){
+        return view('guest.transport.register_vendor');
+    })->name('vendor-register');
+    
     
 });
 
