@@ -1039,7 +1039,7 @@
                                             <div class="col-md-6 my-3">
                                         
                                                 <div class="Districdropdown">
-                                                   <textarea name="" placeholder="Your Comments" class="form-control" id="comment"  rows="4"></textarea>
+                                                   <textarea name="" placeholder="Your Comments" class="form-control" id="vcomment"  rows="4"></textarea>
                                                   </div>
                                 
                             
@@ -1089,6 +1089,7 @@ function editdetail(id){
         document.getElementById('eanimaltype').value=data.trans.animal_type;
         document.getElementById('status').value=data.trans.status;
          document.getElementById('eno_animals').value=data.trans.no_of_animal;
+         document.getElementById('comment').value=data.trans.comment;
        // document.getElementById('ebreed').value=data.trans.breed;
         document.getElementById('econtact_person').value=data.trans.contact_name;
         document.getElementById('econtact_no').value=data.trans.contact_no;
@@ -1138,6 +1139,7 @@ function viewdetail(id){
       
         document.getElementById('vcontact_person').value=data.trans.contact_name;
         document.getElementById('vcontact_no').value=data.trans.contact_no;
+        document.getElementById('vcomment').value=data.trans.comment;
       //  // document.getElementById('date_transport').value=data.trans.date_of_transport;
         document.getElementById('vfaddresslin1').value=data.fromaddress.address_line1;
         document.getElementById('vfaddressline2').value=data.fromaddress.address_line2;
@@ -1158,7 +1160,7 @@ function viewdetail(id){
         document.getElementById('vtzipcode').value=data.toaddress.zipcode;
         
 
-        
+
     }
   });
 

@@ -260,6 +260,7 @@ class TransportController extends Controller
             $transport->from_address_id=$transportfrom->id;
             $transport->to_address_id=$transportto->id;
             $transport->status=$data['status'];
+            $transport->comment=$data['comment'];
           
            // dd($transportfrom,$transportto,$transport);
             $transport->save();
