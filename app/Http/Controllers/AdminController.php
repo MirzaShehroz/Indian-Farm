@@ -51,7 +51,6 @@ class AdminController extends Controller
                         'name'=>$name
                          
                     ];
-        
                     Mail::send('admin.verify_mail',$messagedata,function($message)use($email){
         
                         $message->to($email)->subject('Login OTP');
@@ -114,7 +113,7 @@ class AdminController extends Controller
             ->orWhere('state',$req->state)
             ->orWhere('district',$req->district)
             ->orWhere('taluka',$req->taluka)
-            ->get();
+            ->paginate(5);
             // dd($data);
             $count=$data->count();
             // dd($count);
@@ -329,18 +328,18 @@ class AdminController extends Controller
 
     // search add
     public function searchAdd(Request $req){
-        // dd($req);
+        // dd($req->breed);
         $ads=Ads::join('ads_adress','ads.ads_address_id','ads_adress.id')
         ->join('ads_photo','ads.ads_photo_id','ads_photo.id')
         ->join('ads_videos','ads.ads_video_id','ads_videos.id')
-        ->where('breed',$req->breed)
+        ->where('city',$req->city)
         ->orWhere('animal_type',$req->animaltype)
-        ->orWhere('pregnant',$req->pragnent)
-        ->orWhere('city',$req->city)
-        ->orWhere('state',$req->state)
-        ->orWhere('district',$req->district)
-        ->orWhere('takula',$req->taluka)
-        ->get();
+        ->orWhere('pregnant','=',$req->pragnent)
+        ->orWhere('city','=',$req->city)
+        ->orWhere('state','=',$req->state)
+        ->orWhere('district','=',$req->district)
+        ->orWhere('takula','=',$req->taluka)
+        ->paginate(5);
         // dd($ads);
         return view('admin.ads',compact('ads'))->with('successMsg','Found successfully');
     }
@@ -354,7 +353,7 @@ class AdminController extends Controller
 
             $data=User::join('user_address','users.address_id','=','user_address.id')
             ->join('sellers','users.id','sellers.user_id')
-            ->get();
+            ->paginate(5);
             // dd($data);
             return view('admin.user',compact("data"));
         }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BuyerAndSellerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
@@ -24,6 +25,7 @@ use App\Models\TransportFrom;
 use App\Models\TransportTo;
 use App\Models\EducationVideo;
 use App\Models\NewsUpdate;
+use Psy\Readline\Transient;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Route::get('admin/login',function(){
     return view('admin.login');
 });
 Route::post('login/admin',[AdminController::class,'login']);
-Route::match(['get', 'post'],'verify/otp',[AdminController::class,'verifyotp']);
+Route::match(['get', 'post'],'verify/otp',[AdminController::class,'verifyotp'])->name('verify-otp');
 
 
 Route::get('verify-otp/{id}',function(){
@@ -99,7 +101,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::get('changepassword',[AdminController::class,'changepassword']);
         // adds 
         Route::post('add/ads',[AdminCOntroller::class,'addads']);
-        Route::any('adds/search',[AdminController::class,'searchAdd'])->name('search');
+        Route::any('adds/search',[AdminController::class,'searchAdd'])->name('search-ads');
         Route::post('admin/add/delete',[AdminController::class,'deleteadd'])->name('deleteadd');
         Route::post('admin/adds/update',[AdminController::class,'updateAdds'])->name('updateAdds');
 
@@ -227,8 +229,14 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('transport/vendor/register',function(){
         return view('guest.transport.register_vendor');
     })->name('vendor-register');
+    Route::get('transport-verify/{id}',function(){
+        return view('guest.transport.verify_otp');
+    })->name('verify_otp');
     
-    
+    // guest vendor registration
+    route::post('transport/vendor/register',[TransportController::class,'guestRegister'])->name('guestRegister');
+    route::post('trasport/vendor/verify',[TransientController::class,'verifyotp'])->name('transport-verifyotp');
+
     Route::get('transport/appointment',function(){
         $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
         //dd($booked);
@@ -262,3 +270,26 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 });
 
+
+//-------------------------------------- 47-Code-----------------------------------------------
+
+// B&S Edit Profile Form
+Route::get('/b&s/edit-profile-form',[BuyerAndSellerController::class,'editProfilePage'])->name('B&SEditProfilePage');
+
+// B&S Your Add Form
+Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
+
+// B&S Post an Add Form
+Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
+
+// B&S Your Subscription
+Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourSubscription'])->name('B&SYourSubscriptionPage');
+
+// B&S Post Ad Cow One
+Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOne');
+
+// B&S Post Ad Cow Multiple
+Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiple');
+
+
+//---------------------------------------------------------------------------------------------

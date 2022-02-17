@@ -7,7 +7,7 @@
                         <div class="row">
 
                           {{-- {{dd($ads)}} --}}
-                            <form action="{{route('search')}}" method="POST">
+                            <form action="{{route('search-ads')}}" method="POST">
                             @csrf
                             <div class="col-12 d-md-flex mt-3">
 
@@ -225,7 +225,7 @@
 {{--                                  </li>--}}
 {{--                                </ul>--}}
 {{--                              </nav>--}}
-                                {{ $ads->render("pagination::bootstrap-4") }}
+                                {{-- {{ $ads->render("pagination::bootstrap-4") }} --}}
                         
                         
                             </div>
