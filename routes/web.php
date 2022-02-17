@@ -25,6 +25,7 @@ use App\Models\TransportFrom;
 use App\Models\TransportTo;
 use App\Models\EducationVideo;
 use App\Models\NewsUpdate;
+use Psy\Readline\Transient;
 
 /*
 |--------------------------------------------------------------------------
@@ -232,8 +233,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         return view('guest.transport.verify_otp');
     })->name('verify_otp');
     
-    // guest vendot registration
+    // guest vendor registration
     route::post('transport/vendor/register',[TransportController::class,'guestRegister'])->name('guestRegister');
+    route::post('trasport/vendor/verify',[TransientController::class,'verifyotp'])->name('transport-verifyotp');
 
     Route::get('transport/appointment',function(){
         return view('transport.appointments');

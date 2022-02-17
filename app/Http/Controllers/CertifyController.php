@@ -162,7 +162,7 @@ class CertifyController extends Controller
         ->orWhere('state',$req->state)
         ->orWhere('district',$req->district)
         ->orWhere('taluka',$req->taluka)
-        ->get();
+        ->paginate(5);
         // dd($data);
 
         return view('admin.certify_animal',compact('certify','vets'))->with('infoMsg','Vet founded');

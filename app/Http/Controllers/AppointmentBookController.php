@@ -163,7 +163,7 @@ class AppointmentBookController extends Controller
 
         $appointment=AppointmentBook::join('appointment_address','appointment_address.id','=','appointments.appointment_address_id')
         ->where('animal_type',$animal)->orWhere('city',$city)->orWhere('district',$district)->orWhere('taluka',$taluka)
-        ->orWhere('vet_id',$vet)->get();
+        ->orWhere('vet_id',$vet)->paginate(5);;
         return view('admin.appointment_booked',compact('appointment'));
     }
 }
