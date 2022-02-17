@@ -199,6 +199,112 @@
             </div>
         </div>
     </nav>
+    
+</div>
+<!-- end of col  -->
 
+<div class="col-12 py-lg-2 px-0">
+
+    <!-- header section start  -->
+
+    <div class="col-12 py-0 d-md-none col-md-6 mx-auto">
+        <form class="d-flex">
+            <div class="input-group">
+                <input type="text" class="form-control border-dark rounded-pill" placeholder="Search..."
+                    aria-label="Search" aria-describedby="basic-addon2">
+                <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"
+                    id="basic-addon2"><i class="fas fa-search"></i></span>
+            </div>
+        </form>
+
+    </div>
+    <!-- end of col -->
+
+
+</div>
+<!-- end of row header -->
+
+
+
+<div class="row d-none d-lg-flex text-center pad-50 justify-content-around" id="top-menu-bar">
+    <hr class="" style="opacity: 1; background-color: #0572B2;">
+
+    <div class="col-lg-11 mb-2 col-xl-9 col-xxl-8 text-center">
+
+        <ul class="list-unstyled d-flex  mb-2 mb-lg-0 align-items-center">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    All Categories
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="cows.html">Cows</a></li>
+                    <li><a class="dropdown-item" href="sheeps.html">Sheeps</a></li>
+                    <li><a class="dropdown-item" href="goat.html">Goat</a></li>
+                    <li><a class="dropdown-item" href="buffalo.html">Buffalo</a></li>
+                    <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Vet Services
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                    <li><a class="dropdown-item" href="search_vet.html">Search A Vet</a></li>
+                    <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
+                    <li><a class="dropdown-item" href="book_appointment.html">Book An Appointment</a></li>
+                    <li><a class="dropdown-item" href="certify_animal.html">Certify My Animal</a></li>
+                    <li><a class="dropdown-item" href="vet_ragistration.html"> Register as a Vet</a></li>
+
+
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Transport
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="{{route('transport-search')}}">Search Transport</a></li>
+                    <li><a class="dropdown-item" href="book_transport.html"> Book Transport</a></li>
+                    <li><a class="dropdown-item" href="register_vendor.html">Register As Vendor</a></li>
+
+
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="online_courses.html" id="navbarDropdown">
+                    Education
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="forum_disscussion.html">
+                    Community & Forum
+                </a>
+
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="news_updates.html">
+                    News & Updates
+                </a>
+
+            </li>
+        </ul>
+
+
+
+
+
+    </div>
+    <!-- end of col  -->
+
+
+    <hr class="" style="opacity: 1; background-color: #0572B2;">
+
+</div>
+<!-- end of row  -->
 
 </header>
