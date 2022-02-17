@@ -6,7 +6,7 @@
 
                         <div class="row">
 
-                            <form action="" method="">
+                            <!-- <form action="" method=""> -->
 
                          
                           
@@ -66,12 +66,14 @@
                                           @endif  
                                         <td>{{$detail->created_at->format('Y-m-d')}}</td>
                                         @if($detail->status==0)
-                                        <td>Assigned</td>
+                                        <td>Confirmed</td>
                                         @elseif($detail->status==1)
-                                        <td>Pending</td>
+                                        <td>Completed</td>
                                         @elseif($detail->status==2)
-                                        <td>Delivered</td>
+                                        <td>Cancelled</td>
                                         @endif
+
+                                        
                                         
                                       
                                    
@@ -144,7 +146,11 @@
 
             <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
                       
-            
+@if ($errors->any())
+@foreach ($errors->all() as $error)
+<div class="text-danger">{{$error}}<br></div>
+@endforeach
+@endif       
     
                 <img src="{{asset('images/user-img.png')}}" class="profile_img rounded-circle my-3" alt="img not found">
     
@@ -159,13 +165,15 @@
            <div class="col-12 col-md-9">
                
           <form action="{{url('transport/update/detail')}}" method="post">
-
+            @csrf
+            <input type="hidden" id="appointmentid" name="transportbook">
+           
             <div class="row">
 
 
                     <div class="col-md-4 col-lg-3 my-3">
                        
-                        <select id="eanimaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="eanimaltype">
+                        <select id="eanimaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
                           <option value="" disabled  >Select Animal Type...</option>
                           <option value="0">Bull</option>
                           <option value="1">Buffalo</option>
@@ -230,7 +238,7 @@
     
                       <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="efarea" class="form-control" placeholder="Area ">
+                        <input type="text" name="farea" id="efarea" class="form-control" placeholder="Area ">
 
 
                     </div>
@@ -239,7 +247,7 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="efcity" class="form-select overflow-scroll  ">
+                            <select id="efcity" name="fcity" class="form-select overflow-scroll  ">
                               
                               <option value="" disabled> Select City</option>
                               <option value="chandigarh" >Chandigarh</option>
@@ -258,8 +266,8 @@
                         
                         <div class="startdropdown">
                        
-                            <select id="efstate"  class="form-select overflow-scroll ">
-                              <option selected disabled> State</option>
+                            <select id="efstate"  class="form-select overflow-scroll " name="fstate">
+                              <option  disabled> State</option>
                               <option value="Andhra Pradesh">Andhra Pradesh</option>
                               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -309,7 +317,7 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="efdistrict" class="form-select overflow-scroll  ">
+                            <select id="efdistrict" class="form-select overflow-scroll  " name="fdistrict">
                              
                               <option value="" disabled> District</option>
                           <option value="xyz"> XYZ</option>
@@ -326,7 +334,7 @@
                     <div class="col-md-4 col-lg-3 my-3">
                         
                         <div class="Districdropdown">
-                            <select id="eftaluka"  class="form-select overflow-scroll  ">
+                            <select id="eftaluka" name="ftaluka" class="form-select overflow-scroll  ">
                               <option value="" disbaled>Taluka</option>
                               <option value="Taluka AND">Taluka AND</option>
                               <option value="Taluka AND">Taluka OR</option>
@@ -342,7 +350,7 @@
                       
                     <div class="col-md-4 col-lg-3 my-3">
                         
-                        <input type="text" name="" id="efzipcode" class="form-control" placeholder="Pin Code ">
+                        <input type="text" name="fzipcode" id="efzipcode" class="form-control" placeholder="Pin Code ">
 
 
                     </div>
@@ -511,7 +519,7 @@
                     
                             <div class="Districdropdown">
                               
-                                <select id="" class="form-select overflow-scroll  " name="status">
+                                <select id="status" class="form-select overflow-scroll  " name="status">
                                   <option value="" selected disabled>Appointment Status</option>
                                  <option value="0">Confirmed</option>
                                  <option value="1">Completed</option>
@@ -526,7 +534,7 @@
                         <div class="col-md-6 my-3">
                     
                             <div class="Districdropdown">
-                               <textarea name="" placeholder="Your Comments" class="form-control" id="" name="comment"  rows="4"></textarea>
+                               <textarea  placeholder="Your Comments" class="form-control" id="comment" name="comment"  rows="4"></textarea>
                               </div>
             
         
@@ -544,8 +552,7 @@
                             <!-- <button id="submitbtn" type="submit" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2"  data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Submit
                             </button> -->
-                        <input type="button" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2" value="submit"
-                        >
+                        <input type="submit" class="btn btnsubmit bg_danger rounded-pill px-5 text-light border_color2 py-2 btnhover2" >
 
                         </div>
                         <!-- end of col  -->
@@ -565,6 +572,74 @@
     
                         </div>
                       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -604,48 +679,50 @@
                     
                                <div class="col-12 col-md-9">
                                    
-                                   <form action="" method="post">
+                                   <!-- <form action="" method="post"> -->
                     
                                 <div class="row">
                     
                     
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                           
-                                            <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                                              <option value="" disabled  selected>Select Animal Type...</option>
-                                              <option value="Cow">Cow</option>
-                                              <option value="Buffalo">Buffalo</option>
-                                              <option value="Bull">Bull</option>
-                                              <option value="Sheep" >Sheep</option>
-                                              <option  value="Goat"> Goat</option>
-                                            </select>
-                                            
-                                          </div>
-                        
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="No Of Animals ">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                        
-                                      
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Contact Person Name ">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                        
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Contact Number ">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
+                                <div class="col-md-4 col-lg-3 my-3">
+                       
+                       <select id="vanimaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
+                         <option value="" disabled  >Select Animal Type...</option>
+                         <option value="0">Bull</option>
+                         <option value="1">Buffalo</option>
+                         <option value="2">Cow</option>
+                         <option value="3" >Sheep</option>
+                         <option  value="4"> Goat</option>
+                       </select>
+                       
+                     </div>
+   
+                   <div class="col-md-4 col-lg-3 my-3">
+                       
+                       <input type="text" name="no_animals" id="vno_animals" class="form-control" placeholder="No Of Animals ">
+
+
+                     </div>
+                     <!-- end of col  -->
+   
+                 
+                   <div class="col-md-4 col-lg-3 my-3">
+                       
+                       <input type="text" name="contact_person" id="vcontact_person" class="form-control" placeholder="Contact Person Name ">
+
+
+                     </div>
+                     <!-- end of col  -->
+   
+                   <div class="col-md-4 col-lg-3 my-3">
+                       
+                       <input type="text" name="contact_no" id="vcontact_no" class="form-control" placeholder="Contact Number ">
+
+
+                     </div>
+                     <!-- end of col  -->
+
+               
                     
                                     
                                           
@@ -658,138 +735,144 @@
                                     <h5 class="tcolor my-4">From Address</h5>
                     
                                      
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
+                 
+                    <div class="col-md-4 col-lg-3 my-3">
                         
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
+                        <input type="text" name="faddressline1" id="vfaddresslin1" class="form-control" placeholder="Address Line 1 ">
+
+
+                    </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
                         
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Area ">
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                    
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <div class="Districdropdown">
-                                                <select id="inputDistrict" class="form-select overflow-scroll  ">
-                                                  <option value="">City</option>
-                                                 
-                                                
-                                                </select>
-                                              </div>
+                        <input type="text" name="faddressline2" id="vfaddressline2" class="form-control" placeholder="Address Line 2">
+
+
+                    </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="text" name="area" id="vfarea" class="form-control" placeholder="Area ">
+
+
+                    </div>
+                      <!-- end of col  -->
+
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vfcity" name="city" class="form-select overflow-scroll  ">
+                              <option value="" disabled selected> Select City</option>
+                              <option value="chandigarh" >Chandigarh</option>
+                              <option value="Mumbai">Mumbai</option>
+                              <option value="delhi"> Delhi</option>
                             
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                    
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <div class="startdropdown">
-                                           
-                                                <select id="inputState"  class="form-select overflow-scroll ">
-                                                  <option selected disabled> State</option>
-                                                  <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                                  <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                                  <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                                  <option value="Assam">Assam</option>
-                                                  <option value="Bihar">Bihar</option>
-                                                  <option value="Chandigarh">Chandigarh</option>
-                                                  <option value="Chhattisgarh">Chhattisgarh</option>
-                                                  <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                                  <option value="Daman and Diu">Daman and Diu</option>
-                                                  <option value="Delhi">Delhi</option>
-                                                  <option value="Lakshadweep">Lakshadweep</option>
-                                                  <option value="Puducherry">Puducherry</option>
-                                                  <option value="Goa">Goa</option>
-                                                  <option value="Gujarat">Gujarat</option>
-                                                  <option value="Haryana">Haryana</option>
-                                                  <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                                  <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                                  <option value="Jharkhand">Jharkhand</option>
-                                                  <option value="Karnataka">Karnataka</option>
-                                                  <option value="Kerala">Kerala</option>
-                                                  <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                                  <option value="Maharashtra">Maharashtra</option>
-                                                  <option value="Manipur">Manipur</option>
-                                                  <option value="Meghalaya">Meghalaya</option>
-                                                  <option value="Mizoram">Mizoram</option>
-                                                  <option value="Nagaland">Nagaland</option>
-                                                  <option value="Odisha">Odisha</option>
-                                                  <option value="Punjab">Punjab</option>
-                                                  <option value="Rajasthan">Rajasthan</option>
-                                                  <option value="Sikkim">Sikkim</option>
-                                                  <option value="Tamil Nadu">Tamil Nadu</option>
-                                                  <option value="Telangana">Telangana</option>
-                                                  <option value="Tripura">Tripura</option>
-                                                  <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                                  <option value="Uttarakhand">Uttarakhand</option>
-                                                  <option value="West Bengal">West Bengal</option>
-                                                
-                                                </select>
-                                              </div>
-                    
-                    
-                                       
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                    
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <div class="Districdropdown">
-                                                <select id="inputDistrict" class="form-select overflow-scroll  ">
-                                                  <option value=""> District</option>
-                                                 
-                                                
-                                                </select>
-                                              </div>
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                    
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <div class="Districdropdown">
-                                                <select id="inputTaluka" class="form-select overflow-scroll  ">
-                                                  <option value="">Taluka</option>
-                                                 
-                                                
-                                                </select>
-                                              </div>
-                    
-                    
-                                          </div>
-                                          <!-- end of col  -->
-                                          
-                                          
-                                        <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                            <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
-                    
-                    
-                                          </div>
+                            </select>
+                          </div>
+        
+
+                    </div>
+                      <!-- end of col  -->
+
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="startdropdown">
+                       
+                            <select id="vfstate"  class="form-select overflow-scroll " name="vstate">
+                              <option  disabled selected> State</option>
+                              <option value="Andhra Pradesh">Andhra Pradesh</option>
+                              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                              <option value="Assam">Assam</option>
+                              <option value="Bihar">Bihar</option>
+                              <option value="Chandigarh">Chandigarh</option>
+                              <option value="Chhattisgarh">Chhattisgarh</option>
+                              <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                              <option value="Daman and Diu">Daman and Diu</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Lakshadweep">Lakshadweep</option>
+                              <option value="Puducherry">Puducherry</option>
+                              <option value="Goa">Goa</option>
+                              <option value="Gujarat">Gujarat</option>
+                              <option value="Haryana">Haryana</option>
+                              <option value="Himachal Pradesh">Himachal Pradesh</option>
+                              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                              <option value="Jharkhand">Jharkhand</option>
+                              <option value="Karnataka">Karnataka</option>
+                              <option value="Kerala">Kerala</option>
+                              <option value="Madhya Pradesh">Madhya Pradesh</option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Manipur">Manipur</option>
+                              <option value="Meghalaya">Meghalaya</option>
+                              <option value="Mizoram">Mizoram</option>
+                              <option value="Nagaland">Nagaland</option>
+                              <option value="Odisha">Odisha</option>
+                              <option value="Punjab">Punjab</option>
+                              <option value="Rajasthan">Rajasthan</option>
+                              <option value="Sikkim">Sikkim</option>
+                              <option value="Tamil Nadu">Tamil Nadu</option>
+                              <option value="Telangana">Telangana</option>
+                              <option value="Tripura">Tripura</option>
+                              <option value="Uttar Pradesh">Uttar Pradesh</option>
+                              <option value="Uttarakhand">Uttarakhand</option>
+                              <option value="West Bengal">West Bengal</option>
+                            
+                            </select>
+                          </div>
+
+
+                   
+
+                    </div>
+                      <!-- end of col  -->
+
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vfdistrict" class="form-select overflow-scroll  " name="district">
+                              <option value="" disabled selected> District</option>
+                              <option value="xyz">XYZ</option>
+                              <option value="lmno">LMNO</option>
+                              <option value="abcd">ABCD</option>
+                            </select>
+                          </div>
+
+
+                    </div>
+                      <!-- end of col  -->
+
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vftaluka" class="form-select overflow-scroll  " name="vtaluka">
+                              <option value="" disbaled selected>Taluka</option>
+                              <option value="Taluka AND">Taluka AND</option>
+                              <option value="Taluka AND">Taluka OR</option>
+                              <option value="Taluka AND">Taluka IF</option>
+                            
+                            </select>
+                          </div>
+
+
+                    </div>
+                      <!-- end of col  -->
+                      
+                      
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="text" name="vfzipcode" id="vfzipcode" class="form-control" placeholder="Pin Code ">
+
+
+                    </div>
                                           <!-- end of col  -->
                                           
                                     
                                           
                                           
                                           
-                                        </div>
+                                </div>
                                         <!-- end of row  -->
                                         
                                
@@ -797,140 +880,140 @@
                                 <div class="row mb-4">
                     
                                     <h5 class="tcolor my-4">To Address</h5>
-                    
-                                     
                                     <div class="col-md-4 col-lg-3 my-3">
-                                            
-                                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 1 ">
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <input type="text" name="" id="" class="form-control" placeholder="Address Line 2">
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <input type="text" name="" id="" class="form-control" placeholder="Area ">
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <div class="Districdropdown">
-                                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                                              <option value="">City</option>
-                                             
-                                            
-                                            </select>
-                                          </div>
                         
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <div class="startdropdown">
-                                       
-                                            <select id="inputState"  class="form-select overflow-scroll ">
-                                              <option selected disabled> State</option>
-                                              <option value="Andhra Pradesh">Andhra Pradesh</option>
-                                              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-                                              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-                                              <option value="Assam">Assam</option>
-                                              <option value="Bihar">Bihar</option>
-                                              <option value="Chandigarh">Chandigarh</option>
-                                              <option value="Chhattisgarh">Chhattisgarh</option>
-                                              <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
-                                              <option value="Daman and Diu">Daman and Diu</option>
-                                              <option value="Delhi">Delhi</option>
-                                              <option value="Lakshadweep">Lakshadweep</option>
-                                              <option value="Puducherry">Puducherry</option>
-                                              <option value="Goa">Goa</option>
-                                              <option value="Gujarat">Gujarat</option>
-                                              <option value="Haryana">Haryana</option>
-                                              <option value="Himachal Pradesh">Himachal Pradesh</option>
-                                              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-                                              <option value="Jharkhand">Jharkhand</option>
-                                              <option value="Karnataka">Karnataka</option>
-                                              <option value="Kerala">Kerala</option>
-                                              <option value="Madhya Pradesh">Madhya Pradesh</option>
-                                              <option value="Maharashtra">Maharashtra</option>
-                                              <option value="Manipur">Manipur</option>
-                                              <option value="Meghalaya">Meghalaya</option>
-                                              <option value="Mizoram">Mizoram</option>
-                                              <option value="Nagaland">Nagaland</option>
-                                              <option value="Odisha">Odisha</option>
-                                              <option value="Punjab">Punjab</option>
-                                              <option value="Rajasthan">Rajasthan</option>
-                                              <option value="Sikkim">Sikkim</option>
-                                              <option value="Tamil Nadu">Tamil Nadu</option>
-                                              <option value="Telangana">Telangana</option>
-                                              <option value="Tripura">Tripura</option>
-                                              <option value="Uttar Pradesh">Uttar Pradesh</option>
-                                              <option value="Uttarakhand">Uttarakhand</option>
-                                              <option value="West Bengal">West Bengal</option>
-                                            
-                                            </select>
-                                          </div>
-                    
-                    
-                                   
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <div class="Districdropdown">
-                                            <select id="inputDistrict" class="form-select overflow-scroll  ">
-                                              <option value=""> District</option>
-                                             
-                                            
-                                            </select>
-                                          </div>
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                    
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <div class="Districdropdown">
-                                            <select id="inputTaluka" class="form-select overflow-scroll  ">
-                                              <option value="">Taluka</option>
-                                             
-                                            
-                                            </select>
-                                          </div>
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                                      
-                                      
-                                    <div class="col-md-4 col-lg-3 my-3">
-                                        
-                                        <input type="text" name="" id="" class="form-control" placeholder="Pin Code ">
-                    
-                    
-                                      </div>
-                                      <!-- end of col  -->
-                                      
-                                 
-                                          
-                                          
-                                          
-                                        </div>
+                        <input type="text" name="taddressline1" id="vtaddressline1" class="form-control" placeholder="Address Line 1 ">
+    
+    
+                    </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="text" name="taddressline2" id="vtaddressline2" class="form-control" placeholder="Address Line 2">
+    
+    
+                      </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="text" name="tarea" id="vtarea" class="form-control" placeholder="Area ">
+    
+    
+                      </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vtcity" name="vtcity"class="form-select overflow-scroll  ">
+                             
+                              <option value="" disabled> Select City</option>
+                                  <option value="chandigarh" >Chandigarh</option>
+                                  <option value="Mumbai">Mumbai</option>
+                                  <option value="delhi"> Delhi</option>
+                            
+                            </select>
+                          </div>
+        
+    
+                      </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="startdropdown">
+                       
+                            <select id="vtstate" name="vtstate"  class="form-select overflow-scroll ">
+                              <option  disabled> State</option>
+                              <option value="Andhra Pradesh">Andhra Pradesh</option>
+                              <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                              <option value="Assam">Assam</option>
+                              <option value="Bihar">Bihar</option>
+                              <option value="Chandigarh">Chandigarh</option>
+                              <option value="Chhattisgarh">Chhattisgarh</option>
+                              <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                              <option value="Daman and Diu">Daman and Diu</option>
+                              <option value="Delhi">Delhi</option>
+                              <option value="Lakshadweep">Lakshadweep</option>
+                              <option value="Puducherry">Puducherry</option>
+                              <option value="Goa">Goa</option>
+                              <option value="Gujarat">Gujarat</option>
+                              <option value="Haryana">Haryana</option>
+                              <option value="Himachal Pradesh">Himachal Pradesh</option>
+                              <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                              <option value="Jharkhand">Jharkhand</option>
+                              <option value="Karnataka">Karnataka</option>
+                              <option value="Kerala">Kerala</option>
+                              <option value="Madhya Pradesh">Madhya Pradesh</option>
+                              <option value="Maharashtra">Maharashtra</option>
+                              <option value="Manipur">Manipur</option>
+                              <option value="Meghalaya">Meghalaya</option>
+                              <option value="Mizoram">Mizoram</option>
+                              <option value="Nagaland">Nagaland</option>
+                              <option value="Odisha">Odisha</option>
+                              <option value="Punjab">Punjab</option>
+                              <option value="Rajasthan">Rajasthan</option>
+                              <option value="Sikkim">Sikkim</option>
+                              <option value="Tamil Nadu">Tamil Nadu</option>
+                              <option value="Telangana">Telangana</option>
+                              <option value="Tripura">Tripura</option>
+                              <option value="Uttar Pradesh">Uttar Pradesh</option>
+                              <option value="Uttarakhand">Uttarakhand</option>
+                              <option value="West Bengal">West Bengal</option>
+                            
+                            </select>
+                          </div>
+    
+    
+                   
+    
+                      </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vtdistrict" class="form-select overflow-scroll  " name="vtdistrict">
+                              <option value="" disabled > District</option>
+                              <option value="xyz"> XYZ</option>
+                              <option value="lmno"> LMNO</option>
+                              <option value="abc">ABC</option>
+                            </select>
+                          </div>
+    
+    
+                      </div>
+                      <!-- end of col  -->
+    
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <div class="Districdropdown">
+                            <select id="vttaluka" class="form-select overflow-scroll  " name="vttaluka">
+                              <option value="">Taluka</option>
+                              <option value="Taluka AND">Taluka AND</option>
+                                  <option value="Taluka AND">Taluka OR</option>
+                                  <option value="Taluka AND">Taluka IF</option>
+                            
+                            </select>
+                          </div>
+    
+    
+                      </div>
+                      <!-- end of col  -->
+                      
+                      
+                    <div class="col-md-4 col-lg-3 my-3">
+                        
+                        <input type="text" name="vtzipcode" id="vtzipcode" class="form-control" placeholder="Pin Code ">
+    
+    
+                      </div>
+                                     
+                                    
+                                </div>
                                         <!-- end of row  -->
                     
                                         <div class="row justify-content-around">
@@ -941,11 +1024,11 @@
                                         
                                                 <div class="Districdropdown">
                                                   
-                                                    <select id="" class="form-select overflow-scroll  ">
-                                                      <option value="" selected disabled>Appointment Status</option>
-                                                     <option value="">Confirmed</option>
-                                                     <option value="">Completed</option>
-                                                     <option value="">Cancelled</option>
+                                                    <select id="vstatus" class="form-select overflow-scroll  ">
+                                                      <option value=""  >Appointment Status</option>
+                                                     <option value="0">Confirmed</option>
+                                                     <option value="1">Completed</option>
+                                                     <option value="2">Cancelled</option>
                                                     
                                                     </select>
                                                   </div>
@@ -956,7 +1039,7 @@
                                             <div class="col-md-6 my-3">
                                         
                                                 <div class="Districdropdown">
-                                                   <textarea name="" placeholder="Your Comments" class="form-control" id=""  rows="4"></textarea>
+                                                   <textarea name="" placeholder="Your Comments" class="form-control" id="vcomment"  rows="4"></textarea>
                                                   </div>
                                 
                             
@@ -968,7 +1051,7 @@
                                
                     
 
-                                    </form>
+                                   
                     
                                </div>
                                <!-- end of col  -->
@@ -1002,9 +1085,11 @@ function editdetail(id){
   success:function(data) {
 
         console.log(data);
-
+        document.getElementById('appointmentid').value=data.trans.id;
         document.getElementById('eanimaltype').value=data.trans.animal_type;
+        document.getElementById('status').value=data.trans.status;
          document.getElementById('eno_animals').value=data.trans.no_of_animal;
+         document.getElementById('comment').value=data.trans.comment;
        // document.getElementById('ebreed').value=data.trans.breed;
         document.getElementById('econtact_person').value=data.trans.contact_name;
         document.getElementById('econtact_no').value=data.trans.contact_no;
@@ -1031,6 +1116,50 @@ function editdetail(id){
         document.getElementById('etzipcode').value=data.toaddress.zipcode;
         // document.getElementById('etappoint_date').value=data.toaddress.appointment_date;
         // document.getElementById('etappoint_time').value=data.toaddress.appointment_time;
+
+    }
+  });
+
+}
+
+
+function viewdetail(id){
+  $.ajax({
+
+    type:'POST',
+    url:"{{url('/transport/booking/detail')}}"+ '/'+id,
+    data:{_token: "{{ csrf_token() }}"},
+  success:function(data) {
+
+        console.log(data);
+       
+        document.getElementById('vanimaltype').value=data.trans.animal_type;
+        document.getElementById('vstatus').value=data.trans.status;
+         document.getElementById('vno_animals').value=data.trans.no_of_animal;
+      
+        document.getElementById('vcontact_person').value=data.trans.contact_name;
+        document.getElementById('vcontact_no').value=data.trans.contact_no;
+        document.getElementById('vcomment').value=data.trans.comment;
+      //  // document.getElementById('date_transport').value=data.trans.date_of_transport;
+        document.getElementById('vfaddresslin1').value=data.fromaddress.address_line1;
+        document.getElementById('vfaddressline2').value=data.fromaddress.address_line2;
+        document.getElementById('vfarea').value=data.fromaddress.area;
+        document.getElementById('vfcity').value=data.fromaddress.city;
+        document.getElementById('vfdistrict').value=data.fromaddress.district;
+        document.getElementById('vfstate').value=data.fromaddress.state;
+        document.getElementById('vftaluka').value=data.fromaddress.taluka;
+        document.getElementById('vfzipcode').value=data.fromaddress.zipcode;
+       
+        document.getElementById('vtaddressline1').value=data.toaddress.address_line1;
+        document.getElementById('vtaddressline2').value=data.toaddress.address_line2;
+        document.getElementById('vtarea').value=data.toaddress.area;
+        document.getElementById('vtcity').value=data.toaddress.city;
+        document.getElementById('vtdistrict').value=data.toaddress.district;
+        document.getElementById('vtstate').value=data.toaddress.state;
+        document.getElementById('vttaluka').value=data.toaddress.taluka;
+        document.getElementById('vtzipcode').value=data.toaddress.zipcode;
+        
+
 
     }
   });

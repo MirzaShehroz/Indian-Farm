@@ -171,8 +171,108 @@ class TransportController extends Controller
     }
 
     public function updatedata(Request $req){
+        $req->validate([
+            'farea'=>'required',
+            'fcity'=>'required',
+            'faddresline1'=>'required',
+            'fdistrict'=>'required',
+            'ftaluka'=>'required',
+            'fzipcode'=>'required',
+           
 
-        dd($req->all());
+            'tarea'=>'required',
+            'tcity'=>'required',
+            'taddressline1'=>'required',
+            'tdistrict'=>'required',
+            'ttaluka'=>'required',
+            'tzipcode'=>'required',
+            
+
+       
+            'animaltype'=>'required',
+            'no_animals'=>'required|numeric',
+            'contact_person'=>'required',
+            'contact_no'=>'required',
+            
+            
+        ]);
+        $data=$req->all();
+        $transport=TransportBooked::where('id',$req->transportbook)->first();
+       
+        DB::beginTransaction();
+        try{
+
+            $transportfrom=TransportFrom::where('id',$transport->from_address_id)->first();
+       
+            DB::beginTransaction();
+            try{
+
+                $transportfrom->address_line1=$data['faddresline1'];
+                $transportfrom->address_line2=$data['faddressline2'];
+                $transportfrom->area=$data['farea'];
+                $transportfrom->city=$data['fcity'];
+                $transportfrom->district=$data['fdistrict'];
+                $transportfrom->state=$data['fstate'];
+                $transportfrom->taluka=$data['ftaluka'];
+                $transportfrom->zipcode=$data['fzipcode'];
+               
+               // dd($transportfrom);
+                $transportfrom->save();
+                DB::commit();
+            }catch(\Exception $e){
+                dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+            }
+
+
+
+            $transportto=TransportTo::where('id',$transport->to_address_id)->first();
+            DB::beginTransaction();
+            try{
+
+                $transportto->address_line1=$data['taddressline1'];
+                $transportto->address_line2=$data['taddressline2'];
+                $transportto->area=$data['tarea'];
+                $transportto->city=$data['tcity'];
+                $transportto->district=$data['tdistrict'];
+                $transportto->state=$data['tstate'];
+                $transportto->taluka=$data['ttaluka'];
+                $transportto->zipcode=$data['tzipcode'];
+              
+               // dd($transportto);
+                $transportto->save();
+                DB::commit();
+
+            }catch(\Exception $e){
+                dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+            }
+
+
+            $transport->user_id=Auth::user()->id;
+            $transport->animal_type=$data['animaltype'];
+            $transport->no_of_animal=$data['no_animals'];
+            $transport->contact_name=$data['contact_person'];
+            $transport->contact_no=$data['contact_no'];
+
+            $transport->from_address_id=$transportfrom->id;
+            $transport->to_address_id=$transportto->id;
+            $transport->status=$data['status'];
+            $transport->comment=$data['comment'];
+          
+           // dd($transportfrom,$transportto,$transport);
+            $transport->save();
+            DB::commit();
+            return back()->with('successMsg','Appointment Updated Successfully');
+        }catch(\Exception $e){
+            dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+        }
+        //dd($req->all());
+
     }
 
     // search
