@@ -26,7 +26,11 @@
 <body>
 
     <div class="container-fluid">
+        <div class="row pad-50 fixed-top" id="header">
+            @include('layouts.header')
+        </div>
        @yield('content')
+       @include('layouts.footer')
     </div>
     <!-- end of container fluid  -->
 
@@ -72,7 +76,7 @@
         });
     </script>
 
-    @yield('content')
+    @yield('script')
 </body>
 
 </html>
