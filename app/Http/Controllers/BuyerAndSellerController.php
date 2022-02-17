@@ -14,12 +14,12 @@ class BuyerAndSellerController extends Controller
 
     // your-add page
     public function yourAddPage() {
-        return view('seller_and_buyer_wireframe.your_add');
+        return view('seller_and_buyer_wireframe.your_ads');
     }
 
     // post an add page
     public function postAnAdd() {
-        return view('seller_and_buyer_wireframe.post_an_add');
+        return view('seller_and_buyer_wireframe.post_an_ad');
     }
 
     // your subscription page

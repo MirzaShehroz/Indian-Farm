@@ -256,10 +256,10 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 Route::get('/b&s/edit-profile-form',[BuyerAndSellerController::class,'editProfilePage'])->name('B&SEditProfilePage');
 
 // B&S Your Add Form
-Route::get('/b&s/your-add-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
+Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
 
 // B&S Post an Add Form
-Route::get('/b&s/post-an-add-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
+Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
 
 // B&S Your Subscription
 Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourSubscription'])->name('B&SYourSubscriptionPage');
