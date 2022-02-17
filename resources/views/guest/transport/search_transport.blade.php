@@ -8,15 +8,15 @@
 
     <h4 class="mt-5 mt-md-0">Search Transport</h4>
 
-    <form action="" class=" d-md-flex gap-3 justify-content-around" method="post">
+    <form action="{{route('searchResult')}}" class=" d-md-flex gap-3 justify-content-around" method="POST">
+        @csrf
 
         <div class="col-12 col-md-2 my-2 my-md-0">
 
             <div class="Districdropdown">
-                <select id="inputcity" class="form-select overflow-scroll  ">
+                <select id="inputcity" name="city" class="form-select overflow-scroll  ">
                     <option value="">Select City</option>
-
-
+                    <option value="Pune">Pune</option>
                 </select>
             </div>
 
@@ -28,7 +28,7 @@
 
             <div class="startdropdown">
 
-                <select id="inputState" class="form-select overflow-scroll ">
+                <select id="inputState" name="state" class="form-select overflow-scroll ">
                     <option selected disabled>Select State</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -76,10 +76,11 @@
         <div class="col-12 col-md-2 my-2 my-md-0">
 
             <div class="Districdropdown">
-                <select id="inputDistrict" class="form-select overflow-scroll  ">
+                <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
                     <option value="">Select District</option>
-
-
+                    <option value="Pune">Pune</option>
+                    <option value="Ranchi">Ranchi</option>
+                    <option value="South Goa">South Goa</option>
                 </select>
             </div>
 
@@ -89,10 +90,9 @@
         <div class="col-12 col-md-2 my-2 my-md-0">
 
             <div class="Districdropdown">
-                <select id="inputTaluka" class="form-select overflow-scroll  ">
+                <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
                     <option value="">Select Taluka</option>
-
-
+                    <option value="Pune">Pune</option>
                 </select>
             </div>
 
@@ -101,7 +101,7 @@
 
         <div class="col-12 col-md-2 my-3 my-md-0">
 
-            <button class="form-control bgcolor text-light btnhover3 border_color2" type="button">Search</button>
+            <button class="form-control bgcolor text-light btnhover3 border_color2" type="submit">Search</button>
 
         </div>
         <!-- end of col  -->

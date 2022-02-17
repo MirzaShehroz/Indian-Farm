@@ -270,8 +270,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('transport/profile',function(){
         return view('transport.myprofile');
     });
-
-   
+    Route::post('vendor/search',[GuestController::class,'searchResult'])->name('searchResult');
     Route::get('logout',function(){
        
         Auth::logout();

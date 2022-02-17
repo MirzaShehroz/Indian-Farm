@@ -119,5 +119,18 @@ class GuestController extends Controller
         }
 
     }
-
+    
+    public function searchResult(Request $req){
+        // dd($req);
+        $data=Transport::join('users','transports.user_id','users.id')
+        ->join('user_address','users.address_id','=','user_address.id')
+        ->orWhere('city','=',$req->city)
+        ->orWhere('district','=',$req->district)
+        ->orWhere('state','=',$req->state)
+        ->orWhere('taluka','=',$req->taluka)
+        ->get();
+        // dd($data);
+        return view('guest.transport.search_transport',compact('data'));
+    }
 }
+
