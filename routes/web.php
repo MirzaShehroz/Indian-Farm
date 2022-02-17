@@ -238,12 +238,26 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     route::match(['get', 'post'],'trasport/vendor/verify',[TransportController::class,'verifyotp'])->name('transport-verifyotp');
 
     Route::get('transport/appointment',function(){
-        return view('transport.appointments');
+        $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
+        //dd($booked);
+        return view('transport.appointments',compact('detail'));
     });
+
+    Route::post('transport/booking/detail/{id}',[TransportController::class,'getdata']);
     
-    Route::get('transport/profile',function(){
-        return view('transport.myprofile');
-    });
+    Route::post('transport/update/detail',[TransportController::class,'updatedata']);
+
+
+    Route::get('trans/profile',function(){
+        $user=User::join('transports','transports.user_id','=','users.id')
+        ->join('user_address','user_address.id','=','users.address_id')
+        ->where('users.id',Auth::user()->id)->first();
+        return view('transport.myprofile',compact('user'));
+    })->name('transportprofile');
+
+
+    Route::post('update/trasport/profile',[TransportController::class,'updateprofile']);
+
 
     Route::get('logout',function(){
        

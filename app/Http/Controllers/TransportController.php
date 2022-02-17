@@ -8,7 +8,12 @@ use App\Models\Address;
 use App\Models\Transport;
 use App\Models\User;
 use App\Models\Documents;
+use App\Models\TransportBooked;
+use App\Models\TransportFrom;
+use App\Models\TransportTo;
 use Illuminate\Support\Facades\Hash;
+use DB;
+use Auth;
 use PDO;
 use Mail;
 use Crypt;
@@ -61,7 +66,114 @@ class TransportController extends Controller
        }
     }
 
+    //update profile
+    public function updateprofile(Request $req){
 
+        $req->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'contact_no'=>'required',
+            'license_no'=>'required',
+            'vehicle_type'=>'required',
+            'make_model'=>'required',
+            'address_line1'=>'required',
+            'address_line2'=>'required',
+            'district'=>'required',
+            'taluka'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+            'zipcode'=>'required',
+        ]);
+
+        $user=User::where('id',$req->user_id)->first();
+        
+        $user_address=Address::where('id',$user->address_id)->first();
+        DB::beginTransaction();
+        try{
+
+            DB::beginTransaction();
+            try{
+               
+                $user_address->address_line1=$req->address_line1;
+                $user_address->address_line2=$req->address_line2;
+                $user_address->state=$req->state;
+                $user_address->city=$req->city;
+                $user_address->area=$req->area;
+                $user_address->district=$req->district;
+                $user_address->taluka=$req->taluka;
+                
+                $user_address->zipcode=$req->zipcode;
+                
+                $user_address->save();
+                
+                DB::commit();
+
+
+            }catch(\Exception $e){
+           dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+            }
+
+            $user_transport=Transport::where('user_id',$req->user_id)->first();
+           
+            DB::beginTransaction();
+            try{
+
+                $user_transport->vehicle_type=$req->vehicle_type;
+                $user_transport->vehicle_make_model=$req->make_model;
+                $user_transport->license_no=$req->license_no;
+                $user_transport->save();
+                DB::commit();
+
+            }catch(\Exception $e){
+                dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+            }
+            
+            $user->first_name=$req->first_name;
+            $user->middle_name=$req->middle_name;
+            $user->last_name=$req->last_name;
+            
+            if($req->hasFile('profile')){
+               
+              $file=$req->profile;
+              $name = time().''.rand(1000000,999999999999);
+              $filepath='/uploads/'.$user->id.'/profile/';
+              $ext= $file->getClientOriginalExtension();
+              $file->move(public_path() .$filepath,$name.'.'.$ext);
+              $fileName=$name.'.'.$ext;
+              $imgData=  $filepath.$fileName;
+
+             
+
+              $user->image=$imgData;
+
+
+             }
+             $user->save();
+             DB::commit();
+             return back()->with('successMsg','Profile Update Successfully');
+        }catch(\Exception $e){
+                   
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+        }
+    }
+
+
+    public function getdata($id){
+        $transport=TransportBooked::where('id',$id)->first();
+        $from_address=TransportFrom::where('id',$transport->from_address_id)->first();
+        $to_address=TransportTo::where('id',$transport->to_address_id)->first();
+        return response()->json(array('trans'=>$transport,'fromaddress'=>$from_address,'toaddress'=>$to_address),200);
+    }
+
+    public function updatedata(Request $req){
+
+        dd($req->all());
+    }
 
     // search
     public function search(Request $req){

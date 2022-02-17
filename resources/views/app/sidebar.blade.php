@@ -28,11 +28,11 @@
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings6" type="button" role="tab" aria-controls="v-pills-settings6" aria-selected="false"> <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>  Content Management </button> -->
                       <a  href="{{url('admin/contentmanagement')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>Content Management</a>
                     @elseif(Auth::user()->user_role=='transport')
-                        <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Dashboard</a>
+                        <a  href="{{url('transport/index')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Dashboard</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings6" type="button" role="tab" aria-controls="v-pills-settings6" aria-selected="false"> <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>  Content Management </button> -->
-                         <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>Appointment</a>
-                         <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>My Profile</a>
+                         <a  href="{{url('transport/appointment')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>Appointment</a>
+                         <a  href="{{url('trans/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>My Profile</a>
                     @endif
                 @else
                     

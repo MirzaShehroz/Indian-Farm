@@ -919,7 +919,7 @@
                     <input type="text" name="taddressline1" id="teaddressline1" class="form-control" placeholder="Address Line 1 ">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
@@ -927,7 +927,7 @@
                     <input type="text" name="taddressline2" id="teaddressline2" class="form-control" placeholder="Address Line 2">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
@@ -935,7 +935,7 @@
                     <input type="text" name="tarea" id="tearea" class="form-control" placeholder="Area ">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
@@ -949,7 +949,7 @@
                               <option value="delhi"> Delhi</option>
                         
                         </select>
-                      </div>
+                </div>
     
 
                   </div>
@@ -1004,7 +1004,7 @@
 
                
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
@@ -1019,7 +1019,7 @@
                       </div>
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
@@ -1036,7 +1036,7 @@
                       </div>
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
                   
                   
@@ -1045,7 +1045,7 @@
                     <input type="text" name="tzipcode" id="etzipcode" class="form-control" placeholder="Pin Code ">
 
 
-                  </div>
+                </div>
                   <!-- end of col  -->
                   
                 <div class="col-md-4 col-lg-3 my-3">
@@ -1238,7 +1238,7 @@
                         <input type="text" name="" id="vfarea" class="form-control" placeholder="Area ">
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1256,7 +1256,7 @@
                           </div>
         
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1308,7 +1308,7 @@
 
                    
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1325,7 +1325,7 @@
                           </div>
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
 
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1341,7 +1341,7 @@
                           </div>
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
                       
                       
@@ -1350,7 +1350,7 @@
                         <input type="text" name="" id="vfzipcode" class="form-control" placeholder="Pin Code ">
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
                       
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1358,7 +1358,7 @@
                         <input type="text" name="" id="vfappoint_date" class="form-control" placeholder="Appointment Date ">
 
 
-                      </div>
+                    </div>
                       <!-- end of col  -->
                       
                     <div class="col-md-4 col-lg-3 my-3">
@@ -1559,9 +1559,12 @@
                             <div class="Districdropdown">
                                 <select id="vstatus" class="form-select overflow-scroll  ">
                                   <option value="" selected disabled>Status </option>
-                                  <option value="0" >Assigned</option>
+                                  <!-- <option value="0" >Assigned</option>
                                   <option value="1" >Pending </option>
-                                  <option value="2" >Delivered</option>
+                                  <option value="2" >Delivered</option> -->
+                                  <option value="0">Confirmed</option>
+                                 <option value="1">Completed</option>
+                                 <option value="2">Cancelled</option>
                                 
                                 </select>
                               </div>
