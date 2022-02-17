@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-
-
+@section('content')
+    
     <!-- header section end -->
 
     <div class="row pad-50 mt-5 pt-5 mt-lg-0" id="banner-section">
@@ -1153,4 +1153,6 @@
             <button class="bg-transparent border-0"><i class="fas fa-plus me-2"></i>Sell </button>
         </a> -->
     <!-- end of button  -->
+    @endsection
+
 
