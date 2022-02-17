@@ -18,7 +18,9 @@
 
                                         <h5>Total Appointments</h5>
 
-                                        <h1>0</h1>
+                                        <h1>
+                                        0
+                                          </h1>
 
 
                                     </div>
@@ -100,7 +102,7 @@
                       
             
     
-                <img src="../../../public/images/user-img.png" class="profile_img rounded-circle my-3" alt="img not found">
+                <img src="{{asset('images/user-img.png')}}" class="profile_img rounded-circle my-3" alt="img not found">
     
             
        

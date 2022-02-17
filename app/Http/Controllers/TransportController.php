@@ -13,6 +13,54 @@ use PDO;
 
 class TransportController extends Controller
 {
+
+    public function login(Request $req){
+        $req->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $inputVal = $req->all();
+        $inputVal['email']=$req->email;
+        $inputVal['password']=$req->password;
+        
+       $nonreg=User::where('email',$inputVal['email'])->count();
+      
+      
+       if($nonreg>0){
+            $user=User::where('email',$inputVal['email'])->first();
+            $name=  $user->first_name.''.$user->middle_name.''.$user->last_name;
+        if (auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
+            
+            if($user->status==1){
+               
+              
+               
+               if(auth()->user()->user_role=='transport'){
+
+                    return redirect('transport/index');
+                
+                }
+                else{
+                    return back()->with('error','You seem not like transporter');
+                }
+            }
+            else{
+                return back()->with('error','Wait For Admin Approval');
+            }
+
+        }
+        else{
+           
+            return back()->with('error','Email Or Password Is Wrong');
+        }
+
+       }else{
+           return back()->with('error','This Email Not Registered');
+       }
+    }
+
+
+
     // search
     public function search(Request $req){
         $data=Transport::join('users','users.id','=','transports.user_id')
