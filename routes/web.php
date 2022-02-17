@@ -206,19 +206,6 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
     //update news update
     Route::post('update/url',[NewsUpdateController::class,'editnews']);
-
-
-
-
-
-
-
-
-
-    
-
-
-
     });
 
     Route::get('login',function(){
@@ -231,6 +218,11 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('transport/index',function(){
         return view('transport.index');
     });
+    // guest accounts route
+
+    Route::get('transport/search',function (){
+        return view('guest.transport.search_transport');
+    })->name('transport-search');
     
     Route::get('transport/appointment',function(){
         return view('transport.appointments');
