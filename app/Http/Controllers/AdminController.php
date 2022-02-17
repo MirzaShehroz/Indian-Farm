@@ -51,7 +51,6 @@ class AdminController extends Controller
                         'name'=>$name
                          
                     ];
-        
                     Mail::send('admin.verify_mail',$messagedata,function($message)use($email){
         
                         $message->to($email)->subject('Login OTP');

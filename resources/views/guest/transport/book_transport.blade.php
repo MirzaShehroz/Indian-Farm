@@ -14,7 +14,7 @@
             <div class="col-md-4 col-lg-3 my-3">
                
                 <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                  <option value="" disabled  selected>Select Animal Type...</option>
+                  <option name="animal_type" value="" disabled  selected>Select Animal Type...</option>
                   <option value="Cow">Cow</option>
                   <option value="Buffalo">Buffalo</option>
                   <option value="Bull">Bull</option>
@@ -50,7 +50,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="date" name="datetrans" id="" class="form-control" placeholder="Date Of Transport ">
+                <input type="date" name="4" id="" class="form-control" placeholder="Date Of Transport ">
 
 
               </div>
@@ -84,7 +84,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="Area" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="area" id="" class="form-control" placeholder="Area ">
 
 
               </div>
@@ -93,7 +93,7 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" class="form-select overflow-scroll  ">
+                    <select id="inputDistrict" name="city" class="form-select overflow-scroll  ">
                       <option value="">City</option>
                      
                     
@@ -108,7 +108,7 @@
                 
                 <div class="startdropdown">
                
-                    <select id="inputState"  class="form-select overflow-scroll ">
+                    <select id="inputState" name="state" class="form-select overflow-scroll ">
                       <option selected disabled> State</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -159,7 +159,7 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputDistrict" class="form-select overflow-scroll  ">
+                    <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
                       <option value=""> District</option>
                      
                     
@@ -173,7 +173,7 @@
             <div class="col-md-4 col-lg-3 my-3">
                 
                 <div class="Districdropdown">
-                    <select id="inputTaluka" class="form-select overflow-scroll  ">
+                    <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
                       <option value="">Taluka</option>
                      
                     
@@ -326,7 +326,7 @@
               
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="pincode" id="" class="form-control" placeholder="Pin Code ">
+                <input type="number" name="pincode" id="" class="form-control" placeholder="Pin Code ">
 
 
               </div>

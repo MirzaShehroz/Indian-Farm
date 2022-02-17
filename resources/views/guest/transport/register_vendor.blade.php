@@ -8,75 +8,76 @@
      border-radius: 20px;  box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;">
 
 
+<form action="{{route('guestRegister')}}" method="post" enctype="multipart/form-data">
+  @csrf
 
-      <img src="{{asset('images/user-img.png')}}" class="profile_img my-3" alt="img not found">
+      <img src="{{asset('images/user-img.png')}}" name="profile" class="profile_img my-3" alt="img not found">
 
   
-      <button type="file" class="bg-transparent  profilebtn btnhover px-3 py-2" style="border-radius: 5px;">Upload Profile Picture</button>
-
+        <input type="file" name="profile" value="Upload Image">
 
     </div>
     <!-- end of col-3 -->
 
     <div class="col-12 col-md-8">
 
-      <form action="" method="post" >
 
    <h5 class="mb-4">Personal Details</h5>
         <div class="row">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="First Name" aria-label="First name">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-label="First name">
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="Middle Name" aria-label="Middle name">
+            <input type="text" class="form-control" name="middle_name" placeholder="Middle Name" aria-label="Middle name">
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="Last Name" aria-label="Last name">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-label="Last name">
           </div>
         </div>
 
       
         <div class="row my-2">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="License No" aria-label="License">
+            <input type="text" class="form-control" name="license_no" placeholder="License No" aria-label="License">
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="Vehicle Type " aria-label="Vehicle">
+            <input type="text" class="form-control" name="vehicle" placeholder="Vehicle Type " aria-label="Vehicle">
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="" placeholder="Vehicle Make & Model" aria-label="Model">
+            <input type="text" class="form-control" name="make" placeholder="Vehicle Make & Model" aria-label="Model">
           </div>
         </div>
 
         <h5 class="my-4">Contact Details</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Contact Number" aria-label="Contact Number">
+            <input type="text" class="form-control" name="contact_no" placeholder="Contact Number" aria-label="Contact Number">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Email Id" aria-label="Email Id">
+            <input type="text" class="form-control" name="email" placeholder="Email Id" aria-label="Email Id">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Password" aria-label="Password">
+            <input type="password" id="password" class="form-control" name="password" placeholder="Password" aria-label="Password">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Confirm Password" aria-label="Confirm Password">
+            <input type="password" id="c_password" class="form-control" name="c_password" placeholder="Confirm Password" aria-label="Confirm Password">
+            <span id="message"></span>
           </div>
         </div>
 
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Address Line 1 " aria-label="Address Line 1 ">
+            <input type="text" class="form-control" name="address1" placeholder="Address Line 1 " aria-label="Address Line 1 ">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Address Line 2" aria-label="Address Line 2">
+            <input type="text" class="form-control" name="address2" placeholder="Address Line 2" aria-label="Address Line 2">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Area" aria-label="Password">
+            <input type="text" class="form-control" name="area" placeholder="Area" aria-label="area">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputCity" class="form-select overflow-scroll ">
+            <select id="inputCity" name="city" class="form-select overflow-scroll ">
               <option value="" selected disabled>City</option>
               <option value="Pune">Pune</option>
 
@@ -87,7 +88,7 @@
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <select id="inputState" class="form-select overflow-scroll ">
+            <select id="inputState" name="state" class="form-select overflow-scroll ">
               <option value="" selected disabled>State</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -129,21 +130,21 @@
             </select>
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputDistrict" class="form-select overflow-scroll ">
+            <select id="inputDistrict" name="district" class="form-select overflow-scroll ">
               <option value="" selected disabled>District</option>
               <option value="Pune">Pune</option>
 
             </select>
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputTaluka" class="form-select overflow-scroll ">
+            <select id="inputTaluka" name="taluka" class="form-select overflow-scroll ">
               <option value="" selected disabled>Taluka</option>
               <option value="Pune">Pune</option>
 
             </select>
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="" placeholder="Pin Code" aria-label="Pin Code">
+            <input type="number" class="form-control" name="pincode" placeholder="Pin Code" aria-label="Pin Code">
           </div>
         </div>
 
@@ -151,22 +152,22 @@
         <h5 class="my-4">  Upload Documents</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="file" class="form-control" name="">
+            <input type="file" class="form-control" name="doc1">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="file" class="form-control" name="">
+            <input type="file" class="form-control" name="doc2">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="file" class="form-control" name="">
+            <input type="file" class="form-control" name="doc3">
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="file" class="form-control" name="">
+            <input type="file" class="form-control" name="doc4">
           </div>
         </div>
       
         <div class="col-12 text-center ">
 
-          <a href="transport_post_submit.html" class="text-decoration-none  text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2 hoverbtna" type="button">Submit</button></a>
+          <a href="transport_post_submit.html" class="text-decoration-none  text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2 hoverbtna" type="submit">Submit</button></a>
 
         </div>
         <!-- end of col  -->
@@ -184,4 +185,21 @@
     </div>
     <!-- end of edit profile row  -->
 
+@endsection
+
+@section('script')
+    <script>
+        $('#c_password').change(function(){
+        var password=$('#password').val();
+        var confirm=$('#c_password').val();
+       if(password!=confirm){
+        $('#c_password').css("border-color","red");
+        $("#message").text('Password not match!');
+       }
+       else{
+        $('#c_password').css("border-color","white");
+        $("#message").text('');
+       }
+        })
+    </script>
 @endsection
