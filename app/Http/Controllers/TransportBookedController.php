@@ -261,6 +261,6 @@ class TransportBookedController extends Controller
         ->get();
         
         return view('admin.transport_booked',compact('transport'));
-       
+      
     }
 }

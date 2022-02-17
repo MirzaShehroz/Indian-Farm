@@ -154,17 +154,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     });
     
     //////////////////////////////////////Transport////////////////////////////
-    Route::get('transport/index',function(){
-        return view('transport.index');
-    });
     
-    Route::get('transport/appointment',function(){
-        return view('transport.appointments');
-    });
-    
-    Route::get('transport/profile',function(){
-        return view('transport.myprofile');
-    });
     
     Route::post('getads/{id}',[AdminController::class,'getads']);
     
@@ -218,6 +208,14 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::post('update/url',[NewsUpdateController::class,'editnews']);
     });
 
+    Route::get('login',function(){
+        return view('transport.login');
+    });
+    Route::post('login/user',[TransportController::class,'login']);
+
+    Route::get('transport/index',function(){
+        return view('transport.index');
+    });
 
     // guest accounts route
     Route::get('transport/search',function (){
@@ -231,5 +229,22 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     })->name('vendor-register');
     
     
+    Route::get('transport/appointment',function(){
+        return view('transport.appointments');
+    });
+    
+    Route::get('transport/profile',function(){
+        return view('transport.myprofile');
+    });
+
+    Route::get('logout',function(){
+       
+        Auth::logout();
+
+        return redirect('admin/login');
+    });
+
+
+
 });
 

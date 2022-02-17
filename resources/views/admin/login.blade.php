@@ -88,7 +88,7 @@
 
 
     <script src="{{asset('js/script.js')}}"></script>
-    <script src="../../public/js/owl.carousel.js"></script>
+    <script src="{{asset('js/owl.carousel.js')}}"></script>
     <!-- <script src="../../public/js/bootstarp.js"></script> -->
 
     <script>
