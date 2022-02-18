@@ -223,7 +223,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         });
 
         Route::get('transport/appointment',function(){
-            $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
+            $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->get();
             //dd($booked);
             return view('transport.appointments',compact('detail'));
         });
@@ -281,6 +281,19 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
 });
+
+// guest vet route
+Route::get('vet/search',[GuestController::class,'searchVet'])->name('searchVet');
+Route::any('vet/search/result',[GuestController::class,'searchVetResult'])->name('searchVetResult');
+Route::get('vet/book/appointment',[GuestController::class,'bookAppointment'])->name('bookAppointment');
+Route::post('vet/book/appointment/submit',[GuestController::class,'appointment'])->name('appointment');
+Route::get('vet/certify/animal',[GuestController::class,'certifyAnimal'])->name('certifyAnimal');
+Route::post('vet/certify/animal/appointment',[GuestController::class,'certifyRegister'])->name('certifyRegister');
+Route::get('vet/register',[GuestController::class,'registerVet'])->name('registerVet');
+Route::post('vet/register/submit',[GuestController::class,'registerRequest'])->name('registerRequest');
+
+
+
 
 
 //-------------------------------------- 47-Code-----------------------------------------------

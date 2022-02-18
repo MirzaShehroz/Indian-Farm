@@ -66,20 +66,20 @@
 
                         <hr class="bg-dark py-0" style="opacity: 1;">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown"
+                            <a class="nav-link dropdown-toggle text-dark" href="{{route('searchVet')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Vet Services
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
 
 
-                                <li><a class="dropdown-item border-bottom" href="search_vet.html">Search
+                                <li><a class="dropdown-item border-bottom" href="{{route('searchVet')}}">Search
                                         A Vet</a></li>
                                 <li><a class="dropdown-item border-bottom"
-                                        href="book_appointment.html">Book An Appointment</a></li>
+                                        href="{{route('bookAppointment')}}">Book An Appointment</a></li>
                                 <li><a class="dropdown-item border-bottom"
-                                        href="certify_animal.html">Certify My Animal</a></li>
-                                <li><a class="dropdown-item" href="vet_ragistration.html">Register as a
+                                        href="{{route('certifyAnimal')}}">Certify My Animal</a></li>
+                                <li><a class="dropdown-item" href="{{route('registerVet')}}">Register as a
                                         Vet</a></li>
 
 
@@ -253,11 +253,10 @@
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <li><a class="dropdown-item" href="search_vet.html">Search A Vet</a></li>
-                    <!-- <li><a class="dropdown-item" href="consultation.html">Consultation</a></li> -->
-                    <li><a class="dropdown-item" href="book_appointment.html">Book An Appointment</a></li>
-                    <li><a class="dropdown-item" href="certify_animal.html">Certify My Animal</a></li>
-                    <li><a class="dropdown-item" href="vet_ragistration.html"> Register as a Vet</a></li>
+                    <li><a class="dropdown-item" href="{{route('searchVet')}}">Search A Vet</a></li>
+                    <li><a class="dropdown-item" href="{{route('bookAppointment')}}">Book An Appointment</a></li>
+                    <li><a class="dropdown-item" href="{{route('certifyAnimal')}}">Certify My Animal</a></li>
+                    <li><a class="dropdown-item" href="{{route('registerVet')}}"> Register as a Vet</a></li>
 
 
                 </ul>

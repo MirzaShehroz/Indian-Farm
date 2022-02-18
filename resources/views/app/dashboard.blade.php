@@ -29,9 +29,8 @@
     {{-- toaster --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <title>@yield('title')</title>
     
   </head>
@@ -275,7 +274,7 @@
     }
     </script>
   
-  @if (session()->has('errorMsg'))
+@if (session()->has('errorMsg'))
     <script>
         toastr.error('{{session()->get('errorMsg')}}')
         {{session()->forget('errorMsg')}}
