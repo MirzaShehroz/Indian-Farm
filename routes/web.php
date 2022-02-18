@@ -223,7 +223,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         });
 
         Route::get('transport/appointment',function(){
-            $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->first();
+            $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->get();
             //dd($booked);
             return view('transport.appointments',compact('detail'));
         });
@@ -236,7 +236,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::get('trans/profile',function(){
             $user=User::join('transports','transports.user_id','=','users.id')
             ->join('user_address','user_address.id','=','users.address_id')
-            ->where('users.id',Auth::user()->id)->first();
+            ->where('users.id',Auth::user()->id)
+            ->where('users.user_role','transport')
+            ->first();
             return view('transport.myprofile',compact('user'));
         })->name('transportprofile');
     
@@ -281,7 +283,42 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
 });
+//-----------------------------------------Vet Dashboard--------------------------------------//
+Route::get('vet/index',function(){
+    return view('vet.index');
+});
+Route::get('vet/appointment',function(){
+  
+    $detail=AppointmentBook::where('vet_id',Auth::user()->id)->get();
 
+    return view('vet.appointments',compact('detail'));
+});
+Route::get('vet/certify',function(){
+    $detail=certifyAnimal::where('vet_id',Auth::user()->id)->get();
+    return view('vet.certify',compact('detail'));
+});
+Route::get('vet/profile',function(){
+    $user=User::join('vets','vets.user_id','=','users.id')
+    ->join('user_address','user_address.id','=','users.address_id')
+    ->where('users.id',Auth::user()->id)
+    ->where('users.user_role','vet')
+    ->first();
+  
+    return view('vet.myprofile',compact('user'));
+});
+
+Route::post('update/vet/profile',[VetController::class,'updateprofile']);
+
+//edit
+Route::post('vetappointment/{id}',[AppointmentBookController::class,'getappointment']);
+Route::post('vet/edit/appointment',[VetController::class,'editappointment']);
+Route::post('cerify/update/detail',[VetController::class,'updateappointment']);
+
+
+Route::post('certify/appointment/{id}',[VetController::class,'getcertify']);
+
+
+//------------------------------------End Vet Dashboard---------------------------------------///
 
 //-------------------------------------- 47-Code-----------------------------------------------
 

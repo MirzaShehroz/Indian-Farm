@@ -47,8 +47,11 @@ class TransportController extends Controller
                     return redirect('transport/index');
                 
                 }
+                elseif(auth()->user()->user_role=='vet'){
+                    return redirect('vet/index');
+                }
                 else{
-                    return back()->with('error','You seem not like transporter');
+                    return back()->with('error','You are not that who try to login');
                 }
             }
             else{

@@ -7,6 +7,7 @@ use App\Models\AppointmentBook;
 use App\Models\TransportBooked;
 use App\Models\TransportFrom;
 use App\Models\TransportTo;
+use App\Models\AppointmentAddress;
 use App\Models\Vet;
 
 function getname($id){
@@ -41,6 +42,14 @@ function from_address($id){
     $from_address=TransportFrom::where('id',$id)->first();
     return $from_address;
 }
+
+function appoint_address($id){
+    $address=AppointmentAddress::where('id',$id)->first();
+  
+    return $address;
+}
+
+
 function to_address($id){
     $to_address=TransportTo::where('id',$id)->first();
     return $to_address;

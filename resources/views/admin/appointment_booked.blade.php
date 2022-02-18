@@ -496,9 +496,9 @@
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  ">
                                             <option value="" disabled >Appointment Status </option>
-                                            <option value="0">Done</option>
-                                            <option value="1">Pending</option>
-                                            <option value="2">In Process</option>
+                                            <option value="0">Confirmed</option>
+                                            <option value="1">Completed</option>
+                                            <option value="2">Cancelled</option>
                                             
                                         </select>
                                     </div>
@@ -815,9 +815,9 @@
                                                           <div class="Districdropdown">
                                                               <select id="vappointstatus" class="form-select overflow-scroll  " name="appoint_status" disabled>
                                                                   <option value="" disabled >Appointment Status </option>
-                                                                  <option value="0">Done</option>
-                                                                  <option value="1">Pending</option>
-                                                                  <option value="2">In Process</option>
+                                                                  <option value="0">Confirmed</option>
+                                                                  <option value="1">Completed</option>
+                                                                  <option value="2">Cancelled</option>
                                                               </select>
                                                           </div>
                                                           
@@ -1138,9 +1138,9 @@
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  " name="appoint_status">
                                             <option value="" disabled >Appointment Status </option>
-                                            <option value="0">Done</option>
-                                            <option value="1">Pending</option>
-                                            <option value="2">In Process</option>
+                                            <option value="0">Confirmed</option>
+                                            <option value="1">Completed</option>
+                                            <option value="2">Cancelled</option>
                                         </select>
                                     </div>
                                     

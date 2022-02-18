@@ -47,6 +47,7 @@
                                     </thead>
                                     <tbody>
                                       @if($detail!=null)
+                                      @foreach($detail as $detail)
                                       <tr>
                                         <td scope="row">{{$detail->contact_name}}</td>
                                        
@@ -84,6 +85,7 @@
                                          
                                         </td>
                                       </tr>
+                                      @endforeach
                                       @else
                                       no data
                                       @endif
