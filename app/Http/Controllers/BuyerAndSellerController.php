@@ -87,5 +87,10 @@ class BuyerAndSellerController extends Controller
         return view('seller_and_buyer_wireframe.login');
     }
 
+    // register form
+    public function registerForm() {
+        return view('seller_and_buyer_wireframe.register');
+    }
+
 
 }
