@@ -122,6 +122,10 @@ class BuyerAndSellerController extends Controller
         return view('seller_and_buyer_wireframe.view_sheeps');
     }
 
+    // chat page
+    public function chat() {
+        return view('seller_and_buyer_wireframe.chat');
+    }
 
 
 }

@@ -354,5 +354,8 @@ Route::get('/b&s/view-sheep',[BuyerAndSellerController::class,'viewSheep'])->nam
 // view bull
 Route::get('/b&s/view-bull',[BuyerAndSellerController::class,'viewBull'])->name('B&SViewBull');
 
+// view chat page
+Route::get('/b&s/chat',[BuyerAndSellerController::class,'chat'])->name('B&SChat');
+
 
 //---------------------------------------------------------------------------------------------
