@@ -10,6 +10,7 @@
 
                                 <!-- <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id=""> -->
                                <select name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1">
+                                 <option value="">Select Animal</option>
                                  <option value="0">Bull</option>
                                  <option value="1">Buffalo</option>
                                  <option value="2">Cow</option>

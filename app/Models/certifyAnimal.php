@@ -10,4 +10,5 @@ class certifyAnimal extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table='certify_animals';
 }

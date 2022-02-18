@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyerAndSellerController;
+use App\Http\Controllers\CommonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
@@ -144,15 +145,15 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
        // $id=User::where('id',Auth::user()->id)->first();
         $user=User::where('id',Auth::user()->id)->first();
        $user= $user::join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-       dd($user);
 
         return view('admin.myprofile',compact('user'));
     });
     
     Route::get('admin/contentmanagement',function(){
-        $education=EducationVideo::all();
+        $education=EducationVideo::paginate(5);
+
         $news=NewsUpdate::orderBy('id', 'desc')->limit(2)->get();
-        $latestnews=NewsUpdate::orderBy('id', 'desc')->get();
+        $latestnews=NewsUpdate::orderBy('id', 'desc')->paginate(5);
         return view('admin.contentmanagement',compact('education','news','latestnews'));
     });
     
@@ -307,14 +308,74 @@ Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])
 // B&S Post an Add Form
 Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
 
-// B&S Your Subscription
+// B&S Your Subscription Form
 Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourSubscription'])->name('B&SYourSubscriptionPage');
 
-// B&S Post Ad Cow One
-Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOne');
+// B&S Post Ad Cow One Form
+Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOnePage');
 
-// B&S Post Ad Cow Multiple
-Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiple');
+// B&S Post Ad Cow Multiple Form
+Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiplePage');
+
+// B&S Post Ad buffalo One Form
+Route::get('/b&s/post-add-buffalo-one-form',[BuyerAndSellerController::class,'postAdBuffaloOne'])->name('B&SPostAdBuffaloOnePage');
+
+// B&S Post Ad buffalo Multiple Form
+Route::get('/b&s/post-add-buffalo-multiple-form',[BuyerAndSellerController::class,'postAdBuffaloMultiple'])->name('B&SPostAdBuffaloMultiplePage');
+
+// B&S Post Ad goat One Form
+Route::get('/b&s/post-add-goat-one-form',[BuyerAndSellerController::class,'postAdGoatOne'])->name('B&SPostAdGoatOnePage');
+
+// B&S Post Ad goat Multiple Form
+Route::get('/b&s/post-add-goat-multiple-form',[BuyerAndSellerController::class,'postAdGoatMultiple'])->name('B&SPostAdGoatMultiplePage');
+
+// B&S Post Ad Bull One Form
+Route::get('/b&s/post-add-bull-one-form',[BuyerAndSellerController::class,'postAdBullOne'])->name('B&SPostAdBullOnePage');
+
+// B&S Post Ad Bull Multiple Form
+Route::get('/b&s/post-add-bull-multiple-form',[BuyerAndSellerController::class,'postAdBullMultiple'])->name('B&SPostAdBullMultiplePage');
+
+// B&S Post Ad Sheep One Form
+Route::get('/b&s/post-add-sheep-one-form',[BuyerAndSellerController::class,'postAdSheepOne'])->name('B&SPostAdSheepOnePage');
+
+// B&S Post Ad Sheep Multiple Form
+Route::get('/b&s/post-add-sheep-multiple-form',[BuyerAndSellerController::class,'postAdSheepMultiple'])->name('B&SPostAdSheepMultiplePage');
+
+// B&S Subscription Purchase Form
+Route::get('/b&s/subscription-purchase-form',[BuyerAndSellerController::class,'subscriptionPurchase'])->name('B&SSubscriptionPurchasePage');
+
+// B&S Login Form
+Route::get('/b&s/login-form',[BuyerAndSellerController::class,'loginForm'])->name('B&SLoginPage');
+
+// B&S Register Form
+Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm'])->name('B&SRegisterPage');
+
+// B&S Login Verification Form
+Route::get('/b&s/login-verification-form',[BuyerAndSellerController::class,'loginVerificationForm'])->name('B&SLoginVerificationPage');
+
+// view goats
+Route::get('/b&s/view-goat',[BuyerAndSellerController::class,'viewGoat'])->name('B&SViewGoat');
+
+// view cows
+Route::get('/b&s/view-cows',[BuyerAndSellerController::class,'viewCow'])->name('B&SViewCow');
+
+// view buffalo
+Route::get('/b&s/view-buffalo',[BuyerAndSellerController::class,'viewBuffalo'])->name('B&SViewBuffalo');
+
+// view sheep
+Route::get('/b&s/view-sheep',[BuyerAndSellerController::class,'viewSheep'])->name('B&SViewSheep');
+
+// view bull
+Route::get('/b&s/view-bull',[BuyerAndSellerController::class,'viewBull'])->name('B&SViewBull');
+
+// view chat page
+Route::get('/b&s/chat',[BuyerAndSellerController::class,'chat'])->name('B&SChat');
+
+// privacy policy page
+Route::get('/privacy-policy',[CommonController::class,'privacyPolicy'])->name('PrivacyPolicy');
+
+// term and condition page
+Route::get('/term-and-condition',[CommonController::class,'termAndCondition'])->name('TermAndCondition');
 
 
 //---------------------------------------------------------------------------------------------
