@@ -97,5 +97,31 @@ class BuyerAndSellerController extends Controller
         return view('seller_and_buyer_wireframe.login_verification');
     }
 
+    // View Cow page
+    public function viewCow() {
+        return view('seller_and_buyer_wireframe.view_cows');
+    }
+
+    // View Goat page
+    public function viewGoat() {
+        return view('seller_and_buyer_wireframe.view_goat');
+    }
+
+    // View Bull page
+    public function viewBull() {
+        return view('seller_and_buyer_wireframe.view_bull');
+    }
+
+    // View Buffalo page
+    public function viewBuffalo() {
+        return view('seller_and_buyer_wireframe.view_buffalo');
+    }
+
+    // View sheep page
+    public function viewSheep() {
+        return view('seller_and_buyer_wireframe.view_sheeps');
+    }
+
+
 
 }

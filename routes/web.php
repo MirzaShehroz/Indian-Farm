@@ -339,5 +339,20 @@ Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm']
 // B&S Login Verification Form
 Route::get('/b&s/login-verification-form',[BuyerAndSellerController::class,'loginVerificationForm'])->name('B&SLoginVerificationPage');
 
+// view goats
+Route::get('/b&s/view-goat',[BuyerAndSellerController::class,'viewGoat'])->name('B&SViewGoat');
+
+// view cows
+Route::get('/b&s/view-cows',[BuyerAndSellerController::class,'viewCow'])->name('B&SViewCow');
+
+// view buffalo
+Route::get('/b&s/view-buffalo',[BuyerAndSellerController::class,'viewBuffalo'])->name('B&SViewBuffalo');
+
+// view sheep
+Route::get('/b&s/view-sheep',[BuyerAndSellerController::class,'viewSheep'])->name('B&SViewSheep');
+
+// view bull
+Route::get('/b&s/view-bull',[BuyerAndSellerController::class,'viewBull'])->name('B&SViewBull');
+
 
 //---------------------------------------------------------------------------------------------
