@@ -49,7 +49,7 @@
                         </div>
 
                         <span class="d-block text-dark mt-3">
-              By selecting agree you are agreeing to our <a href="terms_conditions.html" class="tcolor btnclick text-decoration-none fw-bold"> Terms & Conditions </a> & <a href="privacy_policy.html" class="tcolor btnclick text-decoration-none fw-bold"> Privacy Policy </a> 
+              By selecting agree you are agreeing to our <a href="{{route('TermAndCondition')}}" class="tcolor btnclick text-decoration-none fw-bold"> Terms & Conditions </a> & <a href="{{route('PrivacyPolicy')}}" class="tcolor btnclick text-decoration-none fw-bold"> Privacy Policy </a>
             </span>
 
 
