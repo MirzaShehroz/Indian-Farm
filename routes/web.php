@@ -281,42 +281,46 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         return redirect('admin/login');
     });
 
-
-
-});
 //-----------------------------------------Vet Dashboard--------------------------------------//
-Route::get('vet/index',function(){
-    return view('vet.index');
+
+Route::group(['middleware'=>['VetAuth']],function(){
+    Route::get('vet/index',function(){
+        return view('vet.index');
+    });
+    Route::get('vet/appointment',function(){
+      
+        $detail=AppointmentBook::where('vet_id',Auth::user()->id)->get();
+    
+        return view('vet.appointments',compact('detail'));
+    });
+    Route::get('vet/certify',function(){
+        $detail=certifyAnimal::where('vet_id',Auth::user()->id)->get();
+        return view('vet.certify',compact('detail'));
+    });
+    Route::get('vet/profile',function(){
+        $user=User::join('vets','vets.user_id','=','users.id')
+        ->join('user_address','user_address.id','=','users.address_id')
+        ->where('users.id',Auth::user()->id)
+        ->where('users.user_role','vet')
+        ->first();
+      
+        return view('vet.myprofile',compact('user'));
+    });
+    
+    Route::post('update/vet/profile',[VetController::class,'updateprofile']);
+    
+    //edit
+    Route::post('vetappointment/{id}',[AppointmentBookController::class,'getappointment']);
+    Route::post('vet/edit/appointment',[VetController::class,'editappointment']);
+    Route::post('cerify/update/detail',[VetController::class,'updateappointment']);
+    
+    
+    Route::post('certify/appointment/{id}',[VetController::class,'getcertify']);
+    
 });
-Route::get('vet/appointment',function(){
-  
-    $detail=AppointmentBook::where('vet_id',Auth::user()->id)->get();
 
-    return view('vet.appointments',compact('detail'));
-});
-Route::get('vet/certify',function(){
-    $detail=certifyAnimal::where('vet_id',Auth::user()->id)->get();
-    return view('vet.certify',compact('detail'));
-});
-Route::get('vet/profile',function(){
-    $user=User::join('vets','vets.user_id','=','users.id')
-    ->join('user_address','user_address.id','=','users.address_id')
-    ->where('users.id',Auth::user()->id)
-    ->where('users.user_role','vet')
-    ->first();
-  
-    return view('vet.myprofile',compact('user'));
 });
 
-Route::post('update/vet/profile',[VetController::class,'updateprofile']);
-
-//edit
-Route::post('vetappointment/{id}',[AppointmentBookController::class,'getappointment']);
-Route::post('vet/edit/appointment',[VetController::class,'editappointment']);
-Route::post('cerify/update/detail',[VetController::class,'updateappointment']);
-
-
-Route::post('certify/appointment/{id}',[VetController::class,'getcertify']);
 
 
 // guest vet route
