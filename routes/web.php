@@ -147,9 +147,10 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     });
     
     Route::get('admin/contentmanagement',function(){
-        $education=EducationVideo::all();
+        $education=EducationVideo::paginate(5);
+
         $news=NewsUpdate::orderBy('id', 'desc')->limit(2)->get();
-        $latestnews=NewsUpdate::orderBy('id', 'desc')->get();
+        $latestnews=NewsUpdate::orderBy('id', 'desc')->paginate(5);
         return view('admin.contentmanagement',compact('education','news','latestnews'));
     });
     

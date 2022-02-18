@@ -140,7 +140,7 @@ class VetController extends Controller
         ->orWhere('state',$req->state)
         ->orWhere('district',$req->district)
         ->orWhere('taluka',$req->taluka)
-        ->get();
+        ->paginate(5);
         // dd($data);
 
         return view('admin.vet',compact('data'))->with('infoMsg','Vet founded');

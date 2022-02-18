@@ -499,10 +499,10 @@
               
                               </div>
                                 <div class="col-12 col-md-6 mb-3">
-                                  <input type="password" class="form-control inputno1" placeholder="New Password" name="new_password" required>
+                                  <input type="password" class="form-control inputno1" placeholder="New Password" name="new_password" >
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
-                                  <input type="password" class="form-control inputno1" placeholder="Previous Password" name="prev_password" required>
+                                  <input type="password" class="form-control inputno1" placeholder="Previous Password" name="prev_password" >
                                 </div>
                 
                                 <div class="col-12 col-md-6 mb-3">

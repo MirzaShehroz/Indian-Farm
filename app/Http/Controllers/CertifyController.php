@@ -13,8 +13,9 @@ use Auth;
 class CertifyController extends Controller
 {
     public function index(){
-        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->paginate(5);
-        $vets=Vet::paginate(5);
+        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->get();
+//        dd($certify);
+        $vets=Vet::all();
         return view('admin.certify_animal',compact('vets','certify'));
     }
     public function registerAppoint(Request $req){

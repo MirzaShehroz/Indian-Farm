@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\AppointmentAddress;
 use App\Models\AppointmentBook;
@@ -163,7 +164,8 @@ class AppointmentBookController extends Controller
 
         $appointment=AppointmentBook::join('appointment_address','appointment_address.id','=','appointments.appointment_address_id')
         ->where('animal_type',$animal)->orWhere('city',$city)->orWhere('district',$district)->orWhere('taluka',$taluka)
-        ->orWhere('vet_id',$vet)->get();
-        return view('admin.appointment_booked',compact('appointment'));
+        ->orWhere('vet_id',$vet)->paginate(5);
+        $vets=User::where('user_role','vet')->get();
+        return view('admin.appointment_booked',compact('appointment','vets'));
     }
 }

@@ -258,7 +258,7 @@ class TransportBookedController extends Controller
         ->orWhere('from_address.state',$state)->orWhere('to_address.state',$state)
         ->orWhere('from_address.district',$district)->orWhere('to_address.district',$district)
         ->orWhere('from_address.taluka',$taluka)->orWhere('to_address.taluka',$taluka)
-        ->get();
+        ->paginate(5);
         
         return view('admin.transport_booked',compact('transport'));
       
