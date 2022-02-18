@@ -8,7 +8,12 @@ use App\Models\Address;
 use App\Models\Transport;
 use App\Models\User;
 use App\Models\Documents;
+use App\Models\TransportBooked;
+use App\Models\TransportFrom;
+use App\Models\TransportTo;
 use Illuminate\Support\Facades\Hash;
+use DB;
+use Auth;
 use PDO;
 use Mail;
 use Crypt;
@@ -61,7 +66,214 @@ class TransportController extends Controller
        }
     }
 
+    //update profile
+    public function updateprofile(Request $req){
 
+        $req->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'contact_no'=>'required',
+            'license_no'=>'required',
+            'vehicle_type'=>'required',
+            'make_model'=>'required',
+            'address_line1'=>'required',
+            'address_line2'=>'required',
+            'district'=>'required',
+            'taluka'=>'required',
+            'state'=>'required',
+            'city'=>'required',
+            'zipcode'=>'required',
+        ]);
+
+        $user=User::where('id',$req->user_id)->first();
+        
+        $user_address=Address::where('id',$user->address_id)->first();
+        DB::beginTransaction();
+        try{
+
+            DB::beginTransaction();
+            try{
+               
+                $user_address->address_line1=$req->address_line1;
+                $user_address->address_line2=$req->address_line2;
+                $user_address->state=$req->state;
+                $user_address->city=$req->city;
+                $user_address->area=$req->area;
+                $user_address->district=$req->district;
+                $user_address->taluka=$req->taluka;
+                
+                $user_address->zipcode=$req->zipcode;
+                
+                $user_address->save();
+                
+                DB::commit();
+
+
+            }catch(\Exception $e){
+           dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+            }
+
+            $user_transport=Transport::where('user_id',$req->user_id)->first();
+           
+            DB::beginTransaction();
+            try{
+
+                $user_transport->vehicle_type=$req->vehicle_type;
+                $user_transport->vehicle_make_model=$req->make_model;
+                $user_transport->license_no=$req->license_no;
+                $user_transport->save();
+                DB::commit();
+
+            }catch(\Exception $e){
+                dd($e);
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+            }
+            
+            $user->first_name=$req->first_name;
+            $user->middle_name=$req->middle_name;
+            $user->last_name=$req->last_name;
+            
+            if($req->hasFile('profile')){
+               
+              $file=$req->profile;
+              $name = time().''.rand(1000000,999999999999);
+              $filepath='/uploads/'.$user->id.'/profile/';
+              $ext= $file->getClientOriginalExtension();
+              $file->move(public_path() .$filepath,$name.'.'.$ext);
+              $fileName=$name.'.'.$ext;
+              $imgData=  $filepath.$fileName;
+
+             
+
+              $user->image=$imgData;
+
+
+             }
+             $user->save();
+             DB::commit();
+             return back()->with('successMsg','Profile Update Successfully');
+        }catch(\Exception $e){
+                   
+            DB::rollback();
+            return back()->with('warningMsg','Something Went Wrong');
+        }
+    }
+
+
+    public function getdata($id){
+        $transport=TransportBooked::where('id',$id)->first();
+        $from_address=TransportFrom::where('id',$transport->from_address_id)->first();
+        $to_address=TransportTo::where('id',$transport->to_address_id)->first();
+        return response()->json(array('trans'=>$transport,'fromaddress'=>$from_address,'toaddress'=>$to_address),200);
+    }
+
+    public function updatedata(Request $req){
+        $req->validate([
+            'farea'=>'required',
+            'fcity'=>'required',
+            'faddresline1'=>'required',
+            'fdistrict'=>'required',
+            'ftaluka'=>'required',
+            'fzipcode'=>'required',
+           
+
+            'tarea'=>'required',
+            'tcity'=>'required',
+            'taddressline1'=>'required',
+            'tdistrict'=>'required',
+            'ttaluka'=>'required',
+            'tzipcode'=>'required',
+            
+
+       
+            'animaltype'=>'required',
+            'no_animals'=>'required|numeric',
+            'contact_person'=>'required',
+            'contact_no'=>'required',
+            
+            
+        ]);
+        $data=$req->all();
+        $transport=TransportBooked::where('id',$req->transportbook)->first();
+       
+        DB::beginTransaction();
+        try{
+
+            $transportfrom=TransportFrom::where('id',$transport->from_address_id)->first();
+       
+            DB::beginTransaction();
+            try{
+
+                $transportfrom->address_line1=$data['faddresline1'];
+                $transportfrom->address_line2=$data['faddressline2'];
+                $transportfrom->area=$data['farea'];
+                $transportfrom->city=$data['fcity'];
+                $transportfrom->district=$data['fdistrict'];
+                $transportfrom->state=$data['fstate'];
+                $transportfrom->taluka=$data['ftaluka'];
+                $transportfrom->zipcode=$data['fzipcode'];
+               
+               // dd($transportfrom);
+                $transportfrom->save();
+                DB::commit();
+            }catch(\Exception $e){
+                dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+            }
+
+
+
+            $transportto=TransportTo::where('id',$transport->to_address_id)->first();
+            DB::beginTransaction();
+            try{
+
+                $transportto->address_line1=$data['taddressline1'];
+                $transportto->address_line2=$data['taddressline2'];
+                $transportto->area=$data['tarea'];
+                $transportto->city=$data['tcity'];
+                $transportto->district=$data['tdistrict'];
+                $transportto->state=$data['tstate'];
+                $transportto->taluka=$data['ttaluka'];
+                $transportto->zipcode=$data['tzipcode'];
+              
+               // dd($transportto);
+                $transportto->save();
+                DB::commit();
+
+            }catch(\Exception $e){
+                dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+            }
+
+
+            $transport->user_id=Auth::user()->id;
+            $transport->animal_type=$data['animaltype'];
+            $transport->no_of_animal=$data['no_animals'];
+            $transport->contact_name=$data['contact_person'];
+            $transport->contact_no=$data['contact_no'];
+
+            $transport->from_address_id=$transportfrom->id;
+            $transport->to_address_id=$transportto->id;
+            $transport->status=$data['status'];
+            $transport->comment=$data['comment'];
+          
+           // dd($transportfrom,$transportto,$transport);
+            $transport->save();
+            DB::commit();
+            return back()->with('successMsg','Appointment Updated Successfully');
+        }catch(\Exception $e){
+            dd($e);
+                DB::rollback();
+                return back()->with('warningMsg','There sooooooome Problem try again');
+        }
+        //dd($req->all());
+
+    }
 
     // search
     public function search(Request $req){
@@ -381,8 +593,10 @@ class TransportController extends Controller
     }
 
     public function verifyotp(Request $req){
+        // dd($req);
         $id=$req->id;
         $id=Crypt::decryptstring($id);
+        // dd($id);
         
         $user=User::where('id',$id)->first();
 
@@ -393,11 +607,13 @@ class TransportController extends Controller
         elseif( $user->email_otp==$req->otp ){
                 $user->login_status=1;
                 $user->save();
-         return redirect('admin/index');
+         return redirect('transport/index');
         }
         else{
             return back()->with('error','Wrong Otp Please Enter Right Otp');
         }
-
+    }
+    public function bookTransport(Request $req){
+        dd($req);
     }
 }

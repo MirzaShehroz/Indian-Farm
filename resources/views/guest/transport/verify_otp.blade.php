@@ -11,7 +11,7 @@
         Mobile No & Email Id</h6>
         <div class="card-body mt-4">
 
-       <form action="{{route('verify-otp')}}" method="post">
+       <form action="{{route('transport-verifyotp')}}" method="post">
         @csrf
         <?php 
         $id= request()->segment(2);
@@ -56,4 +56,8 @@
   </div>
   <!-- end of row  -->
 
+@endsection
+
+@section('script')
+      
 @endsection
