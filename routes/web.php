@@ -309,5 +309,17 @@ Route::get('/b&s/post-add-buffalo-one-form',[BuyerAndSellerController::class,'po
 // B&S Post Ad buffalo Multiple
 Route::get('/b&s/post-add-buffalo-multiple-form',[BuyerAndSellerController::class,'postAdBuffaloMultiple'])->name('B&SPostAdBuffaloMultiple');
 
+// B&S Post Ad goat One
+Route::get('/b&s/post-add-goat-one-form',[BuyerAndSellerController::class,'postAdGoatOne'])->name('B&SPostAdGoatOne');
+
+// B&S Post Ad goat Multiple
+Route::get('/b&s/post-add-goat-multiple-form',[BuyerAndSellerController::class,'postAdGoatMultiple'])->name('B&SPostAdGoatMultiple');
+
+// B&S Post Ad Bull One
+Route::get('/b&s/post-add-bull-one-form',[BuyerAndSellerController::class,'postAdBullOne'])->name('B&SPostAdBullOne');
+
+// B&S Post Ad Bull Multiple
+Route::get('/b&s/post-add-bull-multiple-form',[BuyerAndSellerController::class,'postAdBullMultiple'])->name('B&SPostAdBullMultiple');
+
 
 //---------------------------------------------------------------------------------------------
