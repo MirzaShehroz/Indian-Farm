@@ -82,5 +82,10 @@ class BuyerAndSellerController extends Controller
         return view('seller_and_buyer_wireframe.subscription_purchase');
     }
 
+    // login form
+    public function loginForm() {
+        return view('seller_and_buyer_wireframe.login');
+    }
+
 
 }

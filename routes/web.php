@@ -330,5 +330,8 @@ Route::get('/b&s/post-add-sheep-multiple-form',[BuyerAndSellerController::class,
 // B&S Subscription Purchase Form
 Route::get('/b&s/subscription-purchase-form',[BuyerAndSellerController::class,'subscriptionPurchase'])->name('B&SSubscriptionPurchasePage');
 
+// B&S Login Form
+Route::get('/b&s/login-form',[BuyerAndSellerController::class,'loginForm'])->name('B&SLoginPage');
+
 
 //---------------------------------------------------------------------------------------------
