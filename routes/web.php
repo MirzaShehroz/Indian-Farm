@@ -336,5 +336,8 @@ Route::get('/b&s/login-form',[BuyerAndSellerController::class,'loginForm'])->nam
 // B&S Register Form
 Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm'])->name('B&SRegisterPage');
 
+// B&S Login Verification Form
+Route::get('/b&s/login-verification-form',[BuyerAndSellerController::class,'loginVerificationForm'])->name('B&SLoginVerificationPage');
+
 
 //---------------------------------------------------------------------------------------------
