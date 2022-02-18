@@ -303,5 +303,11 @@ Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAd
 // B&S Post Ad Cow Multiple
 Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiple');
 
+// B&S Post Ad buffalo One
+Route::get('/b&s/post-add-buffalo-one-form',[BuyerAndSellerController::class,'postAdBuffaloOne'])->name('B&SPostAdBuffaloOne');
+
+// B&S Post Ad buffalo Multiple
+Route::get('/b&s/post-add-buffalo-multiple-form',[BuyerAndSellerController::class,'postAdBuffaloMultiple'])->name('B&SPostAdBuffaloMultiple');
+
 
 //---------------------------------------------------------------------------------------------

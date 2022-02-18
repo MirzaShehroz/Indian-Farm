@@ -36,4 +36,14 @@ class BuyerAndSellerController extends Controller
     public function postAdCowMultiple() {
         return view('seller_and_buyer_wireframe.post_ad_cow_multiple');
     }
+
+    // post ad buffalo one
+    public function postAdBuffaloOne() {
+        return view('seller_and_buyer_wireframe.post_ad_buffalo_one');
+    }
+
+    // post ad buffalo multiple
+    public function postAdBuffaloMultiple() {
+        return view('seller_and_buyer_wireframe.post_ad_buffalo_multiple');
+    }
 }
