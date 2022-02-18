@@ -482,6 +482,29 @@ class TransportController extends Controller
 
     public function guestRegister(Request $req){
         // dd($req);
+        $req->validate([
+            'first_name'=>'required',
+            'middle_name'=>'required',
+            'last_name'=>'required',
+            'license_no'=>'required',
+            'vehicle'=>'required',
+            'make'=>'required',
+            'contact_no'=>'required',
+
+            'email'=>'required | email | unique:users',
+            'password'=>'required| confirmed | min:8',
+            'password_confirmation'=>'required',
+            'address1'=>'required',
+            'address2'=>'required',
+            'area'=>'required',
+           
+
+            'city'=>'required',
+            'state'=>'required',
+            'district'=>'required',
+            'taluka'=>'required',
+            'pincode'=>'required',
+        ]);
 
         $address=new Address;
        $address->address_line1=$req->address1;

@@ -19,6 +19,11 @@
     <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 
+        {{-- toaster --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+        
+
     <title>IFA</title>
 </head>
 @yield('style')
@@ -43,6 +48,8 @@
     <!-- jquery link  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
@@ -75,7 +82,30 @@
             }
         });
     </script>
-
+      @if (session()->has('errorMsg'))
+      <script>
+          toastr.error('{{session()->get('errorMsg')}}')
+          {{session()->forget('errorMsg')}}
+      </script>
+  @endif
+  @if (session()->has('successMsg'))
+      <script>
+          toastr.success('{{session()->get('successMsg')}}')
+          {{session()->forget('successMsg')}}
+      </script>
+  @endif
+  @if (session()->has('warningMsg'))
+      <script>
+          toastr.warning('{{session()->get('warningMsg')}}')
+          {{session()->forget('warningMsg')}}
+      </script>
+  @endif
+  @if (session()->has('infoMsg'))
+      <script>
+          toastr.info('{{session()->get('infoMsg')}}')
+          {{session()->forget('infoMsg')}}
+      </script>
+  @endif
     @yield('script')
 </body>
 

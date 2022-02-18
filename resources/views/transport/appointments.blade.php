@@ -18,7 +18,7 @@
                             <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
                                 Export TO CSV
                             </button>
-
+                            {{dd($detail)}}
                           </div>
 
                             <div class="col-12 overflow-scroll mt-5">

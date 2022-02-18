@@ -25,70 +25,111 @@
    <h5 class="mb-4">Personal Details</h5>
         <div class="row">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-label="First name">
+            <input type="text" class="form-control" name="first_name" placeholder="First Name" value="{{old('first_name')}}" aria-label="First name">
+            @error('first_name')
+                <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="middle_name" placeholder="Middle Name" aria-label="Middle name">
+            <input type="text" class="form-control" name="middle_name" placeholder="Middle Name" value="{{old('middle_name')}}" aria-label="Middle name">
+            @error('middle_name')
+            <span>{{$message}}</span>
+        @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-label="Last name">
+            <input type="text" class="form-control" name="last_name" placeholder="Last Name" value="{{old('last_name')}}" aria-label="Last name">
+            @error('last_name')
+            <span>{{$message}}</span>
+        @enderror
           </div>
         </div>
 
       
         <div class="row my-2">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="license_no" placeholder="License No" aria-label="License">
+            <input type="text" class="form-control" name="license_no" placeholder="License No" value="{{old('license_no')}}" aria-label="License">
+            @error('license_no')
+            <span>{{$message}}</span>
+        @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="vehicle" placeholder="Vehicle Type " aria-label="Vehicle">
+            <input type="text" class="form-control" name="vehicle" placeholder="Vehicle Type " value="{{old('vehicle')}}" aria-label="Vehicle">
+            @error('vehicle')
+            <span>{{$message}}</span>
+        @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="make" placeholder="Vehicle Make & Model" aria-label="Model">
+            <input type="text" class="form-control" name="make" placeholder="Vehicle Make & Model" value="{{old('makee')}}" aria-label="Model">
+            @error('make')
+            <span>{{$message}}</span>
+        @enderror
           </div>
         </div>
 
         <h5 class="my-4">Contact Details</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="contact_no" placeholder="Contact Number" aria-label="Contact Number">
+            <input type="text" class="form-control" name="contact_no" placeholder="Contact Number" value="{{old('contact_no')}}" aria-label="Contact Number">
+            @error('contact_no')
+            <span>{{$message}}</span>
+        @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="email" placeholder="Email Id" aria-label="Email Id">
+            <input type="text" class="form-control" name="email" placeholder="Email Id" value="{{old('email')}}" aria-label="Email Id">
+            @error('email')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" id="password" class="form-control" name="password" placeholder="Password" aria-label="Password">
+            <input type="password" id="password" class="form-control" name="password"  placeholder="Password" aria-label="Password">
+            @error('password')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" id="c_password" class="form-control" name="c_password" placeholder="Confirm Password" aria-label="Confirm Password">
+            <input type="password" id="c_password" class="form-control" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password">
             <span id="message"></span>
+            @error('password_confirmation')
+            <span>{{$message}}</span>
+            @enderror
           </div>
         </div>
 
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address1" placeholder="Address Line 1 " aria-label="Address Line 1 ">
+            <input type="text" class="form-control" name="address1" placeholder="Address Line 1 " value="{{old('address1')}}" aria-label="Address Line 1 ">
+            @error('address1')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address2" placeholder="Address Line 2" aria-label="Address Line 2">
+            <input type="text" class="form-control" name="address2" placeholder="Address Line 2" value="{{old('address2')}}" aria-label="Address Line 2">
+            @error('address2')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="area" placeholder="Area" aria-label="area">
+            <input type="text" class="form-control" name="area" placeholder="Area" value="{{old('area')}}" aria-label="area">
+            @error('area')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputCity" name="city" class="form-select overflow-scroll ">
+            <select id="inputCity" name="city" value="{{old('city')}}" class="form-select overflow-scroll ">
               <option value="" selected disabled>City</option>
-              <option value="Pune">Pune</option>
-
+              <option value="Pune">Pune</option>]
             </select>
+            @error('city')
+            <span>{{$message}}</span>
+            @enderror
           </div>
         </div>
 
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <select id="inputState" name="state" class="form-select overflow-scroll ">
+            <select id="inputState" name="state" value="{{old('state')}}" class="form-select overflow-scroll ">
               <option value="" selected disabled>State</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -128,23 +169,33 @@
               <option value="West Bengal">West Bengal</option>
 
             </select>
+            @error('state')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputDistrict" name="district" class="form-select overflow-scroll ">
+            <select id="inputDistrict" name="district" value="{{old('district')}}" class="form-select overflow-scroll ">
               <option value="" selected disabled>District</option>
               <option value="Pune">Pune</option>
-
             </select>
+            @error('district')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <select id="inputTaluka" name="taluka" class="form-select overflow-scroll ">
+            <select id="inputTaluka" name="taluka" value="{{old('taluka')}}" class="form-select overflow-scroll ">
               <option value="" selected disabled>Taluka</option>
               <option value="Pune">Pune</option>
-
             </select>
+            @error('taluka')
+            <span>{{$message}}</span>
+            @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="number" class="form-control" name="pincode" placeholder="Pin Code" aria-label="Pin Code">
+            <input type="number" class="form-control" name="pincode" value="{{old('pincode')}}" placeholder="Pin Code" aria-label="Pin Code">
+            @error('pincode')
+            <span>{{$message}}</span>
+            @enderror
           </div>
         </div>
 
@@ -152,7 +203,7 @@
         <h5 class="my-4">  Upload Documents</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="file" class="form-control" name="doc1">
+            <input type="file" class="form-control" name="doc1" required>
           </div>
           <div class="col-12 col-md-3 my-2">
             <input type="file" class="form-control" name="doc2">

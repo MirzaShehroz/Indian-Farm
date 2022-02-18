@@ -12,7 +12,7 @@
                             <div class="col-12 d-md-flex mt-3">
 
                               <div class="col-md-3 col-lg-2 my-1">
-                                <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
+                                <select id="animaltype"  class="form-select"  name="animaltype">
                                   <option value="" disabled  selected>Select Animal Type...</option>
                                   <option value="0">Bull</option>
                                   <option value="1">Buffalo</option>
@@ -103,8 +103,10 @@
                                     <tbody>
                                       @if($ads!=null)
                                         @foreach($ads as $ad)
+
                                       <tr>
-                                        <td scope="row">{{getadsid($ad->id)}}</td>
+{{--                                          {{dd(getadsid($ad->id))}}--}}
+{{--                                        <td scope="row">{{getadsid($ad->id)}}</td>--}}
                                         <td>{{getname($ad->user_id)}}</td>
                                         <td>{{$ad->created_at}}</td>
                                         <td>{{$ad->status}}</td>
@@ -157,7 +159,7 @@
                                         <td>{{$ad->certified_reg_no}}</td>
                                         
                                         <td class="d-flex">
-                                            <button  class="bg_danger text-light me-2"  onclick="hello({{getadsid($ad->id)}})" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i " class="fas fa-pencil-alt"></i></button>
+                                            <button  class="bg_danger text-light me-2"  onclick="hello({{getadsid($ad->ads_address_id)}})" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i " class="fas fa-pencil-alt"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="view_ads"  type="button"><i class="fas fa-eye"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="modal" data-bs-target="#exampleModal2{{$ad->id}}"  type="button"><i class="far fa-trash-alt"></i></button>
                                         </td>
@@ -225,7 +227,7 @@
 {{--                                  </li>--}}
 {{--                                </ul>--}}
 {{--                              </nav>--}}
-                                {{-- {{ $ads->render("pagination::bootstrap-4") }} --}}
+                                 {{ $ads->render("pagination::bootstrap-4") }}
                         
                         
                             </div>
