@@ -77,5 +77,10 @@ class BuyerAndSellerController extends Controller
         return view('seller_and_buyer_wireframe.post_ad_sheep_multiple');
     }
 
+    // subscription purchase form
+    public function subscriptionPurchase() {
+        return view('seller_and_buyer_wireframe.subscription_purchase');
+    }
+
 
 }
