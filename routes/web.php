@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BuyerAndSellerController;
+use App\Http\Controllers\CommonController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\TransportController;
@@ -356,6 +357,12 @@ Route::get('/b&s/view-bull',[BuyerAndSellerController::class,'viewBull'])->name(
 
 // view chat page
 Route::get('/b&s/chat',[BuyerAndSellerController::class,'chat'])->name('B&SChat');
+
+// privacy policy page
+Route::get('/privacy-policy',[CommonController::class,'privacyPolicy'])->name('PrivacyPolicy');
+
+// term and condition page
+Route::get('/term-and-condition',[CommonController::class,'termAndCondition'])->name('TermAndCondition');
 
 
 //---------------------------------------------------------------------------------------------

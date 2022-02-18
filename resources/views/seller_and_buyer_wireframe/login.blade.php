@@ -37,10 +37,10 @@
 
                         <input type="text" class="mobileno_input border_color form-control py-3 " maxlength="10" name="mobileno" placeholder="Enter Your Mobile Number" required>
 
-                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="login_verification.html" class="text-decoration-none text-light">SUBMIT</a></button>
+                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="{{route('B&SLoginVerificationPage')}}" class="text-decoration-none text-light">SUBMIT</a></button>
 
                         <span class="d-block text-dark mt-5">
-              If You Don't Have an Account please <a href="buyer_registeration.html" class="tcolor btnclick text-decoration-none fw-bold"> CLICK HERE </a> Register
+              If You Don't Have an Account please <a href="{{route('B&SRegisterPage')}}" class="tcolor btnclick text-decoration-none fw-bold"> CLICK HERE </a> Register
             </span>
 
 
