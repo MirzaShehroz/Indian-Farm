@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Sellers;
 use Crypt;
 use DB;
+use Auth;
 use Illuminate\Support\Facades\URL;
 class BuyerAndSellerController extends Controller
 {
@@ -179,6 +180,7 @@ class BuyerAndSellerController extends Controller
             $id=Crypt::decryptString($data['id']); 
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
+                Auth::login($user);
                 return redirect()->route('B&SLoginPage')->with('msg','Now You can Login');
             }else{
                 return back()->with('error','Wrong Otp');
