@@ -32,19 +32,30 @@
             <div class="card border-0 p-2 p-md-5 text-center" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;">
                 <img src="{{asset('images/India-Farm-Logo.png')}}" class="card-img-top mx-auto" alt="img not found">
                 <div class="card-body mt-4">
-
-                    <form action="" method="post">
-
-                        <input type="text" class="mobileno_input border_color form-control py-3 " maxlength="10" name="mobileno" placeholder="Enter Your Verification Code" required>
+@if(session('success'))
+<div class="alert alert-success">{{session('success')}}</div>
+@endif
+@if(session('error'))
+<div class="alert alert-danger">{{session('error')}}</div>
+@endif
+                    <form action="{{url('checkotp')}}" method="post">
+                        @csrf
+            <?php 
+              $id= request()->segment(3);
+              $type= request()->segment(2);
+              ?>
+            <input type="hidden" value="{{$type}}" name="type">
+            <input type="hidden" value="{{$id}}" name="id">
+                        <input type="text" class="mobileno_input border_color form-control py-3 " name="otp" placeholder="Enter Your Verification Code" required>
 
 
                         <span class="d-block text-dark mt-5 mb-3 d-flex">
-              <a href="login_verification.html" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2"> Resend OTP </a>
+              <a href="{{url('buyer/seller/resend/otp/'.$id)}}" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2" id="resend"> Resend OTP </a>
 
-              <a href="user-login.html" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2"> Submit </a>
+              <button href="user-login.html" id="submit" name="submit" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2"> Submit </button>
             </span>
 
-                        <p class="text-start text-secondary">160 Seconds</p>
+                        <p class="text-start text-secondary"><span id="countdowntimer">160</span>&nbspSeconds</p>
                         <!-- timer OTP -->
 
 
@@ -103,7 +114,25 @@
         }
     });
 </script>
-
+<script type="text/javascript">
+    var timeleft = 160;
+    var downloadTimer = setInterval(function(){
+    timeleft--;
+    document.getElementById("countdowntimer").textContent = timeleft;
+    if(timeleft==0){
+      
+      $("#submit").attr("disabled", true)
+      }
+      else{
+        $("#resend").attr("disabled", true)
+      }
+    if(timeleft <= 0)
+        clearInterval(downloadTimer);
+    },1000);
+   
+   
+    
+</script>
 
 </body>
 </html>

@@ -18,7 +18,7 @@
                             <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
                                 Export TO CSV
                             </button>
-                            {{dd($detail)}}
+                            
                           </div>
 
                             <div class="col-12 overflow-scroll mt-5">
@@ -53,7 +53,7 @@
                                        
                                    
                                         <td>{{$detail->contact_no}}</td>
-                                        <td>{{from_address($detail->id)->city}}</td>
+                                        <td>{{from_address($detail->from_address_id)->city}}</td>
                                           @if($detail->animal_type==0)
                                             <td>Bull</td>
                                           @elseif($detail->animal_type==1)  

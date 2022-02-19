@@ -600,8 +600,14 @@
                             <div class="Districdropdown">
                                 <select id="adriverassign" class="form-select overflow-scroll  " name="edriverassign">
                                   <option value=""  disabled selected>Driver Assigned</option>
-                                  <option value="0"  >Driver ABC</option>
-                                  <option value="1"  >Driver XYZ</option>
+                                  @if($drivers!=null)
+                                      @foreach($drivers as $driver)
+                                      <option value="{{$driver->id}}">{{$driver->first_name}}</option>
+                                      @endforeach
+                                  @else
+                                  <option value="">No driver</option>
+                                  @endif
+                                  <option ></option>
                                 
                                 </select>
                               </div>
@@ -1078,8 +1084,13 @@
                             <div class="Districdropdown">
                                 <select id="driverassign" class="form-select overflow-scroll  " name="edriverassign">
                                   <option value=""  disabled>Driver Assigned</option>
-                                  <option value="0"  >Driver ABC</option>
-                                  <option value="1"  >Driver XYZ</option>
+                                  @if($drivers!=null)
+                                      @foreach($drivers as $driver)
+                                      <option value="{{$driver->id}}">{{$driver->first_name}}</option>
+                                      @endforeach
+                                  @else
+                                  <option value="">No driver</option>
+                                  @endif
                                 
                                 </select>
                               </div>

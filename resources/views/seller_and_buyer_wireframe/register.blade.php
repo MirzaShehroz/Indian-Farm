@@ -32,17 +32,24 @@
             <div class="card border-0 p-2 p-md-4 text-center" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;">
                 <img src="{{asset('images/India-Farm-Logo.png')}}" class="card-img-top mx-auto" alt="img not found">
                 <div class="card-body mt-4">
-
-                    <form action="" method="post">
-
+@if(session('error'))
+<div class="alert alert-danger">{{session('error')}}</div>
+@endif
+                    <form action="{{url('buyer/seller/register')}}" method="post">
+                            @csrf
                         <input type="text" class="mobileno_input border_color form-control py-3 mb-4" name="fname" placeholder="Enter Your Full Name" required>
-
-                        <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="mobileno" placeholder="Enter Your Mobile Number" required>
-
-                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="user-login.html" class="text-decoration-none text-light">SUBMIT</a></button>
+@error('fname')
+    <div class="alert-danger">{{ $message }}</div>
+@enderror
+                        <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="contact_no" placeholder="Enter Your Mobile Number" required>
+@error('contact_no')
+    <div class="alert-danger">{{ $message }}</div>
+@enderror
+                        <input id="agree" name="agree" type="hidden" style="display:none">
+                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
 
                         <div class="form-check text-start mt-3">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="check()">
                             <label class="form-check-label " for="flexCheckChecked">
                                 I Agree
                             </label>
@@ -107,6 +114,10 @@
 
         }
     });
+
+    function check(){
+        document.getElementById('agree').value=1;
+    }
 </script>
 
 

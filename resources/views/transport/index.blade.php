@@ -19,7 +19,7 @@
                                         <h5>Total Appointments</h5>
 
                                         <h1>
-                                        0
+                                        {{$allappoint}}
                                           </h1>
 
 
@@ -30,7 +30,7 @@
 
                                         <h5>Appointments Today </h5>
 
-                                        <h1>0</h1>
+                                        <h1>{{$today}}</h1>
 
 
                                     </div>

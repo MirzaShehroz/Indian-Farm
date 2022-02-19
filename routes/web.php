@@ -138,8 +138,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         return view('admin.appointment_booked',compact('appointment','vets'));
     });
     Route::get('admin/transportbooked',function(){
+        $drivers=User::where('user_role','transport')->get();
         $transport=TransportBooked::paginate(5);
-        return view('admin.transport_booked',compact('transport'));
+        return view('admin.transport_booked',compact('transport','drivers'));
     });
     
     Route::get('admin/profile',function(){
@@ -221,11 +222,17 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 ///--------------------------------------Transport Dashbaord----------------------------------///
     Route::group(['middleware'=>['TransportAuth']],function(){
         Route::get('transport/index',function(){
-            return view('transport.index');
+            $allappoint=TransportBooked::where('driver_id',Auth::user()->id)->count();
+            $date=date("Y-m-d");
+            $today=TransportBooked::where('driver_id',Auth::user()->id)->where('date_of_transport',$date)->count();
+      
+            return view('transport.index',compact('allappoint','today'));
         });
 
         Route::get('transport/appointment',function(){
             $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->get();
+            
+
             //dd($booked);
             return view('transport.appointments',compact('detail'));
         });
@@ -286,7 +293,11 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 Route::group(['middleware'=>['VetAuth']],function(){
     Route::get('vet/index',function(){
-        return view('vet.index');
+        $appointments=AppointmentBook::where('vet_id',Auth::user()->id)->count();
+        $date=date("Y-m-d");
+        $today=AppointmentBook::where('vet_id',Auth::user()->id)->where('appointment_date',$date)->count();
+  
+        return view('vet.index',compact('appointments','today'));
     });
     Route::get('vet/appointment',function(){
       
@@ -389,13 +400,20 @@ Route::get('/b&s/subscription-purchase-form',[BuyerAndSellerController::class,'s
 
 // B&S Login Form
 Route::get('/b&s/login-form',[BuyerAndSellerController::class,'loginForm'])->name('B&SLoginPage');
+Route::post('buyer/seller/login',[BuyerAndSellerController::class,'loginuser']);
+Route::get('/b&s/login-verification-form/{id}',[BuyerAndSellerController::class,'loginotp']);
 
 // B&S Register Form
 Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm'])->name('B&SRegisterPage');
+Route::post('buyer/seller/register',[BuyerAndSellerController::class,'sendotp']);
+
 
 // B&S Login Verification Form
-Route::get('/b&s/login-verification-form',[BuyerAndSellerController::class,'loginVerificationForm'])->name('B&SLoginVerificationPage');
+Route::get('/b&s/register-verification-form/{id}',[BuyerAndSellerController::class,'loginVerificationForm'])->name('B&SLoginVerificationPage');
+Route::post('checkotp',[BuyerAndSellerController::class,'checkotp']);
 
+//resend otp
+Route::get('buyer/seller/resend/otp/{id}',[BuyerAndSellerController::class,'resendotp']);
 // view goats
 Route::get('/b&s/view-goat',[BuyerAndSellerController::class,'viewGoat'])->name('B&SViewGoat');
 

@@ -190,20 +190,16 @@ class GuestController extends Controller
             'animalsno'=>'required|numeric',
             'breed'=>'required',
             'personname'=>'required',
-            'mobileno'=>'required',                                                                                                                                                                                                                                                                                                                         
+            'mobileno'=>'required',                                                                                                                                                                                                                                                                                                                        
             'vet_assign'=>'required',
         ]);
         if (Auth::check()) {
-                
         $appointement=new AppointmentBook;
         DB::beginTransaction();
         try{
-
             $address=new AppointmentAddress;
-           
             DB::beginTransaction();
             try{
-
                 $address->area=$req->area;
                 $address->state=$req->state;
                 $address->city=$req->city;
@@ -213,7 +209,6 @@ class GuestController extends Controller
                 $address->address_line2=$req->address2;
                 $address->taluka=$req->taluka;
                 $address->zipcode=$req->pincode;
-                
                 $address->save();
                  DB::commit();
             }catch(\Exception $e){
@@ -221,19 +216,17 @@ class GuestController extends Controller
                     DB::rollback();
                     return back()->with('warningMsg','There sooooooome Problem try again');;
             }
-
-               
-               $appointement->user_id=Auth::user()->id;     
-               $appointement->appointment_address_id=$address->id; 
-               $appointement->animal_type=$req->animaltype; 
-               $appointement->no_of_animal=$req->animalsno; 
-               $appointement->breed=$req->breed; 
-               $appointement->contact_name=$req->personname; 
+               $appointement->user_id=Auth::user()->id;    
+               $appointement->appointment_address_id=$address->id;
+               $appointement->animal_type=$req->animaltype;
+               $appointement->no_of_animal=$req->animalsno;
+               $appointement->breed=$req->breed;
+               $appointement->contact_name=$req->personname;
                $appointement->contact_no=$req->mobileno;
-               $appointement->comment=$req->comment; 
-               $appointement->vet_id=$req->vet_assign; 
-               $appointement->vet_commnet=$req->vet_comment; 
-               $appointement->status=1; 
+               $appointement->comment=$req->comment;
+               $appointement->vet_id=$req->vet_assign;
+               $appointement->vet_commnet=$req->vet_comment;
+               $appointement->status=1;
                 $appointement->save();
          DB::commit();
          return back()->with('successMsg','Your Request has been recieved Thanks for choosing us ');
@@ -245,7 +238,6 @@ class GuestController extends Controller
         } else {
             return redirect('login');
         }
-  
     }
     public function certifyRegister(Request $req){
         // dd($req);
