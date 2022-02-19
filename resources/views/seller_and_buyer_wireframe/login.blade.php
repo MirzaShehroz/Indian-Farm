@@ -32,12 +32,17 @@
             <div class="card border-0 p-2 p-md-5 text-center" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;">
                 <img src="{{asset('images/India-Farm-Logo.png')}}" class="card-img-top mx-auto" alt="img not found">
                 <div class="card-body mt-4">
+@if(session('error'))
+<div class="alert alert-danger">{{session('error')}}</div>
+@endif
+@if(session('msg'))
+<div class="alert alert-success">{{session('msg')}}</div>
+@endif
+                    <form action="{{url('buyer/seller/login')}}" method="post">
+                        @csrf
+                        <input type="text" class="mobileno_input border_color form-control py-3 "  name="mobileno" placeholder="Enter Your Mobile Number" required>
 
-                    <form action="" method="post">
-
-                        <input type="text" class="mobileno_input border_color form-control py-3 " maxlength="10" name="mobileno" placeholder="Enter Your Mobile Number" required>
-
-                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="{{route('B&SLoginVerificationPage')}}" class="text-decoration-none text-light">SUBMIT</a></button>
+                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
 
                         <span class="d-block text-dark mt-5">
               If You Don't Have an Account please <a href="{{route('B&SRegisterPage')}}" class="tcolor btnclick text-decoration-none fw-bold"> CLICK HERE </a> Register

@@ -11,35 +11,146 @@ use Auth;
 use DB;
 class TransportBookedController extends Controller
 {
-    public function add(Request $req){
-        // dd($req);
-        $data=$req->all();
-        // dd($data);
-        $req->validate([
-            'fromarea'=>'required',
-            'fromcity'=>'required',
-            'faddressline1'=>'required',
-            'fromdistrict'=>'required',
-            'fromtaluka'=>'required',
-            'frompincode'=>'required',
-            'dot'=>'required',
+    // public function add(Request $req){
+    //     // dd($req);
+    //     $data=$req->all();
+    //     // dd($data);
+    //     $req->validate([
+    //         'area'=>'required',
+    //         'city'=>'required',
+    //         'faddressline1'=>'required',
+    //         'district'=>'required',
+    //         'taluka'=>'required',
+    //         //'zincode'=>'required',
+    //         'appoint_date'=>'required',
+    //         'appoint_time'=>'required',
 
-            'toarea'=>'required',
-            'tocity'=>'required',
-            'toaddressline1'=>'required',
-            'todistrict'=>'required',
-            'totaluka'=>'required',
-            'topincode'=>'required',
+    //         'tarea'=>'required',
+    //         'tcity'=>'required',
+    //         'taddressline1'=>'required',
+    //         'tdistrict'=>'required',
+    //         'ttaluka'=>'required',
+    //         //'tzincode'=>'required',
+
+    //         'breed'=>'required',
+    //         'animaltype'=>'required',
+    //         'no_animals'=>'required|numeric',
+    //         'contact_person'=>'required',
+    //         'contact_no'=>'required',
+    //         'date_transport'=>'required',
+           
+    //         'edriverassign'=>'required'
+            
+    //     ]);
+    //     $transport=new TransportBooked;
+    //     DB::beginTransaction();
+    //     try{
+
+    //         $transportfrom=new TransportFrom;
+    //         DB::beginTransaction();
+    //         try{
+
+    //             $transportfrom->address_line1=$data['faddressline1'];
+    //             $transportfrom->address_line2=$data['faddressline2'];
+    //             $transportfrom->area=$data['area'];
+    //             $transportfrom->city=$data['city'];
+    //             $transportfrom->district=$data['district'];
+    //             $transportfrom->state=$data['state'];
+    //             $transportfrom->taluka=$data['taluka'];
+    //             $transportfrom->zipcode=$data['fzincode'];
+    //             $transportfrom->appointment_time=$data['fappoint_time'];
+    //             $transportfrom->appointment_date=$data['fappoint_date'];
+    //            // dd($transportfrom);
+    //             $transportfrom->save();
+    //             DB::commit();
+    //         }catch(\Exception $e){
+    //             dd($e);
+    //             DB::rollback();
+    //             return back()->with('warningMsg','There sooooooome Problem try again');
+    //         }
+
+
+
+    //         $transportto=new TransportTo;
+    //         DB::beginTransaction();
+    //         try{
+
+    //             $transportto->address_line1=$data['taddressline1'];
+    //             $transportto->address_line2=$data['taddressline2'];
+    //             $transportto->area=$data['tarea'];
+    //             $transportto->city=$data['tcity'];
+    //             $transportto->district=$data['tdistrict'];
+    //             $transportto->state=$data['tstate'];
+    //             $transportto->taluka=$data['ttaluka'];
+    //             $transportto->zipcode=$data['tzincode'];
+    //             $transportto->appointment_time=$data['tappoint_time'];
+    //             $transportto->appointment_date=$data['tappoint_date'];
+    //            // dd($transportto);
+    //             $transportto->save();
+    //             DB::commit();
+
+    //         }catch(\Exception $e){
+    //             dd($e);
+    //             DB::rollback();
+    //             return back()->with('warningMsg','There sooooooome Problem try again');
+    //         }
+
+
+    //         $transport->user_id=Auth::user()->id;
+    //         $transport->animal_type=$data['animaltype'];
+    //         $transport->no_of_animal=$data['no_animals'];
+    //         $transport->breed=$data['breed'];
+    //         $transport->contact_name=$data['contact_person'];
+    //         $transport->contact_no=$data['contact_no'];
+    //         $transport->date_of_transport=$data['date_transport'];
+    //         $transport->from_address_id=$transportfrom->id;
+    //         $transport->to_address_id=$transportto->id;
+    //         $transport->status=$data['estatus'];
+    //         $transport->driver_id=$data['edriverassign'];
+    //        // dd($transportfrom,$transportto,$transport);
+    //         $transport->save();
+    //         DB::commit();
+    //         return back()->with('successMsg','Appointment Added Successfully');
+    //     }catch(\Exception $e){
+    //         dd($e);
+    //             DB::rollback();
+    //             return back()->with('warningMsg','There sooooooome Problem try again');
+    //     }
+
+    // }
+
+
+    public function add(Request $req){
+        $data=$req->all();
+      
+        $req->validate([
+            'area'=>'required',
+            'city'=>'required',
+            'faddressline1'=>'required',
+            'district'=>'required',
+            'taluka'=>'required',
+            'zipcode'=>'required',
+            'appoint_time'=>'required',
+            'appoint_date'=>'required',
+
+            'tarea'=>'required',
+            'tcity'=>'required',
+            'taddressline1'=>'required',
+            'tdistrict'=>'required',
+            'ttaluka'=>'required',
+            'tzipcode'=>'required',
+            'tappoint_time'=>'required',
+            'tappoint_date'=>'required',
 
             'breed'=>'required',
             'animaltype'=>'required',
-            'animalsno'=>'required|numeric',
+            'no_animals'=>'required',
             'contact_person'=>'required',
             'contact_no'=>'required',
             'date_transport'=>'required',
-            'estatus'=>'required',
+           
             'edriverassign'=>'required'
-            
+
         ]);
         $transport=new TransportBooked;
         DB::beginTransaction();
@@ -51,19 +162,19 @@ class TransportBookedController extends Controller
 
                 $transportfrom->address_line1=$data['faddressline1'];
                 $transportfrom->address_line2=$data['faddressline2'];
-                $transportfrom->area=$data['fromarea'];
-                $transportfrom->city=$data['fromcity'];
-                $transportfrom->district=$data['fromdistrict'];
-                $transportfrom->state=$data['fromstate'];
-                $transportfrom->taluka=$data['fromtaluka'];
-                $transportfrom->zipcode=$data['frompincode'];
-                $transportfrom->appointment_time=$data['fromappoint_time'];
-                $transportfrom->appointment_date=$data['fromappoint_date'];
+                $transportfrom->area=$data['area'];
+                $transportfrom->city=$data['city'];
+                $transportfrom->district=$data['district'];
+                $transportfrom->state=$data['state'];
+                $transportfrom->taluka=$data['taluka'];
+                $transportfrom->zipcode=$data['zipcode'];
+                $transportfrom->appointment_time=$data['appoint_time'];
+                $transportfrom->appointment_date=$data['appoint_date'];
                // dd($transportfrom);
                 $transportfrom->save();
                 DB::commit();
             }catch(\Exception $e){
-                dd($e);
+                //dd($e);
                 DB::rollback();
                 return back()->with('warningMsg','There sooooooome Problem try again');
             }
@@ -76,14 +187,14 @@ class TransportBookedController extends Controller
 
                 $transportto->address_line1=$data['taddressline1'];
                 $transportto->address_line2=$data['taddressline2'];
-                $transportto->area=$data['toarea'];
-                $transportto->city=$data['tocity'];
-                $transportto->district=$data['todistrict'];
-                $transportto->state=$data['tostate'];
-                $transportto->taluka=$data['totaluka'];
-                $transportto->zipcode=$data['topincode'];
-                $transportto->appointment_time=$data['toappoint_time'];
-                $transportto->appointment_date=$data['toappoint_date'];
+                $transportto->area=$data['tarea'];
+                $transportto->city=$data['tcity'];
+                $transportto->district=$data['tdistrict'];
+                $transportto->state=$data['tstate'];
+                $transportto->taluka=$data['ttaluka'];
+                $transportto->zipcode=$data['tzipcode'];
+                $transportto->appointment_time=$data['tappoint_time'];
+                $transportto->appointment_date=$data['tappoint_date'];
                // dd($transportto);
                 $transportto->save();
                 DB::commit();
@@ -117,6 +228,7 @@ class TransportBookedController extends Controller
         }
 
     }
+
 
     public function delete(Request $req){
         $transport=TransportBooked::where('id',$req->id)->first();
@@ -163,6 +275,7 @@ class TransportBookedController extends Controller
             
         ]);
         $data=$req->all();
+        dd($data);
         $transport=TransportBooked::where('id',$req->transportbook)->first();
        
         DB::beginTransaction();
