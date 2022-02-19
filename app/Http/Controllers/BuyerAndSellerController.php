@@ -170,7 +170,7 @@ class BuyerAndSellerController extends Controller
             $id=Crypt::decryptString($data['id']); 
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
-                return 'mubarak';
+                return redirect('/');
             }else{
                 return back()->with('error','Wrong Otp');
             }

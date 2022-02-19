@@ -177,6 +177,8 @@
 
                 </div>
                 <!-- end of col -->
+                {{-- {{dd(Auth::ux`xxxxser()->id)}} --}}
+
                 
                 @if (Auth::check())
                     
@@ -222,7 +224,6 @@
                     </div>
                     <!-- user dropdown  -->
 
-
                 </div>
                 <!-- end of btn1  -->
 
@@ -236,7 +237,7 @@
                             </span></button>
                     </a>
 
-                    <a href="{{route('login')}}" class="text-decoration-none  ms-xl-1">
+                    <a href="{{route('B&SLoginPage')}}" class="text-decoration-none  ms-xl-1">
                         <button
                             class="bg-transparent border-0 btnlogin fw-bold border-bottom border-2 tcolor">Login/Register
                         </button>

@@ -405,7 +405,7 @@ Route::get('/b&s/login-verification-form/{id}',[BuyerAndSellerController::class,
 
 // B&S Register Form
 Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm'])->name('B&SRegisterPage');
-Route::post('buyer/seller/register',[BuyerAndSellerController::class,'sendotp']);
+Route::post('buyer/seller/register',[BuyerAndSellerController::class,'sendotp'])->name('B&Sregister');
 
 
 // B&S Login Verification Form

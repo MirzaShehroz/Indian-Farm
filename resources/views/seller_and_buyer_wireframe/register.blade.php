@@ -38,13 +38,13 @@
                     <form action="{{url('buyer/seller/register')}}" method="post">
                             @csrf
                         <input type="text" class="mobileno_input border_color form-control py-3 mb-4" name="fname" placeholder="Enter Your Full Name" required>
-@error('fname')
-    <div class="alert-danger">{{ $message }}</div>
-@enderror
-                        <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="contact_no" placeholder="Enter Your Mobile Number" required>
-@error('contact_no')
-    <div class="alert-danger">{{ $message }}</div>
-@enderror
+                        @error('fname')
+                            <div class="alert-danger">{{ $message }}</div>
+                        @enderror
+                                                <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="contact_no" placeholder="Enter Your Mobile Number" required>
+                        @error('contact_no')
+                            <div class="alert-danger">{{ $message }}</div>
+                        @enderror
                         <input id="agree" name="agree" type="hidden" style="display:none">
                         <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
 
