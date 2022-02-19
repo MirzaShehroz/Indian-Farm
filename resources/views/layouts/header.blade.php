@@ -177,16 +177,66 @@
 
                 </div>
                 <!-- end of col -->
+                
+                @if (Auth::check())
+                    
+                
+                <div class="btn1 d-flex align-items-center justify-content-around mt-4 mt-lg-0 ms-xl-5">
+
+                    <div class="me-5">
+
+                        <a href="{{route('B&SChat')}}" class="text-decoration-none">
+                            <img src="{{asset('images/chat.png')}}" alt="img not found">
+                        </a>
+
+                    </div>
+                    <!-- chat div  -->
+
+
+                    <div class="dropdown dropstart">
+                        <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="{{asset(Auth::user()->image)}}" style="width: 30px; height: 30px;" alt="img not found">
+                        </button>
+                        <ul class="dropdown-menu p-1 mt-5" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-shrink-0">
+                                            <img src="{{asset(Auth::user()->image)}}" style="width: 40px; height: 40px;" alt="img not found">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5>Hello !</h5>
+                                            <h6 class="text-decoration-underline">User Full Name</h6>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditProfilePage')}}"><i class="fas fa-user-edit me-3"></i>Edit Your Profile</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditYourAddPage')}}"><i class="fas fa-ad me-3"></i>Your Ads</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SPostAnAddPage')}}"><i class="fas fa-address-card me-3"></i>Post an Ad</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SYourSubscriptionPage')}}"><i class="fas fa-vote-yea me-3"></i>Your Subscription </a></li>
+                            <li class="my-3"><a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt me-3"></i>Log Out</a></li>
+                        </ul>
+                    </div>
+                    <!-- user dropdown  -->
+
+
+                </div>
+                <!-- end of btn1  -->
+
+                @else
 
                 <div class="btn1 d-flex align-items-center justify-content-around mt-4 mt-lg-0 ms-xl-5">
 
-                    <a href="sell.html"
+                    <a href="{{route('addView')}}"
                         class="text-decoration-none ms-xl-5 me-3 d-none d-lg-flex rounded-pill px-4 px-lg-2 py-2 bg-white">
                         <button class="bg-transparent border-0 btnsell tcolor fw-bold"> <span>Post Ad
                             </span></button>
                     </a>
 
-                    <a href="login.html" class="text-decoration-none  ms-xl-1">
+                    <a href="{{route('login')}}" class="text-decoration-none  ms-xl-1">
                         <button
                             class="bg-transparent border-0 btnlogin fw-bold border-bottom border-2 tcolor">Login/Register
                         </button>
@@ -194,6 +244,7 @@
 
                 </div>
                 <!-- end of btn1  -->
+                @endif
 
 
             </div>
