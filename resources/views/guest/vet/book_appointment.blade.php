@@ -238,7 +238,7 @@
                     <select id="vet" name="vet_assign" class="form-select overflow-scroll  ">
                       <option value=""> Select A Vet </option>
                       @foreach ($data as $item)
-                      <option value="{{$item->id}}"> {{getname($item->user_id)}} </option>
+                      <option value="{{$item->user_id}}"> {{getname($item->user_id)}} </option>
                       @endforeach
                     
                     </select>

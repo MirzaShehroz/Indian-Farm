@@ -58,7 +58,7 @@ class GuestController extends Controller
             'mobileno'=>'required',
         ]);
         // dd($data);
-
+        
         $transport=new TransportBooked;
         DB::beginTransaction();
         try{
@@ -193,8 +193,8 @@ class GuestController extends Controller
             'mobileno'=>'required',                                                                                                                                                                                                                                                                                                                         
             'vet_assign'=>'required',
         ]);
-
-
+        if (Auth::check()) {
+                
         $appointement=new AppointmentBook;
         DB::beginTransaction();
         try{
@@ -242,6 +242,10 @@ class GuestController extends Controller
                     DB::rollback();
         return back()->with('warningMsg','There some Problem try again');
         }
+        } else {
+            return redirect('login');
+        }
+  
     }
     public function certifyRegister(Request $req){
         // dd($req);
