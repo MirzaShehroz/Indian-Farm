@@ -58,7 +58,7 @@ class GuestController extends Controller
             'mobileno'=>'required',
         ]);
         // dd($data);
-
+        
         $transport=new TransportBooked;
         DB::beginTransaction();
         try{
