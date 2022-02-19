@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddController;
 use App\Http\Controllers\BuyerAndSellerController;
 use App\Http\Controllers\CommonController;
 use Illuminate\Support\Facades\Route;
@@ -118,7 +119,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         $user->save();
         Auth::logout();
 
-        return redirect('admin/login');
+        return redirect('/');
     });
     
     
@@ -214,7 +215,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
     Route::get('login',function(){
         return view('transport.login');
-    });
+    })->name('login');
     Route::post('login/user',[TransportController::class,'login']);
 
 ///--------------------------------------Transport Dashbaord----------------------------------///
@@ -278,7 +279,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
        
         Auth::logout();
 
-        return redirect('admin/login');
+        return redirect('/');
     });
 
 //-----------------------------------------Vet Dashboard--------------------------------------//
@@ -333,6 +334,8 @@ Route::post('vet/certify/animal/appointment',[GuestController::class,'certifyReg
 Route::get('vet/register',[GuestController::class,'registerVet'])->name('registerVet');
 Route::post('vet/register/submit',[GuestController::class,'registerRequest'])->name('registerRequest');
 
+// post add
+Route::get('post/add',[AddController::class,'index'])->name('addView');
 
 
 
