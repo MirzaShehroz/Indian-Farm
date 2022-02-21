@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Address;
 use App\Models\Sellers;
 use Crypt;
 use DB;
@@ -78,7 +79,19 @@ class BuyerAndSellerController extends Controller
     
     // edit-profile page
     public function editProfilePage() {
-        return view('seller_and_buyer_wireframe.edit_profile');
+
+        $data=User::where('id',Auth::user()->id)->first();
+        $seller=Sellers::where('user_id',Auth::user()->id)->first();
+        $address=Address::where('id',Auth::user()->address_id)->first();
+        // dd($address);
+        return view('seller_and_buyer_wireframe.edit_profile',compact('data','seller','address'));
+    }
+    public function personalDetails(Request $req){
+        // dd($req);
+    }
+
+    public function edit(Request $req){
+        // dd($req);
     }
 
     // your-add page
@@ -171,7 +184,9 @@ class BuyerAndSellerController extends Controller
             $id=Crypt::decryptString($data['id']); 
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
-                return redirect('/');
+                Auth::login($user);
+               // return 'mubarak';
+               return redirect('/');
             }else{
                 return back()->with('error','Wrong Otp');
             }

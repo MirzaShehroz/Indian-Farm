@@ -355,6 +355,10 @@ Route::get('post/add',[AddController::class,'index'])->name('addView');
 
 // B&S Edit Profile Form
 Route::get('/b&s/edit-profile-form',[BuyerAndSellerController::class,'editProfilePage'])->name('B&SEditProfilePage');
+Route::Post('/b&s/edit-profile-form',[BuyerAndSellerController::class,'edit'])->name('B&SEditProfile');
+Route::Post('/b&s/personal/details/update',[BuyerAndSellerController::class,'personalDetails'])->name('B&SEditpersonal');
+
+
 
 // B&S Your Add Form
 Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
