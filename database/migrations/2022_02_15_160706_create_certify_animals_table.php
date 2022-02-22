@@ -22,7 +22,7 @@ class CreateCertifyAnimalsTable extends Migration
             $table->unsignedBigInteger('appointment_address_id');
             $table->foreign('appointment_address_id')->references('id')->on('appointment_address');
 			// $table->integer('appointment_address_id')->index('appointment_address_id');
-            $table->unsignedBigInteger('vet_id');
+            $table->unsignedBigInteger('vet_id')->nullable();
             $table->foreign('vet_id')->references('id')->on('vets');
 			$table->string('animal_type');
 			$table->integer('no_of_animal');

@@ -30,10 +30,10 @@ class TransportController extends Controller
         $inputVal['email']=$req->email;
         $inputVal['password']=$req->password;
         
-       $nonreg=User::where('email',$inputVal['email'])->count();
+       $nonreg=User::where('email',$inputVal['email'])->first();
       
       
-       if($nonreg>0){
+       if($nonreg != null){
             $user=User::where('email',$inputVal['email'])->first();
             $name=  $user->first_name.''.$user->middle_name.''.$user->last_name;
         if (auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
