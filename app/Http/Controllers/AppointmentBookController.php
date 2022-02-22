@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\AppointmentAddress;
 use App\Models\AppointmentBook;
 use App\Models\Ads;
+use App\Models\Vet;
 use DB;
 use Auth;
 class AppointmentBookController extends Controller
@@ -160,12 +161,17 @@ class AppointmentBookController extends Controller
         $district=$req->district;
         $state=$req->state;
         $taluka=$req->taluka;
-        $vet=$req->vet;
-
+        $name=$req->vet;
+        $vetid=User::where('first_name',$name)->where('user_role','vet')->pluck('id')->first();
+        $id=Vet::where('user_id',$vetid)->pluck('id')->first();
+     
         $appointment=AppointmentBook::join('appointment_address','appointment_address.id','=','appointments.appointment_address_id')
-        ->where('animal_type',$animal)->orWhere('city',$city)->orWhere('district',$district)->orWhere('taluka',$taluka)
-        ->orWhere('vet_id',$vet)->paginate(5);
-        $vets=User::where('user_role','vet')->get();
+        ->where('appointments.animal_type',$animal)->orWhere('appointment_address.city',$city)->orWhere('appointment_address.district',$district)
+        ->orWhere('appointment_address.taluka',$taluka)
+        ->orWhere('appointment_address.state',$state)
+        ->orWhere('appointments.vet_id',$id)->paginate(5);
+        $vets=Vet::all();
+        
         return view('admin.appointment_booked',compact('appointment','vets'));
     }
 }

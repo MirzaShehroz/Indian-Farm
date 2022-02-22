@@ -49,6 +49,12 @@ function appoint_address($id){
     return $address;
 }
 
+function vetname($id){
+    $vet=Vet::where('id',$id)->first();
+    $vetname=User::where('id',$vet->user_id)->pluck('first_name')->first();
+ //   $name=$vet->first_name;
+    return $vetname;
+}
 
 function to_address($id){
     $to_address=TransportTo::where('id',$id)->first();

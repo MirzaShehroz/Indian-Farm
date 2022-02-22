@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Address;
 use App\Models\Sellers;
+use App\Models\Vet;
 use Crypt;
 use DB;
 use Auth;
@@ -78,7 +80,72 @@ class BuyerAndSellerController extends Controller
     
     // edit-profile page
     public function editProfilePage() {
-        return view('seller_and_buyer_wireframe.edit_profile');
+
+        $data=User::where('id',Auth::user()->id)->first();
+        $seller=Sellers::where('user_id',Auth::user()->id)->first();
+        $address=Address::where('id',Auth::user()->address_id)->first();
+        // dd($address);
+        return view('seller_and_buyer_wireframe.edit_profile',compact('data','seller','address'));
+    }
+
+    public function personalDetails(Request $req){
+        // dd($req->id);
+        $user=User::where('id',$req->id)->first();
+        $user->first_name=$req->first_name;
+        $user->last_name=$req->last_name;
+        $user->save();
+        $seller=Sellers::where('user_id',$req->id)->first();
+        $seller->farm_name=$req->farm_name;
+        $seller->status=1;   
+        $seller->save();
+        return response()->json('success');
+    }
+    
+    // edit address
+    public function addressDetails(Request $req){
+        $user=User::where('id',$req->id)->first();
+        // dd($user->address_id);
+        if($user->address_id){
+            $address=Address::where('user_id',$req->id)->first();
+        }
+        else{
+            $address= new Address;
+        }
+        $address->address_line1=$req->address1;
+        $address->address_line2=$req->address2;
+        $address->area=$req->area;
+        $address->state=$req->state;
+        $address->district=$req->district;
+        $address->city=$req->city;
+        $address->taluka=$req->taluka;
+        $address->zipcode=$req->zip;
+        $address->save();
+        $user->address_id=$address->id;
+        $user->save();
+        return response()->json('success');
+    }
+
+    public function profileDetails(Request $req){
+        // dd($req->user_id);
+        $user=User::where('id',$req->user_id)->first();
+        if($req->hasFile('profile')){
+            $file=$req->profile;
+            $name = time().''.rand(1000000,999999999999);
+            $filepath='/uploads/'.$req->user_id.'/profile/';
+            $ext= $file->getClientOriginalExtension();
+            $file->move(public_path() .$filepath,$name.'.'.$ext);
+            $fileName=$name.'.'.$ext;
+            $imgData=  $filepath.$fileName;
+
+            $user->image=$imgData;
+            $user->save();
+        }
+        return back()->with('successMsg','Image Updated!');
+    }
+
+    public function edit(Request $req){
+        // dd($req);
+       
     }
 
     // your-add page
@@ -172,8 +239,8 @@ class BuyerAndSellerController extends Controller
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
                 Auth::login($user);
-               return 'mubarak';
-               
+               // return 'mubarak';
+               return redirect('/');
             }else{
                 return back()->with('error','Wrong Otp');
             }

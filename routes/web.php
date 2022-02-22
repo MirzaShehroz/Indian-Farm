@@ -355,6 +355,14 @@ Route::get('post/add',[AddController::class,'index'])->name('addView');
 
 // B&S Edit Profile Form
 Route::get('/b&s/edit-profile-form',[BuyerAndSellerController::class,'editProfilePage'])->name('B&SEditProfilePage');
+Route::post('/b&s/edit-profile-form',[BuyerAndSellerController::class,'edit'])->name('B&SEditProfile');
+Route::Post('/b&s/personal/details/update',[BuyerAndSellerController::class,'personalDetails'])->name('B&SEditpersonal');
+Route::Post('/b&s/address/details/update',[BuyerAndSellerController::class,'addressDetails'])->name('B&SEditaddress');
+Route::Post('/b&s/profile/image/update',[BuyerAndSellerController::class,'profileDetails'])->name('B&SEditprofile');
+
+
+
+
 
 // B&S Your Add Form
 Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
@@ -405,7 +413,7 @@ Route::get('/b&s/login-verification-form/{id}',[BuyerAndSellerController::class,
 
 // B&S Register Form
 Route::get('/b&s/register-form',[BuyerAndSellerController::class,'registerForm'])->name('B&SRegisterPage');
-Route::post('buyer/seller/register',[BuyerAndSellerController::class,'sendotp']);
+Route::post('buyer/seller/register',[BuyerAndSellerController::class,'sendotp'])->name('B&Sregister');
 
 
 // B&S Login Verification Form
