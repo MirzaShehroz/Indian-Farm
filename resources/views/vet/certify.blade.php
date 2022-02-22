@@ -103,7 +103,7 @@
 
                             <div class="col-7 col-md-4 col-lg-3 col-xl-2 text-center">
                         
-                              <nav aria-label="Page navigation example">
+                              <!-- <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                   <li class="page-item">
                                     <a class="page-link" href="#" aria-label="Previous">
@@ -119,8 +119,8 @@
                                     </a>
                                   </li>
                                 </ul>
-                              </nav>
-                        
+                              </nav> -->
+                              {{ $data->render("pagination::bootstrap-4") }}
                         
                             </div>
                             <!-- end of col  -->

@@ -102,7 +102,8 @@
                 <td>{{ $certify->district }}</td>
                 <td>{{ $certify->taluka }}</td>
                 <td>{{ $certify->zipcode }}</td>
-                <td>{{ $certify->vet_id }}</td>
+                <!-- <td>{{ $certify->vet_id }}</td> -->
+                <td>{{vetname($certify->vet_id)}}</td>
                 @if($certify->certified_status==1)
                   <td>Done</td>
                 @else

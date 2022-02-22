@@ -106,7 +106,7 @@
 
                         <hr class="bg-dark  py-0" style="opacity: 1;">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown"
+                            <a class="nav-link dropdown-toggle text-dark" href="{{url('education')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Education
                             </a>
@@ -327,7 +327,7 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="online_courses.html" id="navbarDropdown">
+                <a class="nav-link text-dark" href="{{url('education')}}" id="navbarDropdown">
                     Education
                 </a>
             </li>

@@ -147,7 +147,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
        // $id=User::where('id',Auth::user()->id)->first();
         $user=User::where('id',Auth::user()->id)->first();
        $user= $user::join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-
+          //  dd($user);
         return view('admin.myprofile',compact('user'));
     });
     
@@ -349,7 +349,8 @@ Route::post('vet/register/submit',[GuestController::class,'registerRequest'])->n
 Route::get('post/add',[AddController::class,'index'])->name('addView');
 
 
-
+/////////////////////////////////////////////////Front end////////////////////////////////
+Route::get('/education',[EducationVideoController::class,'showFrontend']);
 
 //-------------------------------------- 47-Code-----------------------------------------------
 
