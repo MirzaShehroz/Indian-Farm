@@ -172,7 +172,8 @@ class BuyerAndSellerController extends Controller
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
                 Auth::login($user);
-                return 'mubarak';
+               return 'mubarak';
+               
             }else{
                 return back()->with('error','Wrong Otp');
             }
