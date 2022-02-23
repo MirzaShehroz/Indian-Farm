@@ -8,9 +8,8 @@
 
 
                             <iframe style="width: 100%; height: 300px;" src="https://www.youtube.com/embed/{{$edu->url}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                           
-                                <p class="bg-light py-2 ps-2 danger"> <span class="fw-bold me-auto">{{$edu->title}}</span> </p>
+                                
+                                <p class="bg-light py-2 ps-2 danger"><a href="{{url('https://www.youtube.com/embed/'.$edu->url)}}"> <span class="fw-bold me-auto">{{$edu->title}}</span></a> </p>
 
                         
 

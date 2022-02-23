@@ -306,8 +306,8 @@ Route::group(['middleware'=>['VetAuth']],function(){
         return view('vet.appointments',compact('detail'));
     });
     Route::get('vet/certify',function(){
-        $detail=certifyAnimal::where('vet_id',Auth::user()->id)->get();
-        return view('vet.certify',compact('detail'));
+        $details=certifyAnimal::where('vet_id',Auth::user()->id)->paginate(5);
+        return view('vet.certify',compact('details'));
     });
     Route::get('vet/profile',function(){
         $user=User::join('vets','vets.user_id','=','users.id')

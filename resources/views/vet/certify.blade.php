@@ -46,8 +46,8 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @if($detail!=null)
-                                      @foreach($detail as $detail)
+                                      
+                                      @forelse($details as $detail)
                                       <tr>
                                         <td scope="row">{{$detail->contact_name}}</td>
                                        
@@ -84,10 +84,10 @@
                                          
                                         </td>
                                       </tr>
-                                      @endforeach
-                                      @else
+                                     
+                                      @empty
                                       no data
-                                      @endif
+                                      @endforelse
                                      
                                     
                                     </tbody>
@@ -120,7 +120,7 @@
                                   </li>
                                 </ul>
                               </nav> -->
-                              {{ $data->render("pagination::bootstrap-4") }}
+                              {{ $details->render("pagination::bootstrap-4") }}
                         
                             </div>
                             <!-- end of col  -->
