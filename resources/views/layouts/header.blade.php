@@ -332,13 +332,13 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="forum_disscussion.html">
+                <a class="nav-link text-dark" href="{{url('forum_community')}}">
                     Community & Forum
                 </a>
 
             </li>
             <li class="nav-item">
-                <a class="nav-link text-dark" href="news_updates.html">
+                <a class="nav-link text-dark" href="{{url('news_updates')}}">
                     News & Updates
                 </a>
 

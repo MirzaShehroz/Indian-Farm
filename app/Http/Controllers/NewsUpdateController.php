@@ -89,4 +89,17 @@ class NewsUpdateController extends Controller
             return back()->with('warningMsg','There sooooooome Problem try again');
         }
     }
+
+
+    public function showFrontend(){
+        $news=NewsUpdate::orderBy('id', 'desc')->limit(2)->get();
+        $latestnews=NewsUpdate::orderBy('id', 'desc')->paginate(5);
+        return view('seller_and_buyer_wireframe.news_updates',compact('news','latestnews'));
+    }
+
+    public function get_news_updates($id){
+        $news=NewsUpdate::where('id',$id)->first();
+        $latestnews=NewsUpdate::orderBy('id', 'desc')->paginate(5);
+        return view('seller_and_buyer_wireframe.news_updates_details',compact('news','latestnews'));
+    }
 }
