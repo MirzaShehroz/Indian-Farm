@@ -13,7 +13,7 @@ use Auth;
 class CertifyController extends Controller
 {
     public function index(){
-        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->get();
+        $certify=certifyAnimal::join('appointment_address','certify_animals.appointment_address_id','appointment_address.id')->paginate(5);
 //        dd($certify);
         $vets=Vet::all();
         return view('admin.certify_animal',compact('vets','certify'));

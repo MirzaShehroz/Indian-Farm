@@ -36,4 +36,9 @@ class EducationVideoController extends Controller
         $video->delete();
         return back()->with('successMsg','Delete Successfully');
     }
+
+    public function showFrontend(){
+        $education=EducationVideo::paginate(5);
+       return view('seller_and_buyer_wireframe.education',compact('education'));
+    }
 }

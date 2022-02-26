@@ -21,9 +21,9 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '538ca81a9a966a6716601ecf48f4eaef' => __DIR__ . '/..' . '/opis/closure/functions.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
@@ -176,6 +176,7 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'BenSampo\\Embed\\' => 15,
         ),
         'A' => 
         array (
@@ -521,6 +522,10 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'BenSampo\\Embed\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bensampo/laravel-embed/src',
+        ),
         'Asm89\\Stack\\' => 
         array (
             0 => __DIR__ . '/..' . '/asm89/stack-cors/src',
@@ -544,6 +549,7 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AddController' => __DIR__ . '/../..' . '/app/Http/Controllers/AddController.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\AppointmentBookController' => __DIR__ . '/../..' . '/app/Http/Controllers/AppointmentBookController.php',
         'App\\Http\\Controllers\\BuyerAndSellerController' => __DIR__ . '/../..' . '/app/Http/Controllers/BuyerAndSellerController.php',
@@ -595,6 +601,23 @@ class ComposerStaticInitd1d9be3e6c366309cab1762eafb396b2
         'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Cors.php',
         'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/CorsService.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'BenSampo\\Embed\\EmbedServiceProvider' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/EmbedServiceProvider.php',
+        'BenSampo\\Embed\\Exceptions\\ServiceNotFoundException' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Exceptions/ServiceNotFoundException.php',
+        'BenSampo\\Embed\\Rules\\EmbeddableUrl' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Rules/EmbeddableUrl.php',
+        'BenSampo\\Embed\\ServiceBase' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ServiceBase.php',
+        'BenSampo\\Embed\\ServiceContract' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ServiceContract.php',
+        'BenSampo\\Embed\\ServiceFactory' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ServiceFactory.php',
+        'BenSampo\\Embed\\Services\\Dailymotion' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/Dailymotion.php',
+        'BenSampo\\Embed\\Services\\Fallback' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/Fallback.php',
+        'BenSampo\\Embed\\Services\\Miro' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/Miro.php',
+        'BenSampo\\Embed\\Services\\Slideshare' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/Slideshare.php',
+        'BenSampo\\Embed\\Services\\Vimeo' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/Vimeo.php',
+        'BenSampo\\Embed\\Services\\YouTube' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/Services/YouTube.php',
+        'BenSampo\\Embed\\ValueObjects\\Ratio' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ValueObjects/Ratio.php',
+        'BenSampo\\Embed\\ValueObjects\\Url' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ValueObjects/Url.php',
+        'BenSampo\\Embed\\ViewComponents\\EmbedViewComponent' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ViewComponents/EmbedViewComponent.php',
+        'BenSampo\\Embed\\ViewComponents\\ResponsiveWrapperViewComponent' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ViewComponents/ResponsiveWrapperViewComponent.php',
+        'BenSampo\\Embed\\ViewComponents\\StylesViewComponent' => __DIR__ . '/..' . '/bensampo/laravel-embed/src/ViewComponents/StylesViewComponent.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

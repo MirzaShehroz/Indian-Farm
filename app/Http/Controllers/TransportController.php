@@ -30,43 +30,43 @@ class TransportController extends Controller
         $inputVal['email']=$req->email;
         $inputVal['password']=$req->password;
         
-       $nonreg=User::where('email',$inputVal['email'])->count();
+       $nonreg=User::where('email',$inputVal['email'])->first();
       
       
-       if($nonreg>0){
+       if($nonreg != null){
             $user=User::where('email',$inputVal['email'])->first();
             $name=  $user->first_name.''.$user->middle_name.''.$user->last_name;
-        if (auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
+            if (auth()->attempt(array('email' => $inputVal['email'], 'password' => $inputVal['password']))){
             
-            if($user->status==1){
+                if($user->status==1){
                
               
                
-               if(auth()->user()->user_role=='transport'){
+                     if(auth()->user()->user_role=='transport'){
 
                     return redirect('transport/index');
                 
-                }
-                elseif(auth()->user()->user_role=='vet'){
+                        }
+                    elseif(auth()->user()->user_role=='vet'){
                     return redirect('vet/index');
-                }
-                else{
+                    }
+                    else{
                     return back()->with('error','You are not that who try to login');
+                    }
+                 }
+                else{
+                return back()->with('error','Wait For Admin Approval');
                 }
+
             }
             else{
-                return back()->with('error','Wait For Admin Approval');
-            }
-
-        }
-        else{
            
             return back()->with('error','Email Or Password Is Wrong');
-        }
+            }
 
-       }else{
+        }else{
            return back()->with('error','This Email Not Registered');
-       }
+        }
     }
 
     //update profile

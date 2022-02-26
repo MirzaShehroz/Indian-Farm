@@ -5,7 +5,8 @@
 
 <div class="row">
 
-    <form action="{{url('search/appointment')}}" method="GET">
+    <form action="{{url('search/appointment')}}" method="POST">
+      @csrf
 
     <div class="col-12 d-md-flex mt-3">
 
@@ -118,9 +119,17 @@
                 <td>{{$appoint->district}}</td>
                 <td>{{$appoint->taluka}}</td>
                 <td>{{$appoint->zipcode}}</td>
-                <td>{{$appoint->vet_id}}</td>
+                <td>{{vetname($appoint->vet_id)}}</td>
                 
-                <td>{{$appoint->status}}</td>
+                <td>
+                  @if($appoint->status==0)
+                  Confirmed
+                  @elseif($appoint->status==1)
+                  Completed
+                  @elseif($appoint->status==2)
+                  Cancelled
+                  @endif
+                </td>
            
               
                 <td class="d-flex">

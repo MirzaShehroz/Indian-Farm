@@ -53,6 +53,7 @@
 
             <div class="row pad-50 mt-5 pt-5 pt-lg-0 justify-content-around align-items-center">
 
+            
                 <div class="col-12 col-md-4 pt-5 pt-md-0 my-3 my-md-0">
 
 
@@ -67,7 +68,7 @@
                 <div class="col-12 col-md-4 pt-5 pt-md-0 my-3 my-md-0">
 
 
-                    <input class="form-control rounded-pill py-2 ps-5" type="date" placeholder="Search A Topic " aria-label="Search">
+                    <input class="form-control rounded-pill py-2 ps-5" type="date" aria-label="Search">
 
 
 
@@ -92,7 +93,9 @@
 
                 <div class="col-12">
 
-                    <div class="row my-5" style="border-radius: 10px; box-shadow: 1px 1px 10px  rgb(255, 255, 255); border-top: 5px solid #00aeff;">
+
+                        @forelse($question as $question)
+                        <div class="row my-5" style="border-radius: 10px; box-shadow: 1px 1px 10px  rgb(255, 255, 255); border-top: 5px solid #00aeff;">
 
                         <div class="col-2 col-lg-1 py-3 border-end border-dark my-auto">
 
@@ -112,12 +115,11 @@
 
                         <div class="col-10 col-lg-10 py-5 position-relative">
 
-                            <p>Query Listed as lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco</p>
+                            <p>{{$question->question}}</p>
 
-                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bg_danger text-light text-decoration-none position-absolute bottom-0 start-0">User Name</a>
+                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bg_danger text-light text-decoration-none position-absolute bottom-0 start-0">{{getname($question->user_id)}}</a>
 
-                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bg_danger text-light text-decoration-none position-absolute bottom-0 end-0">Date Posted</a>
+                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bg_danger text-light text-decoration-none position-absolute bottom-0 end-0">{{$question->created_at->format('Y-m-D')}}</a>
 
 
                         </div>
@@ -126,23 +128,26 @@
                         <div class="col-12 col-lg-1 d-flex d-lg-block justify-content-around py-3 border-start border-dark my-auto">
 
                             <div class="text-center mt-3">
-                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#edit-forms" aria-controls="edit-forms"  class="bg-transparent border-0" ><i class="fas fa-edit"></i></button>
+                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#edit-forms" aria-controls="edit-forms"  class="bg-transparent border-0" onclick="editforum({{$question->id}})" ><i class="fas fa-edit"></i></button>
 
 
                             </div>
 
                             <div class="text-center mt-3">
-                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#view-forms" aria-controls="view-forms" class="bg-transparent border-0" ><i class="fas fa-eye"></i></button>
+                                <button type="button" data-bs-toggle="offcanvas" data-bs-target="#view-forms" aria-controls="view-forms" class="bg-transparent border-0" onclick="viewforum({{$question->id}})"><i class="fas fa-eye"></i></button>
                             </div>
 
                             <div class="text-center mt-3">
-                                <button class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#exampleModal7"><i class="fas fa-trash-alt"></i></button>
+                                <button class="bg-transparent border-0" data-bs-toggle="modal" data-bs-target="#exampleModal7" onclick="deleteforum({{$question->id}})"><i class="fas fa-trash-alt"></i></button>
                             </div>
 
                         </div>
+                        </div>
+                        @empty
+                        No data
+                        @endforelse
 
-
-                    </div>
+                    
                     <!-- end of col inner -->
 
                 </div>
@@ -205,9 +210,7 @@
 
                 <div class="col-12 col-md-10 p-3 " style="box-shadow: 1px 1px 20px rgb(255, 255, 255);">
 
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quos aperiam cupiditate delectus adipisci labore sequi dicta inventore quis quisquam voluptatibus, odio veniam repudiandae sit praesentium fugiat velit natus? Debitis eos tempore quasi molestiae praesentium similique expedita illo minus. Iste debitis non a explicabo corrupti voluptatibus officiis, recusandae ipsum ipsa deserunt eos dolores odit quasi. Assumenda illum quos cupiditate ipsa quo. Magnam voluptate illum quos minima adipisci culpa exercitationem cumque sit accusantium, et, veritatis aliquam excepturi possimus impedit. Rem ex soluta minima asperiores vel vero numquam sit voluptatum porro consequatur nulla ipsum rerum consequuntur suscipit error iure harum quae enim nesciunt eum totam reprehenderit, eaque voluptates! In totam fugit ipsam beatae eos blanditiis reiciendis alias animi voluptate sint! Est ducimus sint amet, eaque quos veniam, impedit dolorem sequi vero dolores quasi perspiciatis corrupti aliquid, fuga modi? Itaque corporis voluptas nisi maiores facere accusantium, magni quasi asperiores. Vero asperiores, tenetur reiciendis commodi odit omnis maxime modi nemo hic eos eaque sequi, maiores sunt iusto at debitis! Consequuntur ipsum voluptate unde minima doloremque reiciendis maiores ipsa commodi incidunt velit eveniet itaque nesciunt ea exercitationem culpa provident cum tenetur placeat, totam est cumque ipsam. Tempore ea quis voluptatibus consectetur optio. Omnis, culpa quam?</p>
-
-
+                    <p id="equestion"></p>
                 </div>
                 <!-- end of col  -->
 
@@ -217,8 +220,8 @@
                     <h4 class="text-center mb-4">Response 1
                     </h4>
 
-                    <span class="position-absolute bg_danger text-light py-1 px-3 start-0 bottom-0">User Name</span>
-                    <span class="position-absolute bg_danger text-light py-1 px-3 end-0 bottom-0">Date</span>
+                    <span class="position-absolute bg_danger text-light py-1 px-3 start-0 bottom-0" id="euser_name">User Name</span>
+                    <span class="position-absolute bg_danger text-light py-1 px-3 end-0 bottom-0" id="edate">Date</span>
 
                 </div>
 
@@ -293,7 +296,7 @@
 
                 <div class="col-12 col-md-10 p-3 " style="box-shadow: 1px 1px 20px rgb(255, 255, 255);">
 
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quos aperiam cupiditate delectus adipisci labore sequi dicta inventore quis quisquam voluptatibus, odio veniam repudiandae sit praesentium fugiat velit natus? Debitis eos tempore quasi molestiae praesentium similique expedita illo minus. Iste debitis non a explicabo corrupti voluptatibus officiis, recusandae ipsum ipsa deserunt eos dolores odit quasi. Assumenda illum quos cupiditate ipsa quo. Magnam voluptate illum quos minima adipisci culpa exercitationem cumque sit accusantium, et, veritatis aliquam excepturi possimus impedit. Rem ex soluta minima asperiores vel vero numquam sit voluptatum porro consequatur nulla ipsum rerum consequuntur suscipit error iure harum quae enim nesciunt eum totam reprehenderit, eaque voluptates! In totam fugit ipsam beatae eos blanditiis reiciendis alias animi voluptate sint! Est ducimus sint amet, eaque quos veniam, impedit dolorem sequi vero dolores quasi perspiciatis corrupti aliquid, fuga modi? Itaque corporis voluptas nisi maiores facere accusantium, magni quasi asperiores. Vero asperiores, tenetur reiciendis commodi odit omnis maxime modi nemo hic eos eaque sequi, maiores sunt iusto at debitis! Consequuntur ipsum voluptate unde minima doloremque reiciendis maiores ipsa commodi incidunt velit eveniet itaque nesciunt ea exercitationem culpa provident cum tenetur placeat, totam est cumque ipsam. Tempore ea quis voluptatibus consectetur optio. Omnis, culpa quam?</p>
+                    <p id="vquestion">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Obcaecati quos aperiam cupiditate delectus adipisci labore sequi dicta inventore quis quisquam voluptatibus, odio veniam repudiandae sit praesentium fugiat velit natus? Debitis eos tempore quasi molestiae praesentium similique expedita illo minus. Iste debitis non a explicabo corrupti voluptatibus officiis, recusandae ipsum ipsa deserunt eos dolores odit quasi. Assumenda illum quos cupiditate ipsa quo. Magnam voluptate illum quos minima adipisci culpa exercitationem cumque sit accusantium, et, veritatis aliquam excepturi possimus impedit. Rem ex soluta minima asperiores vel vero numquam sit voluptatum porro consequatur nulla ipsum rerum consequuntur suscipit error iure harum quae enim nesciunt eum totam reprehenderit, eaque voluptates! In totam fugit ipsam beatae eos blanditiis reiciendis alias animi voluptate sint! Est ducimus sint amet, eaque quos veniam, impedit dolorem sequi vero dolores quasi perspiciatis corrupti aliquid, fuga modi? Itaque corporis voluptas nisi maiores facere accusantium, magni quasi asperiores. Vero asperiores, tenetur reiciendis commodi odit omnis maxime modi nemo hic eos eaque sequi, maiores sunt iusto at debitis! Consequuntur ipsum voluptate unde minima doloremque reiciendis maiores ipsa commodi incidunt velit eveniet itaque nesciunt ea exercitationem culpa provident cum tenetur placeat, totam est cumque ipsam. Tempore ea quis voluptatibus consectetur optio. Omnis, culpa quam?</p>
 
 
                 </div>
@@ -372,14 +375,20 @@
                     <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <form action="{{url('delete/forum')}}" method="post">
+                    @csrf
                 <div class="modal-body text-center p-4">
                     <p class="fw-bold text-secondary">Are You sure to Delete this Response </p>
                 </div>
+               
+                   
+                    <input id="forum_id" name="id" type="hidden">
                 <div class="modal-foote d-flex">
                     <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a>
-                    <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover">Yes</button></a>
+                    <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a>
 
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -645,7 +654,7 @@
                             @endforeach
                         @else
                             No Content
-                    @endif
+                        @endif
                     <!-- end of col card -->
 
 
@@ -1222,5 +1231,37 @@
                 }
             });
         }
+
+
+  function editforum(id){
+    $.ajax({
+                type:'POST',
+                url:"{{url('/edit/forum/')}}"+ '/'+id,
+                data:{_token: "{{ csrf_token() }}"},
+                success:function(data) {
+                    console.log(data);
+                    document.getElementById('equestion').innerHTML=data.quest.question;
+                    
+                }
+    });
+  }      
+
+
+  function viewforum(id){
+    $.ajax({
+                type:'POST',
+                url:"{{url('/edit/forum/')}}"+ '/'+id,
+                data:{_token: "{{ csrf_token() }}"},
+                success:function(data) {
+                    console.log(data);
+                    document.getElementById('vquestion').innerHTML=data.quest.question;
+                    
+                }
+    });
+  }
+
+  function deleteforum(id){
+    document.getElementById('forum_id').value=id;
+  }
     </script>
 @endsection

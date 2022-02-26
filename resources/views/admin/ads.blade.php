@@ -22,7 +22,7 @@
                                 </select>
                               </div>                                
                               <input type="text" name="breed" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Breed" id="">
-                                <input type="text" name="gender" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Gender " id="">
+                                <!-- <input type="text" name="gender" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Gender " id=""> -->
                                 
                                 <div class="col-md-4 col-lg-3 my-1">
                         
@@ -40,7 +40,7 @@
 
                             <div class="col-12 d-md-flex mt-3">
 
-                                <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
+                                <!-- <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id=""> -->
                                 <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
                                 <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
                                 <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
@@ -106,7 +106,7 @@
 
                                       <tr>
 {{--                                          {{dd(getadsid($ad->id))}}--}}
-{{--                                        <td scope="row">{{getadsid($ad->id)}}</td>--}}
+                                        <td scope="row">{{getadsid($ad->id)}}</td>
                                         <td>{{getname($ad->user_id)}}</td>
                                         <td>{{$ad->created_at}}</td>
                                         <td>{{$ad->status}}</td>

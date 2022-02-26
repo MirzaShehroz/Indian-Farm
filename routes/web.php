@@ -13,6 +13,7 @@ use App\Http\Controllers\TransportBookedController;
 use App\Http\Controllers\EducationVideoController;
 use App\Http\Controllers\GuestController;
 use App\Http\Controllers\NewsUpdateController;
+use App\Http\Controllers\CommunityForumController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AdsAddress;
@@ -28,6 +29,7 @@ use App\Models\TransportFrom;
 use App\Models\TransportTo;
 use App\Models\EducationVideo;
 use App\Models\NewsUpdate;
+use App\Models\Question;
 use Psy\Readline\Transient;
 
 /*
@@ -147,7 +149,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
        // $id=User::where('id',Auth::user()->id)->first();
         $user=User::where('id',Auth::user()->id)->first();
        $user= $user::join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-
+          //  dd($user);
         return view('admin.myprofile',compact('user'));
     });
     
@@ -156,8 +158,13 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
         $news=NewsUpdate::orderBy('id', 'desc')->limit(2)->get();
         $latestnews=NewsUpdate::orderBy('id', 'desc')->paginate(5);
-        return view('admin.contentmanagement',compact('education','news','latestnews'));
+        $question=Question::paginate(5);
+        return view('admin.contentmanagement',compact('education','news','latestnews','question'));
     });
+
+    Route::post('edit/forum/{id}',[CommunityForumController::class,'admin_edit']);
+    Route::post('delete/forum',[CommunityForumController::class,'admin_delete']);
+    
     
     //////////////////////////////////////Transport////////////////////////////
     
@@ -306,8 +313,8 @@ Route::group(['middleware'=>['VetAuth']],function(){
         return view('vet.appointments',compact('detail'));
     });
     Route::get('vet/certify',function(){
-        $detail=certifyAnimal::where('vet_id',Auth::user()->id)->get();
-        return view('vet.certify',compact('detail'));
+        $details=certifyAnimal::where('vet_id',Auth::user()->id)->paginate(5);
+        return view('vet.certify',compact('details'));
     });
     Route::get('vet/profile',function(){
         $user=User::join('vets','vets.user_id','=','users.id')
@@ -349,8 +356,17 @@ Route::post('vet/register/submit',[GuestController::class,'registerRequest'])->n
 Route::get('post/add',[AddController::class,'index'])->name('addView');
 
 
-
-
+/////////////////////////////////////////////////Front end////////////////////////////////
+Route::get('/education',[EducationVideoController::class,'showFrontend']);
+Route::get('news_updates',[NewsUpdateController::class,'showFrontend']);
+Route::get('news_detail/{id}',[NewsUpdateController::class,'get_news_updates']);
+Route::get('forum_community',[CommunityForumController::class,'getall']);
+Route::get('post/question',[CommunityForumController::class,'userquestion']);
+Route::post('user/add/question',[CommunityForumController::class,'postquestion']);
+Route::get('my/post',function(){
+    $question=Question::where('user_id',Auth::user()->id)->get();
+    return view('seller_and_buyer_wireframe.view_post',compact('question'));
+});
 //-------------------------------------- 47-Code-----------------------------------------------
 
 // B&S Edit Profile Form

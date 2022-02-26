@@ -329,20 +329,27 @@ class AdminController extends Controller
 
     // search add
     public function searchAdd(Request $req){
-        // dd($req->breed);
-        $ads=Ads::join('ads_adress','ads.ads_address_id','ads_adress.id')
-        ->join('ads_photo','ads.ads_photo_id','ads_photo.id')
-        ->join('ads_videos','ads.ads_video_id','ads_videos.id')
-        ->where('city',$req->city)
-        ->orWhere('animal_type',$req->animaltype)
-        ->orWhere('pregnant','=',$req->pragnent)
-        ->orWhere('city','=',$req->city)
-        ->orWhere('state','=',$req->state)
-        ->orWhere('district','=',$req->district)
-        ->orWhere('takula','=',$req->taluka)
-        ->paginate(5);
-        // dd($ads);
-        return view('admin.ads',compact('ads'))->with('successMsg','Found successfully');
+        if($req->all()!=null){
+            $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')
+            //->where('city',$req->city)
+            ->where('ads.animal_type','=',$req->animaltype)
+            ->orWhere('ads.pregnant','=',$req->pragnent)
+            
+            ->orWhere('ads_adress.state','=',$req->state)
+            ->orWhere('ads_adress.district','=',$req->district)
+            ->orWhere('ads_adress.takula','=',$req->taluka)
+            ->paginate(5);
+            return view('admin.ads',compact('ads'))->with('successMsg','Found successfully');
+    //dd($ads);
+    
+           
+        }
+        else{
+
+            $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->paginate(5);
+            return view('admin.ads',compact('ads'))->with('successMsg','Found successfully');
+        }
+       
     }
     // delete
     public function deleteadd(Request $req){
