@@ -197,7 +197,7 @@
 
                     <div class="dropdown dropstart">
                         <button class="btn bg-transparent dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="{{asset(Auth::user()->image)}}" style="width: 30px; height: 30px;" alt="img not found">
+                            <img src="{{asset(Auth::user()->image ? Auth::user()->image : 'images/user-img.png' )}}" style="width: 30px; height: 30px;" alt="img not found">
                         </button>
                         <ul class="dropdown-menu p-1 mt-5" style=" border-top: 3px solid #0572B2; border-bottom: 3px solid #0572B2;" aria-labelledby="dropdownMenuButton1">
 

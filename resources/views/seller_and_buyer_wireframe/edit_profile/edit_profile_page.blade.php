@@ -13,8 +13,7 @@
     <img src="{{asset( $data->image ? $data->image :'images/user-img.png')}}"  class="profile_img my-3" alt="img not found">
 
         <input type="file" name="profile" class="bg-transparent  profilebtn btnhover px-3 py-2" style="border-radius: 5px;"/ value="Upload Profile Picture">
-        <button type="submit">Update Profile</button>
-        
+        <button type="submit" id="personal_submit" class=" px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2">Update Profile</button>        
         {{-- {{dd($data)}} --}}
     </div>
     <!-- end of col-3 -->

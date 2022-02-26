@@ -366,6 +366,7 @@ Route::Post('/b&s/profile/image/update',[BuyerAndSellerController::class,'profil
 
 // B&S Your Add Form
 Route::get('/b&s/your-ads-form',[BuyerAndSellerController::class,'yourAddPage'])->name('B&SEditYourAddPage');
+Route::post('/b&s/your-ads-form/remove',[BuyerAndSellerController::class,'removeAdd'])->name('B&S.remove');
 
 // B&S Post an Add Form
 Route::get('/b&s/post-an-ad-form',[BuyerAndSellerController::class,'postAnAdd'])->name('B&SPostAnAddPage');
@@ -375,9 +376,12 @@ Route::get('/b&s/your-subscription-form',[BuyerAndSellerController::class,'yourS
 
 // B&S Post Ad Cow One Form
 Route::get('/b&s/post-add-cow-one-form',[BuyerAndSellerController::class,'postAdCowOne'])->name('B&SPostAdCowOnePage');
+Route::post('/b&s/post-add-cow-one-form/submit',[BuyerAndSellerController::class,'AdCowOne'])->name('B&SPostAdds');
+
 
 // B&S Post Ad Cow Multiple Form
 Route::get('/b&s/post-add-cow-multiple-form',[BuyerAndSellerController::class,'postAdCowMultiple'])->name('B&SPostAdCowMultiplePage');
+// Route::post('/b&s/post-add-cow-multiple-form/submit',[BuyerAndSellerController::class,'AdCowMultiple'])->name('B&SPostAdCowMultiple');
 
 // B&S Post Ad buffalo One Form
 Route::get('/b&s/post-add-buffalo-one-form',[BuyerAndSellerController::class,'postAdBuffaloOne'])->name('B&SPostAdBuffaloOnePage');
