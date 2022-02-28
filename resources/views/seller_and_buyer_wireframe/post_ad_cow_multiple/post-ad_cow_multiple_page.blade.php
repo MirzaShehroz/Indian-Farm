@@ -96,7 +96,7 @@
     <div class="col-12 col-md-6 col-lg-3 pt-3 shadow">
 
         <div class="mb-2">
-            <input type="text" class="form-control" name="no_animal" id="number" placeholder="No Of Animals"required>
+            <input type="text" class="form-control" name="no_animals" id="number" placeholder="No Of Animals"required>
         </div>
         <div class="mb-2">
             <input type="text" class="form-control" name="price" id="Price" placeholder="Price" required>

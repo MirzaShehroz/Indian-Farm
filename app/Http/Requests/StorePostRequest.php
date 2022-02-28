@@ -13,7 +13,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,24 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "img1"=>"required",
+            'img2'=>'required',
+            'img3'=>'required',
+            'img4'=>'required',
+            'img5'=>'required',
+            'img6'=>'required',
+            'video'=>"required",
+            'area'=>'required',
+            'taluka'=>'required',
+            'district'=>'required',
+            'city'=>'required',
+            'pincode'=>'required',
+            'state'=>'required',
+            'price'=>'required',
+            'breed'=>'required',
+            'breed_type'=>'required',
+            'areyou'=>'required',
+            'vacinated'=>'required',
         ];
     }
 }

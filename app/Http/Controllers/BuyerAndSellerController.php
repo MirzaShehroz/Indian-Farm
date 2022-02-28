@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Address;
@@ -179,7 +180,7 @@ class BuyerAndSellerController extends Controller
     public function postAdCowOne() {
         return view('seller_and_buyer_wireframe.post_ad_cow_one');
     }
-    public function AdCowOne(Request $req){
+    public function AdCowOne(StorePostRequest $req){
         // dd($req);
         $ads=new Ads;
         DB::beginTransaction();
@@ -295,13 +296,24 @@ class BuyerAndSellerController extends Controller
          }
 
             $ads->user_id=Auth::user()->id;
-            if ($req->request_type==2) {
+            if ((int)$req->request_type==2) {
                 $ads->animal_type=2;
             }
-            elseif($req->request_type==0){
+            elseif((int)$req->request_type==3){
+                $ads->animal_type=3;
+            }
+            elseif((int)$req->request_type==1){
+                $ads->animal_type=1;
+            }
+            elseif((int)$req->request_type==0){
                 $ads->animal_type=0;
             }
-            if($req->no_animal){
+            elseif((int)$req->request_type==4){
+                $ads->animal_type=4;
+            }
+
+            
+            if($req->no_animals){
             $ads->no_animals=$req->no_animals;
             }
             if($req->age){
@@ -309,7 +321,7 @@ class BuyerAndSellerController extends Controller
             }
             $ads->price=$req->price;
             $ads->breed=$req->breed;
-            if ($req->mil_cap) {
+            if ($req->milk_cap) {
                 $ads->milk_capacity=$req->milk_cap;
             }
             $ads->certified=0;
