@@ -58,14 +58,14 @@
                 <th scope="col">User Id </th>
                 <th scope="col">First Name</th>
                
-                <th scope="col">Farm Name</th>
+                <!-- <th scope="col">Farm Name</th> -->
         
                 <th scope="col">Contact No </th>
              
               
               
-                <th scope="col">Email Id</th>
-                <th scope="col">Farm Owner </th>
+                <!-- <th scope="col">Email Id</th>
+                <th scope="col">Farm Owner </th> -->
                 <th scope="col">Animal Type</th>
                 <th scope="col">Breed</th>
                
@@ -92,11 +92,11 @@
                 
                 <td>{{$appoint->user_id}}</td>
                 <td>{{$appoint->contact_name}}</td>
-                <td>1</td>
+                <!-- <td>1</td> -->
                 <td>{{$appoint->contact_no}}</td>
-                <td>1</td>
+                <!-- <td>1</td>
                
-                <td>1</td>
+                <td>1</td> -->
                 
                 @if($appoint->animal_type==0)
                 <td>Bull</td>
@@ -504,10 +504,12 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  ">
-                                            <option value="" disabled >Appointment Status </option>
-                                            <option value="0">Confirmed</option>
-                                            <option value="1">Completed</option>
-                                            <option value="2">Cancelled</option>
+                                                                  <option value="" disabled >Appointment Status </option>
+                                                                  <option value="0">Assigned</option>
+                                                                  <option value="1">Confirmed</option>
+                                                                  <option value="2">Completed</option>
+                                                                  <option value="3">Cancelled</option>
+                                                                  <option value="4">Reschedule</option>
                                             
                                         </select>
                                     </div>
@@ -725,11 +727,11 @@
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
                                                <div class="Districdropdown">
-                                                   <select id="vdistrict" class="form-select overflow-scroll" name="district" disabled>
+                                                   <select id="vvvdistrict" class="form-select overflow-scroll" name="district" disabled>
                                                      <option value="" disabled>Select  District</option>
-                                                     <option value=" abcs"> abcs</option>
+                                                     <option value="abcs"> abcs</option>
                                                      <option value="xyzs"> xyzs</option>
-                                                     <option value=" lmno"> lmno</option>
+                                                     <option value="lmno"> lmno</option>
                                                     
                                                    
                                                    </select>
@@ -810,9 +812,13 @@
                                                           <div class="Districdropdown">
                                                               <select id="vassignvet" class="form-select overflow-scroll " name="assignvet" disabled>
                                                               <option value="" disabled> Vet Assigned </option>
-                                                                  <option value="1">Vet A </option>
-                                                                  <option value="2">Vet B</option>
-                                                                  <option value="3">Vet C</option>
+                                                              @if($vets!=null)
+                                      @foreach($vets as $data)
+                                      <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
+                                      @endforeach
+                                       @else
+                                       <option value="">No Vet</option>
+                                      @endif
                                                                   
                                                               </select>
                                                           </div>
@@ -824,9 +830,11 @@
                                                           <div class="Districdropdown">
                                                               <select id="vappointstatus" class="form-select overflow-scroll  " name="appoint_status" disabled>
                                                                   <option value="" disabled >Appointment Status </option>
-                                                                  <option value="0">Confirmed</option>
-                                                                  <option value="1">Completed</option>
-                                                                  <option value="2">Cancelled</option>
+                                                                  <option value="0">Assigned</option>
+                                                                  <option value="1">Confirmed</option>
+                                                                  <option value="2">Completed</option>
+                                                                  <option value="3">Cancelled</option>
+                                                                  <option value="4">Reschedule</option>
                                                               </select>
                                                           </div>
                                                           
@@ -1131,12 +1139,16 @@
                                 <div class="col-12 col-md-4 mt-3">
                                     
                                     <div class="Districdropdown">
-                                        <select id="assignvet" class="form-select overflow-scroll " name="assignvet">
+                                        <select id="eeeassignvet" class="form-select overflow-scroll " name="assignvet">
                                         <option value="" disabled> Vet Assigned </option>
-                                            <option value="1">Vet A </option>
-                                            <option value="2">Vet B</option>
-                                            <option value="3">Vet C</option>
-                                            
+                                         
+                                      @if($vets!=null)
+                                      @foreach($vets as $data)
+                                      <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
+                                      @endforeach
+                                       @else
+                                       <option value="">No Vet</option>
+                                      @endif
                                         </select>
                                     </div>
                                     
@@ -1146,10 +1158,12 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  " name="appoint_status">
-                                            <option value="" disabled >Appointment Status </option>
-                                            <option value="0">Confirmed</option>
-                                            <option value="1">Completed</option>
-                                            <option value="2">Cancelled</option>
+                                                                 <option value="" disabled >Appointment Status </option>
+                                                                  <option value="0">Assigned</option>
+                                                                  <option value="1">Confirmed</option>
+                                                                  <option value="2">Completed</option>
+                                                                  <option value="3">Cancelled</option>
+                                                                  <option value="4">Reschedule</option>
                                         </select>
                                     </div>
                                     
@@ -1206,7 +1220,7 @@
                url:"{{url('/getappointment/')}}"+ '/'+id,
                data:{_token: "{{ csrf_token() }}"},
                success:function(data) {
-                  console.log(data.appoint); 
+                  console.log(data.appoint.vet_id); 
                   console.log(data.appoint.id ,data.address.id  );  
                   
                   document.getElementById('animaltype').value=data.appoint.animal_type  ; 
@@ -1224,7 +1238,7 @@
                   document.getElementById('zipcode').value=   data.address.zipcode  ;
                   document.getElementById('appoint_date').value=   data.appoint.appointment_date  ;
                   document.getElementById('appoint_time').value=   data.appoint.appointment_time  ;
-                  document.getElementById('assignvet').value=   data.appoint.vet_id ;
+                  document.getElementById('eeeassignvet').value=   data.appoint.vet_id ;
                   document.getElementById('appoint_idd').value=data.appoint.id ;
                   document.getElementById('address_idd').value=data.address.id ;
                   if(data.appoint.vet_comment==null){
@@ -1249,7 +1263,7 @@
                   document.getElementById('varea').value=   data.address.area ;
                   document.getElementById('vcity').value=   data.address.city  ;
                   document.getElementById('vstate').value=   data.address.state  ;
-                  document.getElementById('vdistrict').value=   data.address.district  ;
+                  document.getElementById('vvvdistrict').value=   data.address.district  ;
                   document.getElementById('vtaluka').value=   data.address.taluka ;
                   document.getElementById('vzipcode').value=   data.address.zipcode  ;
                   document.getElementById('vappoint_date').value=   data.appoint.appointment_date  ;

@@ -17,6 +17,34 @@ use Auth;
 class VetController extends Controller
 {
 
+    public function vetChangePassword(Request $req){
+        $req->validate([
+            'password'=>'required',
+            'repassword'=>'required'
+        ]);
+        if($req->password==$req->repassword){
+            $user=User::where('id',$req->user_id)->first();
+           
+            DB::beginTransaction();
+            try{
+    
+                $password=$req->password;
+                $user->password=Hash::make($password);
+                $user->save();
+                DB::commit();
+                return back()->with('successMsg','Password Changed Successfully');
+
+               
+            }catch(\Exception $e){
+                DB::rollback();
+                return back()->with('warningMsg','Something Went Wrong');
+
+           }
+        }else{
+            return back()->with('warningMsg','Password & Repassword Not Match');
+        }
+       
+    }
 
     public function updateprofile(Request $req){
 

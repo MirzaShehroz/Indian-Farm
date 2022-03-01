@@ -38,33 +38,34 @@ class AdminController extends Controller
                 
                 if($user->status==1){
                    
-                   $otp=mt_rand( 100000, 999999 );
-                   $user->email_otp=$otp;
+                // //    $otp=mt_rand( 100000, 999999 );
+                // //    $user->email_otp=$otp;
                    
-                   if(auth()->user()->user_role=='admin'){
+                // //    if(auth()->user()->user_role=='admin'){
 
-                    User::where('email',$inputVal['email'])->update(['email_otp'=>$otp]);
-                    $email=$inputVal['email'];
-                    $messagedata=[
+                // //     User::where('email',$inputVal['email'])->update(['email_otp'=>$otp]);
+                // //     $email=$inputVal['email'];
+                // //     $messagedata=[
             
-                        'otp'=>$otp,
-                        'name'=>$name
+                // //         'otp'=>$otp,
+                // //         'name'=>$name
                          
-                    ];
-                    Mail::send('admin.verify_mail',$messagedata,function($message)use($email){
+                // //     ];
+                // //     Mail::send('admin.verify_mail',$messagedata,function($message)use($email){
         
-                        $message->to($email)->subject('Login OTP');
+                // //         $message->to($email)->subject('Login OTP');
             
-                    } );
+                // //     } );
                     
-                    $id=Crypt::encryptString($user->id);
-                    // dd($id );
-                    // dd($email);
-                    //return view('admin.login_verify',compact('email'));
-                   // return redirect()->route('verify-otpp',$id)->with(['email'=>$inputVal['email']]);
-                   return redirect('verify-otp/'.$id)->with(['email'=>$inputVal['email']]);
+                // //     $id=Crypt::encryptString($user->id);
+                // //     // dd($id );
+                // //     // dd($email);
+                // //     //return view('admin.login_verify',compact('email'));
+                // //    // return redirect()->route('verify-otpp',$id)->with(['email'=>$inputVal['email']]);
+                // //    return redirect('verify-otp/'.$id)->with(['email'=>$inputVal['email']]);
 
-                   }
+                //    }
+                      return redirect('admin/index');
                 }
                 else{
                     return back()->with('error','Wait For Admin Approval');
@@ -741,6 +742,62 @@ class AdminController extends Controller
             }
             
         }
+
+
+       public function adminChangepassword(Request $req){
+        $req->validate([
+            'password'=>'required',
+            'repassword'=>'required'
+        ]);
+        if($req->password==$req->repassword){
+            $user=User::where('id',$req->user_id)->first();
+           
+            DB::beginTransaction();
+            try{
+    
+                $password=$req->password;
+                $user->password=Hash::make($password);
+                $user->save();
+                DB::commit();
+                return back()->with('successMsg','Password Changed Successfully');
+
+               
+            }catch(\Exception $e){
+                DB::rollback();
+                return back()->with('warningMsg','Something Went Wrong');
+
+           }
+        }else{
+            return back()->with('warningMsg','Password & Repassword Not Match');
+        }
+        
+    }
+
+    public function changeemail(Request $req){
+
+        $user=User::where('id',$req->user_id)->first();
+        $otp=mt_rand( 100000, 999999 );
+        $user->email_otp=$otp;
+        $name=$user->first_name;
+        $email=$req->email;
+        $messagedata=[
+            
+                    'otp'=>$otp,
+                     'name'=>$name
+                     
+        ];
+        Mail::send('admin.change_email',$messagedata,function($message)use($email){
+    
+            $message->to($email)->subject('Login OTP');
+        
+        } );
+
+        return back()->with('successMsg','SMS Send to your mail');
+                
+    }
+
+
+
 }
     
 

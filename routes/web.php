@@ -66,6 +66,10 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::get('admin/index',function(){
             return view('admin.index');
         });
+        //change password
+        Route::post('admin/change/password',[AdminController::class,'adminChangepassword']);
+        //change email
+        Route::post('admin/change/email',[AdminController::class,'changeemail']);
         // search route
         Route::any('/search',[AdminController::class,'search'])->name('search');
         // user routes
@@ -149,7 +153,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
        // $id=User::where('id',Auth::user()->id)->first();
         $user=User::where('id',Auth::user()->id)->first();
        $user= $user::join('user_address', 'users.address_id' ,'=','user_address.id')->first();
-          //  dd($user);
+          //  dd(Auth::user()->id);
         return view('admin.myprofile',compact('user'));
     });
     
@@ -260,7 +264,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     
     
         Route::post('update/trasport/profile',[TransportController::class,'updateprofile']);
-    
+        
+        //change password
+        Route::post('transport/change/passowrd',[TransportController::class,'changePassword']);
     
 
     });
@@ -325,7 +331,8 @@ Route::group(['middleware'=>['VetAuth']],function(){
       
         return view('vet.myprofile',compact('user'));
     });
-    
+    //change password
+    Route::post('vet/change/password',[VetController::class,'vetChangePassword']);
     Route::post('update/vet/profile',[VetController::class,'updateprofile']);
     
     //edit

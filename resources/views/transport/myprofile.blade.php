@@ -270,7 +270,7 @@
 
 
 </div>
-<div class="modal fade" id="passwordchange" data-bs-toggle="modal" data-bs-target="#passwordchange">
+<div class="modal" id="passwordchange" data-bs-toggle="modal" data-bs-target="#passwordchange">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -281,11 +281,13 @@
         
 
           <div>
-              <form action="" method="post">
-                  <input type="text" placeholder="Enter Password" class="py-3 mt-5 form-control" name="" id="">
-                  <input type="text" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="" id="">
+              <form action="{{url('transport/change/passowrd')}}" method="post" id="changepassword" >
+                @csrf
+                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                  <input type="password" placeholder="Enter Password" class="py-3 mt-5 form-control" name="password" id="">
+                  <input type="password" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="repassword" id="">
 
-                  <button type="button" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
+                  <button type="submit" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
               </form>
           </div>
         </div>
@@ -351,7 +353,9 @@
   var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
+  
 };
+
 </script>
 
 @endsection

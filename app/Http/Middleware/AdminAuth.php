@@ -17,7 +17,8 @@ class AdminAuth
     public function handle(Request $request, Closure $next)
     {
         if(Auth::check()==true){
-            if(auth()->user()->user_role == 'admin' && auth()->user()->login_status==1){
+            // if(auth()->user()->user_role == 'admin' && auth()->user()->login_status==1){
+            if(auth()->user()->user_role == 'admin'){
                 return $next($request);
             }
         }else{

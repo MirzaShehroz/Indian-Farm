@@ -737,7 +737,7 @@
 {{--            </li>--}}
 {{--          </ul>--}}
 {{--        </nav>--}}
-        {{ $item->render("pagination::bootstrap-4") }}
+        {{ $data->render("pagination::bootstrap-4") }}
 
 
       </div>

@@ -83,7 +83,7 @@
          
           </div>
 
-          <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
+          <div class="input-group d-block mb-5 mb-md-3 d-md-flex" >
             <input type="text" class="form-control inputno1 mb-3" placeholder="Email Id" value="{{$user->email}}" name="email">
             
             <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#emailchange">Update/Change</button>
@@ -91,6 +91,12 @@
             <span class="ms-3">Requires OTP
             </span>
           </div>
+          <form>
+          <div id="otpdiv"></div>
+          </form>
+
+        
+
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
             <input type="text" class="form-control inputno1 mb-3" placeholder="Change Password" name="password">
@@ -230,7 +236,7 @@
 
 
 
-<div class="modal fade" id="numberchange" data-bs-toggle="modal" data-bs-target="#numberchange">
+<div class="modal" id="numberchange" data-bs-toggle="modal" data-bs-target="#numberchange">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -254,7 +260,7 @@
 </div>
 
 
-<div class="modal fade" id="emailchange" data-bs-toggle="modal" data-bs-target="#emailchange">
+<div class="modal" id="emailchange" data-bs-toggle="modal" data-bs-target="#emailchange">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -266,10 +272,12 @@
           New Email</h5>
 
         <div>
-            <form action="" method="post">
-                <input type="text" placeholder="Enter Email Id " class="py-3 mt-5 form-control" name="" id="">
+            <form action="{{url('admin/change/email')}}" method="post">
+              @csrf
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" name="email">
 
-                <button type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+                <button id="changeemail" type="submit" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
             </form>
         </div>
       </div>
@@ -279,7 +287,7 @@
 </div>
 
 
-<div class="modal fade" id="passwordchange" data-bs-toggle="modal" data-bs-target="#passwordchange">
+<div class="modal" id="passwordchange" data-bs-toggle="modal" data-bs-target="#passwordchange" >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -290,11 +298,13 @@
       
 
         <div>
-            <form action="" method="post">
-                <input type="text" placeholder="Enter Password" class="py-3 mt-5 form-control" name="" id="">
-                <input type="text" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="" id="">
+            <form action="{{url('admin/change/password')}}" method="post"  id="changepassword">
+              @csrf
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="password" placeholder="Enter Password" class="py-3 mt-5 form-control" name="password" id="password" required>
+                <input type="password" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="repassword" id="repassword" required>
 
-                <button type="button" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
+                <button type="submit" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
             </form>
         </div>
       </div>
@@ -303,11 +313,18 @@
   </div>
 </div>
 @section('script')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
   var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
+  
+ $('#changeemail').click(function(){
+ //  $('#otpdiv').attr('style', 'display: block !important');
+  $('#otpdiv').append("<form method='post'><div><input type='text' class='form-control inputno1 mb-3' placeholder='Enter OTP' name='otp'><button type='submit'  class='px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2' id='basic-addon4' data-bs-toggle='modal' data-bs-target='#emailchange'>Submit OTP</button><br><br></div></form>");  
+ });
 </script>
+
 @endsection
        @endsection

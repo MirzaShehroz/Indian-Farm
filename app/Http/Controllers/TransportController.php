@@ -303,6 +303,35 @@ class TransportController extends Controller
         return view('admin.transport_driver',compact('data'));
     }
 
+    public function changepassword(Request $req){
+        $req->validate([
+            'password'=>'required',
+            'repassword'=>'required'
+        ]);
+        if($req->password==$req->repassword){
+            $user=User::where('id',$req->user_id)->first();
+           
+            DB::beginTransaction();
+            try{
+    
+                $password=$req->password;
+                $user->password=Hash::make($password);
+                $user->save();
+                DB::commit();
+                return back()->with('successMsg','Password Changed Successfully');
+
+               
+            }catch(\Exception $e){
+                DB::rollback();
+                return back()->with('warningMsg','Something Went Wrong');
+
+           }
+        }else{
+            return back()->with('warningMsg','Password & Repassword Not Match');
+        }
+        
+    }
+
     public function register(Request $req){
         // dd($req);
 

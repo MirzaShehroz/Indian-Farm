@@ -78,17 +78,17 @@
                                         <th scope="col">Date Of Add Poasted</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Farm Owner</th>
+                                        <!-- <th scope="col">Farm Owner</th> -->
                                         <th scope="col">Animal Type</th>
                                         <th scope="col">Breed</th>
                                       
-                                        <th scope="col">Gender</th>
+                                        <!-- <th scope="col">Gender</th> -->
                                         <th scope="col">Pregnant</th>
                                         <th scope="col">Due Month </th>
                                         <th scope="col">Daily Milk Capacity </th>
                                         <th scope="col">Vacinated</th>
                                         <th scope="col">Area</th>
-                                        <th scope="col">City</th>
+                                        <!-- <th scope="col">City</th> -->
                                         <th scope="col">State</th>
                                         <th scope="col">District</th>
                                         <th scope="col">Taluka</th>
@@ -111,7 +111,7 @@
                                         <td>{{$ad->created_at}}</td>
                                         <td>{{$ad->status}}</td>
                                         <td>{{$ad->price}}</td>
-                                        <td>{{$ad->ownership_status}}</td>
+                                     
                                         @if($ad->animal_type==0)
                                         <td>Bull</td>
                                         @elseif($ad->animal_type==1)
@@ -125,7 +125,7 @@
                                         @endif
 
                                        <td>{{$ad->breed}}</td>
-                                      <td></td>
+                                    
                                        
 
                                         @if($ad->pregnant==0)
@@ -145,7 +145,7 @@
 
 
                                         <td>{{$ad->area}}</td>
-                                        <td>{{$ad->city}}</td>
+                                        <!-- <td>{{$ad->city}}</td> -->
                                         <td>{{$ad->state}}</td>
                                         <td>{{$ad->district}}</td>
                                         <td>{{$ad->takula}}</td>

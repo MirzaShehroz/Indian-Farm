@@ -62,11 +62,11 @@
                                      
                                       
                                       
-                                        <th scope="col">Email Id</th>
+                                        <!-- <th scope="col">Email Id</th> -->
                                       
                                         <th scope="col">Animal Type</th>
                                         <th scope="col">No of Animal</th>
-                                        <th scope="col">Vehicle Make & Model</th>
+                                        <!-- <th scope="col">Vehicle Make & Model</th> -->
                                         <th scope="col">Date Of Transport</th>
                                         <th scope="col">From City</th>
                                         <th scope="col">To City</th>
@@ -84,10 +84,10 @@
                                       @if($transport!=null)
                                       @foreach($transport as $trans)
                                       <tr>
-                                        <td>1</td>
+                                        <td>{{$trans->user_id}}</td>
                                         <td>{{$trans->contact_name}}</td>
                                         <td>{{$trans->contact_no}}</td>
-                                        <td>1</td>
+                                        <!-- <td>1</td> -->
                                         @if($trans->animal_type==0)
                                          <td>Bull</td>
                                          @elseif($trans->animal_type==1)
@@ -100,22 +100,26 @@
                                        <td>Goat</td>
                                            @endif
                                         <td>{{$trans->no_of_animal}}</td>
-                                        <td>1</td>
+                                        <!-- <td>1</td> -->
                                         <td>{{$trans->date_of_transport}}</td>
                                         <td>{{from_address($trans->from_address_id)->city}}</td>
                                         <td>{{to_address($trans->to_address_id)->city}}</td>
                                   
                                       
-                                        <td>{{$trans->driver_id}}</td>
-
+                                        <td>{{getname($trans->driver_id)}}</td>
+                                        <td>
                                         @if($trans->status==0)
-                                        <td>Assigned</td>
+                                        Assigned
                                         @elseif($trans->status==1)
-                                        <td>Pending</td>
+                                        Confirm
                                         @elseif($trans->status==2)
-                                        <td>Delivered</td>
+                                        Completed
+                                        @elseif($trans->status==3)
+                                        Cancelled
+                                        @elseif($trans->status==4)
+                                        Intrasit
                                         @endif
-
+                                        </td>
 
                                         <td class="d-flex">
                                             <button class="bg_danger text-light me-2"  data-bs-toggle="offcanvas" data-bs-target="#edit_transportbook" aria-controls="edit_transportbook" type="button" onclick="gettrans({{$trans->id}})"><i class="fas fa-pencil-alt"></i></button>
@@ -621,9 +625,11 @@
                                 <select id="astatus" class="form-select overflow-scroll  " name="estatus">
                                   <option value=""  disabled >Status </option>
                                   <option value="0"  >Assigned</option>
-                                  <option value="1" >Pending </option>
-                                  <option value="2" >Delivered</option>
-                                
+                                  <option value="1" >Confirm </option>
+                                  <option value="2" >Completed</option>
+                                  <option value="2" >Cancelled</option>
+                                  <option value="3" >Intrasit </option>
+                                  
                                 </select>
                               </div>
             
@@ -1102,13 +1108,13 @@
                     
                             <div class="Districdropdown">
                                 <select id="status" class="form-select overflow-scroll " name="estatus">
-                                  <option value="" disabled>Status </option>
-                                  <!-- <option value="0" >Assigned</option>
-                                  <option value="1" >Pending </option>
-                                  <option value="2" >Delivered</option> -->
-                                  <option value="0">Confirmed</option>
-                                                     <option value="1">Completed</option>
-                                                     <option value="2">Cancelled</option>
+                                 
+                                  <option value=""  disabled >Status </option>
+                                  <option value="0"  >Assigned</option>
+                                  <option value="1" >Confirm </option>
+                                  <option value="2" >Completed</option>
+                                  <option value="2" >Cancelled</option>
+                                  <option value="3" >Intrasit </option>
                                 </select>
                               </div>
             
@@ -1559,9 +1565,13 @@
                     
                             <div class="Districdropdown">
                                 <select id="vdriverassign" class="form-select overflow-scroll  ">
-                                  <option value=""  disabled>Driver Assigned</option>
-                                  <option value="0"  >Driver ABC</option>
-                                  <option value="1"  >Driver XYZ</option>
+                                @if($drivers!=null)
+                                      @foreach($drivers as $driver)
+                                      <option value="{{$driver->id}}">{{$driver->first_name}}</option>
+                                      @endforeach
+                                  @else
+                                  <option value="">No driver</option>
+                                  @endif
                                 </select>
                               </div>
             
@@ -1572,13 +1582,12 @@
                     
                             <div class="Districdropdown">
                                 <select id="vstatus" class="form-select overflow-scroll  ">
-                                  <option value="" selected disabled>Status </option>
-                                  <!-- <option value="0" >Assigned</option>
-                                  <option value="1" >Pending </option>
-                                  <option value="2" >Delivered</option> -->
-                                  <option value="0">Confirmed</option>
-                                 <option value="1">Completed</option>
-                                 <option value="2">Cancelled</option>
+                                  <option value=""  disabled >Status </option>
+                                  <option value="0"  >Assigned</option>
+                                  <option value="1" >Confirm </option>
+                                  <option value="2" >Completed</option>
+                                  <option value="2" >Cancelled</option>
+                                  <option value="3" >Intrasit </option>
                                 
                                 </select>
                               </div>

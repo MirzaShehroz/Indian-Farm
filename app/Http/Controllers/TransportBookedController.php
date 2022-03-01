@@ -275,7 +275,7 @@ class TransportBookedController extends Controller
             
         ]);
         $data=$req->all();
-        dd($data);
+       // dd($data);
         $transport=TransportBooked::where('id',$req->transportbook)->first();
        
         DB::beginTransaction();

@@ -51,16 +51,16 @@
           <thead>
             <tr>
               <th scope="col">User Id </th>
-              <th scope="col">First Name</th>
+              <!-- <th scope="col">First Name</th>
 
-              <th scope="col">Farm Name</th>
+              <th scope="col">Farm Name</th> -->
 
               <th scope="col">Contact No </th>
 
 
 
-              <th scope="col">Email Id</th>
-              <th scope="col">Farm Owner </th>
+              <!-- <th scope="col">Email Id</th>
+              <th scope="col">Farm Owner </th> -->
               <th scope="col">Animal Type</th>
               <th scope="col">Breed</th>
               <th scope="col">No of Animal</th>
@@ -85,12 +85,24 @@
             @foreach($certify as $certify)
               <tr>
                 <td scope="row">{{ $certify->user_id }}</td>
-                <td>null</td>
-                <td>null</td>
+                <!-- <td>null</td>
+                <td>null</td> -->
                 <td>{{ $certify->contact_no }}</td>
-                <td>null</td>
-                <td>null</td>
-                <td>{{ $certify->animal_type }}</td>
+                <!-- <td>null</td>
+                <td>null</td> -->
+                <td>
+                  @if($certify->animal_type ==0)
+                  Bull
+                  @elseif($certify->animal_type ==1)
+                  Buffalo
+                  @elseif($certify->animal_type ==2)
+                  Cow
+                  @elseif($certify->animal_type ==3)
+                  Goat
+                  @elseif($certify->animal_type ==4)
+                  Sheep 
+                  @endif
+                </td>
                 <td>{{ $certify->breed }}</td>
                 <td>{{ $certify->no_of_animal }}</td>
                 <td>{{ $certify->address_line1 }}</td>
