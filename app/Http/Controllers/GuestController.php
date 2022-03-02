@@ -462,7 +462,7 @@ class GuestController extends Controller
         ->where('animal_type',2)->get();
         return view('guest.adds.cow',compact('data'));
     }
-
+    
     public function sheep(){
         $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
         ->join('ads_adress','ads.ads_address_id','ads_adress.id')
