@@ -41,7 +41,7 @@
 
             <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
 
-            <a href="#" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
+            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
 
             <br>
               

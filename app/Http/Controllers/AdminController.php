@@ -817,6 +817,56 @@ class AdminController extends Controller
     }
 
 
+
+    /////////////////Forget Password//////////////////////////////////
+    public function checkEmail(Request $req){
+        
+        $email=$req->email;
+        $user=User::where('email',$email)->first();
+        if($user!=null){
+            $name=$user->first_name;
+            $user->forget_password=1;
+            $user->save();
+            $link=Crypt::encryptString($user->id);
+            $link=$req->getSchemeAndHttpHost().'/forget/password/'.$link;
+            $messagedata=[
+            
+                        'link'=>$link,
+                        'name'=>$name,           
+            ];
+            Mail::send('forgetpassword_mail',$messagedata,function($message)use($email){
+        
+                        $message->to($email)->subject('Forget Password Link');
+            
+            } );
+                    
+
+            return back()->with('success','Link Send Successfully Check Inbox');
+        }else{
+            return back()->with('error','This email not registered');
+        }
+    }
+
+    public function forgetPassword(Request $req){
+
+        $req->validate([
+            'password'=>'required'
+        ]);
+
+        $id=$req->user_id;
+        $user_id=Crypt::decryptstring($id);
+        $user=User::where('id',$user_id)->first();
+        if( $user->forget_password==1){
+            $user->password=Hash::make($req->password);
+            $user->forget_password=0;
+            $user->save();
+            return back()->with('success','Password Change Successfully');
+        }else{
+            return back()->with('error','This link expired');
+        }
+       
+    }
+
 }
     
 

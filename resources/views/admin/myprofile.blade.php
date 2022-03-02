@@ -322,6 +322,14 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
+$( document ).ajaxStart(function() {
+    $( "#loading" ).show();
+ });
+
+ $( document ).ajaxComplete(function() {
+    $( "#loading" ).hide();
+ });
+
   var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);

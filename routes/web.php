@@ -496,3 +496,14 @@ Route::get('/term-and-condition',[CommonController::class,'termAndCondition'])->
 
 
 //---------------------------------------------------------------------------------------------
+Route::view('forget/password','getemail');
+Route::post('check/email',[AdminController::class,'checkEmail']);
+Route::get('/forget/password/{id}',function(){
+    return view('forgetpassword');
+});
+Route::post('user/password/change',[AdminController::class,'forgetPassword']);
+
+///buyer seller change passsword
+Route::post('buyer/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
+//change email otp
+Route::post('buyer/change/email/otp/{id}/{semail}',[AdminController::class,'changeEmailOtp'])->name('emailOtp');

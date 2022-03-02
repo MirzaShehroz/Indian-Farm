@@ -11,19 +11,38 @@
 
     <!-- fontawsome link  -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
+    <!-- <link rel="stylesheet" href="{{asset('css/style.css')}}"> -->
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login</title>
+    <style>
+      .bgcolor{
+    background: #0572B2 !important;
+}
+      #forgot-page .card-img-top{
+    width: 150px;
+    height: 120px;
+}
+.btnhover3:hover{
+    background-color: transparent !important;
+    color: #0572B2 !important;
+    transition: 0.5s all;
+}
+.btnhover3:hover a{
+    color: #0572B2 !important;
+    transition: 0.5s all;
+}
+.border_color{
+    border-color: #0572B2 !important;
+}
+    </style>
+    <title>IFA-Forgot</title>
   </head>
-  <body>
+  <body class="bg-light">
 
     <div class="container-fluid">
 
         
-      <div class="row justify-content-around align-items-center mt-5" id="login-page">
+      <div class="row justify-content-around align-items-center mt-5" id="forgot-page">
 
 
         <div class="col-12 col-md-8 col-lg-6 col-xl-5 col-xxl-4 py-5">
@@ -32,22 +51,22 @@
           <div class="card border-0 p-2 p-md-5 text-center" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;">
             <img src="{{asset('images/India-Farm-Logo.png')}}" class="card-img-top mx-auto" alt="img not found">
             <div class="card-body mt-4">
-@if(session('error'))
-<div class="alert alert-danger">{{session('error')}}</div>
-@endif 
-           <form action="{{url('login/user')}}" method="post" >
+
+              <h5 class="mb-4">Enter Your Registerd Email</h5>
+           <form action="{{url('check/email')}}" method="post" >
             @csrf
-            <input type="text" class="mobileno_input border_color form-control py-3 " name="email" placeholder="Email Id" required>
+            @if(session('error'))
+            <div class="alert alert-danger">{{session('error')}}</div>
+            @endif
+            @if(session('success'))
+            <div class="alert alert-success">{{session('success')}}</div>
+            @endif
+            <input type="email" class="border_color form-control py-3 "name="email" placeholder="Enter Your Email">
 
-            <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
-
-            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
-
-            <br>
               
-            <button class="px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
+            <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color text-light" type="submit" name="submit">SUBMIT</button>
 
-        
+
 
 
            </form>
@@ -95,7 +114,7 @@
       window.addEventListener("scroll", function () {
         if (pageYOffset >= 100) {
           // document.getElementById("header").style.position = "fixed";
-          document.getElementById("header").style.background = "url(../../public/images/footer_bg.png) center center no-repeat";
+          document.getElementById("header").style.background = "url({{asset('images/footer_bg.png') center center no-repeat";
           // document.getElementById("header").style.zIndex = "1300";
         } else {
           // document.getElementById("header").style.position = "static";
