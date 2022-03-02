@@ -310,6 +310,7 @@ class AdminController extends Controller
                 $ads->weight=$req->weight;
                 $ads->certified=$req->certified;
                 $ads->certified_reg_no=$req->certified_reg_no;
+                $ads->tag_num=$req->tag_num;
                 $ads->status=1;
                 $ads->ads_photo_id=$adsphoto->id;
                 $ads->ads_address_id=$adsaddress->id;

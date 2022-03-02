@@ -6,66 +6,92 @@
         <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
 
 
-            <div class="row justify-content-around shadow py-3">
-
+               
+            <div class="row justify-content-around  shadow py-3">
+    
                 <h5 class="mb-3">Upload photos of your animal <i class="fas fa-images ms-3"></i></h5>
-
+    
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img1" id="img1">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img1" id="file1"  onchange="loadFile1(event)" style="display: none;"></p>
+                    <p id="upload1" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file1" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output1" class="upload_img" hidden >
                     @error('img1')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
-
+    
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img2" id="img2">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img2" id="file2"  onchange="loadFile2(event)" style="display: none;"></p>
+                    <p id="upload2" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file2" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output2" class="upload_img" hidden >
                     @error('img2')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
-
+    
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img3" id="img3">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img3" id="file3"  onchange="loadFile3(event)" style="display: none;"></p>
+                    <p id="upload3" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file3" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output3" class="upload_img" hidden >
                     @error('img3')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img4" id="img4">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img4" id="file4"  onchange="loadFile4(event)" style="display: none;"></p>
+                    <p id="upload4" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file4" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output4" class="upload_img" hidden >
                     @error('img4')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
-
+    
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img5" id="img5">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img5" id="file5"  onchange="loadFile5(event)" style="display: none;"></p>
+                    <p id="upload5" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file5" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output5" class="upload_img" hidden >
                     @error('img5')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
-
+    
                 <div class="col-4 text-center border p-3 upload">
-                    <input type="file" name="img6" id="img6">
-                    <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found">
+                    {{-- <input type="file" name="img1" id="img1"> --}}
+                    <p ><input type="file"  accept="image/*" name="img6" id="file6"  onchange="loadFile6(event)" style="display: none;"></p>
+                    <p id="upload6" class="bg-transparent border border-light  profilebtn btnhover" style="border-radius: 5px;">
+                        <label for="file6" style="cursor: pointer;"> <img src="{{asset('images/plus.png')}}" class="upload_img" alt="im not found"></label>
+                    </p>
+                    <img id="output6" class="upload_img" hidden >
                     @error('img6')
                     <span>Image is required</span>
-                @enderror
+                    @enderror
                 </div>
                 <!-- end of col inner  -->
-
+    
                 <h6 class="text-secondary mt-3" style="font-size: 14px;">Please Note Maximum file size is 2 MB per file</h6>
-
+    
             </div>
+            <!-- end of row images inner  -->
             <!-- end of row images inner  -->
 
             <hr class="my-4">
@@ -78,8 +104,11 @@
 
 
                     <div class=" text-center mt-5">
-                        <input type="file" name="video" id="video">
-                        <img src="{{asset('images/video-camera.png')}}" class="imgvideo" alt="img not found">
+                        <input type='file' name="video"  id='videoUpload' required/>
+                        <video width="320" id="video" height="240" controls style="margin-right:20px" hidden>
+                            <source  src="" type="video/mp4">
+                         Your browser does not support the video tag.
+                        </video>
                         @error('video')
                         <span>Video is required</span>
                     @enderror
@@ -242,6 +271,12 @@
                     </label>
                 </div>
 
+            </div>
+            <div class="mb-2">
+                <input type="number" class="form-control" name="tag_num" id="tag_num" placeholder="Tag Number :">
+                @error('tag_num')
+                <span>tag number is required</span>
+            @enderror
             </div>
 
             <div class="mb-4">

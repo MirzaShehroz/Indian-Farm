@@ -386,6 +386,15 @@ Route::get('my/post',function(){
     $question=Question::where('user_id',Auth::user()->id)->get();
     return view('seller_and_buyer_wireframe.view_post',compact('question'));
 });
+
+// -------------------------------------view Adds----------------------------------------------
+
+Route::Get('cow',[GuestController::class,"cow"])->name('adds.cow');
+Route::Get('sheep',[GuestController::class,"sheep"])->name('adds.sheep');
+Route::Get('bull',[GuestController::class,"bull"])->name('adds.bull');
+Route::Get('buffalo',[GuestController::class,"buffalo"])->name('adds.buffalo');
+Route::Get('goat',[GuestController::class,"goat"])->name('adds.goat');
+
 //-------------------------------------- 47-Code-----------------------------------------------
 
 // B&S Edit Profile Form
