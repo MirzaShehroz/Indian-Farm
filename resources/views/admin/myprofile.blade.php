@@ -91,9 +91,14 @@
             <span class="ms-3">Requires OTP
             </span>
           </div>
-          <form>
-          <div id="otpdiv"></div>
-          </form>
+          
+          <span id="message" style="color:green"></span>
+          <span id="successmessage" style="color:green"></span>
+          <div id="otpdiv">
+        
+          </div>
+           
+          
 
         
 
@@ -272,12 +277,12 @@
           New Email</h5>
 
         <div>
-            <form action="{{url('admin/change/email')}}" method="post">
-              @csrf
+            <form method="post">
+             
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" name="email">
+                <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" id="sendmail" name="changeemail">
 
-                <button id="changeemail" type="submit" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+                <button id="changeemail" onclick="changeAdminEmail({{Auth::user()->id}})" type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
             </form>
         </div>
       </div>
@@ -314,16 +319,56 @@
 </div>
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
   var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
 };
   
- $('#changeemail').click(function(){
+ function changeAdminEmail(id){
+   let email=document.getElementById('sendmail').value;
  //  $('#otpdiv').attr('style', 'display: block !important');
-  $('#otpdiv').append("<form method='post'><div><input type='text' class='form-control inputno1 mb-3' placeholder='Enter OTP' name='otp'><button type='submit'  class='px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2' id='basic-addon4' data-bs-toggle='modal' data-bs-target='#emailchange'>Submit OTP</button><br><br></div></form>");  
- });
+   $('#otpdiv').append("<div><form method='post'><input type='text' id='enteredOtp' class='form-control inputno1 mb-3' placeholder='Enter OTP' name='otp'><button type='button'  class='px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2' onclick='otpcheck()'>Submit OTP</button><br><br></from></div>");  
+  $.ajax({
+               type:'POST',
+               url:"{{url('admin/change/email/')}}"+ '/'+id + '/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 document.getElementById('message').innerHTML=data.message;
+                 swal("Done!", "OTP Sent Successfully Check Inbox", "success");
+                 console.log(data);
+               }
+    });
+//alert('h');
+
+ };
+
+ function otpcheck(){
+   let otp=document.getElementById('enteredOtp').value;
+   let email=document.getElementById('sendmail').value;
+   $.ajax({
+               type:'POST',
+               url:"{{url('change/email/otp/')}}"+ '/'+otp+'/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+              //  document.getElementById('successmessage').innerHTML=data.message;
+                //  $('#otpdiv').css('display','none');
+                document.getElementById('message').innerHTML='';
+                if(data.message=='fail'){
+                  swal("Error!", "Otp Not Match!", "error");
+                }
+                else if(data.message=='success'){
+                  swal("Done!", "Email Changed Successfully", "success");
+                  location.reload();
+                }
+                
+               }
+    });
+ }
+
+
 </script>
 
 @endsection

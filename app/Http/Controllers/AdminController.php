@@ -773,13 +773,14 @@ class AdminController extends Controller
         
     }
 
-    public function changeemail(Request $req){
+    public function changeemail($id,$semail){
 
-        $user=User::where('id',$req->user_id)->first();
+        $user=User::where('id',$id)->first();
         $otp=mt_rand( 100000, 999999 );
         $user->email_otp=$otp;
+        $user->save();
         $name=$user->first_name;
-        $email=$req->email;
+        $email=$semail;
         $messagedata=[
             
                     'otp'=>$otp,
@@ -791,11 +792,28 @@ class AdminController extends Controller
             $message->to($email)->subject('Login OTP');
         
         } );
-
-        return back()->with('successMsg','SMS Send to your mail');
+        $message="Check Your Inbox For OTP and Enter Here";
+       /// return back()->with('successMsg','SMS Send to your mail');
+       return response()->json(array('message'=> $message), 200);
                 
     }
 
+    public function changeEmailOtp($otp,$semail){
+       
+        $user=User::where('id',Auth::user()->id)->first();
+        if($otp==$user->email_otp){
+            $user->email=$semail;
+            $user->save();
+            $message="success";
+            return response()->json(array('message'=> $message), 200);
+        }
+        else{
+            $message="fail";
+            return  response()->json(array('message'=> $message), 200);
+
+        }
+
+    }
 
 
 }

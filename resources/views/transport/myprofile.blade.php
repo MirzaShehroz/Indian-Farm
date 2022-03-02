@@ -124,7 +124,11 @@
             <br class="d-md-none">
          
           </div>
-
+          <span id="message" style="color:green"></span>
+          <span id="successmessage" style="color:green"></span>
+          <div id="otpdiv">
+        
+          </div>
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
             <input type="text" class="form-control inputno1 mb-3" name="password" placeholder="Change Password" >
             
@@ -319,7 +323,7 @@
     </div>
   </div>
        <!-- email change modal  -->
-<div class="modal fade" id="emailchange" data-bs-toggle="modal" data-bs-target="#emailchange">
+<div class="modal" id="emailchange" data-bs-toggle="modal" data-bs-target="#emailchange">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -331,11 +335,13 @@
             New Email</h5>
 
           <div>
-              <form action="" method="post">
-                  <input type="text" placeholder="Enter Email Id " class="py-3 mt-5 form-control" name="" id="">
+          <form method="post">
+             
+             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+             <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" id="sendmail" name="changeemail">
 
-                  <button type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
-              </form>
+             <button id="changeemail" onclick="changeTransportEmail({{Auth::user()->id}})" type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+         </form>
           </div>
         </div>
        
@@ -348,13 +354,55 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
     
     <script src="{{asset('js/calander.js')}}" type="text/javascript"></script>
-   
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
   var loadFile = function(event) {
 	var image = document.getElementById('output');
 	image.src = URL.createObjectURL(event.target.files[0]);
   
 };
+
+function changeTransportEmail(id){
+   let email=document.getElementById('sendmail').value;
+ //  $('#otpdiv').attr('style', 'display: block !important');
+   $('#otpdiv').append("<div><form method='post'><input type='text' id='enteredOtp' class='form-control inputno1 mb-3' placeholder='Enter OTP' name='otp'><button type='button'  class='px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2' onclick='otpcheck()'>Submit OTP</button><br><br></from></div>");  
+  $.ajax({
+               type:'POST',
+               url:"{{url('transport/change/email/')}}"+ '/'+id + '/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+                 document.getElementById('message').innerHTML=data.message;
+                 swal("Done!", "OTP Sent Successfully Check Inbox", "success");
+                 console.log(data);
+               }
+    });
+//alert('h');
+
+ };
+
+ function otpcheck(){
+   let otp=document.getElementById('enteredOtp').value;
+   let email=document.getElementById('sendmail').value;
+   $.ajax({
+               type:'POST',
+               url:"{{url('transport/change/email/otp/')}}"+ '/'+otp+'/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+              //  document.getElementById('successmessage').innerHTML=data.message;
+                //  $('#otpdiv').css('display','none');
+                document.getElementById('message').innerHTML='';
+                if(data.message=='fail'){
+                  swal("Error!", "Otp Not Match!", "error");
+                }
+                else if(data.message=='success'){
+                  swal("Done!", "Email Changed Successfully", "success");
+                  location.reload();
+                }
+                
+               }
+    });
+ }
+
 
 </script>
 

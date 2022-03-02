@@ -69,7 +69,9 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         //change password
         Route::post('admin/change/password',[AdminController::class,'adminChangepassword']);
         //change email
-        Route::post('admin/change/email',[AdminController::class,'changeemail']);
+        Route::post('admin/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
+        //change email otp
+        Route::post('change/email/otp/{id}/{semail}',[AdminController::class,'changeEmailOtp'])->name('emailOtp');
         // search route
         Route::any('/search',[AdminController::class,'search'])->name('search');
         // user routes
@@ -262,7 +264,12 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
             return view('transport.myprofile',compact('user'));
         })->name('transportprofile');
     
-    
+         //change email
+         Route::post('transport/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
+        //change email otp
+        Route::post('transport/change/email/otp/{id}/{semail}',[AdminController::class,'changeEmailOtp'])->name('emailOtp');
+
+        //update profile
         Route::post('update/trasport/profile',[TransportController::class,'updateprofile']);
         
         //change password
@@ -342,6 +349,11 @@ Route::group(['middleware'=>['VetAuth']],function(){
     
     
     Route::post('certify/appointment/{id}',[VetController::class,'getcertify']);
+
+     //change email
+     Route::post('vet/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
+     //change email otp
+     Route::post('vet/change/email/otp/{id}/{semail}',[AdminController::class,'changeEmailOtp'])->name('emailOtp');
     
 });
 
