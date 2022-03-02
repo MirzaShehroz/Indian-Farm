@@ -13,7 +13,7 @@ class addCowRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -30,21 +30,18 @@ class addCowRequest extends FormRequest
             "img4"=>"required",
             "img5"=>"required",
             "img6"=>"required",
-            "file"=>"required",
-            "age"=>'required',
+            "video"=>"required",
             "price"=>'required',
-            "due_month"=>"required",
             "breed"=>"required",
-            "milk_cap"=>"required",
             "area"=>"required",
             "taluka"=>"required",
             "city"=>"required",
             "district"=>"required",
             "pincode"=>"required",
-            "gender"=>"required",
-            "pregnant"=>"required",
-            
-
+            "areyou"=>"required",
+            "breed_type"=>'required',
+            'vacinated'=>'required',
+            'tag_num'=>'required | unique:ads',
         ];
     }
 }

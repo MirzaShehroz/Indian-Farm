@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\addCowRequest;
 use App\Http\Requests\StorePostRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -180,7 +181,7 @@ class BuyerAndSellerController extends Controller
     public function postAdCowOne() {
         return view('seller_and_buyer_wireframe.post_ad_cow_one');
     }
-    public function AdCowOne(StorePostRequest $req){
+    public function AdCowOne(addCowRequest $req){
         // dd($req);
         $ads=new Ads;
         DB::beginTransaction();
@@ -285,6 +286,7 @@ class BuyerAndSellerController extends Controller
             $adsaddress->area=$req->area;
             $adsaddress->takula=$req->taluka;
             $adsaddress->district=$req->district;
+            $adsaddress->city=$req->city;
             $adsaddress->zipcode=$req->pincode;
             $adsaddress->state=$req->state;
             $adsaddress->save();    
@@ -338,6 +340,7 @@ class BuyerAndSellerController extends Controller
             $ads->breed_type=$req->breed_type;
             $ads->vaccinated=$req->vacinated;
             $ads->status=0;
+            $ads->tag_num=$req->tag_num;
             $ads->ads_photo_id=$adsphoto->id;
             $ads->ads_address_id=$adsaddress->id;
             $ads->ads_video_id=$adsvideo->id;

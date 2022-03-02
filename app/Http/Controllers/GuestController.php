@@ -14,6 +14,7 @@ use App\Models\user;
 use App\Models\Transport;
 use App\Models\Vet;
 use App\Models\Address;
+use App\Models\Ads;
 use Auth;
 use DB;
 use Hash;
@@ -452,6 +453,39 @@ class GuestController extends Controller
            return redirect('transport-verify/'.$id)->with(['email'=>$req->email]);
  
              return back()->with('successMsg','Vet Added Successfully!');
+    }
+
+    // view adds
+    public function cow(){
+        $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->where('animal_type',2)->get();
+        return view('guest.adds.cow',compact('data'));
+    }
+
+    public function sheep(){
+        $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->where('animal_type',3)->get();
+        return view('guest.adds.sheep',compact('data'));
+    }
+    public function goat(){
+        $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->where('animal_type',4)->get();
+        return view('guest.adds.goat',compact('data'));
+    }
+    public function bull(){
+        $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->where('animal_type',0)->get();
+        return view('guest.adds.bull',compact('data'));
+    }
+    public function buffalo(){
+        $data=Ads::join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->where('animal_type',1)->get();
+        return view('guest.adds.buffalo',compact('data'));
     }
 }
 

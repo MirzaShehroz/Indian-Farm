@@ -491,11 +491,18 @@
                                 </div>
                                 <!-- end of col  -->
 
+                                <div class="col-12">
+                    
+                                  <div class="input-group mb-3">
+                                      <span class="input-group-text" id="basic-addon11">Tag Number </span>
+                                      <input type="text" class="form-control py-2" aria-describedby="taluka" name="tag_num" required>
+                                    </div>
+                                    
+                                </div>
 
 
                             </div>
                             <!-- end of row  -->
-
 
                         </div>
                         <!-- end of col  -->
@@ -603,19 +610,14 @@
                                       
                                 </div>
                                 <!-- end of col  -->
-
-
-
+                           
                             </div>
                             <!-- end of row  -->
-
-
                         </div>
                         <!-- end of col  -->
-
-                
-
+                      <!-- end of col  -->
                         <div class="col-12 text-center mx-auto col-md-3 mb-5">
+                         
                             <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">Save </button>
                          </div>
                     </form>
@@ -970,9 +972,8 @@
       
                           </div>
                             <!-- end of col  -->
-
-
-
+                            
+x   
                       </div>
                             <!-- end of row  -->
 

@@ -51,15 +51,15 @@
                                 All Categories
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item border-bottom" href="cows.html">Cows</a>
+                                <li><a class="dropdown-item border-bottom" href="{{route('adds.cow')}}">Cows</a>
                                 </li>
                                 <li><a class="dropdown-item  border-bottom"
-                                        href="sheeps.html">Sheeps</a></li>
-                                <li><a class="dropdown-item  border-bottom" href="goat.html">Goat</a>
+                                        href="{{route('adds.sheep')}}">Sheeps</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="{{route('adds.goat')}}">Goat</a>
                                 </li>
                                 <li><a class="dropdown-item  border-bottom"
-                                        href="buffalo.html">Buffalo</a></li>
-                                <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                                        href="{{route('adds.buffalo')}}">Buffalo</a></li>
+                                <li><a class="dropdown-item" href="{{route('adds.bull')}}">Bull</a></li>
 
                             </ul>
                         </li>
@@ -290,11 +290,11 @@
                     All Categories
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="cows.html">Cows</a></li>
-                    <li><a class="dropdown-item" href="sheeps.html">Sheeps</a></li>
-                    <li><a class="dropdown-item" href="goat.html">Goat</a></li>
-                    <li><a class="dropdown-item" href="buffalo.html">Buffalo</a></li>
-                    <li><a class="dropdown-item" href="bull.html">Bull</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.cow')}}">Cows</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.sheep')}}">Sheeps</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.goat')}}">Goat</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.buffalo')}}">Buffalo</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.bull')}}">Bull</a></li>
 
                 </ul>
             </li>
