@@ -1,6 +1,6 @@
 {{-- <form action="#" method="POST"> --}}
     {{-- @csrf --}}
-    
+   
     <form action="{{route('B&SEditprofile')}}" method="post" enctype="multipart/form-data">
         @csrf
     <div class="row pad-50 justify-content-between mt-5 pt-5 mt-lg-0" id="edit_profile">
@@ -78,11 +78,15 @@
                     <div class="input-group d-block mb-3 d-md-flex">
                         <input type="email" name="email" class="form-control inputno1" value="{{$data->email}}" placeholder="Email Id"  aria-describedby="basic-addon4">
 
-                        <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4">Update/Change</button>
+                        <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#emailchange">Update/Change</button>
                         <br class="d-md-none">
                         <span class="ms-3 text-secondary">Requires OTP</span>
                     </div>
-
+                    <span id="message" style="color:green"></span>
+                     <span id="successmessage" style="color:green"></span>
+                    <div id="otpdiv">
+        
+                    </div>
 
 
 
@@ -213,10 +217,35 @@
     <!-- end of col-9  -->
 {{-- </form> --}}
 </div>
+<div class="modal" id="emailchange" data-bs-toggle="modal" data-bs-target="#emailchange">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="emailchange"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center p-4">
+        <h5>Please Enter your 
+          New Email</h5>
+
+        <div>
+            <form method="post">
+             
+                <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" id="sendmail" name="changeemail">
+
+                <button id="changeemail" onclick="changeAdminEmail({{Auth::user()->id}})" type="button" class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+            </form>
+        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
 @section('script')
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"
 integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
 
     $('#personal_detail').on('submit',function(e){
@@ -286,4 +315,58 @@ integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="ano
           });
         });
       </script>
+
+<script>
+ $( document ).ajaxStart(function() {
+    $( "#loading" ).show();
+ });
+
+ $( document ).ajaxComplete(function() {
+    $( "#loading" ).hide();
+ });
+
+    function changeAdminEmail(id){
+   let email=document.getElementById('sendmail').value;
+ //  $('#otpdiv').attr('style', 'display: block !important');
+   $('#otpdiv').append("<div><form method='post'><input type='text' id='enteredOtp' class='form-control inputno1 mb-3' placeholder='Enter OTP' name='otp'><button type='button'  class='px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2' onclick='otpcheck()'>Submit OTP</button><br><br></from></div>");  
+  $.ajax({
+               type:'POST',
+               url:"{{url('buyer/change/email/')}}"+ '/'+id + '/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+               
+                 document.getElementById('message').innerHTML=data.message;
+                 swal("Done!", "OTP Sent Successfully Check Inbox", "success");
+                 console.log(data);
+               }
+    });
+//alert('h');
+
+ };
+
+ function otpcheck(){
+   let otp=document.getElementById('enteredOtp').value;
+   let email=document.getElementById('sendmail').value;
+   $.ajax({
+               type:'POST',
+               url:"{{url('buyer/change/email/otp/')}}"+ '/'+otp+'/' +email,
+               data:{_token: "{{ csrf_token() }}"},
+               success:function(data) {
+              //  document.getElementById('successmessage').innerHTML=data.message;
+                //  $('#otpdiv').css('display','none');
+                document.getElementById('message').innerHTML='';
+                if(data.message=='fail'){
+                  swal("Error!", "Otp Not Match!", "error");
+                }
+                else if(data.message=='success'){
+                  swal("Done!", "Email Changed Successfully", "success");
+                  location.reload();
+                }
+                
+               }
+    });
+ }
+
+</script>
+
 @endsection

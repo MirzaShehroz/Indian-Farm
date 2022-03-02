@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Ads;
 use App\Models\AdsAdress;
@@ -70,7 +71,10 @@ function trimstring($string){
     else{
         return $string;
     }
-   // 
+   
  
 }
+
+
+
 ?>

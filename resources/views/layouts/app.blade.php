@@ -29,7 +29,12 @@
 @yield('style')
 
 <body>
-
+<div class="loader-bg" id="loading" style="display:none">
+        <h3>Sending...</h3>
+      <div class="loader">
+          <span></span>
+      </div>
+</div>
     <div class="container-fluid">
         <div class="row pad-50 fixed-top" id="header">
             @include('layouts.header')
