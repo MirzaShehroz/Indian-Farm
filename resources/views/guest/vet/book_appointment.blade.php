@@ -3,7 +3,7 @@
     
 <div class="row pad-50 mt-5 pt-5 pt-lg-0 justify-content-around">
 
-    <h4 class="mt-5 mb-4 mt-md-0">Book an Vet Appoinment</h4>
+    <h4 class="mt-5 mb-4 mt-md-0">{{__('guest.bookVetAppoint')}}</h4>
 
    <div class="col-12">
        
@@ -15,22 +15,22 @@
                 <div class="col-md-4 col-lg-3 my-3">
                   
                     <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                      <option value="" disabled  selected>Select Animal Type...</option>
-                      <option value="2">Cow</option>
-                      <option value="1">Buffalo</option>
-                      <option value="0">Bull</option>
-                      <option value="3" >Sheep</option>
-                      <option  value="4"> Goat</option>
+                      <option value="" disabled  selected>{{__('guest.animalType')}}</option>
+                      <option value="2">{{__('guest.cow')}}</option>
+                      <option value="1">{{__('guest.buffalo')}}</option>
+                      <option value="0">{{__('guest.bull')}}</option>
+                      <option value="3" >{{__('guest.sheep')}}</option>
+                      <option  value="4"> {{__('guest.goat')}}</option>
                     </select>
                     @error('animaltype')
-                        <span>{{$message}}</span>
+                        <span>{{$message}}</span> 
                     @enderror
                     
                   </div>
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="number" name="animalsno" id="" class="form-control" placeholder="No Of Animals ">
+                    <input type="number" name="animalsno" id="" class="form-control" placeholder="{{__('guest.noAnimal')}} ">
                     @error('animalsno')
                     <span>{{$message}}</span>
                 @enderror
@@ -40,7 +40,7 @@
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="breed" id="" class="form-control" placeholder="Breed">
+                    <input type="text" name="breed" id="" class="form-control" placeholder="{{__('guest.breed')}}">
                     @error('breed')
                     <span>{{$message}}</span>
                 @enderror
@@ -50,7 +50,7 @@
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="personname" id="" class="form-control" placeholder="Contact Person Name ">
+                    <input type="text" name="personname" id="" class="form-control" placeholder="{{__('guest.personName')}}">
                     @error('[personname]')
                     <span>{{$message}}</span>
                 @enderror
@@ -68,7 +68,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
           
-                <input type="tel" name="mobileno" id="" class="form-control" placeholder="Contact Number">
+                <input type="tel" name="mobileno" id="" class="form-control" placeholder="{{__('guest.contactNum')}}">
                 @error('mobileno')
                 <span>{{$message}}</span>
             @enderror
@@ -77,7 +77,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address1" id="" class="form-control" placeholder="Address Line 1 ">
+                <input type="text" name="address1" id="" class="form-control" placeholder="{{__('guest,address1')}}">
                 @error('address1')
                 <span>{{$message}}</span>
             @enderror
@@ -87,7 +87,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address2" id="" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="address2" id="" class="form-control" placeholder="{{__('guest.address2')}}">
 
 
               </div>
@@ -95,7 +95,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="area" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="area" id="" class="form-control" placeholder="{{__('guest.area')}} ">
                 @error('area')
                 <span>{{$message}}</span>
             @enderror
@@ -115,7 +115,7 @@
           
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="city" class="form-select overflow-scroll  ">
-                      <option value="">City</option>
+                      <option value="">{{__('guest.city')}}</option>
                     </select>
                     @error('city')
                     <span>{{$message}}</span>
@@ -130,7 +130,7 @@
                 <div class="startdropdown">
                
                     <select id="inputState"  name="state" class="form-select overflow-scroll ">
-                      <option selected disabled> State</option>
+                      <option selected disabled> {{__('guest.selectState')}}</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -182,7 +182,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
-                      <option value=""> District</option>
+                      <option value=""> {{__('guest.selectDist')}}</option>
                       <option value="Delhi"> Delhi</option>
 
                     </select>
@@ -199,7 +199,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
-                      <option value="">Select Taluka</option>
+                      <option value="">{{__('guest.selectTaluka')}}</option>
                       <option value="Pune">Pune</option>
                       <option value="Goa">Goa</option>
 
@@ -225,7 +225,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
           
-                     <input type="number" name="pincode" id="" class="form-control" placeholder="Pin Code">
+                     <input type="number" name="pincode" id="" class="form-control" placeholder="{{__('guest.pinCode')}}">
                      @error('pincode')
                      <span>{{$message}}</span>
                  @enderror
@@ -236,7 +236,7 @@
                 
                 <div class="Districdropdown">
                     <select id="vet" name="vet_assign" class="form-select overflow-scroll  ">
-                      <option value=""> Select A Vet </option>
+                      <option value=""> {{__('guest.selectVet')}} </option>
                       @foreach ($data as $item)
                       <option value="{{$item->user_id}}"> {{getname($item->user_id)}} </option>
                       @endforeach
@@ -253,7 +253,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="tel" name="vetcontact"  id="" class="form-control" placeholder="Vet Contact Number">
+                <input type="tel" name="vetcontact"  id="" class="form-control" placeholder="{{__('guest.vetContact')}}">
 
               </div>
               <!-- end of col  -->
@@ -265,9 +265,9 @@
             <div class="row justify-content-around mt-3 text-center">
 
                 <div class="col-12 col-md-6 text-start pb-5">
-                    <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                    <label for="price" class="form-label tcolor fw-bold">{{__('guest.comment')}}</label>
                     <br>
-                    <textarea name="comment" placeholder="Enter Your Message..." name="comment" class="comment form-control" id="" rows="5"></textarea>
+                    <textarea name="comment" placeholder="{{__('guest.message')}}" name="comment" class="comment form-control" id="" rows="5"></textarea>
 
                 </div>
                 <!-- end of col  -->
@@ -275,7 +275,7 @@
                 <div class="col-12">
 
                     <button id="submitbtn" type="submit" class="btn btnsubmit bgcolor px-5 text-light border_color2 py-2 btnhover2"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Submit
+                        {{__('guest.submit')}}
                     </button>
                 </div>
                 <!-- end of col  -->

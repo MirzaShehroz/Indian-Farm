@@ -92,7 +92,7 @@
 
         <div class="row mt-5">
 
-            <h5>Description</h5>
+            <h5>{{__('guest.desc')}}</h5>
 
             <div class="col-12">
 
@@ -115,23 +115,23 @@
 
             <tbody>
             <tr class="mb-1">
-                <td class="bggary border-bottom border-light text-light">Price</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.price')}}</td>
                 <td class="">INR {{$item->price}}</td>
 
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">Breed</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.breed')}}</td>
                 <td>{{$item->breed}}</td>
 
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">Breed Type</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.breedType')}}</td>
                 <td>{{$item->breed_type}}</td>
 
             </tr>
           @if ($item->pregnant)
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">Pregnant</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.pregnant')}}</td>
                 <td>
                     @if ($item->pregnant==1)
                         Yes
@@ -143,19 +143,19 @@
            @endif  
            @if ($item->due_month_pregnancy)
                 <tr class="mt-1">
-                    <td class="bggary border-bottom border-light text-light">Due Month</td>
+                    <td class="bggary border-bottom border-light text-light">{{__('guest.dueMonth')}}</td>
                     <td>{{$item->due_month_pregnancy}}</td>
                 </tr>
             @endif
             
             @if ($item->milk_capacity)
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">Daily Milk Capacity</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.milkCap')}}</td>
                 <td>{{$item->milk_capacity}} ltrs</td>
             </tr>
             @endif
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light" >Vacinated</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('guest.vacinated')}}</td>
                 @if ($item->vaccinated==1)
                 <td>Yes</td>
                 @else
@@ -163,7 +163,7 @@
                 @endif
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light" >Certified</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('guest.certified')}}</td>
                 @if ($item->certified==1)
                     <td>Yes</td>
                 @else
@@ -171,12 +171,12 @@
                 @endif
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light" >Certified By</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('guest.certifyBy')}}</td>
                 <td> Vet Name</td>
 
             </tr>
             <tr class="mt-15">
-                <td class="bggary border-bottom border-light text-light" >Certified By Reg No</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('guest.certifyRegisNum')}}</td>
                 <td>00866</td>
 
             </tr>
@@ -186,7 +186,7 @@
 
 
         <div class="text-center mt-5 mb-5 mb-md-0">
-            <button class="px-4 py-2  border_color2 bg-transparent btn btnhover4"><a href="chat.html" class="text-decoration-none tcolor fw-bold">Contact Seller</a></button>
+            <button class="px-4 py-2  border_color2 bg-transparent btn btnhover4"><a href="chat.html" class="text-decoration-none tcolor fw-bold">{{__('guest.contactSeller')}}</a></button>
         </div>
 
 
