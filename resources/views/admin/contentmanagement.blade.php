@@ -10,7 +10,7 @@
             <a  class="col-12 col-md-3 text-center my-3 bg_danger text-light p-4 text-decoration-none" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;" data-bs-toggle="offcanvas" href="#forms" role="button" aria-controls="forms">
 
 
-                <h4>Forums & Discussion</h4>
+                <h4>{{__('eng.discussion')}}</h4>
 
 
 
@@ -18,7 +18,7 @@
 
             <a  class="col-12 col-md-3 text-center my-3 bg_danger text-light p-4 text-decoration-none" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;" data-bs-toggle="offcanvas" href="#education" role="button" aria-controls="education">
 
-                <h4>Education</h4>
+                <h4>{{__('eng.education')}}</h4>
 
 
 
@@ -26,7 +26,7 @@
 
             <a  class="col-12 col-md-3 text-center my-3 bg_danger text-light p-4 text-decoration-none" style="border-radius: 10px; box-shadow: 1px 1px 10px lightgray;" data-bs-toggle="offcanvas" href="#newsupdate" role="button" aria-controls="newsupdate">
 
-                <h4>News & Updates</h4>
+                <h4>{{__('eng.news')}}</h4>
 
 
 
@@ -57,7 +57,7 @@
                 <div class="col-12 col-md-4 pt-5 pt-md-0 my-3 my-md-0">
 
 
-                    <input class="form-control rounded-pill py-2 ps-5" type="text" placeholder="Search By User " >
+                    <input class="form-control rounded-pill py-2 ps-5" type="text" placeholder="{{__('eng.searchUser')}} " >
 
 
 
@@ -79,7 +79,8 @@
 
                 <div class="col-12 col-md-4 text-center my-3 my-md-0">
 
-                    <a href="#" class="btn px-5 rounded-pill btnhover2 border_color2  py-2  bg_danger text-light text-decoration-none">Search</a>
+                    <a href="#" class="btn px-5 rounded-pill btnhover2 border_color2  py-2  bg_danger text-light text-decoration-none">{{__('eng.search')}}
+                    </a>
 
                 </div>
                 <!-- end of col  -->
@@ -101,12 +102,14 @@
 
                             <div class="text-center">
                                 <h5>2</h5>
-                                <p class="tcolor">Views</p>
+                                <p class="tcolor">{{__('eng.view')}}
+                                </p>
                             </div>
 
                             <div class="text-center">
                                 <h5>5</h5>
-                                <p class="tcolor">Answer</p>
+                                <p class="tcolor">{{__('eng.ans')}}
+                                </p>
                             </div>
 
 
@@ -144,7 +147,8 @@
                         </div>
                         </div>
                         @empty
-                        No data
+                        {{__('eng.noData')}} 
+
                         @endforelse
 
                     
@@ -201,7 +205,8 @@
     <!-- edit response            -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="edit-forms" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit-Response</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.editResponse')}}
+            </h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -217,24 +222,24 @@
                 <div class="col-12 col-md-10 p-3 mt-4 position-relative" style="box-shadow: 1px 1px 20px rgb(255, 255, 255);">
                     <span class="position-absolute py-2 px-3 end-0 top-0"><i class="fas fa-trash-alt fs-5 text-danger"></i></span>
 
-                    <h4 class="text-center mb-4">Response 1
+                    <h4 class="text-center mb-4">{{__('eng.response1')}}
                     </h4>
 
-                    <span class="position-absolute bg_danger text-light py-1 px-3 start-0 bottom-0" id="euser_name">User Name</span>
-                    <span class="position-absolute bg_danger text-light py-1 px-3 end-0 bottom-0" id="edate">Date</span>
+                    <span class="position-absolute bg_danger text-light py-1 px-3 start-0 bottom-0" id="euser_name">{{__('eng.userName')}}</span>
+                    <span class="position-absolute bg_danger text-light py-1 px-3 end-0 bottom-0" id="edate">{{__('eng.date')}}</span>
 
                 </div>
 
                 <div class="col-12 col-md-6 mt-5 p-3" style="box-shadow: 1px 1px 20px rgb(255, 255, 255);">
 
-                    <textarea name="" placeholder="Write Your Response" class="form-control" id=""  rows="5"></textarea>
+                    <textarea name="" placeholder="{{__('eng.writeResponse')}}" class="form-control" id=""  rows="5"></textarea>
 
                 </div>
                 <!-- end of col  -->
 
                 <div class="col-12 text-center mt-3">
 
-                    <button type="submit" class="btn bg_danger px-5 py-2 text-light">Submit</button>
+                    <button type="submit" class="btn bg_danger px-5 py-2 text-light">{{__('eng.submit')}}</button>
 
 
                 </div>
@@ -281,13 +286,9 @@
 
 
 
-
-
-
-
     <div class="offcanvas offcanvas-end" tabindex="-1" id="view-forms" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">View Response</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.viewResponse')}}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -372,20 +373,20 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">{{__('eng.alert')}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="{{url('delete/forum')}}" method="post">
                     @csrf
                 <div class="modal-body text-center p-4">
-                    <p class="fw-bold text-secondary">Are You sure to Delete this Response </p>
+                    <p class="fw-bold text-secondary">{{__('eng.deleteResponseMsg')}}</p>
                 </div>
                
                    
                     <input id="forum_id" name="id" type="hidden">
                 <div class="modal-foote d-flex">
-                    <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a>
-                    <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a>
+                    <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a>
+                    <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">{{__('eng.yes')}}</button></a>
 
                 </div>
                 </form>
@@ -399,7 +400,7 @@
     <!-- education  canvas  -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="education" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Education</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.education')}}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-2 p-md-4 px-lg-5">
@@ -414,28 +415,28 @@
 
                             <form action="{{url('searcheducation')}}" method="post">
 
-                                <input type="text" name="topic" class="form-control py-3" placeholder="Search By Topic">
+                                <input type="text" name="topic" class="form-control py-3" placeholder="{{__('eng.searchByTopic')}}">
 
                         </div>
                         <!-- end of col  -->
 
                         <div class="col-12 col-md-3 my-2">
 
-                            <input type="date" name="date" class="form-control py-3" placeholder="Search By Date">
+                            <input type="date" name="date" class="form-control py-3" placeholder="{{__('eng.searchByDate')}}">
 
                         </div>
                         <!-- end of col  -->
 
                         <div class="col-12 col-md-3 my-2">
 
-                            <button class="bg_danger btnhover2 px-5 rounded-pill py-3 text-light" type="submit">Search</button>
+                            <button class="bg_danger btnhover2 px-5 rounded-pill py-3 text-light" type="submit">{{__('eng.search')}}</button>
                             </form>
                         </div>
                         <!-- end of col  -->
 
                         <div class="col-12 text-center col-md-3 my-2">
 
-                            <button class="bg-transparent btnhover px-5 border border-light px-md-1 px-lg-3 px-xl-5 danger py-3" style="border-radius: 10px; border: 1px solid #0572B2;" type="button" data-bs-toggle="offcanvas" data-bs-target="#upload" aria-controls="upload"><i class="fas fa-cloud-upload-alt me-2 me-md-1 me-xl-3"></i> Upload Video</button>
+                            <button class="bg-transparent btnhover px-5 border border-light px-md-1 px-lg-3 px-xl-5 danger py-3" style="border-radius: 10px; border: 1px solid #0572B2;" type="button" data-bs-toggle="offcanvas" data-bs-target="#upload" aria-controls="upload"><i class="fas fa-cloud-upload-alt me-2 me-md-1 me-xl-3"></i> {{__('eng.uploadVideo')}}</button>
 
                         </div>
                         <!-- end of col  -->
@@ -467,7 +468,7 @@
                     @endforeach
                 <!-- end of col  -->
                 @else
-                    No video
+                {{__('eng.noVideo')}}
             @endif
 
             <!-- end of col  -->
@@ -521,7 +522,7 @@
     <!-- upload youtube canvas  -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="upload" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Upload Video</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.uploadVideo')}}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-2 p-md-4 px-lg-5">
@@ -548,7 +549,7 @@
                         <input type="text" class="ps-md-4 form-control border border-dark border py-3" placeholder="Youtube URL
                                           " id="" name="url" style="border-radius: 15px;"> <br>
                         <input type="text" name="title" class="ps-md-4 form-control border border-dark border py-3" placeholder="Youtube Video Title" style="border-radius: 15px;">
-                        <button type="submit" class="mt-5 rounded-pill form-control bg_danger text-light py-3">Upload Video</button>
+                        <button type="submit" class="mt-5 rounded-pill form-control bg_danger text-light py-3">{{__('eng.uploadVideo')}}</button>
 
                 </form>
             </div>
@@ -571,7 +572,7 @@
     <!-- news & update btn of canvas  -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="newsupdate" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasExampleLabel">News & Update</h5>
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.news')}}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body p-2 p-md-4 px-lg-5">
@@ -581,7 +582,7 @@
 
                 <div class="col-12 text-end mb-5">
 
-                    <button class="btn px-5 py-2 bg_danger text-light btnhover rounded-pill" data-bs-toggle="modal" data-bs-target="#addnew" type="button" >Add New <i class="fas fa-plus ms-2"></i></button>
+                    <button class="btn px-5 py-2 bg_danger text-light btnhover rounded-pill" data-bs-toggle="modal" data-bs-target="#addnew" type="button" >{{__('eng.addNews')}} <i class="fas fa-plus ms-2"></i></button>
 
                 </div>
                 <!-- end of col  -->
@@ -607,7 +608,7 @@
 
                                         <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
 
-                                        <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">VIEW MORE</a>
+                                        <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">{{__('eng.viewMore')}}</a>
 
 
 
@@ -638,7 +639,7 @@
 
                                         <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
 
-                                        <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">VIEW MORE</a>
+                                        <a data-bs-toggle="offcanvas" href="#readmore" role="button" aria-controls="readmore" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">{{__('eng.viewMore')}}</a>
 
 
 
@@ -653,7 +654,7 @@
                                 </div>
                             @endforeach
                         @else
-                            No Content
+                        {{__('eng.noContent')}}
                         @endif
                     <!-- end of col card -->
 
@@ -698,7 +699,7 @@
                 <div class="col-12 col-xl-3 my-3 my-lg-0  border-start border_color border-2">
 
 
-                    <h4 class="mb-4 border-start border-5 border_color ps-3">Latest News</h4>
+                    <h4 class="mb-4 border-start border-5 border_color ps-3">{{__('eng.latestNew')}}</h4>
 
                     <div class="row p-lg-2">
 
@@ -716,7 +717,7 @@
                                                 <small class="text-secondary objecttext d-block"> {{trimstring($news1->topic)}}...</small>
 
 
-                                                <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">Date : {{$news1->created_at->format('Y-m-d')}}</small>
+                                                <small style="font-size: 12px;" class="tcolor fw-bold d-block float-end">{{__('eng.date')}} {{$news1->created_at->format('Y-m-d')}}</small>
                                             </div>
                                         </div>
                                     </a>
@@ -727,7 +728,7 @@
                             @endforeach
                         <!-- end of inner col  -->
                         @else
-                            No Content
+                        {{__('eng.noContent')}}
                         @endif
 
 
@@ -785,7 +786,7 @@
     <!-- news and update readmore canvas  -->
     <div class="offcanvas offcanvas-end" tabindex="-1" id="readmore" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="readmore">Read More News & Updates</h5>
+            <h5 class="offcanvas-title" id="readmore">{{__('eng.readMoreNews')}}</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -805,7 +806,7 @@
 
                                 <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3" id="vcaption">Lorem ipsum dolor sit.</p>
 
-                                <small class="position-absolute text-light mt-3 end-0 me-3 fw-bold">Date: <span id="vdate">20/01/2022</span> </small>
+                                <small class="position-absolute text-light mt-3 end-0 me-3 fw-bold">{{__('eng.date')}}<span id="vdate">20/01/2022</span> </small>
 
 
 
@@ -836,7 +837,7 @@
                 <div class="col-12 col-lg-3 my-3 my-lg-0  border-start border_color border-2">
 
 
-                    <h4 class="mb-4 border-start border-5 border_color ps-3">Latest News</h4>
+                    <h4 class="mb-4 border-start border-5 border_color ps-3">{{__('eng.latestNew')}}</h4>
 
                     <div class="row p-lg-2">
 
@@ -906,7 +907,7 @@
 
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editnews">Add News</h5>
+                    <h5 class="modal-title" id="editnews">{{__('eng.addNews')}}</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 @if ($errors->any())
@@ -921,7 +922,7 @@
                             @csrf
                             <div class="col-12 col-md-8 mx-auto">
 
-                                <label for="textareas" class="fs-5 text-dark fw-bold">Topic</label>
+                                <label for="textareas" class="fs-5 text-dark fw-bold">{{__('eng.topic')}}</label>
                                 <input type="text" name="topic" placeholder="Enter Topic Name" class="py-3 form-control border border-secondary"  id="textareas">
 
                             </div>
@@ -932,9 +933,9 @@
 
 
                                 <p><input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-                                <p><label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" for="file" style="cursor: pointer;">Upload Image</label></p>
+                                <p><label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" for="file" style="cursor: pointer;">{{__('eng.uploadImage')}}</label></p>
                                 <p><img id="output" width="200" class=" adimg2" src="https://images.unsplash.com/photo-1638162448566-f0fdef80f392?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" /><br></p>
-                                <label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(0)">Delete</label>
+                                <label class="bg_danger px-3 py-2 mt-4 rounded-pill text-light" onclick="deleteimg(0)">{{__('eng.delete')}}</label>
 
 
 
@@ -944,7 +945,7 @@
                             <div class="col-12 col-md-10 mt-4 mx-auto">
 
 
-                                <textarea name="detail" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
+                                <textarea name="detail" placeholder="{{__('eng.enterText')}}" class="form-control border border-dark" style="border-radius: 15px;" id="" rows="6"></textarea>
 
                             </div>
                             <!-- end of col  -->
@@ -975,7 +976,7 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="editnews">Edit News</h5>
+                <h5 class="modal-title" id="editnews">{{__('eng.editNews')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center p-md-4">
@@ -1006,12 +1007,12 @@
 
 
                         <input type="file" name="image" class="py-3 form-control border border-secondary">
-                        <span class="text-danger">When you upload new photo old will delete</span>
+                        <span class="text-danger">{{__('eng.newImageAlert')}}</span>
                     </div>
                     <div class="col-12 col-md-10 mt-4 mx-auto">
 
 
-                        <textarea name="detail" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="edetail" rows="6"></textarea>
+                        <textarea name="detail" placeholder="{{__('eng.enterText')}}" class="form-control border border-dark" style="border-radius: 15px;" id="edetail" rows="6"></textarea>
 
                     </div>
                     <!-- end of col  -->
@@ -1024,7 +1025,7 @@
                     <div class="col-12 mx-auto col-md-6 col-lg-3 mt-2">
 
 
-                        <button class="form-control bg_danger rounded-pill text-light btnhover2">Update</button>
+                        <button class="form-control bg_danger rounded-pill text-light btnhover2">{{__('eng.update')}}</button>
 
                     </div>
                     <!-- end of col  -->
@@ -1047,7 +1048,7 @@
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="viewnews">View News</h5>
+                <h5 class="modal-title" id="viewnews">{{__('eng.viewNews')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body text-center p-md-4">
@@ -1056,7 +1057,7 @@
 
                     <div class="col-12 col-md-10 mx-auto">
 
-                        <h4 >Topic Name</h4>
+                        <h4 >{{__('eng.topicName')}}</h4>
 
                         <p id="vnewstopic"> </p>
 
@@ -1078,7 +1079,7 @@
                     <div class="col-12 col-md-10 mt-4 mx-auto">
 
 
-                        <textarea name="" placeholder="Enter Text" class="form-control border border-dark" style="border-radius: 15px;" id="vnewsdetail" rows="6"></textarea>
+                        <textarea name="" placeholder="{{__('eng.enterText')}}" class="form-control border border-dark" style="border-radius: 15px;" id="vnewsdetail" rows="6"></textarea>
 
                     </div>
                     <!-- end of col  -->
@@ -1113,23 +1114,25 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{__('eng.alert')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <form action="{{url('delete/news')}}" method="post">
                 @csrf
                 <input type="hidden" method="post" id="newsid" name="newsupdate_id">
                 <div class="modal-body text-center p-4">
-                    <p class="fw-bold text-secondary">Are You sure to Delete this Post </p>
+                    <p class="fw-bold text-secondary">{{__('eng.deletePostAlert')}}</p>
                 </div>
                 <div class="modal-foote d-flex">
-                    <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a>
-                    <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a>
+                    <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a>
+                    <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">{{__('eng.yes')}}</button></a>
             </form>
         </div>
     </div>
 </div>
 </div>
+
+
 @section('script')
     <script>
         function deletevideo(id){

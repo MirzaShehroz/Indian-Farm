@@ -4,66 +4,66 @@
                 @if(Auth::check()=='true')
 
                     @if(Auth::user()->user_role=='admin')
-                      <a href="{{url('admin/index')}}" class="nav-link active px-5 px-md-1 border-bottom ps-xl-3 btn-p text-light py-3 text-start" id="v-pills-home-tab"    role="tab" ><i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i> Dashboard</a>
+                      <a href="{{url('admin/index')}}" class="nav-link active px-5 px-md-1 border-bottom ps-xl-3 btn-p text-light py-3 text-start" id="v-pills-home-tab"    role="tab" ><i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i> {{__('eng.dashboard')}}</a>
 
-                      <a href="{{url('admin/users')}}" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-profile-tab"    role="tab" ><i class="fas fa-users me-3 me-lg-1 me-xl-3"></i> Users  </a>
+                      <a href="{{url('admin/users')}}" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-profile-tab"    role="tab" ><i class="fas fa-users me-3 me-lg-1 me-xl-3"></i> {{__("eng.users")}}  </a>
 
-                      <a href="{{url('admin/ads')}}" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-messages-tab"   role="tab" > <i class="fas fa-ad me-3 me-lg-1 me-xl-3"></i> Ads</a>
+                      <a href="{{url('admin/ads')}}" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-messages-tab"   role="tab" > <i class="fas fa-ad me-3 me-lg-1 me-xl-3"></i> {{__('eng.ads')}}</a>
 
-                      <a  href="{{url('admin/vets')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-user-md me-3"></i>Vets</a>
+                      <a  href="{{url('admin/vets')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-user-md me-3"></i>{{__('eng.vet')}}</a>
                       
-                      <a  href="{{route('view_transport')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-shuttle-van me-3 me-lg-1 me-xl-3"></i>Transport Drivers</a>
+                      <a  href="{{route('view_transport')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-shuttle-van me-3 me-lg-1 me-xl-3"></i>{{__('eng.transportDriver')}}</a>
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false"> <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i> Appointments Booked </button> -->
-                      <a  href="{{url('admin/appointmentbooked')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>Appointments Booked </a>
+                      <a  href="{{url('admin/appointmentbooked')}}"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>{{__('eng.appointmentBook')}}</a>
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings3" type="button" role="tab" aria-controls="v-pills-settings3" aria-selected="false"> <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i>  Certify Animal </button> -->
-                      <a  href="{{route('certify_index')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab"  role="tab" > <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i>Certify Animal</a>
+                      <a  href="{{route('certify_index')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab"  role="tab" > <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i>{{__('eng.certifyAnimal')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings4" type="button" role="tab" aria-controls="v-pills-settings4" aria-selected="false"> <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i>  Transport Booked
                       </button> -->
-                      <a  href="{{url('admin/transportbooked')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab"  role="tab" > <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i>Transport Booked</a>
+                      <a  href="{{url('admin/transportbooked')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab"  role="tab" > <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i>{{__('eng.transportBook')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom  px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings5" type="button" role="tab" aria-controls="v-pills-settings5" aria-selected="false"> <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i> My Profile </button> -->
-                      <a  href="{{url('admin/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Profile</a>
+                      <a  href="{{url('admin/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>{{__('eng.profile')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings6" type="button" role="tab" aria-controls="v-pills-settings6" aria-selected="false"> <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>  Content Management </button> -->
-                      <a  href="{{url('admin/contentmanagement')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>Content Management</a>
+                      <a  href="{{url('admin/contentmanagement')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>{{__('eng.contentManagement')}}</a>
                     @elseif(Auth::user()->user_role=='transport')
-                        <a  href="{{url('transport/index')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Dashboard</a>
+                        <a  href="{{url('transport/index')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>{{__('eng.dashboard')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings6" type="button" role="tab" aria-controls="v-pills-settings6" aria-selected="false"> <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>  Content Management </button> -->
-                         <a  href="{{url('transport/appointment')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>Appointment</a>
-                         <a  href="{{url('trans/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>My Profile</a>
+                         <a  href="{{url('transport/appointment')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>{{__('eng.appointment')}}</a>
+                         <a  href="{{url('trans/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>{{__('guest.myProfile')}}</a>
                     @elseif(Auth::user()->user_role=='vet')
-                        <a  href="{{url('vet/index')}}" class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i>Dashboard</a>
-                        <a  href="{{url('vet/appointment')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>Appointment</a>
-                        <a  href="{{url('vet/certify')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-certificate me-3 me-lg-1 me-xl-3"></i>Certify Animal</a>
-                        <a  href="{{url('vet/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Profile</a>     
+                        <a  href="{{url('vet/index')}}" class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i>{{__('eng.dashboard')}}</a>
+                        <a  href="{{url('vet/appointment')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>{{__('eng.appointment')}}</a>
+                        <a  href="{{url('vet/certify')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-certificate me-3 me-lg-1 me-xl-3"></i>{{__('eng.certifyAnimal')}}</a>
+                        <a  href="{{url('vet/profile')}}"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-id-card me-3 me-lg-1 me-xl-3"></i>{{__('eng.profile')}}</a>     
                     @endif
                 @else
                     
-                <a href="#" class="nav-link active px-5 px-md-1 border-bottom ps-xl-3 btn-p text-light py-3 text-start" id="v-pills-home-tab"    role="tab" ><i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i> Dashboard</a>
+                <a href="#" class="nav-link active px-5 px-md-1 border-bottom ps-xl-3 btn-p text-light py-3 text-start" id="v-pills-home-tab"    role="tab" ><i class="fas fa-desktop me-3 me-lg-1 me-xl-3"></i> {{__("eng.dasboard")}}</a>
 
-                      <a href="#" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-profile-tab"    role="tab" ><i class="fas fa-users me-3 me-lg-1 me-xl-3"></i> Users  </a>
+                      <a href="#" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-profile-tab"    role="tab" ><i class="fas fa-users me-3 me-lg-1 me-xl-3"></i> {{__("eng.users")}} </a>
 
-                      <a href="#" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-messages-tab"   role="tab" > <i class="fas fa-ad me-3 me-lg-1 me-xl-3"></i> Ads</a>
+                      <a href="#" class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-messages-tab"   role="tab" > <i class="fas fa-ad me-3 me-lg-1 me-xl-3"></i> {{__('eng.ads')}}</a>
 
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-user-md me-3"></i>Vets</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-user-md me-3"></i> {{__('eng.vet')}}</a>
                       
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-shuttle-van me-3 me-lg-1 me-xl-3"></i>Transport Drivers</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings-tab"  role="tab" > <i class="fas fa-shuttle-van me-3 me-lg-1 me-xl-3"></i> {{__('eng.transportDriver')}}</a>
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings2" type="button" role="tab" aria-controls="v-pills-settings2" aria-selected="false"> <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i> Appointments Booked </button> -->
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i>Appointments Booked </a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings2-tab"  role="tab" > <i class="fas fa-calendar me-3 me-lg-1 me-xl-3"></i> {{__('eng.appointmentBook')}} </a>
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings3" type="button" role="tab" aria-controls="v-pills-settings3" aria-selected="false"> <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i>  Certify Animal </button> -->
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab"  role="tab" > <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i>Certify Animal</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings3-tab"  role="tab" > <i class="fas fa-certificate me-3 me-lg-1 me-xl-3"></i> {{__('eng.certifyAnimal')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings4" type="button" role="tab" aria-controls="v-pills-settings4" aria-selected="false"> <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i>  Transport Booked
                       </button> -->
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab"  role="tab" > <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i>Transport Booked</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings4-tab"  role="tab" > <i class="fas fa-calendar-check me-3 me-lg-1 me-xl-3"></i> {{__('eng.transportBook')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom  px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings5" type="button" role="tab" aria-controls="v-pills-settings5" aria-selected="false"> <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i> My Profile </button> -->
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i>Profile</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings5-tab"  role="tab" > <i class="fas fa-id-card me-3 me-lg-1 me-xl-3"></i> {{__('eng.profile]')}}</a>
 
                       <!-- <button class="nav-link btn-p px-5 border-bottom px-md-1  ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings6" type="button" role="tab" aria-controls="v-pills-settings6" aria-selected="false"> <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>  Content Management </button> -->
-                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i>Content Management</a>
+                      <a  href="#"class="nav-link btn-p px-5 border-bottom px-md-1 ps-xl-3 text-light py-3 text-start" id="v-pills-settings6-tab"  role="tab" > <i class="fas fas fa-tasks me-3 me-lg-1 me-xl-3"></i> {{__('eng.contentManagement')}}</a>
 
 
                 @endif

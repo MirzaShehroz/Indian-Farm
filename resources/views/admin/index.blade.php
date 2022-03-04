@@ -16,7 +16,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Users</h5>
+                <h5>{{__('eng.totalUser')}}</h5>
 
                 <h1>0</h1>
 
@@ -26,7 +26,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Vets </h5>
+                <h5>{{__('eng.totalVet')}} </h5>
 
                 <h1>0</h1>
 
@@ -36,7 +36,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Transport</h5>
+                <h5>{{__('eng.totalTrans')}}</h5>
 
                 <h1>0</h1>
 
@@ -54,7 +54,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Appointments </h5>
+                <h5>{{__('eng.totalAppoint')}} </h5>
 
                 <h1>0</h1>
 
@@ -64,9 +64,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Appointments 
-                    Today </h5>
-
+                <h5>{{__('eng.totalAppointToday')}}</h5>
                 <h1>0</h1>
 
 
@@ -75,9 +73,7 @@
             <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Transport 
-                    Scheduled
-                    </h5>
+                <h5>{{__('eng.totalTransSche')}} </h5>
 
                 <h1>0</h1>
 
@@ -92,20 +88,15 @@
             <div class="col-12 col-md-4 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Transport 
-                    Scheduled Today </h5>
-
+                <h5>{{__('eng.totalTransScheToday')}}</h5>
                 <h1>0</h1>
-
 
             </div>
             <!-- end of col  -->
             <div class="col-12 col-md-4 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                <h5>Total Premium 
-                    Users
-                     </h5>
+                <h5>{{__('eng.totalPremUser')}}</h5>
 
                 <h1>0</h1>
 

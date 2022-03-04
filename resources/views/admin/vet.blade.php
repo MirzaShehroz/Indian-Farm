@@ -9,13 +9,13 @@
       @csrf
       <div class="col-12 d-md-flex mt-3">
 
-        <input type="text" name="full_name" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Name   " id="">
+        <input type="text" name="full_name" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchName')}} " id="">
 
 
-        <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-        <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-        <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
-        <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+        <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchCity')}}" id="">
+        <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchState')}}" id="">
+        <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchDist')}} " id="">
+        <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchTaluka')}}" id="">
 
 
 
@@ -24,7 +24,7 @@
 
       <div class="col-12 mt-3">
 
-        <button class="bg_danger px-5 py-2 rounded-pill text-light " name="">Search</button>
+        <button class="bg_danger px-5 py-2 rounded-pill text-light " name="">{{__('eng.search')}}</button>
       </div>
     </form>
       <!-- end of col   -->
@@ -34,10 +34,10 @@
         <div class="text-end d-flex d-md-block ">
           <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light" data-bs-toggle="offcanvas"
             data-bs-target="#edit_vet" aria-controls="edit_vet" type="button">
-            Add A Vet
+            {{__('eng.addVet')}}
           </button>
           <button onclick="exportTableToCSV('record.csv')" class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
-            Export TO CSV
+            {{__('eng.exportCsv')}}
           </button>
 
         </div>
@@ -47,29 +47,29 @@
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">User Id </th>
-                <th scope="col">First Name</th>
-                <th scope="col">Middle Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">License No </th>
-                <th scope="col">Registered Vet Council </th>
-                <th scope="col">VC Registeration No </th>
-                <th scope="col">Contact No </th>
+                <th scope="col">{{__('eng.userId')}}</th>
+                <th scope="col">{{__('eng.firstName')}}</th>
+                <th scope="col">{{__('eng.middleName')}}</th>
+                <th scope="col">{{__('eng.lastName')}}</th>
+                <th scope="col">{{__('eng.licenseNo')}} </th>
+                <th scope="col">{{__('eng.registCouncil')}}</th>
+                <th scope="col">{{__('eng.vcRegistNum')}}</th>
+                <th scope="col">{{__('eng.contactNum')}} </th>
 
 
-                <th scope="col">Email Id</th>
-                <th scope="col">Address Line 1</th>
-                <th scope="col">Address Line 2</th>
+                <th scope="col">{{__('eng.emailId')}}</th>
+                <th scope="col">{{__('eng.address1')}}</th>
+                <th scope="col">{{__('eng.address2')}}</th>
 
 
-                <th scope="col">Area</th>
-                <th scope="col">City</th>
-                <th scope="col">State</th>
-                <th scope="col">District</th>
-                <th scope="col">Taluka</th>
-                <th scope="col">Pincode</th>
+                <th scope="col">{{__('eng.area')}}</th>
+                <th scope="col">{{__('eng.city')}}</th>
+                <th scope="col">{{__('eng.state')}}</th>
+                <th scope="col">{{__('eng.district')}}</th>
+                <th scope="col">{{__('eng.taluka')}}</th>
+                <th scope="col">{{__('eng.pinCode')}}</th>
 
-                <th scope="col">Action</th>
+                <th scope="col">{{__('eng.action')}}</th>
               </tr>
             </thead>
             <tbody>
@@ -108,23 +108,22 @@
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">{{__('eng.alert')}}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                               </div>
                               <form action="{{route('deleteVet')}}" method="POST">
                               <div class="modal-body text-center p-4">
-                                <p class="fw-bold text-secondary">Are You sure to Delete this Vet </p>
+                                <p class="fw-bold text-secondary">{{__('eng.deletingMsg')}} </p>
                               </div>
                               <div class="modal-foote d-flex">
                                 <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover"
-                                    data-bs-dismiss="modal">No</button></a>
+                                    data-bs-dismiss="modal">{{__('eng.no')}}</button></a>
 
                                       @csrf
                                       <input type="hidden" value="{{$item->user_id}}" name="user_id">
                                      <button type="submit"
-                                          class="btn border form-control btnhover">Yes</button>
+                                          class="btn border form-control btnhover">{{__('eng.yes')}}</button>
                                     </form>
-
                               </div>
                             </div>
                           </div>
@@ -146,7 +145,7 @@
                     
                           <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
                     
-                            <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">View A Vet</h4>
+                            <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">{{__('eng.viewVet')}}</h4>
                     
                             <img src="{{ asset($item->image) }}" class="profile_img my-3" alt="img not found">
                     
@@ -158,16 +157,16 @@
                     
                               <div class="col-12">
                     
-                                <h5 class="mb-4"> Upload Documents</h5>
-                                <a href="{{$item->document1}}" target="blank"> Document</a>
+                                <h5 class="mb-4"> {{__('eng.documents')}}</h5>
+                                <a href="{{$item->document1}}" target="blank"> {{__('eng.viewDocument')}}</a>
                                 @if ($item->document2)
-                                <a href="{{$item->document2}}" target="blank"> Document</a>
+                                <a href="{{$item->document2}}" target="blank"> {{__('eng.viewDocument')}}</a>
                                 @endif
                                 @if ($item->document3)
-                                <a href="{{$item->document3}}" target="blank"> Document</a>
+                                <a href="{{$item->document3}}" target="blank"> {{__('eng.viewDocument')}}</a>
                                 @endif
                                 @if ($item->document4)
-                                <a href="{{$item->document4}}" target="blank"> Document</a>
+                                <a href="{{$item->document4}}" target="blank"> {{__('eng.viewDocument')}}</a>
                                 @endif
                               </div>
                               <!-- end of col  -->
@@ -185,43 +184,43 @@
                                 <div class="col-12">
                     
                                   <div class="row">
-                                    <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                                    <label for="fullname" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
                     
                                     <div class="col-12 col-md-4">
                     
-                                      <input disabled type="text" class="form-control mb-4" placeholder="Full Name" value="{{$item->first_name}}" name="first_name">
+                                      <input disabled type="text" class="form-control mb-4" placeholder="{{__('eng.fullName')}}" value="{{$item->first_name}}" name="first_name">
                 
                                     </div>
                                     <!-- end of col  -->
                     
                                     <div class="col-12 col-md-4 mb-3">
                     
-                                      <input disabled type="text" class="form-control" placeholder="Middle Name" value="{{$item->middle_name}}" name="middle_name">
+                                      <input disabled type="text" class="form-control" placeholder="{{__('eng.middleName')}}" value="{{$item->middle_name}}" name="middle_name">
                     
                                     </div>
                                     <!-- end of col  -->
                     
                                     <div class="col-12 col-md-4 mb-3">
                     
-                                      <input disabled type="text" class="form-control" value="{{$item->last_name}}" placeholder="Last Name">
+                                      <input disabled type="text" class="form-control" value="{{$item->last_name}}" placeholder="{{__('eng.lastName')}}">
                     
                                     </div>
                                     <!-- end of col  -->
                                     <div class="col-12 col-md-4 mb-3">
                     
-                                      <input disabled type="text" class="form-control" value="{{$item->license_no}}" placeholder="License No">
+                                      <input disabled type="text" class="form-control" value="{{$item->license_no}}" placeholder="{{__('eng.licenseNo')}}">
                     
                                     </div>
                                     <!-- end of col  -->
                                     <div class="col-12 col-md-4 mb-3">
                     
-                                      <input disabled type="text" class="form-control" value="{{$item->reg_vet_council}}" placeholder="Registered Vetenary">
+                                      <input disabled type="text" class="form-control" value="{{$item->reg_vet_council}}" placeholder="{{__('eng.registCouncil')}}">
                     
                                     </div>
                                     <!-- end of col  -->
                                     <div class="col-12 col-md-4 mb-3">
                     
-                                      <input disabled type="text" class="form-control" value="{{$item->vc_reg_no}}" placeholder="VC Reg No">
+                                      <input disabled type="text" class="form-control" value="{{$item->vc_reg_no}}" placeholder="{{__('eng.vcRegistNum')}}">
                     
                                     </div>
                                     <!-- end of col  -->
@@ -242,16 +241,16 @@
                     
                                 <div class="col-12 col-lg-10 ">
                     
-                                  <label class="form-label fw-bold fs-5">Contact Details</label>
+                                  <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
                     
                                   <div class="row">
                     
                                     <div class="col-12 col-md-6 mb-3">
-                                      <input disabled type="text" class="form-control inputno1" value="{{$item->contact_no}}" placeholder="Contact Number" disabled>
+                                      <input disabled type="text" class="form-control inputno1" value="{{$item->contact_no}}" placeholder="{{__('eng.contactNum')}}" disabled>
                                     </div>
                     
                                     <div class="col-12 col-md-6 mb-3">
-                                      <input disabled type="text" class="form-control inputno1" value="{{$item->email}}" placeholder="Email Id" disabled>
+                                      <input disabled type="text" class="form-control inputno1" value="{{$item->email}}" placeholder="{{__('eng.emailId')}}" disabled>
                     
                                     </div>
                 
@@ -269,20 +268,20 @@
                               <div class="row">
                     
                                 <div class="col-12 col-md-6 mt-3">
-                                  <input disabled type="text" class="form-control" placeholder="Address First Line" value="{{$item->address_line1}}" aria-label="addressfirst">
+                                  <input disabled type="text" class="form-control" placeholder="{{__('eng.address1')}}" value="{{$item->address_line1}}" aria-label="addressfirst">
                                 </div>
                                 <div class="col-12 col-md-6 mt-3">
-                                  <input disabled type="text" class="form-control" placeholder="Address Second Line" value="{{$item->address_line2}}" aria-label="addresssecode">
+                                  <input disabled type="text" class="form-control" placeholder="{{__('eng.address2')}}" value="{{$item->address_line2}}" aria-label="addresssecode">
                                 </div>
                                 <div class="col-12 col-md-6 mt-3">
-                                  <input disabled type="text" class="form-control" placeholder="Enter Area" value="{{$item->area}}" aria-label="area">
+                                  <input disabled type="text" class="form-control" placeholder="{{__('eng.ebterArea')}}" value="{{$item->area}}" aria-label="area">
                                 </div>
                                 <div class="col-12 col-md-6 mt-3">
                                   <select id="inputCity" class="form-select overflow-scroll ">
                                     @if ($item->city)
                                     <option value="Pune" @checked(true)>Pune</option>
                                     @else
-                                    <option value="" selected disabled>City</option>
+                                    <option value="" selected disabled>{{__('eng.city')}}</option>
                                     <option value="Pune">Pune</option>
                                     @endif
                     
@@ -293,7 +292,7 @@
                                     @if ($item->state)
                                     <option value="{{$item->state}}" selected>{{$item->state}}</option>
                                     @else
-                                    <option value="" selected disabled>State</option>                                        
+                                    <option value="" selected disabled>{{__('eng.selectState')}}</option>                                        
                                     @endif
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -340,7 +339,7 @@
                                     @if ($item->district)
                                     <option value="{{$item->district}}" selected>{{$item->district}}</option>
                                     @else
-                                    <option value="" selected disabled>District</option>                                        
+                                    <option value="" selected disabled>{{__('eng.selectDist')}}</option>                                        
                                     @endif
                                     <option value="Pune">Pune</option>
                     
@@ -352,14 +351,14 @@
                                     @if ($item->taluka)
                                     <option value="{{$item->taluka}}" selected>{{$item->taluka}}</option>
                                     @else
-                                    <option value="" selected disabled>Taluka</option>
+                                    <option value="" selected disabled>{{__('eng.selectTalukla')}}</option>
                                     @endif
                                     <option value="Pune">Pune</option>
                                   </select>
                                 </div>
                     
                                 <div class="col-12 col-md-6 mt-3">
-                                  <input disabled type="text" class="form-control" placeholder="Pin Code" value="{{$item->zipcode}}" aria-label="pincode">
+                                  <input disabled type="text" class="form-control" placeholder="{{__('eng.pinCode')}}" value="{{$item->zipcode}}" aria-label="pincode">
                                 </div>
                     
                     
@@ -394,7 +393,7 @@
               
                       <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
               
-                        <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">Edit A Vet</h4>
+                        <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">{{__('eng.editVet')}}</h4>
               
                         <img src="{{ asset($item->image) }}" class="profile_img my-3"
                           alt="img not found">
@@ -405,18 +404,15 @@
               
                           <div class="col-12">
               
-                            <h5 class="mb-4"> Upload Documents</h5>
-                            <a href="{{$item->document1}}" target="blank">Document 1 preview</a>
+                            <h5 class="mb-4"> {{__('eng.documents')}}</h5>
+                            <a href="{{$item->document1}}" target="blank">{{__('eng.viewDocument')}}</a>
                             <input type="file" name="doc1" class="form-control d-block mt-3" id="doc1" >
-                            <a href="{{$item->document2}}" target="blank">Document 2 preview</a>
+                            <a href="{{$item->document2}}" target="blank">{{__('eng.viewDocument')}}</a>
                             <input type="file" name="doc2" class="form-control d-block mt-3" id="doc2">
-                            <a href="{{$item->document3}}" target="blank">Document 3 preview</a>
+                            <a href="{{$item->document3}}" target="blank">{{__('eng.viewDocument')}}</a>
                             <input type="file" name="doc3" class="form-control d-block mt-3" id="doc3">
-              
-              
                           </div>
                           <!-- end of col  -->
-              
                         </div>
                         <!-- end of row  -->
               
@@ -430,43 +426,43 @@
                           <div class="col-12">
               
                             <div class="row">
-                              <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                              <label for="fullname" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
               
                               <div class="col-12 col-md-4">
               
-                                <input type="text" class="form-control mb-4" placeholder="First Name" value="{{$item->first_name}}" name="first_name" required>
+                                <input type="text" class="form-control mb-4" placeholder="{{__('eng.firstName')}}" value="{{$item->first_name}}" name="first_name" required>
               
                               </div>
                               <!-- end of col  -->
               
                               <div class="col-12 col-md-4 mb-3">
               
-                                <input type="text" class="form-control" placeholder="Middle Name" value="{{$item->middle_name}}" name="middle_name">
+                                <input type="text" class="form-control" placeholder="{{__('eng.middleName')}}" value="{{$item->middle_name}}" name="middle_name">
               
                               </div>
                               <!-- end of col  -->
               
                               <div class="col-12 col-md-4 mb-3">
               
-                                <input type="text" name="last_name" class="form-control" value="{{$item->last_name}}" placeholder="last_name">
+                                <input type="text" name="last_name" class="form-control" value="{{$item->last_name}}" placeholder="{{__('eng.lastName')}}">
               
                               </div>
                               <!-- end of col  -->
                               <div class="col-12 col-md-4 mb-3">
               
-                                <input type="text" class="form-control" placeholder="License No" value="{{$item->license_no}}" name="license_no" required>
+                                <input type="text" class="form-control" placeholder="{{__('eng.licenseNo')}}" value="{{$item->license_no}}" name="license_no" required>
               
                               </div>
                               <!-- end of col  -->
                               <div class="col-12 col-md-4 mb-3">
               
-                                <input type="text" class="form-control" placeholder="Registered Vetenary" value="{{$item->reg_vet_council	}}" name="reg_vet_council" required>
+                                <input type="text" class="form-control" placeholder="{{__('eng.registCouncil')}}" value="{{$item->reg_vet_council	}}" name="reg_vet_council" required>
               
                               </div>
                               <!-- end of col  -->
                               <div class="col-12 col-md-4 mb-3">
               
-                                <input type="text" class="form-control" placeholder="VC Reg No" value="{{$item->vc_reg_no}}" name="vc_reg_no" required>
+                                <input type="text" class="form-control" placeholder="{{__('eng.vcRegistNum')}}" value="{{$item->vc_reg_no}}" name="vc_reg_no" required>
               
                               </div>
                               <!-- end of col  -->
@@ -485,28 +481,28 @@
               
                           <div class="col-12 col-lg-10 ">
               
-                            <label class="form-label fw-bold fs-5">Contact Details</label>
+                            <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
               
                             <div class="row">
               
                               <div class="col-12 col-md-6 mb-3">
-                                <input type="text" class="form-control inputno1" placeholder="Contact Number" value="{{$item->contact_no}}" name="contact_no" required>
+                                <input type="text" class="form-control inputno1" placeholder="{{__('eng.contact')}}" value="{{$item->contact_no}}" name="contact_no" required>
               
                               </div>
               
                               <div class="col-12 col-md-6 mb-3">
-                                <input type="text" class="form-control inputno1" placeholder="Email Id" value="{{$item->email}}" name="email" required>
+                                <input type="text" class="form-control inputno1" placeholder="{{__('eng.emailId')}}" value="{{$item->email}}" name="email" required>
               
                               </div>
                                 <div class="col-12 col-md-6 mb-3">
-                                  <input type="password" class="form-control inputno1" placeholder="New Password" name="new_password" >
+                                  <input type="password" class="form-control inputno1" placeholder="{{__('eng.newPass')}}" name="new_password" >
                                 </div>
                                 <div class="col-12 col-md-6 mb-3">
-                                  <input type="password" class="form-control inputno1" placeholder="Previous Password" name="prev_password" >
+                                  <input type="password" class="form-control inputno1" placeholder="{{__('eng.prevPass')}}" name="prev_password" >
                                 </div>
                 
                                 <div class="col-12 col-md-6 mb-3">
-                                  <input class="bg_danger text-light" type="submit" id="submitform" value="Change Password"/>
+                                  <input class="bg_danger text-light" type="submit" id="submitform" value="{{__('eng.changePass')}}"/>
                                 </div>
                             </div>
               
@@ -520,22 +516,22 @@
                         <div class="row">
               
                           <div class="col-12 col-md-6 mt-3">
-                            <input type="text" class="form-control" placeholder="Address First Line" value="{{$item->address_line1}}" aria-label="addressfirst"
+                            <input type="text" class="form-control" placeholder="{{__('eng.address1')}}" value="{{$item->address_line1}}" aria-label="addressfirst"
                               name="address_line1" required>
                           </div>
                           <div class="col-12 col-md-6 mt-3">
-                            <input type="text" class="form-control" placeholder="Address Second Line" value="{{$item->address_line2}}" aria-label="addresssecode"
+                            <input type="text" class="form-control" placeholder="{{__('eng.address2')}}" value="{{$item->address_line2}}" aria-label="addresssecode"
                               name="address_line2">
                           </div>
                           <div class="col-12 col-md-6 mt-3">
-                            <input type="text" class="form-control" placeholder="Enter Area" aria-label="area" value="{{$item->area}}" name="area" required>
+                            <input type="text" class="form-control" placeholder="{{__('eng.enterArea')}}" aria-label="area" value="{{$item->area}}" name="area" required>
                           </div>
                           <div class="col-12 col-md-6 mt-3">
                             <select id="inputCity" class="form-select overflow-scroll " name="city" required>
                               @if ($item->city)
                               <option value="{{$item->city}}" selected>{{$item->city}}</option>
                               @else
-                              <option value="" selected disabled>City</option>
+                              <option value="" selected disabled>{{__('eng.city')}}</option>
                               @endif
                               <option value="Pune">Pune</option>
               
@@ -546,7 +542,7 @@
                               @if ($item->state)
                               <option value="{{$item->state}}" selected>{{$item->state}}</option>
                               @else
-                              <option value="" selected disabled>State</option>                                  
+                              <option value="" selected disabled>{{__('eng.selectState')}}</option>                                  
                               @endif
                               <option value="Andhra Pradesh">Andhra Pradesh</option>
                               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -593,7 +589,7 @@
                               @if ($item->district)
                               <option value="{{$item->district}}" selected>{{$item->district}}</option>
                               @else
-                              <option value="" selected disabled>District</option>
+                              <option value="" selected disabled>{{__('eng.district')}}</option>
                               @endif
                               <option value="Pune">Pune</option>
                             </select>
@@ -604,14 +600,14 @@
                               @if ($item->taluka)
                               <option value="{{$item->taluka}}">{{$item->taluka}}</option>
                               @else
-                              <option value="" selected disabled>Taluka</option>                                  
+                              <option value="" selected disabled>{{__('eng.taluka')}}</option>                                  
                               @endif
                               <option value="Pune">Pune</option>
                             </select>
                           </div>
               
                           <div class="col-12 col-md-6 mt-3">
-                            <input type="number" class="form-control" placeholder="Pin Code" value="{{$item->zipcode}}" aria-label="pincode" name="pincode" required>
+                            <input type="number" class="form-control" placeholder="{{__('eng.pinCode')}}" value="{{$item->zipcode}}" aria-label="pincode" name="pincode" required>
                           </div>
               
               
@@ -619,7 +615,7 @@
                         <!-- end of inner row  -->
               
                         <div class="col-12 col-md-4 mb-3 mt-5 mx-auto text-center">
-                          <button class="form-control bg_danger text-light " type="submit"> Save </button>
+                          <button class="form-control bg_danger text-light " type="submit"> {{__('eng.save')}} </button>
                         </div>
               
               
@@ -712,7 +708,7 @@
 
         <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
 
-          <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">Add A Vet</h4>
+          <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">{{__('eng.addVet')}}</h4>
 
           <img src="{{ asset('images/user-img.png') }}" class="profile_img my-3"
             alt="img not found">
@@ -746,43 +742,43 @@
             <div class="col-12">
 
               <div class="row">
-                <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                <label for="fullname" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
 
                 <div class="col-12 col-md-4">
 
-                  <input type="text" class="form-control mb-4" placeholder="First Name" name="first_name" required>
+                  <input type="text" class="form-control mb-4" placeholder="{{__('eng.firstName')}}" name="first_name" required>
 
                 </div>
                 <!-- end of col  -->
 
                 <div class="col-12 col-md-4 mb-3">
 
-                  <input type="text" class="form-control" placeholder="Middle Name" name="middle_name">
+                  <input type="text" class="form-control" placeholder="{{__('eng.middleName')}}" name="middle_name">
 
                 </div>
                 <!-- end of col  -->
 
                 <div class="col-12 col-md-4 mb-3">
 
-                  <input type="text" name="last_name" class="form-control" placeholder="last_name">
+                  <input type="text" name="last_name" class="form-control" placeholder="{{__('eng.lastName')}}">
 
                 </div>
                 <!-- end of col  -->
                 <div class="col-12 col-md-4 mb-3">
 
-                  <input type="text" class="form-control" placeholder="License No" name="license_no" required>
+                  <input type="text" class="form-control" placeholder="{{__('eng.licenseNo')}}" name="license_no" required>
 
                 </div>
                 <!-- end of col  -->
                 <div class="col-12 col-md-4 mb-3">
 
-                  <input type="text" class="form-control" placeholder="Registered Vetenary" name="reg_vet_council" required>
+                  <input type="text" class="form-control" placeholder="{{__('eng.registCouncil')}}" name="reg_vet_council" required>
 
                 </div>
                 <!-- end of col  -->
                 <div class="col-12 col-md-4 mb-3">
 
-                  <input type="text" class="form-control" placeholder="VC Reg No" name="vc_reg_no" required>
+                  <input type="text" class="form-control" placeholder="{{__('eng.vcRegistNum')}}" name="vc_reg_no" required>
 
                 </div>
                 <!-- end of col  -->
@@ -803,26 +799,26 @@
 
             <div class="col-12 col-lg-10 ">
 
-              <label class="form-label fw-bold fs-5">Contact Details</label>
+              <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
 
               <div class="row">
 
                 <div class="col-12 col-md-6 mb-3">
-                  <input type="text" class="form-control inputno1" placeholder="Contact Number" name="contact_no" required>
+                  <input type="text" class="form-control inputno1" placeholder="{{__('eng.contactNum')}}" name="contact_no" required>
 
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                  <input type="text" class="form-control inputno1" placeholder="Email Id" name="email" required>
+                  <input type="text" class="form-control inputno1" placeholder="{{__('eng.emailId')}}" name="email" required>
 
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                  <input type="password" class="form-control inputno1" placeholder="Password" name="password" required>
+                  <input type="password" class="form-control inputno1" placeholder="{{__('eng.password')}}" name="password" required>
                 </div>
 
                 <div class="col-12 col-md-6 mb-3">
-                  <button class="form-control bg_danger text-light">Change Password </button>
+                  <button class="form-control bg_danger text-light">{{__('eng.changePass')}} </button>
                 </div>
 
               </div>
@@ -841,26 +837,26 @@
           <div class="row">
 
             <div class="col-12 col-md-6 mt-3">
-              <input type="text" class="form-control" placeholder="Address First Line" aria-label="addressfirst"
+              <input type="text" class="form-control" placeholder="{{__('eng.address1')}}" aria-label="addressfirst"
                 name="address_line1" required>
             </div>
             <div class="col-12 col-md-6 mt-3">
-              <input type="text" class="form-control" placeholder="Address Second Line" aria-label="addresssecode"
+              <input type="text" class="form-control" placeholder="{{__('eng.address2')}}" aria-label="addresssecode"
                 name="address_line2">
             </div>
             <div class="col-12 col-md-6 mt-3">
-              <input type="text" class="form-control" placeholder="Enter Area" aria-label="area" name="area" required>
+              <input type="text" class="form-control" placeholder="{{__('eng.enterArea')}}" aria-label="area" name="area" required>
             </div>
             <div class="col-12 col-md-6 mt-3">
               <select id="inputCity" class="form-select overflow-scroll " name="city" required>
-                <option value="" selected disabled>City</option>
+                <option value="" selected disabled>{{__('eng.city')}}</option>
                 <option value="Pune">Pune</option>
 
               </select>
             </div>
             <div class="col-12 col-md-6 mt-3">
               <select id="inputState" class="form-select overflow-scroll " name="state" required>
-                <option value="" selected disabled>State</option>
+                <option value="" selected disabled>{{__('eng.selectState')}}</option>
                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                 <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -903,7 +899,7 @@
 
             <div class="col-12 col-md-6 mt-3">
               <select id="inputDistrict" class="form-select overflow-scroll" name="district" required>
-                <option value="" selected disabled>District</option>
+                <option value="" selected disabled>{{__('eng.district')}}</option>
                 <option value="Pune">Pune</option>
 
               </select>
@@ -911,14 +907,14 @@
 
             <div class="col-12 col-md-6 mt-3">
               <select id="inputTaluka" class="form-select overflow-scroll " name="taluke" required>
-                <option value="" selected disabled>Taluka</option>
+                <option value="" selected disabled>{{__('eng.taluka')}}</option>
                 <option value="Pune">Pune</option>
 
               </select>
             </div>
 
             <div class="col-12 col-md-6 mt-3">
-              <input type="number" class="form-control" placeholder="Pin Code" aria-label="pincode" name="pincode" required>
+              <input type="number" class="form-control" placeholder="{{__('eng.pinCode')}}" aria-label="pincode" name="pincode" required>
             </div>
 
 
@@ -926,7 +922,7 @@
           <!-- end of inner row  -->
 
           <div class="col-12 col-md-4 mb-3 mt-5 mx-auto text-center">
-            <button class="form-control bg_danger text-light " type="submit"> Save </button>
+            <button class="form-control bg_danger text-light " type="submit"> {{__('eng.save')}} </button>
           </div>
 
 

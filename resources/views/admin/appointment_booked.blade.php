@@ -12,19 +12,19 @@
 
         <!-- <input type="text" name="animal" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Animal   " id=""> -->
         <select id="animaltype"  class="me-3 border ps-2 mb-3 py-2 inputs1"  name="animal">
-                           <option value="" disabled  selected>Select Animal Type...</option>
-                           <option value="0">Bull</option>
-                           <option value="1">Buffalo</option>
-                           <option value="2">cow</option>
-                           <option value="3" >Sheep</option>
-                           <option  value="4"> Goat</option>
+                           <option value="" disabled  selected>{{__('eng.animalType')}}</option>
+                           <option value="0">{{__('eng.bull')}}</option>
+                           <option value="1">{{__('eng.buffalo')}}</option>
+                           <option value="2">{{__('eng.cow')}}</option>
+                           <option value="3" >{{__('eng.sheep')}}</option>
+                           <option  value="4"> {{__('eng.goat')}}</option>
           </select>
         
-        <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Vet" id="">
-        <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-        <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-        <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District " id="">
-        <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+        <input type="text" name="vet" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchVet')}}" id="">
+        <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchCity')}}" id="">
+        <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchState')}}" id="">
+        <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchDist')}}" id="">
+        <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchTaluka')}}" id="">
 
      
         
@@ -33,7 +33,7 @@
 
     <div class="col-12 mt-3">
 
-    <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit" name="submit">Search</button>
+    <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit" name="submit">{{__('eng.search')}}</button>
     </form>
     </div>
    <!-- end of col   -->
@@ -42,10 +42,10 @@
 
   <div class="text-end d-flex d-md-block ">
     <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light" data-bs-toggle="offcanvas" data-bs-target="#add_appointment" aria-controls="add_appointment" type="button">
-        Add A Appoinment
+      {{__('eng.addAppoint')}}
     </button>
     <button onclick="exportTableToCSV('record.csv')" class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light ">
-        Export TO CSV
+      {{__('eng.exportCsv')}}
     </button>
 
   </div>
@@ -55,34 +55,34 @@
         <table class="table table-bordered">
             <thead>
               <tr>
-                <th scope="col">User Id </th>
-                <th scope="col">First Name</th>
+                <th scope="col">{{__('eng.userId')}} </th>
+                <th scope="col">{{__('eng.firstName')}}</th>
                
                 <!-- <th scope="col">Farm Name</th> -->
         
-                <th scope="col">Contact No </th>
+                <th scope="col">{{__('eng.contactNum')}} </th>
              
               
               
                 <!-- <th scope="col">Email Id</th>
                 <th scope="col">Farm Owner </th> -->
-                <th scope="col">Animal Type</th>
-                <th scope="col">Breed</th>
+                <th scope="col">{{__('eng.displayAnimalType')}}</th>
+                <th scope="col">{{__('eng.breed')}}</th>
                
-                <th scope="col">Address Line 1</th>
-                <th scope="col">Address Line 2</th>
+                <th scope="col">{{__('eng.address1')}}</th>
+                <th scope="col">{{__('eng.address2')}}</th>
                
              
-                <th scope="col">Area</th>
-                <th scope="col">City</th>
-                <th scope="col">State</th>
-                <th scope="col">District</th>
-                <th scope="col">Taluka</th>
-                <th scope="col">Pincode</th>
-                <th scope="col">Vet Assigned</th>
-                <th scope="col">Appoinment Status</th>
+                <th scope="col">{{__('eng.area')}}</th>
+                <th scope="col">{{__('eng.city')}}</th>
+                <th scope="col">{{__('eng.state')}}</th>
+                <th scope="col">{{__('eng.district')}}</th>
+                <th scope="col">{{__('eng.taluka')}}</th>
+                <th scope="col">{{__('eng.pinCode')}}</th>
+                <th scope="col">{{__('eng.vetAssign')}}</th>
+                <th scope="col">{{__('eng.appointStatus')}}</th>
                
-                <th scope="col">Action</th>
+                <th scope="col">{{__('eng.action')}}</th>
               </tr>
             </thead>
             <tbody>
@@ -99,15 +99,15 @@
                 <td>1</td> -->
                 
                 @if($appoint->animal_type==0)
-                <td>Bull</td>
+                <td>{{__('eng.bull')}}</td>
                 @elseif($appoint->animal_type==1)
-                <td>Buffalo</td>
+                <td>{{__('eng.buffalo')}}</td>
                 @elseif($appoint->animal_type==2)
-                <td>Cow</td>
+                <td>{{__('eng.cow')}}</td>
                 @elseif($appoint->animal_type==3)
-                <td>Sheep</td>
+                <td>{{__('eng.sheep')}}</td>
                 @elseif($appoint->animal_type==4)
-                <td>Goat</td>
+                <td>{{__('eng.goat')}}</td>
                 @endif
                 <td>{{$appoint->breed}}</td>
                 <td>{{$appoint->address_line1}}</td>
@@ -123,11 +123,11 @@
                 
                 <td>
                   @if($appoint->status==0)
-                  Confirmed
+                  {{__('eng.confirmed')}}
                   @elseif($appoint->status==1)
-                  Completed
+                  {{__('eng.complete')}}
                   @elseif($appoint->status==2)
-                  Cancelled
+                  {{__('eng.cancelled')}}
                   @endif
                 </td>
            
@@ -144,7 +144,7 @@
 
               @endforeach
               @else
-              No data
+              {{__('eng.noData')}}
               @endif
              
             
@@ -216,18 +216,18 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{__('eng.alert')}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form action="{{url('delete/appointment')}}" method="post">
           @csrf
         <div class="modal-body text-center p-4">
-          <p class="fw-bold text-secondary">Are You sure to Delete this Appoinment </p>
+          <p class="fw-bold text-secondary">{{__('eng.deleteMsg')}}</p>
         </div>
         <div class="modal-foote d-flex">
           <input type="hidden" name="id" id="id">
-         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a> 
-         <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">Yes</button></a> 
+         <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a> 
+         <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">{{__('eng.yes')}}</button></a> 
          </form>
         </div>
       </div>
@@ -251,7 +251,7 @@
                           
                            <div class="row pad-50 p-2 px-lg-5 justify-content-around">
 
-                            <h4 class="mt-5 mb-4 mt-md-0">Add Appoinment</h4>
+                            <h4 class="mt-5 mb-4 mt-md-0">{{__('eng.addAppoint')}}</h4>
 
                             <div class="col-12">
                                 
@@ -263,27 +263,18 @@
                      <div class="col-md-4 col-lg-3 my-3">
                         
                          <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                           <option value="" disabled  selected>Select Animal Type...</option>
-                           <option value="0">Bull</option>
-                           <option value="1">Buffalo</option>
-                           <option value="2">cow</option>
-                           <option value="3" >Sheep</option>
-                           <option  value="4"> Goat</option>
+                           <option value="" disabled  selected>{{__('eng.animalType')}}</option>
+                           <option value="0">{{__('eng.bull')}}</option>
+                           <option value="1">{{__('eng.bufalo')}}</option>
+                           <option value="2">{{__('eng.cow')}}</option>
+                           <option value="3" >{{__('eng.sheep')}}</option>
+                           <option  value="4"> {{__('eng.goat')}}</option>
                          </select>
-                         
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" id="" class="form-control" placeholder="No Of Animals " name="no_animal">
- 
- 
-                       </div>
-                       <!-- end of col  -->
-     
-                     <div class="col-md-4 col-lg-3 my-3">
-                         
-                         <input type="text" name="breed" id="" class="form-control" placeholder="Breed" >
+                         <input type="text" id="" class="form-control" placeholder="{{__('eng.noAnimal')}}" name="no_animal">
  
  
                        </div>
@@ -291,7 +282,15 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="personname" id="" class="form-control" placeholder="Contact Person Name ">
+                         <input type="text" name="breed" id="" class="form-control" placeholder="{{__('eng.breed')}}" >
+ 
+ 
+                       </div>
+                       <!-- end of col  -->
+     
+                     <div class="col-md-4 col-lg-3 my-3">
+                         
+                         <input type="text" name="personname" id="" class="form-control" placeholder="{{__('eng.personName')}} ">
  
  
                        </div>
@@ -307,21 +306,13 @@
  
                      <div class="col-md-4 col-lg-3 my-3">
                    
-                         <input type="text" name="mobileno" id="" class="form-control" placeholder="Contact Number">
+                         <input type="text" name="mobileno" id="" class="form-control" placeholder="{{__('eng.contactNum')}}">
                          
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="addressline1" id="" class="form-control" placeholder="Address Line 1 ">
- 
- 
-                       </div>
-                       <!-- end of col  -->
-     
-                     <div class="col-md-4 col-lg-3 my-3">
-                         
-                         <input type="text" name="addressline2" id="" class="form-control" placeholder="Address Line 2">
+                         <input type="text" name="addressline1" id="" class="form-control" placeholder="{{__('eng.address1')}}">
  
  
                        </div>
@@ -329,7 +320,15 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="area" id="" class="form-control" placeholder="Area ">
+                         <input type="text" name="addressline2" id="" class="form-control" placeholder="{{__('eng.address2')}}">
+ 
+ 
+                       </div>
+                       <!-- end of col  -->
+     
+                     <div class="col-md-4 col-lg-3 my-3">
+                         
+                         <input type="text" name="area" id="" class="form-control" placeholder="{{__('eng.area')}} ">
  
  
                        </div>
@@ -347,7 +346,7 @@
                    
                          <div class="Districdropdown">
                              <select id="inputDistrict" class="form-select overflow-scroll  " name="city">
-                               <option value="">Select City</option>
+                               <option value="">{{__('eng.city')}}</option>
                                <option value="delhi">Delhi</option>
                                <option value="mumbai">Mumbai</option>
                              
@@ -362,7 +361,7 @@
                          <div class="startdropdown">
                         
                              <select id="inputState"  class="form-select overflow-scroll " name="state">
-                               <option selected disabled> State</option>
+                               <option selected disabled> {{__('eng.selectState')}}</option>
                                <option value="Andhra Pradesh">Andhra Pradesh</option>
                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -411,7 +410,7 @@
                          
                          <div class="Districdropdown">
                              <select id="district" class="form-select overflow-scroll" name="district">
-                               <option value="">Select  District</option>
+                               <option value="">{{__('eng.selectDist')}}</option>
                                <option value=" abcs"> abcs</option>
                                <option value="xyzs"> xyzs</option>
                                <option value=" lmno"> lmno</option>
@@ -427,15 +426,13 @@
                          
                          <div class="Districdropdown">
                              <select id="inputTaluka" class="form-select overflow-scroll  " name="taluka">
-                               <option value="">Select Taluka</option>
+                               <option value="">{{__('eng.selectTaluka')}}</option>
                                <option value=" abcs">Taluka abcs</option>
                                <option value="xyzs"> Taluka xyzs</option>
                                <option value=" lmno">Taluka lmno</option>
                              
                              </select>
                            </div>
- 
- 
                        </div>
                        <!-- end of col  -->
                        
@@ -450,14 +447,14 @@
  
                      <div class="col-md-4 col-lg-3 my-3">
                    
-                              <input type="text" name="zipcode" id="" class="form-control" placeholder="Pin Code" >
+                              <input type="text" name="zipcode" id="" class="form-control" placeholder="{{__('eng.pinCode')}}" >
          
                          
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                        <input type="date" name="appoint_date" id="" class="form-control" placeholder="Appointment Date">
+                        <input type="date" name="appoint_date" id="" class="form-control" placeholder="{{__('eng.appointmentDate')}}">
  
  
                        </div>
@@ -465,7 +462,7 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="time" name="appoint_time"  id="" class="form-control" placeholder="Appointment Time">
+                         <input type="time" name="appoint_time"  id="" class="form-control" placeholder="{{__('eng.appointmentTime')}}">
  
                        </div>
                        <!-- end of col  -->
@@ -479,7 +476,7 @@
                      <div class="row justify-content-around mt-3 text-center">
  
                          <div class="col-12 col-md-6 text-start pb-5">
-                             <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                             <label for="price" class="form-label tcolor fw-bold">{{__('eng.comment')}}</label>
                              <br>
                              <textarea name="comment" placeholder="   Comments" class="comment form-control" id="" rows="5"></textarea>
                              
@@ -491,7 +488,7 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="assignvet" class="form-select overflow-scroll  " name="vet_assign">
-                                            <option value="" disabled selected> Vet Assigned </option>
+                                            <option value="" disabled selected> {{__('eng.vetAssign')}} </option>
                                             @foreach ($vets as $data)
                                             <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
                                             @endforeach    
@@ -504,12 +501,12 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  ">
-                                                                  <option value="" disabled >Appointment Status </option>
-                                                                  <option value="0">Assigned</option>
-                                                                  <option value="1">Confirmed</option>
-                                                                  <option value="2">Completed</option>
-                                                                  <option value="3">Cancelled</option>
-                                                                  <option value="4">Reschedule</option>
+                                                                  <option value="" disabled >{{__('eng.appointmentStatus')}}</option>
+                                                                  <option value="0">{{__('eng.assign')}}</option>
+                                                                  <option value="1">{{__('eng.confirm')}}</option>
+                                                                  <option value="2">{{__('eng.complete')}}</option>
+                                                                  <option value="3">{{__('eng.cancel')}}</option>
+                                                                  <option value="4">{{__('eng.reschedule')}}</option>
                                             
                                         </select>
                                     </div>
@@ -518,7 +515,7 @@
 
                                 <div class="col-12 col-md-4 mt-3">
                                     
-                                    <textarea name="comment" placeholder="   Comments By Vet..." class="comment form-control" id="vet_comment" rows="5"></textarea>
+                                    <textarea name="comment" placeholder="{{__('eng.vetComment')}}" class="comment form-control" id="vet_comment" rows="5"></textarea>
                                     
                                 </div>
                                 
@@ -529,7 +526,7 @@
                          <div class="col-12 mt-4">
  
                              <button id="submitbtn" type="submit" class="btn rounded-pill btnsubmit bg_danger textli px-5 text-light border_color2 py-2 btnhover2">
-                                 Submit
+                              {{__('eng.submit')}}
                              </button>
  
  
@@ -566,7 +563,7 @@
                           
                            <div class="row pad-50 p-2 px-lg-5 justify-content-around">
 
-                      <h4 class="mt-5 mb-4 mt-md-0">View Appoinment</h4>
+                      <h4 class="mt-5 mb-4 mt-md-0">{{__('eng.viewAppoint')}}</h4>
                       <div class="col-12">
                                 
                                 <form action="{{url('update/appointment')}}" method="post">
@@ -578,19 +575,19 @@
                                            <div class="col-md-4 col-lg-3 my-3">
                                               
                                                <select id="vanimaltype"  class="form-select"  name="animaltype" disabled>
-                                               <option value="" disabled >Select Animal Type...</option>
-                                                 <option value="0">Bull</option>
-                                                 <option value="1">Buffalo</option>
-                                                 <option value="2">cow</option>
-                                                 <option value="3" >Sheep</option>
-                                                 <option  value="4"> Goat</option>
+                                               <option value="" disabled >{{__('eng.animalType')}}</option>
+                                                 <option value="0">{{__('eng.bull')}}</option>
+                                                 <option value="1">{{__('eng.buffalo')}}</option>
+                                                 <option value="2">{{__('eng.cow')}}</option>
+                                                 <option value="3" >{{__('eng.sheep')}}</option>
+                                                 <option  value="4"> {{__('eng.goat')}}</option>
                                                </select>
                                                
                                              </div>
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="no_animal" id="vno_animal" class="form-control" placeholder="No Of Animals " disabled>
+                                               <input type="text" name="no_animal" id="vno_animal" class="form-control" placeholder="{{__('eng.noAnimal')}}" disabled>
                        
                        
                                              </div>
@@ -598,7 +595,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="breed" id="vbreed" class="form-control" placeholder="Breed" disabled>
+                                               <input type="text" name="breed" id="vbreed" class="form-control" placeholder="{{__('eng.breed')}}" disabled>
                        
                        
                                              </div>
@@ -606,7 +603,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="personname" id="vpersonname" class="form-control" placeholder="Contact Person Name " disabled>
+                                               <input type="text" name="personname" id="vpersonname" class="form-control" placeholder="{{__('eng.personName')}}" disabled>
                        
                        
                                              </div>
@@ -622,21 +619,13 @@
                        
                                            <div class="col-md-4 col-lg-3 my-3">
                                          
-                                               <input type="text" name="mobileno" id="vmobileno" class="form-control" placeholder="Contact Number" disabled>
+                                               <input type="text" name="mobileno" id="vmobileno" class="form-control" placeholder="{{__('eng.contactNum')}}" disabled>
                                                
                                              </div>
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="addressline1" id="vaddressline1" class="form-control" placeholder="Address Line 1 " disabled>
-                       
-                       
-                                             </div>
-                                             <!-- end of col  -->
-                           
-                                           <div class="col-md-4 col-lg-3 my-3">
-                                               
-                                               <input type="text" name="addressline2" id="vaddressline2" class="form-control" placeholder="Address Line 2" disabled>
+                                               <input type="text" name="addressline1" id="vaddressline1" class="form-control" placeholder="{{__('eng.address1')}}" disabled>
                        
                        
                                              </div>
@@ -644,7 +633,15 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="text" name="area" id="varea" class="form-control" placeholder="Area " disabled>
+                                               <input type="text" name="addressline2" id="vaddressline2" class="form-control" placeholder="{{__('eng.address2')}}" disabled>
+                       
+                       
+                                             </div>
+                                             <!-- end of col  -->
+                           
+                                           <div class="col-md-4 col-lg-3 my-3">
+                                               
+                                               <input type="text" name="area" id="varea" class="form-control" placeholder="{{__('eng.area')}} " disabled>
                        
                        
                                              </div>
@@ -662,7 +659,7 @@
                                          
                                                <div class="Districdropdown">
                                                    <select id="vcity" class="form-select overflow-scroll  " name="city" disabled>
-                                                     <option value="" disabled>Select City</option>
+                                                     <option value="" disabled>{{__('eng.city')}}</option>
                                                      <option value="delhi">Delhi</option>
                                                      <option value="mumbai">Mumbai</option>
                                                    
@@ -679,7 +676,7 @@
                                                <div class="startdropdown">
                                               
                                                    <select id="vstate"  class="form-select overflow-scroll " name="state" disabled>
-                                                     <option  disabled> State</option>
+                                                     <option  disabled> {{__('eng.selectState')}}</option>
                                                      <option value="Andhra Pradesh">Andhra Pradesh</option>
                                                      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                                      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -728,7 +725,7 @@
                                                
                                                <div class="Districdropdown">
                                                    <select id="vvvdistrict" class="form-select overflow-scroll" name="district" disabled>
-                                                     <option value="" disabled>Select  District</option>
+                                                     <option value="" disabled>{{__('eng.selectDist')}}</option>
                                                      <option value="abcs"> abcs</option>
                                                      <option value="xyzs"> xyzs</option>
                                                      <option value="lmno"> lmno</option>
@@ -745,7 +742,7 @@
                                                
                                                <div class="Districdropdown">
                                                    <select id="vtaluka" class="form-select overflow-scroll  " name="taluka" disabled>
-                                                   <option value="" disabled>Select Taluka</option>
+                                                   <option value="" disabled>{{__('eng.selectTaluka')}}</option>
                                                      <option value=" abcs">Taluka abcs</option>
                                                      <option value="xyzs"> Taluka xyzs</option>
                                                      <option value=" lmno">Taluka lmno</option>
@@ -769,14 +766,14 @@
                        
                                            <div class="col-md-4 col-lg-3 my-3">
                                          
-                                                    <input type="text" name="zipcode" id="vzipcode" class="form-control" placeholder="Pin Code" disabled>
+                                                    <input type="text" name="zipcode" id="vzipcode" class="form-control" placeholder="{{__('eng.pinCode')}}" disabled>
                                
                                                
                                              </div>
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                              <input type="date" name="appoint_date" id="vappoint_date" class="form-control" placeholder="Appointment Date" disabled>
+                                              <input type="date" name="appoint_date" id="vappoint_date" class="form-control" placeholder="{{__('eng.appointmentDate')}}" disabled>
                        
                        
                                              </div>
@@ -784,7 +781,7 @@
                            
                                            <div class="col-md-4 col-lg-3 my-3">
                                                
-                                               <input type="time" name="appoint_time"  id="vappoint_time" class="form-control" placeholder="Appointment Time" disabled>
+                                               <input type="time" name="appoint_time"  id="vappoint_time" class="form-control" placeholder="{{__('eng.appointmentTime')}}" disabled>
                        
                                              </div>
                                              <!-- end of col  -->
@@ -798,7 +795,7 @@
                                            <div class="row justify-content-around mt-3 text-center">
                        
                                                <div class="col-12 col-md-6 text-start pb-5">
-                                                   <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                                                   <label for="price" class="form-label tcolor fw-bold">{{__('eng.comment')}}</label>
                                                    <br>
                                                    <textarea name="comment" placeholder="Comments" class="comment form-control" id="vcomment" rows="5" disabled></textarea>
                                                    
@@ -811,13 +808,13 @@
                                                           
                                                           <div class="Districdropdown">
                                                               <select id="vassignvet" class="form-select overflow-scroll " name="assignvet" disabled>
-                                                              <option value="" disabled> Vet Assigned </option>
+                                                              <option value="" disabled> {{__('eng.vetAssign')}} </option>
                                                               @if($vets!=null)
                                       @foreach($vets as $data)
                                       <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
                                       @endforeach
                                        @else
-                                       <option value="">No Vet</option>
+                                       <option value="">{{__('eng.noVet')}}</option>
                                       @endif
                                                                   
                                                               </select>
@@ -829,12 +826,12 @@
                                                           
                                                           <div class="Districdropdown">
                                                               <select id="vappointstatus" class="form-select overflow-scroll  " name="appoint_status" disabled>
-                                                                  <option value="" disabled >Appointment Status </option>
-                                                                  <option value="0">Assigned</option>
-                                                                  <option value="1">Confirmed</option>
-                                                                  <option value="2">Completed</option>
-                                                                  <option value="3">Cancelled</option>
-                                                                  <option value="4">Reschedule</option>
+                                                                  <option value="" disabled >{{__('eng.appointmentStatus')}} </option>
+                                                                  <option value="0">{{__('eng.assign')}}</option>
+                                                                  <option value="1">{{__('eng.confirm')}}</option>
+                                                                  <option value="2">{{__('eng.complete')}}</option>
+                                                                  <option value="3">{{__('eng.cancel')}}</option>
+                                                                  <option value="4">{{__('eng.reschedule')}}</option>
                                                               </select>
                                                           </div>
                                                           
@@ -842,7 +839,7 @@
                       
                                                       <div class="col-12 col-md-4 mt-3">
                                                           
-                                                          <textarea name="vet_comment" id="vvet_comment" placeholder="   Comments By Vet..." class="comment form-control" id="" rows="5" disabled></textarea>
+                                                          <textarea name="vet_comment" id="vvet_comment" placeholder="   {{__('eng.vetComment')}}" class="comment form-control" id="" rows="5" disabled></textarea>
                                                           
                                                       </div>
                                                       
@@ -853,7 +850,7 @@
                                                <div class="col-12 mt-4">
                        
                                                    <button id="submitbtn" type="submit" class="btn rounded-pill btnsubmit bg_danger textli px-5 text-light border_color2 py-2 btnhover2">
-                                                       Submit
+                                                    {{__('eng.submit')}}
                                                    </button>
                        
                        
@@ -895,7 +892,7 @@
                           
                            <div class="row pad-50 p-2 px-lg-5 justify-content-around">
 
-                            <h4 class="mt-5 mb-4 mt-md-0">Edit Appoinment</h4>
+                            <h4 class="mt-5 mb-4 mt-md-0">{{__('eng.editAppoint')}}</h4>
 
                             <div class="col-12">
                                 
@@ -907,19 +904,19 @@
                      <div class="col-md-4 col-lg-3 my-3">
                         
                          <select id="animaltype"  class="form-select"  name="animaltype">
-                         <option value="" disabled >Select Animal Type...</option>
-                           <option value="0">Bull</option>
-                           <option value="1">Buffalo</option>
-                           <option value="2">cow</option>
-                           <option value="3" >Sheep</option>
-                           <option  value="4"> Goat</option>
+                         <option value="" disabled >{{__('eng.animalType')}}</option>
+                           <option value="0">{{__('eng.bull')}}</option>
+                           <option value="1">{{__('eng.buffalo')}}</option>
+                           <option value="2">{{__('eng.cow')}}</option>
+                           <option value="3" >{{__('eng.sheep')}}</option>
+                           <option  value="4"> {{__('eng.goat')}}</option>
                          </select>
                          
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="no_animal" id="no_animal" class="form-control" placeholder="No Of Animals ">
+                         <input type="text" name="no_animal" id="no_animal" class="form-control" placeholder="{{__('eng.noAnimal')}}">
  
  
                        </div>
@@ -927,7 +924,7 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="breed" id="breed" class="form-control" placeholder="Breed">
+                         <input type="text" name="breed" id="breed" class="form-control" placeholder="{{__('eng.breed')}}">
  
  
                        </div>
@@ -935,7 +932,7 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="personname" id="personname" class="form-control" placeholder="Contact Person Name ">
+                         <input type="text" name="personname" id="personname" class="form-control" placeholder="{{__('eng.personDetail')}}">
  
  
                        </div>
@@ -951,21 +948,13 @@
  
                      <div class="col-md-4 col-lg-3 my-3">
                    
-                         <input type="text" name="mobileno" id="mobileno" class="form-control" placeholder="Contact Number">
+                         <input type="text" name="mobileno" id="mobileno" class="form-control" placeholder="{{__('eng.contactNum')}}">
                          
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="addressline1" id="addressline1" class="form-control" placeholder="Address Line 1 ">
- 
- 
-                       </div>
-                       <!-- end of col  -->
-     
-                     <div class="col-md-4 col-lg-3 my-3">
-                         
-                         <input type="text" name="addressline2" id="addressline2" class="form-control" placeholder="Address Line 2">
+                         <input type="text" name="addressline1" id="addressline1" class="form-control" placeholder="{{__('eng.address1')}}">
  
  
                        </div>
@@ -973,7 +962,15 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="text" name="area" id="area" class="form-control" placeholder="Area ">
+                         <input type="text" name="addressline2" id="addressline2" class="form-control" placeholder="{{__('eng.address2')}}">
+ 
+ 
+                       </div>
+                       <!-- end of col  -->
+     
+                     <div class="col-md-4 col-lg-3 my-3">
+                         
+                         <input type="text" name="area" id="area" class="form-control" placeholder="{{__('eng.area')}} ">
  
  
                        </div>
@@ -991,7 +988,7 @@
                    
                          <div class="Districdropdown">
                              <select id="city" class="form-select overflow-scroll  " name="city">
-                               <option value="" disabled>Select City</option>
+                               <option value="" disabled>{{__('eng.city')}}</option>
                                <option value="delhi">Delhi</option>
                                <option value="mumbai">Mumbai</option>
                              
@@ -1008,7 +1005,7 @@
                          <div class="startdropdown">
                         
                              <select id="state"  class="form-select overflow-scroll " name="state">
-                               <option selected disabled> State</option>
+                               <option selected disabled> {{__('eng.selectState')}}</option>
                                <option value="Andhra Pradesh">Andhra Pradesh</option>
                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -1057,7 +1054,7 @@
                          
                          <div class="Districdropdown">
                              <select id="district" class="form-select overflow-scroll" name="district">
-                               <option value="" disabled>Select  District</option>
+                               <option value="" disabled>{{__('eng.selectDist')}}</option>
                                <option value=" abcs"> abcs</option>
                                <option value="xyzs"> xyzs</option>
                                <option value=" lmno"> lmno</option>
@@ -1074,7 +1071,7 @@
                          
                          <div class="Districdropdown">
                              <select id="taluka" class="form-select overflow-scroll  " name="taluka">
-                             <option value="">Select Taluka</option>
+                             <option value="">{{__('eng.selectTaluka')}}</option>
                                <option value=" abcs">Taluka abcs</option>
                                <option value="xyzs"> Taluka xyzs</option>
                                <option value=" lmno">Taluka lmno</option>
@@ -1098,14 +1095,14 @@
  
                      <div class="col-md-4 col-lg-3 my-3">
                    
-                              <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="Pin Code">
+                              <input type="text" name="zipcode" id="zipcode" class="form-control" placeholder="{{__('eng.pinCode')}}">
          
                          
                        </div>
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                        <input type="date" name="appoint_date" id="appoint_date" class="form-control" placeholder="Appointment Date">
+                        <input type="date" name="appoint_date" id="appoint_date" class="form-control" placeholder="{{__('eng.appointmentDate')}}">
  
  
                        </div>
@@ -1113,12 +1110,10 @@
      
                      <div class="col-md-4 col-lg-3 my-3">
                          
-                         <input type="time" name="appoint_time"  id="appoint_time" class="form-control" placeholder="Appointment Time">
+                         <input type="time" name="appoint_time"  id="appoint_time" class="form-control" placeholder="{{__('eng.appointmentTime')}}">
  
                        </div>
                        <!-- end of col  -->
-     
-                                       
  
                        
                      </div>
@@ -1127,7 +1122,7 @@
                      <div class="row justify-content-around mt-3 text-center">
  
                          <div class="col-12 col-md-6 text-start pb-5">
-                             <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                             <label for="price" class="form-label tcolor fw-bold">{{__('eng.comment')}}</label>
                              <br>
                              <textarea name="comment" placeholder="Comments" class="comment form-control" id="comment" rows="5"></textarea>
                              
@@ -1140,14 +1135,14 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="eeeassignvet" class="form-select overflow-scroll " name="assignvet">
-                                        <option value="" disabled> Vet Assigned </option>
+                                        <option value="" disabled>{{__('eng.vetAssign')}} </option>
                                          
                                       @if($vets!=null)
                                       @foreach($vets as $data)
                                       <option value="{{$data->id}}">{{getname($data->user_id)}}</option>
                                       @endforeach
                                        @else
-                                       <option value="">No Vet</option>
+                                       <option value="">{{__('eng.noVet')}}</option>
                                       @endif
                                         </select>
                                     </div>
@@ -1158,12 +1153,12 @@
                                     
                                     <div class="Districdropdown">
                                         <select id="appointstatus" class="form-select overflow-scroll  " name="appoint_status">
-                                                                 <option value="" disabled >Appointment Status </option>
-                                                                  <option value="0">Assigned</option>
-                                                                  <option value="1">Confirmed</option>
-                                                                  <option value="2">Completed</option>
-                                                                  <option value="3">Cancelled</option>
-                                                                  <option value="4">Reschedule</option>
+                                                                 <option value="" disabled >{{__('eng.appointmentStatus')}} </option>
+                                                                  <option value="0">{{__('eng.assign')}}</option>
+                                                                  <option value="1">{{__('eng.confirm')}}</option>
+                                                                  <option value="2">{{__('eng.complete')}}</option>
+                                                                  <option value="3">{{__('eng.cancel')}}</option>
+                                                                  <option value="4">{{__('eng.reschedule')}}</option>
                                         </select>
                                     </div>
                                     
@@ -1171,7 +1166,7 @@
 
                                 <div class="col-12 col-md-4 mt-3">
                                     
-                                    <textarea name="vet_comment" id="vet_comment" placeholder="   Comments By Vet..." class="comment form-control" id="" rows="5"></textarea>
+                                    <textarea name="vet_comment" id="vet_comment" placeholder=" {{__('eng.vetComment')}}" class="comment form-control" id="" rows="5"></textarea>
                                     
                                 </div>
                                 
@@ -1182,7 +1177,7 @@
                          <div class="col-12 mt-4">
  
                              <button id="submitbtn" type="submit" class="btn rounded-pill btnsubmit bg_danger textli px-5 text-light border_color2 py-2 btnhover2">
-                                 Submit
+                              {{__('eng.submit')}}
                              </button>
  
  

@@ -15,7 +15,7 @@
 
                         </div>
 @empty
-No video                        
+{{__('guest.noVideo')}}                        
 @endforelse
 
 

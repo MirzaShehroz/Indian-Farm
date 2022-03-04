@@ -6,7 +6,7 @@
          <div class="col-12 col-md-4 pt-5 pt-md-0 my-3 my-md-0">
 
             <form class="d-flex position-relative">
-                <input class="form-control rounded-pill py-2 ps-5" type="search" placeholder="Search A Topic " aria-label="Search">
+                <input class="form-control rounded-pill py-2 ps-5" type="search" placeholder="{{__('guest.searchTopic')}} " aria-label="Search">
                 <button class="btn position-absolute end-0 me-3" type="submit"><i class="fas fa-search"></i></button>
               </form>
 
@@ -16,7 +16,7 @@
 
          <div class="col-12 col-md-4 text-center my-3 my-md-0">
 
-            <a href="{{url('post/question')}}" class=" rounded-pill btnhover2 border_color2 px-5 py-2 bgcolor text-light text-decoration-none">Post A Question</a>
+            <a href="{{url('post/question')}}" class=" rounded-pill btnhover2 border_color2 px-5 py-2 bgcolor text-light text-decoration-none">{{__('guest.postQuestion')}}</a>
 
          </div>
          <!-- end of col  -->
@@ -24,7 +24,7 @@
 
          <div class="col-12 col-md-4 text-center my-3 my-md-0">
 
-            <a href="{{url('my/post')}}" class="px-5 rounded-pill btnhover2 border_color2  py-2 bgcolor text-light text-decoration-none">View Your Post</a>
+            <a href="{{url('my/post')}}" class="px-5 rounded-pill btnhover2 border_color2  py-2 bgcolor text-light text-decoration-none">{{__('guest.viewPost')}}</a>
 
          </div>
          <!-- end of col  -->
@@ -45,12 +45,12 @@
 
                         <div class="text-center">
                             <h5>2</h5>
-                            <p class="tcolor">Views</p>
+                            <p class="tcolor">{{__('guest.view')}}</p>
                         </div>
 
                         <div class="text-center">
                             <h5>5</h5>
-                            <p class="tcolor">Answer</p>
+                            <p class="tcolor">{{__('guest.ans')}}</p>
                         </div>
 
 
@@ -61,17 +61,16 @@
 
                         <p>{{$question->question}}</p>
 
-                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bgcolor text-light text-decoration-none position-absolute bottom-0 start-0">Read More</a>
+                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bgcolor text-light text-decoration-none position-absolute bottom-0 start-0">{{__('guest.readMore')}}</a>
                         
-                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bgcolor text-light text-decoration-none position-absolute bottom-0 end-0">Date Posted</a>
-                        
-
+                            <a href="#" class="px-3 btnhover2 border_color2  py-1 bgcolor text-light text-decoration-none position-absolute bottom-0 end-0">{{__('guest.datePosted')}}</a>
+                      
                     </div>
                     <!-- end of col  -->
 
                 </div>
                 @empty
-                No Data 
+                {{__('guest.noData')}} 
                 @endforelse
                 <!-- end of row inner -->
 

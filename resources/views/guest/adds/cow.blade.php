@@ -115,7 +115,7 @@
 
             <tbody>
             <tr class="mb-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guet.price')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('guest.price')}}</td>
                 <td class="">INR {{$item->price}}</td>
 
             </tr>

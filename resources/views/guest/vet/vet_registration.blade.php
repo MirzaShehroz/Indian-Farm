@@ -24,22 +24,22 @@
 
         @csrf
 
-   <h5 class="mb-4">Personal Details</h5>
+   <h5 class="mb-4">{{__('guest.personalDetail')}}</h5>
         <div class="row">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="first_name" placeholder="First Name" aria-label="First name">
+            <input type="text" class="form-control" name="first_name" placeholder="{{__('guest.firstName')}}" aria-label="First name">
             @error('first_name')
                 <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="middle_name" placeholder="Middle Name" aria-label="Middle name">
+            <input type="text" class="form-control" name="middle_name" placeholder="{{__('guest.middleName')}}" aria-label="{{__('guest.middleName')}}">
             @error('middle_name')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="last_name" placeholder="Last Name" aria-label="Last name">
+            <input type="text" class="form-control" name="last_name" placeholder="{{__('guest.lastName')}}" aria-label="{{__('guest.lastName')}}">
             @error('last_name')
             <span>{{$message}}</span>
         @enderror
@@ -49,47 +49,47 @@
       
         <div class="row my-2">
           <div class="col-12 col-md-4 my-2">
-            <input type="number" class="form-control" name="license_no" placeholder="License No" aria-label="License">
+            <input type="number" class="form-control" name="license_no" placeholder="{{__('guest.licenseNo')}}" aria-label="License">
             @error('license_no')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="vetinary_council" placeholder="Registered Vetinary Council " aria-label="Registered Vetinary Council ">
+            <input type="text" class="form-control" name="vetinary_council" placeholder="{{__('guest.registCouncil')}}" aria-label="Registered Vetinary Council ">
             @error('vetinary_council')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="number" class="form-control" name="registration" placeholder="VC Registration NO" aria-label="VC Registration NO">
+            <input type="number" class="form-control" name="registration" placeholder="{{__('guest.vcRegistNum')}}" aria-label="VC Registration NO">
             @error('registration')
             <span>{{$message}}</span>
         @enderror
           </div>
         </div>
 
-        <h5 class="my-4">Contact Details</h5>
+        <h5 class="my-4">{{__('guest.contactDetail')}}</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="number" class="form-control" name="contact_no" placeholder="Contact Number" aria-label="Contact Number">
+            <input type="number" class="form-control" name="contact_no" placeholder="{{__('guest.contactNum')}}" aria-label="Contact Number">
             @error('contact_no')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="email" class="form-control" name="email" placeholder="Email Id" aria-label="Email Id">
+            <input type="email" class="form-control" name="email" placeholder="{{__('guest.emailId')}}" aria-label="Email Id">
             @error('email')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password">
+            <input type="password" class="form-control" name="password" placeholder="{{__('guest.password')}}" aria-label="Password">
             @error('password')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" aria-label="Confirm Password">
+            <input type="password" class="form-control" name="confirm_password" placeholder="{{__('guest.confirmPass')}}" aria-label="Confirm Password">
             @error('confirm_password')
             <span>{{$message}}</span>
         @enderror
@@ -99,26 +99,26 @@
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address1" placeholder="Address Line 1 " aria-label="Address Line 1 ">
+            <input type="text" class="form-control" name="address1" placeholder="{{__('guest.address1')}} " aria-label="Address Line 1 ">
             @error('address1')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address2" placeholder="Address Line 2" aria-label="Address Line 2">
+            <input type="text" class="form-control" name="address2" placeholder="{{__('guest.address2')}}" aria-label="Address Line 2">
             @error('address2')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="area" placeholder="Area" aria-label="area">
+            <input type="text" class="form-control" name="area" placeholder="{{__('guest.area')}}" aria-label="area">
             @error('area')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputCity" name="city" class="form-select overflow-scroll ">
-              <option value="" selected disabled>City</option>
+              <option value="" selected disabled>{{__('guest.city')}}</option>
               <option value="Pune">Pune</option>
             </select>
             @error('city')
@@ -131,7 +131,7 @@
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
             <select id="inputState" name="state" class="form-select overflow-scroll ">
-              <option value="" selected disabled>State</option>
+              <option value="" selected disabled>{{__('guest.selectState')}}</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -175,7 +175,7 @@
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputDistrict" name="district" class="form-select overflow-scroll ">
-              <option value="" selected disabled>District</option>
+              <option value="" selected disabled>{{__('guest.district')}}</option>
               <option value="Pune">Pune</option>
             </select>
             @error('district')
@@ -184,7 +184,7 @@
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputTaluka" name="taluka" class="form-select overflow-scroll ">
-              <option value="" selected disabled>Taluka</option>
+              <option value="" selected disabled>{{__('guest.selectTaluka')}}</option>
               <option value="Pune">Pune</option>
             </select>
             @error('taluka')
@@ -195,7 +195,7 @@
             <input type="number" class="form-control" name="pincode" placeholder="Pin Code" aria-label="Pin Code">
           </div>
         </div>
-        <h5 class="my-4">  Upload Documents</h5>
+        <h5 class="my-4">{{__('guest.documents')}}</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
             <input type="file" class="form-control" name="doc1">
@@ -216,7 +216,7 @@
       
         <div class="col-12 text-center ">
 
-          <a href="transport_post_submit.html" class="text-decoration-none text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2" type="submit">Submit</button></a>
+          <a href="transport_post_submit.html" class="text-decoration-none text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2" type="submit">{{__('guest.submit')}}</button></a>
 
         </div>
         <!-- end of col  -->

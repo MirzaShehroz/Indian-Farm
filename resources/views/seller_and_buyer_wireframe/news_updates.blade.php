@@ -19,16 +19,15 @@
 
                                         <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
 
-                                        <a href="{{url('news_detail/'.$new->id)}}" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">VIEW MORE</a>
+                                        <a href="{{url('news_detail/'.$new->id)}}" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;" onclick="newsdetail({{$new->id}})">{{__('guest.viewMore')}}</a>
 
                                     </div>
 
                                 </div>
                             @endforeach
                         @else
-                            No Content
+                            {{{__('guest.noContent')}}}
                         @endif
-
 
         <!-- end of col card -->
   
@@ -44,26 +43,22 @@
 
                                     <div class="cardnews position-relative overlay align-items-end overflow-hidden ps-2" style="background: url({{asset($new->photo)}}) center center no-repeat; background-size: cover; border-radius: 10px;">
 
-                                    <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">Latest</small>
+                                    <small class="position-absolute bgcolor text-light p-2 border-light border end-0" style="border-bottom-left-radius: 50%;">{{__('guest.latest')}}</small>
 
                                         <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start fs-4 ps-2 border-3">{{trimstring($new->topic)}}...</p>
 
                                         <small class="position-absolute text-light mt-3 fw-bold">Date: <span>{{$new->created_at->format('Y-m-d')}}</span> </small>
 
-                                        <a  href="{{url('news_detail/'.$new->id)}}" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;">VIfEW MORE</a>
+                                        <a  href="{{url('news_detail/'.$new->id)}}" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 35%;">{{__('guest.viewMore')}}</a>
 
                                     </div>
 
                                 </div>
                             @endforeach
                         @else
-                            No Content
+                            {{__('guest.noContent')}}
                         @endif
         <!-- end of col card -->
-  
-    
-  
-
 
     </div>
     <!-- end of row second  -->
@@ -77,10 +72,9 @@
 <div class="col-12 col-lg-3 my-3 my-lg-0  border-start border_color border-2">
 
 
-    <h4 class="mb-4 border-start border-5 border_color ps-3">Latest News</h4>
+    <h4 class="mb-4 border-start border-5 border_color ps-3">{{__('guest.latestNew')}}</h4>
 
     <div class="row p-lg-2">
-
 
     @forelse($latestnews as $news1)
 
@@ -104,18 +98,9 @@
 
         </div>
     @empty
-    No content 
+    {{__('guest.noContent')}}
     @endforelse    
         <!-- end of inner col  -->
-
-        
-  
-
-
-           
-
-        
-
 
     </div>
     <!-- inner row end  -->
@@ -147,7 +132,7 @@
 
 <div class="row pad-50 mt-5">
 
-<h4 class="fw-bold my-4 border-start border-5 border_color">Blogs</h4>
+<h4 class="fw-bold my-4 border-start border-5 border_color">{{__('guest.blog')}}</h4>
 
 <div class="col-12" id="blog-news">
 
@@ -160,9 +145,9 @@
 
                <p class=" mt-auto fw-bold text-light position-absolute bottom-0 border-start ps-2 border-3">Lorem ipsum dolor sit.</p>
 
-               <small class="position-absolute text-light mt-3 fw-bold">Date: <span>20/01/2022</span> </small>
+               <small class="position-absolute text-light mt-3 fw-bold">{{__('guest.date')}} <span>20/01/2022</span> </small>
 
-               <a href="news1.html" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 40%;">VIEW MORE</a>
+               <a href="news1.html" class="position-absolute text-decoration-none text-light viewbtn border border-light px-3 py-2 rounded-pill" style="top: 40%; left: 40%;">{{__('guest.viewMore')}}</a>
 
             </div>
             <!-- overlay div  -->

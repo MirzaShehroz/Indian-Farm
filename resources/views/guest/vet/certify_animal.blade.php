@@ -2,7 +2,7 @@
 @section('content')
 <div class="row pad-50 mt-5 pt-5 pt-lg-0 justify-content-around">
 
-    <h4 class="mt-5 mb-4 mt-md-0">Book an Vet Appoinment</h4>
+    <h4 class="mt-5 mb-4 mt-md-0">{{__('guest.bookVetAppoint')}}</h4>
 
    <div class="col-12">
 
@@ -21,26 +21,26 @@
                 <div class="col-md-4 col-lg-3 my-3">
                   
                     <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype">
-                      <option value="" disabled  selected>Select Animal Type...</option>
-                      <option value="2">Cow</option>
-                      <option value="1">Buffalo</option>
-                      <option value="0">Bull</option>
-                      <option value="3" >Sheep</option>
-                      <option  value="4"> Goat</option>
+                      <option value="" disabled  selected>{{__('guest.animalType')}}</option>
+                      <option value="2">{{__('guest.cow')}}</option>
+                      <option value="1">{{__('guest.buffalo')}}</option>
+                      <option value="0">{{__('guest.bull')}}</option>
+                      <option value="3" >{{__('guest.sheep')}}</option>
+                      <option  value="4"> {{__('guest.goat')}}</option>
                     </select>
                     
                   </div>
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="number" name="animalsno" id="" class="form-control" placeholder="No Of Animals ">
+                    <input type="number" name="animalsno" id="" class="form-control" placeholder="{{__('guest.noAnimal')}}">
 
                   </div>
                   <!-- end of col  -->
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="breed" id="" class="form-control" placeholder="Breed">
+                    <input type="text" name="breed" id="" class="form-control" placeholder="{{__('guest.breed')}}">
 
 
                   </div>
@@ -48,7 +48,7 @@
 
                 <div class="col-md-4 col-lg-3 my-3">
                     
-                    <input type="text" name="personname" id="" class="form-control" placeholder="Contact Person Name ">
+                    <input type="text" name="personname" id="" class="form-control" placeholder="{{__('guest.personName')}}">
 
 
                   </div>
@@ -64,21 +64,13 @@
 
             <div class="col-md-4 col-lg-3 my-3">
           
-                <input type="tel" name="mobileno" id="" class="form-control" placeholder="Contact Number">
+                <input type="tel" name="mobileno" id="" class="form-control" placeholder="{{__('guest.contactNum')}}">
                 
               </div>
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address1" id="" class="form-control" placeholder="Address Line 1 ">
-
-
-              </div>
-              <!-- end of col  -->
-
-            <div class="col-md-4 col-lg-3 my-3">
-                
-                <input type="text" name="address2" id="" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="address1" id="" class="form-control" placeholder="{{__('guest.address1')}}">
 
 
               </div>
@@ -86,7 +78,15 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="area" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="address2" id="" class="form-control" placeholder="{{__('guest.address2')}}">
+
+
+              </div>
+              <!-- end of col  -->
+
+            <div class="col-md-4 col-lg-3 my-3">
+                
+                <input type="text" name="area" id="" class="form-control" placeholder="{{__('guest.area')}} ">
 
 
               </div>
@@ -104,7 +104,7 @@
           
                 <div class="Districdropdown">
                     <select id="inputcity" name="city" class="form-select overflow-scroll  ">
-                      <option value="">City</option>
+                      <option value="">{{__('guest.city')}}</option>
                       <option value="Delhi">Delhi</option>
                     </select>
                   </div>
@@ -117,7 +117,7 @@
                 <div class="startdropdown">
                
                     <select id="inputState" name="state"  class="form-select overflow-scroll ">
-                      <option selected disabled> State</option>
+                      <option selected disabled> {{__('guest.selectState')}}</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -166,8 +166,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
-                      <option value=""> District</option>
-                     
+                      <option value=""> {{__('guest.district')}}</option>
                     
                     </select>
                   </div>
@@ -180,19 +179,12 @@
                 
                 <div class="Districdropdown">
                     <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
-                      <option value="">Select Taluka</option>
+                      <option value="">{{__('guest.selectTaluka')}}</option>
                       <option value="Pune">Pune</option>
-
-                    
                     </select>
                   </div>
-
-
               </div>
               <!-- end of col  -->
-              
-
-              
             </div>
             <!-- end of row  -->
 
@@ -202,21 +194,21 @@
 
             <div class="col-md-4 col-lg-3 my-3">
           
-                     <input type="number" name="pincode" id="" class="form-control" placeholder="Pin Code">
+                     <input type="number" name="pincode" id="" class="form-control" placeholder="{{__('guest.pinCode')}}">
 
                 
               </div>
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="date" name="appoint_date"  id="" class="form-control" placeholder="Appointment Date">
+                <input type="date" name="appoint_date"  id="" class="form-control" placeholder="{{__('guest.appointmentDate')}}">
 
               </div>
               <!-- end of col  -->
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="time" name="appoint_time"  id="" class="form-control" placeholder="Appointment Time">
+                <input type="time" name="appoint_time"  id="" class="form-control" placeholder="{{__('guest.appointmentTime')}}">
 
               </div>
               <!-- end of col  -->
@@ -230,9 +222,9 @@
             <div class="row justify-content-around mt-3 text-center">
 
                 <div class="col-12 col-md-6 text-start pb-5">
-                    <label for="price" class="form-label tcolor fw-bold">Comments</label>
+                    <label for="price" class="form-label tcolor fw-bold">{{__('guest.comment')}}</label>
                     <br>
-                    <textarea name="comment" name="comments" placeholder=" Enter Your Message..." class="comment form-control" id="" rows="5"></textarea>
+                    <textarea name="comment" name="comments" placeholder=" {{__('guest.message')}}" class="comment form-control" id="" rows="5"></textarea>
 
                 </div>
                 <!-- end of col  -->
@@ -240,7 +232,7 @@
                 <div class="col-12">
 
                     <button id="submitbtn" type="submit" class="btn btnsubmit bgcolor px-5 text-light border_color2 py-2 btnhover2">
-                        Submit
+                        {{__('guest.submit')}}
                     </button>
 
 

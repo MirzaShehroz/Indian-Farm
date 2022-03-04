@@ -2,7 +2,7 @@
 @section('content')
 <div class="row pad-50 mt-5 pt-5 pt-lg-0 justify-content-around">
 
-    <h4 class="mt-5 pt-5 mb-4 mt-md-0">Book an Transport</h4>
+    <h4 class="mt-5 pt-5 mb-4 mt-md-0">{{__('guest.bookTrans')}}</h4>
 
    <div class="col-12">
        
@@ -14,12 +14,12 @@
             <div class="col-md-4 col-lg-3 my-3">
                
                 <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="animaltype" value="{{old('animaltype')}}">
-                  <option name="animal_type" value="" disabled  selected>Select Animal Type...</option>
-                  <option value="2">Cow</option>
-                  <option value="1">Buffalo</option>
-                  <option value="0">Bull</option>
-                  <option value="3" >Sheep</option>
-                  <option  value="4"> Goat</option>
+                  <option name="animal_type" value="" disabled  selected>{{__('guest.animalType')}}</option>
+                  <option value="2">{{__('guest.cow')}}</option>
+                  <option value="1">{{__('guest.buffalo')}}</option>
+                  <option value="0">{{__('guest.bull')}}</option>
+                  <option value="3" >{{__('guest.sheep')}}</option>
+                  <option  value="4"> {{__('guest.goat')}}</option>
                 </select>
                 @error('animaltype')
                     {{$message}}
@@ -29,7 +29,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="number" name="animalsno" value="{{old('animalsno')}}" id="" class="form-control" placeholder="No Of Animals ">
+                <input type="number" name="animalsno" value="{{old('animalsno')}}" id="" class="form-control" placeholder="{{__('guest.noAnimal')}} ">
                 @error('animalsno')
                 {{$message}}
             @enderror
@@ -39,7 +39,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="personname" id="" value="{{old('personname')}}" class="form-control" placeholder="Contact Person Name ">
+                <input type="text" name="personname" id="" value="{{old('personname')}}" class="form-control" placeholder="{{__('guest.personName')}} ">
                 @error('personname')
                 {{$message}}
                  @enderror
@@ -49,7 +49,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="tel" name="mobileno" id="" value="{{old('mobileno')}}" class="form-control" placeholder="Contact Number ">
+                <input type="tel" name="mobileno" id="" value="{{old('mobileno')}}" class="form-control" placeholder="{{__('guest.contactNum')}} ">
                 @error('mobileno')
                 {{$message}}
             @enderror
@@ -59,27 +59,24 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="date" name="dot" id="" value="{{old('dot')}}" class="form-control" placeholder="Date Of Transport ">
+                <input type="date" name="dot" id="" value="{{old('dot')}}" class="form-control" placeholder="{{__('guest.transDate')}}">
                 @error('dot')
                 {{$message}}
             @enderror
-
               </div>
               <!-- end of col  -->
-
-              
             </div>
             <!-- end of row  -->
 
 
     <div class="row">
 
-        <h5 class="tcolor my-4">From Address</h5>
+        <h5 class="tcolor my-4">{{__('guest.fromAddress')}}</h5>
 
          
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="faddressline1" id="" value="{{old('faddressline1')}}" class="form-control" placeholder="Address Line 1 ">
+                <input type="text" name="faddressline1" id="" value="{{old('faddressline1')}}" class="form-control" placeholder="{{__('guest.address1')}} ">
                 @error('faddressline1')
                 {{$message}}
             @enderror
@@ -89,7 +86,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="faddressline2" id="" value="{{old('faddressline2')}}" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="faddressline2" id="" value="{{old('faddressline2')}}" class="form-control" placeholder="{{__('guest.address2')}}">
                 @error('faddressline2')
                 {{$message}}
             @enderror
@@ -99,7 +96,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="fromarea" value="{{old('fromarea')}}" id="" class="form-control" placeholder="Area ">
+                <input type="text" name="fromarea" value="{{old('fromarea')}}" id="" class="form-control" placeholder="{{__('guest.area')}} ">
                 @error('fromarea')
                 {{$message}}
             @enderror
@@ -111,7 +108,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="fromcity" value="{{old('fromcity')}}" class="form-select overflow-scroll  ">
-                      <option value="" selected>City</option>
+                      <option value="" selected>{{__('guest.city')}}</option>
                       <option value="goa">Goa</option>
                       <option value="lahore">Lahore</option>
                       <option value="islamabad">Islamabad</option>
@@ -130,7 +127,7 @@
                 <div class="startdropdown">
                
                     <select id="inputState" name="fromstate" value="{{old('fromstate')}}" class="form-select overflow-scroll ">
-                      <option selected disabled> State</option>
+                      <option selected disabled> {{__('guest.selectState')}}</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -184,7 +181,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" value="{{old('fromdistrict')}}" name="fromdistrict" class="form-select overflow-scroll  ">
-                      <option value=""> District</option>
+                      <option value=""> {{__('guest.selectDist')}}</option>
                       <option value="Bihar">Bihar</option>
                       <option value="punjab">Punjab</option>
                       <option value="sindh">Sindh</option>
@@ -202,7 +199,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputTaluka" name="fromtaluka" value="{{old('fromtaluka')}}" class="form-select overflow-scroll  ">
-                      <option value="">Taluka</option>
+                      <option value="">{{__('guest.selectTaluka')}}</option>
                       <option value="Taluka1">Taluka1</option>
                       <option value="Taluka2">Taluka2</option>
                       <option value="Taluka13">Taluka3</option>
@@ -219,7 +216,7 @@
               
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="number" name="frompincode" id="" value="{{old('frompincode')}}" class="form-control" placeholder="Pin Code ">
+                <input type="number" name="frompincode" id="" value="{{old('frompincode')}}" class="form-control" placeholder="{{__('guest.pinCode')}} ">
                 @error('frompincode')
                 {{$message}}
                  @enderror
@@ -236,12 +233,12 @@
 
     <div class="row mb-4">
 
-        <h5 class="tcolor my-4">To Address</h5>
+        <h5 class="tcolor my-4">{{__('guest.toAddress')}}</h5>
 
          
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="taddressline1" id="" value="{{old('taddressline1')}}" class="form-control" placeholder="Address Line 1 ">
+                <input type="text" name="taddressline1" id="" value="{{old('taddressline1')}}" class="form-control" placeholder="{{__('guest.address1')}} ">
                 @error('taddressline1')
                 {{$message}}
             @enderror
@@ -251,7 +248,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="taddressline2" id="" value="{{old('taddressline2')}}" class="form-control" placeholder="Address Line 2">
+                <input type="text" name="taddressline2" id="" value="{{old('taddressline2')}}" class="form-control" placeholder="{{__('guest.address2')}}">
                 @error('taddressline2')
                 {{$message}}
             @enderror
@@ -261,7 +258,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="toarea" id="" value="{{old('toarea')}}" class="form-control" placeholder="Area ">
+                <input type="text" name="toarea" id="" value="{{old('toarea')}}" class="form-control" placeholder="{{__('guest.area')}} ">
                 @error('toarea')
                 {{$message}}
             @enderror
@@ -273,7 +270,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="tocity" value="{{old('tocity')}}" class="form-select overflow-scroll  ">
-                      <option value="">City</option>
+                      <option value="">{{__('guest.city')}}</option>
                       <option value="goa">Goa</option>
                       <option value="lahore">Lahore</option>
                       <option value="islamabad">Islamabad</option>
@@ -292,7 +289,7 @@
                 <div class="startdropdown">
                
                     <select id="inputState"  name="tostate" value="{{old('toatate')}}" class="form-select overflow-scroll ">
-                      <option selected disabled> State</option>
+                      <option selected disabled> {{__('guest.selectState')}}</option>
                       <option value="Andhra Pradesh">Andhra Pradesh</option>
                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -345,7 +342,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputDistrict" name="todistrict" value="{{old('todistrict')}}" class="form-select overflow-scroll  ">
-                      <option value=""> District</option>
+                      <option value=""> {{__('guest.selectDist')}}</option>
                       <option value="bihar">Bihar</option>
                       <option value="punjab">Punjab</option>
                       <option value="kpk">kpk</option>
@@ -363,7 +360,7 @@
                 
                 <div class="Districdropdown">
                     <select id="inputTaluka" name="totaluka" value="{{old('totaluka')}}" class="form-select overflow-scroll  ">
-                      <option value="">Taluka</option>
+                      <option value="">{{__('guest.selectTaluka')}}</option>
                       <option value="Taluka1">Taluka1</option>
                       <option value="Taluka2">Taluka2</option>
                       <option value="Taluka3">Taluka3</option>
@@ -380,7 +377,7 @@
               
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="number" name="topincode" id="" value="{{old('topincode')}}" class="form-control" placeholder="Pin Code ">
+                <input type="number" name="topincode" id="" value="{{old('topincode')}}" class="form-control" placeholder="{{__('guest.pinCode')}} ">
                 @error('topincode')
                 {{$message}}
                  @enderror
@@ -400,7 +397,7 @@
                 <div class="col-12">
 
                     <button id="submitbtn" type="submit" class="btn btnsubmit bgcolor px-5 text-light border_color2 py-2 btnhover2" >
-                        Submit
+                        {{__('guest.submit')}}
                     </button>
 
 

@@ -2,33 +2,30 @@
 @section('title','Users')
 @section('pill')
     <div class=" px-4 pt-4 position-relative ps-md-5" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-
         <div class="row">
-
             <form action="{{route('search')}}" method="post">
                 @csrf
                 <div class="col-12 d-md-flex mt-3">
 
-                    <input type="text" name="full_name" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Name" id="">
-                    <input type="text" name="contact_no" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Contact Number" id="">
-                    <input type="text" name="email" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Email id " id="">
-                    <input type="text" name="area" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search Area" id="">
-
+                    <input type="text" name="full_name" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchName')}}" id="">
+                    <input type="text" name="contact_no" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchContact')}}" id="">
+                    <input type="text" name="email" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchEmail')}} " id="">
+                    <input type="text" name="area" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchArea')}}" id="">
 
                 </div>
                 <!-- end of col  -->
 
                 <div class="col-12 d-md-flex mt-3">
 
-                    <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By City" id="">
-                    <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By State" id="">
-                    <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By District" id="">
-                    <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Taluka" id="">
+                    <input type="text" name="city" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchCity')}}" id="">
+                    <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchState')}}" id="">
+                    <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchDist')}}" id="">
+                    <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchTaluka')}}" id="">
 
                     <select class="py-2 border" name="owner_status" id="">
-                        <option class="" disabled selected>Owner Status</option>
-                        <option class="owner"  >Owner</option>
-                        <option class="agent" >Owner Agent</option>
+                        <option class="" disabled selected>{{__('eng.ownerStatus')}}</option>
+                        <option class="owner"  >{{__('eng.owner')}}</option>
+                        <option class="agent" >{{__('eng.agent')}}</option>
                     </select>
 
 
@@ -37,7 +34,7 @@
 
                 <div class="col-12 mt-3">
 
-                    <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit">Search</button>
+                    <button class="bg_danger px-5 py-2 rounded-pill text-light " type="submit">{{__('eng.search')}}</button>
 
                 </div>
             </form>
@@ -47,10 +44,10 @@
 
                 <div class="text-end d-flex d-md-block ">
                     <button class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight1" aria-controls="offcanvasRight1" type="button">
-                        Add A User
+                        {{__('eng.addUser')}}
                     </button>
                     <button onclick="exportTableToCSV('record.csv')" class="bg_danger px-md-4 me-2 py-2 rounded-pill text-light " >
-                        Export as CSV
+                        {{__('eng.exportCsv')}}
                     </button>
 
                 </div>
@@ -60,21 +57,21 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th scope="col">User Id </th>
-                            <th scope="col">Full Name</th>
-                            <th scope="col">Farm Name</th>
-                            <th scope="col">Contact No</th>
-                            <th scope="col">Email Id</th>
-                            <th scope="col">Farm Owner</th>
-                            <th scope="col">Address Line 1</th>
-                            <th scope="col">Address Line 2</th>
-                            <th scope="col">Area</th>
-                            <th scope="col">City</th>
-                            <th scope="col">State</th>
-                            <th scope="col">District</th>
-                            <th scope="col">Taluka</th>
-                            <th scope="col">Pincode</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">{{__('eng.userID')}} </th>
+                            <th scope="col">{{__('eng.fullName')}}</th>
+                            <th scope="col">{{__('eng.farmName')}}</th>
+                            <th scope="col">{{__('eng.contactNum')}}</th>
+                            <th scope="col">{{__('eng.emailId')}}</th>
+                            <th scope="col">{{__('eng.farmOwner')}}</th>
+                            <th scope="col">{{__('eng.address1')}}</th>
+                            <th scope="col">{{__('eng.address2')}}</th>
+                            <th scope="col">{{__('eng.area')}}</th>
+                            <th scope="col">{{__('eng.city')}}</th>
+                            <th scope="col">{{__('eng.state')}}</th>
+                            <th scope="col">{{__('eng.district')}}</th>
+                            <th scope="col">{{__('eng.taluka')}}</th>
+                            <th scope="col">{{__('eng.pinCode')}}</th>
+                            <th scope="col">{{__('eng.action')}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -95,7 +92,7 @@
                                 @if ($item->address_line2)
                                     <td>{{$item->address_line2}}</td>
                                 @else
-                                    <td>Not Data Found</td>
+                                    <td>{{__('eng.noData')}}</td>
                                 @endif
                                 <td>{{$item->area}}</td>
                                 <td>{{$item->city}}</td>
@@ -129,7 +126,7 @@
 
                                                 <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
 
-                                                    <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">Edit User</h4>
+                                                    <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">{{__('eng.editUser')}}</h4>
 
                                                     <img src="{{asset($item->image)}}" class="profile_img my-3" alt="img not found" >
 
@@ -147,17 +144,17 @@
                                                         <div class="col-12">
 
                                                             <div class="row">
-                                                                <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                                                                <label for="fullname" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
 
                                                                 <div class="col-12 col-md-6 mb-3">
 
-                                                                    <input type="text" name="full_name" class="form-control mb-4" id="fullname" placeholder="Full Name" value="{{$item->first_name}}" required>
+                                                                    <input type="text" name="full_name" class="form-control mb-4" id="fullname" placeholder="{{__('eng.fullName')}}" value="{{$item->first_name}}" required>
                                                                 </div>
                                                                 <!-- end of col  -->
 
                                                                 <div class="col-12 col-md-6 mb-3">
 
-                                                                    <input type="text" name="farm_name" class="Farm_name" class="form-control" id="fullname" placeholder="Farm Name " value="{{$item->farm_name}}" required>
+                                                                    <input type="text" name="farm_name" class="Farm_name" class="form-control" id="fullname" placeholder="{{__('eng.farmName')}} " value="{{$item->farm_name}}" required>
 
                                                                 </div>
                                                                 <!-- end of col  -->
@@ -171,32 +168,32 @@
 
                                                         <div class="col-12 d-flex py-2 align-items-center">
 
-                                                            <span class="fw-bold me-3"> Owner Status</span>
+                                                            <span class="fw-bold me-3">{{__('eng.ownerStatus')}}</span>
 
                                                             @if ($item->owner_status=='owner')
                                                                 <div class="form-check ms-3">
                                                                     <input class="form-check-input" type="radio" name="owner_Status" value="owner" id="flexRadioDefault1" required checked>
                                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                                        Owner
+                                                                        {{__('eng.owner')}}
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check ms-4">
                                                                     <input class="form-check-input" type="radio" name="owner_Status" value="agent" id="flexRadioDefault2" required >
                                                                     <label class="form-check-label" for="flexRadioDefault2">
-                                                                        Agent
+                                                                        {{__('eng.agent')}}
                                                                     </label>
                                                                 </div>
                                                             @else
                                                                 <div class="form-check ms-3">
                                                                     <input class="form-check-input" type="radio" name="owner_Status" value="owner" id="flexRadioDefault1" required >
                                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                                        Owner
+                                                                        {{__('eng.owner')}}
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check ms-4">
                                                                     <input class="form-check-input" type="radio" name="owner_Status" value="agent" id="flexRadioDefault2" required checked>
                                                                     <label class="form-check-label" for="flexRadioDefault2">
-                                                                        Agent
+                                                                        {{__('eng.agent')}}
                                                                     </label>
                                                                 </div>
                                                             @endif
@@ -214,26 +211,26 @@
                                                                 <div class="form-check ms-3">
                                                                     <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" required checked>
                                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                                        Yes
+                                                                        {{__('eng.yes')}}
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check ms-4">
                                                                     <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault2" required >
                                                                     <label class="form-check-label" for="flexRadioDefault2">
-                                                                        No
+                                                                        {{__('eng.no')}}
                                                                     </label>
                                                                 </div>
                                                             @else
                                                                 <div class="form-check ms-3">
                                                                     <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" required >
                                                                     <label class="form-check-label" for="flexRadioDefault1">
-                                                                        Yes
+                                                                        {{__('eng.yes')}}
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check ms-4">
                                                                     <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault2" required checked>
                                                                     <label class="form-check-label" for="flexRadioDefault2">
-                                                                        No
+                                                                        {{__('eng.no')}}
                                                                     </label>
                                                                 </div>
 
@@ -252,27 +249,23 @@
 
                                                         <div class="col-12 col-lg-10 ">
 
-                                                            <label class="form-label fw-bold fs-5">Contact Details</label>
+                                                            <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
 
                                                             <div class="row">
 
                                                                 <div class="col-12 col-md-6 mb-3">
-                                                                    <input type="text" name="contact_no" class="form-control inputno1" placeholder="Contact Number" value="{{$item->contact_no}}"  aria-describedby="basic-addon4" required>
+                                                                    <input type="text" name="contact_no" class="form-control inputno1" placeholder="{{__('eng.contactNum')}}" value="{{$item->contact_no}}"  aria-describedby="basic-addon4" required>
 
                                                                 </div>
 
                                                                 <div class="col-12 col-md-6 mb-3">
-                                                                    <input type="email" name="email" class="form-control inputno1" placeholder="Email Id" value="{{$item->email}}"  aria-describedby="basic-addon4" required>
+                                                                    <input type="email" name="email" class="form-control inputno1" placeholder="{{__('eng.emailId')}}" value="{{$item->email}}"  aria-describedby="basic-addon4" required>
 
                                                                 </div>
-
                                                             </div>
-
-
 
                                                         </div>
                                                         <!-- end of col  -->
-
 
                                                     </div>
                                                     <!-- end of inner row  -->
@@ -282,20 +275,20 @@
                                                     <div class="row">
 
                                                         <div class="col-12 col-md-6 mt-3">
-                                                            <input type="text" name="address1" class="form-control" placeholder="Address First Line" value="{{$item->address_line1}}" aria-label="addressfirst" required>
+                                                            <input type="text" name="address1" class="form-control" placeholder="{{__('eng.address1')}}" value="{{$item->address_line1}}" aria-label="addressfirst" required>
                                                         </div>
                                                         <div class="col-12 col-md-6 mt-3">
-                                                            <input type="text" name="address2" class="form-control" placeholder="Address Second Line"  value="{{$item->address_line2}}"aria-label="addresssecode" >
+                                                            <input type="text" name="address2" class="form-control" placeholder="{{__('eng.address2')}}"  value="{{$item->address_line2}}"aria-label="addresssecode" >
                                                         </div>
                                                         <div class="col-12 col-md-6 mt-3">
-                                                            <input type="text" name="area" class="form-control" placeholder="Enter Area"  value="{{$item->area}}" aria-label="area" required>
+                                                            <input type="text" name="area" class="form-control" placeholder="{{__('eng.enterArea')}}"  value="{{$item->area}}" aria-label="area" required>
                                                         </div>
                                                         <div class="col-12 col-md-6 mt-3">
                                                             <select id="inputCity" name="city" class="form-select overflow-scroll " required>
                                                                 @if ($item->city=='Pune')
                                                                     <option value="Pune" selected>Pune</option>
                                                                 @else
-                                                                    <option value=""  selected disabled>City</option>
+                                                                    <option value=""  selected disabled>{{__('eng.city')}}</option>
                                                                     <option value="Pune">Pune</option>
                                                                 @endif
                                                             </select>
@@ -305,7 +298,7 @@
                                                                 @if ($item->state)
                                                                     <option value="{{$item->state}}" selected>{{$item->state}}</option>
                                                                 @else
-                                                                    <option value="" selected disabled>State</option>
+                                                                    <option value="" selected disabled>{{__('eng.selectState')}}</option>
                                                                 @endif
                                                                 <option value="Andhra Pradesh">Andhra Pradesh</option>
                                                                 <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
@@ -352,7 +345,7 @@
                                                                 @if ($item->district=='Pune')
                                                                     <option value="Pune" selected>Pune</option>
                                                                 @else
-                                                                    <option value="" selected disabled>District</option>
+                                                                    <option value="" selected disabled>{{__('eng.district')}}</option>
                                                                     <option value="Pune">Pune</option>
                                                                 @endif
 
@@ -364,7 +357,7 @@
                                                                 @if ($item->taluka=='Pune')
                                                                     <option value="Pune" selected>Pune</option>
                                                                 @else
-                                                                    <option value="" selected disabled>Taluka</option>
+                                                                    <option value="" selected disabled>{{__('eng.taluka')}}</option>
                                                                     <option value="Pune">Pune</option>
                                                                 @endif
 
@@ -377,7 +370,7 @@
 
                                                         <hr class="mt-5 mb-3 bgcolor" style="opacity: 0.6;">
                                                         <div class="col-12 text-center mx-auto col-md-3 mb-5">
-                                                            <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">Update</button>
+                                                            <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">{{__('eng.update')}}</button>
                                                         </div>
                                                     </div>
                                                     <!-- end of inner row  -->
@@ -407,14 +400,14 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center p-4">
-                        <p class="fw-bold text-secondary">Are You sure to Delete this user </p>
+                        <p class="fw-bold text-secondary">{{__('eng.deleteMsg')}}</p>
                     </div>
                     <form action="{{route('deleteUser')}}" method="POST">
                         @csrf
                         <div class="modal-foote d-flex">
-                            <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">No</button></a>
+                            <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a>
                             <input type="hidden" name="user_id" value="{{$item->user_id}}">
-                            <input type="submit" class="btn border form-control btnhover" value="Yes"/>
+                            <input type="submit" class="btn border form-control btnhover" value="{{__('eng.yes')}}"/>
                         </div>
                     </form>
                 </div>
@@ -501,7 +494,7 @@
 
                     <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
 
-                        <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">Add User</h4>
+                        <h4 class="border-start border-5 tcolor " style="border-color: #0572B2 !important;">{{__('eng.addUser')}}</h4>
 
                         <img src="{{asset('images/user-img.png')}}" class="profile_img my-3" alt="img not found" >
 
@@ -519,17 +512,17 @@
                             <div class="col-12">
 
                                 <div class="row">
-                                    <label for="fullname" class="form-label fw-bold fs-5">Personal Details</label>
+                                    <label for="fullname" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
 
                                     <div class="col-12 col-md-6 mb-3">
 
-                                        <input type="text" name="full_name" class="form-control mb-4" id="fullname" placeholder="Full Name" required>
+                                        <input type="text" name="full_name" class="form-control mb-4" id="fullname" placeholder="{{__('eng.fullName')}}" required>
                                     </div>
                                     <!-- end of col  -->
 
                                     <div class="col-12 col-md-6 mb-3">
 
-                                        <input type="text" name="farm_name" class="Farm_name" class="form-control" id="fullname" placeholder="Farm Name " required>
+                                        <input type="text" name="farm_name" class="Farm_name" class="form-control" id="fullname" placeholder="{{__('eng.farmName')}} " required>
 
                                     </div>
                                     <!-- end of col  -->
@@ -543,18 +536,18 @@
 
                             <div class="col-12 d-flex py-2 align-items-center">
 
-                                <span class="fw-bold me-3"> Owner Status</span>
+                                <span class="fw-bold me-3"> {{__('eng.ownerStatus')}}</span>
 
                                 <div class="form-check ms-3">
                                     <input class="form-check-input" type="radio" name="owner_Status" value="owner" id="flexRadioDefault1" required>
                                     <label class="form-check-label" for="flexRadioDefault1">
-                                        Owner
+                                        {{__('eng.owner')}}
                                     </label>
                                 </div>
                                 <div class="form-check ms-4">
                                     <input class="form-check-input" type="radio" name="owner_Status" value="agent" id="flexRadioDefault2" required>
                                     <label class="form-check-label" for="flexRadioDefault2">
-                                        Agent
+                                        {{__('eng.agent')}}
                                     </label>
                                 </div>
 
@@ -565,18 +558,18 @@
 
                             <div class="col-12 d-flex py-2 align-items-center">
 
-                                <span class="fw-bold me-3">Premium Member</span>
+                                <span class="fw-bold me-3">{{__('eng.premiumNumber')}}</span>
 
                                 <div class="form-check ms-3">
                                     <input class="form-check-input" type="radio" name="status" value="1" id="flexRadioDefault1" required>
                                     <label class="form-check-label" for="flexRadioDefault1">
-                                        Yes
+                                        {{__('eng.yes')}}
                                     </label>
                                 </div>
                                 <div class="form-check ms-4">
                                     <input class="form-check-input" type="radio" name="status" value="0" id="flexRadioDefault2" required>
                                     <label class="form-check-label" for="flexRadioDefault2">
-                                        No
+                                        {{__('eng.no')}}
                                     </label>
                                 </div>
 
@@ -594,17 +587,17 @@
 
                             <div class="col-12 col-lg-10 ">
 
-                                <label class="form-label fw-bold fs-5">Contact Details</label>
+                                <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
 
                                 <div class="row">
 
                                     <div class="col-12 col-md-6 mb-3">
-                                        <input type="text" name="contact_no" class="form-control inputno1" placeholder="Contact Number"  aria-describedby="basic-addon4" required>
+                                        <input type="text" name="contact_no" class="form-control inputno1" placeholder="{{__('eng.contactNum')}}"  aria-describedby="basic-addon4" required>
 
                                     </div>
 
                                     <div class="col-12 col-md-6 mb-3">
-                                        <input type="email" name="email" class="form-control inputno1" placeholder="Email Id"  aria-describedby="basic-addon4" required>
+                                        <input type="email" name="email" class="form-control inputno1" placeholder="{{__('eng.emailId')}}"  aria-describedby="basic-addon4" required>
 
                                     </div>
 
@@ -624,24 +617,24 @@
                         <div class="row">
 
                             <div class="col-12 col-md-6 mt-3">
-                                <input type="text" name="address1" class="form-control" placeholder="Address First Line" aria-label="addressfirst" required>
+                                <input type="text" name="address1" class="form-control" placeholder="{{__('eng.address1')}}" aria-label="addressfirst" required>
                             </div>
                             <div class="col-12 col-md-6 mt-3">
-                                <input type="text" name="address2" class="form-control" placeholder="Address Second Line" aria-label="addresssecode" >
+                                <input type="text" name="address2" class="form-control" placeholder="{{__('eng.address2')}}" aria-label="addresssecode" >
                             </div>
                             <div class="col-12 col-md-6 mt-3">
-                                <input type="text" name="area" class="form-control" placeholder="Enter Area" aria-label="area" required>
+                                <input type="text" name="area" class="form-control" placeholder="{{__('eng.enterArea')}}" aria-label="area" required>
                             </div>
                             <div class="col-12 col-md-6 mt-3">
                                 <select id="inputCity" name="city" class="form-select overflow-scroll " required>
-                                    <option value=""  selected disabled>City</option>
+                                    <option value=""  selected disabled>{{__('eng.city')}}</option>
                                     <option value="Pune">Pune</option>
 
                                 </select>
                             </div>
                             <div class="col-12 col-md-6 mt-3">
                                 <select id="inputState" name="state" class="form-select overflow-scroll " required>
-                                    <option value="" selected disabled>State</option>
+                                    <option value="" selected disabled>{{__('eng.selectState')}}</option>
                                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -684,7 +677,7 @@
 
                             <div class="col-12 col-md-6 mt-3">
                                 <select id="inputDistrict" name="district" class="form-select overflow-scroll " required>
-                                    <option value="" selected disabled>District</option>
+                                    <option value="" selected disabled>{{__('eng.district')}}</option>
                                     <option value="Pune">Pune</option>
 
                                 </select>
@@ -692,19 +685,19 @@
 
                             <div class="col-12 col-md-6 mt-3">
                                 <select id="inputTaluka" name="taluka" class="form-select overflow-scroll " required>
-                                    <option value="" selected disabled>Taluka</option>
+                                    <option value="" selected disabled>{{__('eng.selectTaluka')}}</option>
                                     <option value="Pune">Pune</option>
 
                                 </select>
                             </div>
 
                             <div class="col-12 col-md-6 mt-3">
-                                <input type="number" name="pin_code" class="form-control" placeholder="Pin Code" aria-label="pincode" required>
+                                <input type="number" name="pin_code" class="form-control" placeholder="{{__('eng.pinCode')}}" aria-label="pincode" required>
                             </div>
 
                             <hr class="mt-5 mb-3 bgcolor" style="opacity: 0.6;">
                             <div class="col-12 text-center mx-auto col-md-3 mb-5">
-                                <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">Save</button>
+                                <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">{{__('eng.submit')}}</button>
                             </div>
                         </div>
                         <!-- end of inner row  -->

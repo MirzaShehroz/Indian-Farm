@@ -77,7 +77,7 @@
 
             <div class="col-md-4 col-lg-3 my-3">
                 
-                <input type="text" name="address1" id="" class="form-control" placeholder="{{__('guest,address1')}}">
+                <input type="text" name="address1" id="" class="form-control" placeholder="{{__('guest.address1')}}">
                 @error('address1')
                 <span>{{$message}}</span>
             @enderror

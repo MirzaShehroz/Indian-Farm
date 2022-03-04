@@ -6,7 +6,7 @@
 
 <div class="row pad-50 mt-5 pt-5 pt-lg-0 justify-content-around ">
 
-    <h4 class="mt-5 mt-md-0">Search Transport</h4>
+    <h4 class="mt-5 mt-md-0">{{__('guest.searchTrans')}}</h4>
 
     <form action="{{route('searchResult')}}" class=" d-md-flex gap-3 justify-content-around" method="POST">
         @csrf
@@ -15,7 +15,7 @@
 
             <div class="Districdropdown">
                 <select id="inputcity" name="city" class="form-select overflow-scroll  ">
-                    <option value="">Select City</option>
+                    <option value="">{{__('guest.city')}}</option>
                     <option value="Pune">Pune</option>
                 </select>
             </div>
@@ -29,7 +29,7 @@
             <div class="startdropdown">
 
                 <select id="inputState" name="state" class="form-select overflow-scroll ">
-                    <option selected disabled>Select State</option>
+                    <option selected disabled>{{__('guest.selectState')}}</option>
                     <option value="Andhra Pradesh">Andhra Pradesh</option>
                     <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
                     <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -77,7 +77,7 @@
 
             <div class="Districdropdown">
                 <select id="inputDistrict" name="district" class="form-select overflow-scroll  ">
-                    <option value="">Select District</option>
+                    <option value="">{{__('guest.selectDist')}}</option>
                     <option value="Pune">Pune</option>
                     <option value="Ranchi">Ranchi</option>
                     <option value="South Goa">South Goa</option>
@@ -91,17 +91,16 @@
 
             <div class="Districdropdown">
                 <select id="inputTaluka" name="taluka" class="form-select overflow-scroll  ">
-                    <option value="">Select Taluka</option>
+                    <option value="">{{__('guest.selectTaluka')}}</option>
                     <option value="Pune">Pune</option>
                 </select>
             </div>
-
         </div>
         <!-- end of col  -->
 
         <div class="col-12 col-md-2 my-3 my-md-0">
 
-            <button class="form-control bgcolor text-light btnhover3 border_color2" type="submit">Search</button>
+            <button class="form-control bgcolor text-light btnhover3 border_color2" type="submit">{{__('guest.search')}}</button>
 
         </div>
         <!-- end of col  -->
@@ -123,11 +122,11 @@
         <table class="table table-bordered overflow-hidden">
             <thead>
                 <tr class="" style="background-color: rgb(228, 228, 228);">
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">District</th>
-                    <th scope="col">Taluka</th>
-                    <th scope="col">Contact Number</th>
+                    <th scope="col">{{__('guest.fullName')}}</th>
+                    <th scope="col">{{__("guest.address")}}</th>
+                    <th scope="col">{{__('guest.district')}}</th>
+                    <th scope="col">{{__('guest.taluka')}}</th>
+                    <th scope="col">{{__('guest.contactNum')}}</th>
                 </tr>
             </thead>
             <tbody>
