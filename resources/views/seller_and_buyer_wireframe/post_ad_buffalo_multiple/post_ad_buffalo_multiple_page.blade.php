@@ -5,10 +5,10 @@
 
     <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
 
-            
+
         <div class="row justify-content-around  shadow py-3">
-    
-            <h5 class="mb-3">Upload photos of your animal <i class="fas fa-images ms-3"></i></h5>
+
+            <h5 class="mb-3">{{ __('eng.uploadAnimalImage') }}<i class="fas fa-images ms-3"></i></h5>
 
             <div class="col-4 text-center border p-3 upload">
                 {{-- <input type="file" name="img1" id="img1"> --}}
@@ -18,7 +18,7 @@
                 </p>
                 <img id="output1" class="upload_img" hidden >
                 @error('img1')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
@@ -31,7 +31,7 @@
                 </p>
                 <img id="output2" class="upload_img" hidden >
                 @error('img2')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
@@ -44,7 +44,7 @@
                 </p>
                 <img id="output3" class="upload_img" hidden >
                 @error('img3')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
@@ -56,7 +56,7 @@
                 </p>
                 <img id="output4" class="upload_img" hidden >
                 @error('img4')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
@@ -69,7 +69,7 @@
                 </p>
                 <img id="output5" class="upload_img" hidden >
                 @error('img5')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
@@ -82,12 +82,12 @@
                 </p>
                 <img id="output6" class="upload_img" hidden >
                 @error('img6')
-                <span>Image is required</span>
+                <span>{{__('eng.imageRequired')}}</span>
                 @enderror
             </div>
             <!-- end of col inner  -->
 
-            <h6 class="text-secondary mt-3" style="font-size: 14px;">Please Note Maximum file size is 2 MB per file</h6>
+            <h6 class="text-secondary mt-3" style="font-size: 14px;">{{__('eng.maxImageSize')}}</h6>
 
         </div>
         <!-- end of row images inner  -->
@@ -109,7 +109,7 @@
                      Your browser does not support the video tag.
                     </video>
                     @error('video')
-                    <span>Video is required</span>
+                    <span>{{__('eng.videoRequired')}}</span>
                 @enderror
                 </div>
                 <!-- end video  -->

@@ -277,7 +277,7 @@
                                       </div>
         
                                       <div class="col-12 col-md-6 mb-3">
-                                        <input type="text" class="form-control inputno1" name="{{__('eng.password')}}" placeholder="Password">
+                                        <input type="text" class="form-control inputno1" name="password" placeholder="{{__('eng.password')}}">
         
                                       </div>
         
@@ -907,11 +907,11 @@
           <div class="row">
 
             <div class="col-12 col-md-6 mt-3">
-              <input type="text" class="form-control" placeholder="Address First Line" name="{{__('eng.address1')}}"
+              <input type="text" class="form-control" placeholder="{{__('eng.address1')}}" name="address_line1"
                 aria-label="addressfirst" required>
             </div>
             <div class="col-12 col-md-6 mt-3">
-              <input type="text" class="form-control" placeholder="Address Second Line" name="{{__('eng.address2')}}"
+              <input type="text" class="form-control" placeholder="{{__('eng.address2')}}" name="address_line2"
                 aria-label="addresssecode">
             </div>
             <div class="col-12 col-md-6 mt-3">

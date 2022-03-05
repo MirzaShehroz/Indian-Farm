@@ -8,9 +8,8 @@
 
     <div class="col-12 col-md-3 text-center mt-5 pt-4 mt-md-0 pt-md-0 mb-5">
 
-      <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">Your Profile</h4>
+      <h4 class="border-start border-5 tcolor" style="border-color: #0572B2 !important;">{{__('eng.yourProfile')}}</h4>
       @if(Auth::check()=='true')
-
         @if($user->image!=null)
         <img src="{{asset($user->image)}}" id="output" class="profile_img my-3" alt="img not found">
         @elseif($user->image==null)
@@ -25,7 +24,7 @@
       <form action="{{url('update/vet/profile')}}" method="post" enctype="multipart/form-data">
         @csrf
       <p ><input type="file"  accept="image/*" name="profile" id="file"  onchange="loadFile(event)" style="display: none;"></p>
-      <p class="bg-transparent border border-light  profilebtn btnhover px-3 py-2" style="border-radius: 5px;"><label for="file" style="cursor: pointer;">Upload Profile Picture</label></p>
+      <p class="bg-transparent border border-light  profilebtn btnhover px-3 py-2" style="border-radius: 5px;"><label for="file" style="cursor: pointer;">UploadPofileImg</label></p>
 
     </div>
     <!-- end of col-3 -->
@@ -40,11 +39,11 @@
 
       <div class="row">
 
-          <label for="" class="form-label fw-bold fs-5">Personal Details</label>
+          <label for="" class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
         <div class="col-12 col-md-6 mb-3">
 
             <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
-            <input type="text" class="form-control" name="first_name" value="{{$user->first_name}}" placeholder="Full Name"  required>
+            <input type="text" class="form-control" name="first_name" value="{{$user->first_name}}" placeholder="{{__('eng.fullName')}}"  required>
         
         
       
@@ -54,7 +53,7 @@
 
         <div class="col-12 col-md-6 mb-3">
 
-            <input type="text" class="form-control" name="middle_name" value="{{$user->middle_name}}" placeholder="Middle Name"  >
+            <input type="text" class="form-control" name="middle_name" value="{{$user->middle_name}}" placeholder="{{__('eng.middleName')}}"  >
         
     
 
@@ -63,7 +62,7 @@
 
         <div class="col-12 col-md-6 mb-3">
 
-            <input type="text" class="form-control" name="last_name" value="{{$user->last_name}}" placeholder="Last Name"  required>
+            <input type="text" class="form-control" name="last_name" value="{{$user->last_name}}" placeholder="{{__('eng.lastName')}}"  required>
         
     
 
@@ -71,7 +70,7 @@
         <!-- end of inner col  -->
         <div class="col-12 col-md-6 mb-3">
 
-            <input type="text" class="form-control" name="license_no" value="{{$user->license_no}}" placeholder="License No"  required>
+            <input type="text" class="form-control" name="license_no" value="{{$user->license_no}}" placeholder="{{__('eng.licenseNo')}}"  required>
         
     
 
@@ -80,16 +79,14 @@
         <div class="col-12 col-md-6 mb-3">
 
             <!-- <input type="text" class="form-control"  placeholder="Registered Vetinary Council"> -->
-            <input type="text" class="form-control" name="register_vetninary" value="{{$user->reg_vet_council}}"  placeholder="Registered Vetinary Council"  required>
-    
-
+            <input type="text" class="form-control" name="register_vetninary" value="{{$user->reg_vet_council}}"  placeholder="{{__('eng.registCouncil')}}"  required>
         </div>
         <!-- end of inner col  -->
 
         <div class="col-12 col-md-6 mb-3">
 
             <!-- <input type="text" class="form-control"  placeholder="VC Registered No."> -->
-            <input type="text" class="form-control" name="vc_register_no" value="{{$user->vc_reg_no}}"  placeholder="VC Registered No."  required>
+            <input type="text" class="form-control" name="vc_register_no" value="{{$user->vc_reg_no}}"  placeholder="{{__('eng.vcRegistNum')}}"  required>
     
 
         </div>
@@ -107,22 +104,22 @@
 
         <div class="col-12 col-lg-10 ">
 
-          <label class="form-label fw-bold fs-5">Contact Details</label>
+          <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" name="contact_no" value="{{$user->contact_no}}" placeholder="Contact Number">
+            <input type="text" class="form-control inputno1 mb-3" name="contact_no" value="{{$user->contact_no}}" placeholder="{{__('eng.contactNum')}}">
             
-            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#numberchange">Update/Change</button>
+            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#numberchange">{{__('eng.updateChange')}}</button>
             <br class="d-md-none">
          
           </div>
 
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" name="email" value="{{$user->email}}" placeholder="Email Id"  >
+            <input type="text" class="form-control inputno1 mb-3" name="email" value="{{$user->email}}" placeholder="{{__('eng.emailId')}}"  >
             
-            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#emailchange">Update/Change</button>
+            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#emailchange">{{__('eng.updateChange')}}</button>
             <br class="d-md-none">
-            <span class="ms-3">Requires OTP
+            <span class="ms-3">{{__('eng.requireOtp')}}
             </span>
           </div>
           <span id="message" style="color:green"></span>
@@ -131,24 +128,16 @@
         
           </div>
           <div class="input-group d-block mb-5 mb-md-3 d-md-flex">
-            <input type="text" class="form-control inputno1 mb-3" name="password" placeholder="Change Password" >
+            <input type="text" class="form-control inputno1 mb-3" name="password" placeholder="{{__('eng.changePass')}}" >
             
-            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#passwordchange">Password/Change</button>
+            <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4" data-bs-toggle="modal" data-bs-target="#passwordchange">{{__('eng.change/Pass')}}</button>
             <br class="d-md-none">
          
           </div>
 
-      
-
-          
-
-
         </div>
         <!-- end of col  -->
-
-    
-
-        
+   
       </div>
       <!-- end of inner row  -->
 
@@ -157,18 +146,18 @@
       <div class="row">
 
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" placeholder="Address First Line" name="address_line1" value="{{$user->address_line1}}" aria-label="addressfirst"  required>
+          <input type="text" class="form-control" placeholder="{{__('eng.address1')}}" name="address_line1" value="{{$user->address_line1}}" aria-label="addressfirst"  required>
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" value="{{$user->address_line2}}" name="address_line2" placeholder="Address Second Line" aria-label="addresssecode"  required>
+          <input type="text" class="form-control" value="{{$user->address_line2}}" name="address_line2" placeholder="{{__('eng.address2')}}" aria-label="addresssecode"  required>
         </div>
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" value="{{$user->area}}" name="area" placeholder="Enter Area" aria-label="area"  required>
+          <input type="text" class="form-control" value="{{$user->area}}" name="area" placeholder="{{__('eng.enterArea')}}" aria-label="area"  required>
         </div>
         <div class="col-12 col-md-6 mt-3">
           <select id="inputCity" class="form-select overflow-scroll " name="city"  required>
           <option value="{{$user->city}}" selected >{{$user->city}}</option>
-            <option value=""  disabled>City</option>
+            <option value=""  disabled>{{__('eng.city')}}</option>
             <option value="Pune">Pune</option>
 
           </select>
@@ -176,7 +165,7 @@
         <div class="col-12 col-md-6 mt-3">
           <select id="inputState" class="form-select overflow-scroll " name="state"  required>
           <option value="{{$user->state}}" selected >{{$user->state}}</option>
-            <option value=""  disabled>State</option>
+            <option value=""  disabled>{{__('eng.state')}}</option>
             <option value="Andhra Pradesh">Andhra Pradesh</option>
             <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
             <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -220,7 +209,7 @@
         <div class="col-12 col-md-6 mt-3">
           <select id="inputDistrict" class="form-select overflow-scroll " name="district"  required>
           <option value="{{$user->district}}" selected >{{$user->district}}</option>
-            <option value=""disabled>District</option>
+            <option value=""disabled>{{__('eng.district')}}</option>
             <option value="Pune">Pune</option>
 
           </select>
@@ -229,19 +218,19 @@
         <div class="col-12 col-md-6 mt-3">
           <select id="inputTaluka" class="form-select overflow-scroll " name="taluka" required>
           <option value="{{$user->taluka}}" selected>{{$user->taluka}}</option>
-            <option value=""disabled>Taluka</option>
+            <option value=""disabled>{{__('eng.taluka')}}</option>
             <option value="Pune">Pune</option>
 
           </select>
         </div>
 
         <div class="col-12 col-md-6 mt-3">
-          <input type="text" class="form-control" value="{{$user->zipcode}}" placeholder="Pin Code" aria-label="pincode" name="zipcode">
+          <input type="text" class="form-control" value="{{$user->zipcode}}" placeholder="{{__('eng.pinCode')}}" aria-label="pincode" name="zipcode">
         </div>
 
         <hr class="mt-5 mb-3 bgcolor" style="opacity: 0.6;">
         <div class="col-12 text-center mx-auto col-md-3">
-           <button type="submit"  class="px-3 btnhover py-2 border border-secondary bg-transparent">Update/Change</button>
+           <button type="submit"  class="px-3 btnhover py-2 border border-secondary bg-transparent">{{__('eng.updateChanxge')}}</button>
         </div>
 
       </div>
@@ -289,10 +278,10 @@
               <form action="{{url('vet/change/password')}}" method="post">
                 @csrf
                   <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
-                  <input type="password" placeholder="Enter Password" class="py-3 mt-5 form-control" name="password" id="">
-                  <input type="password" placeholder="Re-Enter Password" class="py-3 mt-2 form-control" name="repassword" id="">
+                  <input type="password" placeholder="{{__('eng.enterPass')}}" class="py-3 mt-5 form-control" name="password" id="">
+                  <input type="password" placeholder="{{__('eng.reEnterPass')}}" class="py-3 mt-2 form-control" name="repassword" id="">
 
-                  <button type="submit" class="py-3 form-control mt-5 bg_danger text-light">Submit</button>
+                  <button type="submit" class="py-3 form-control mt-5 bg_danger text-light">{{__('eng.submit')}}</button>
               </form>
           </div>
         </div>
@@ -309,17 +298,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center p-4">
-          <h5>Please Enter your New Mobile No</h5>
-
+          <h5>{{__('eng.enterMobile')}}</h5>
           <div>
               <form action="" method="post">
-                  <input type="text" placeholder="Enter Mobile No." class="py-3 mt-5 form-control" name="" id="">
+                  <input type="text" placeholder="{{__('eng.mobileNumber')}}" class="py-3 mt-5 form-control" name="" id="">
 
-                  <button type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+                  <button type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">{{__('eng.submit')}}</button>
               </form>
           </div>
         </div>
-       
       </div>
     </div>
   </div>
@@ -332,15 +319,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center p-4">
-          <h5>Please Enter your New Email</h5>
+          <h5>{{__('eng.enterMobile')}}</h5>
 
           <div>
           <form method="post">
               
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                <input type="email" placeholder="Enter Email Id " class="py-3 mt-5 form-control" id="sendmail" name="changeemail">
+                <input type="email" placeholder="{{__('eng.enterEmail')}}" class="py-3 mt-5 form-control" id="sendmail" name="changeemail">
 
-                <button id="changeemail" onclick="changeVetEmail({{Auth::user()->id}})" type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">Submit</button>
+                <button id="changeemail" onclick="changeVetEmail({{Auth::user()->id}})" type="button" class="py-3 form-control mt-5 bg_danger text-light" data-bs-toggle="modal" data-bs-target="#otpnumber">{{__('eng.submit')}}</button>
             </form>
           </div>
         </div>

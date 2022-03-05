@@ -30,7 +30,7 @@ return [
     'course'=>'Online Courses',
 // community navbar
     'community'=>' Community & Forum',
-// news navbar 
+// news navbar
     'news'=>' News & Updates',
 // login register
     'login'=>'Login/Register',
@@ -72,9 +72,10 @@ return [
     'breedType'=>'Breed Type',
     'pregnant'=>'Pregnant',
     'dueMonth'=>'Due Month',
-    'milkCap'=>'Daily Milk Capacity', 
+    'milkCap'=>'Daily Milk Capacity',
     'vacinated'=>'Vacinated',
     'certified'=>'Certified',
+    'nonCertified'=>'Non Certified',
     'certifyBy'=>'Certified By',
     'certifyRegisNum'=>'Certified By Reg No',
     'contactSeller'=>'Contact Seller',
@@ -103,7 +104,6 @@ return [
     'pinCode'=>'Pin Code',
     'selectVet'=>'Select A Vet',
     'vetContact'=>'Vet Contact Number',
-    'comment'=>'Comments',
     'message'=>'Enter Your Message...',
     'submit'=>'Submit',
 //----------------- end book vet------------------------------
@@ -217,7 +217,7 @@ return [
     'farmName'=>'Farm Name',
     'farmOwner'=>'Farm Owner',
     'action'=>'Action',
-    // user edit 
+    // user edit
     'editUser'=>'Edit User',
     'yes'=>'Yes',
     'no'=>'No',
@@ -286,11 +286,10 @@ return [
     'comment'=>'Comment',
     'noVet'=>'No Vet',
     // profile
-    'editProfile'=>'Edit Your Profile',
     'uploadProfileImg'=>'Upload Profile Picture',
     'requireOtp'=>'Requires OTP',
     'change/Pass'=>'Password/Change',
-    'updateChange'=>"Updata/Chnage",
+    'updateChange'=>"Update/Change",
     'enterMobile'=>'Please Enter your New Mobile No',
     'enterNewEmail'=>'Please Enter your New Email',
     'enterPass'=>"Enter Password",
@@ -335,7 +334,68 @@ return [
     'editTrans'=>'Edit an Transport',
     'viewTrans'=>'View an Transport',
     'deleteTrasnAlert'=>'Are You sure to Delete this Transport ',
-    
+
+// -------------------vet dashboard ----------------------------------
+
+    'yourInput'=>'Your Inputs',
+    'yourComments'=>'Your Comments',
+    // certified
+    'certifiedStatus'=>"Certification Status",
+    'yourProfile'=>'Your Profile',
+    'mobileNumber'=>"Enter Mobile No.",
+    'enterEmail'=>'Enter Email Id',
+// -------------------- end vet ---------------------------------------
+// -------------------- buyer & seller----------------------------------
+
+    'searchPost'=>'Search Your Posted Ad',
+    'addPostedDate'=>'Add Posted Date',
+    'quality'=>'Quality',
+    'premium'=>'Premium',
+    'adStatus'=>"Ad Status",
+    'active'=>"Active",
+    'inActive'=>'InActive',
+    'adOption'=>'Ad Options',
+    'edit'=>'Edit',
+    'remove'=>'Remove',
+    'noView'=>'No Of Views ',
+    'certifyAnimal'=>'Certity Your Animal',
+    'sellFast'=>'Sell Faster With Premium',
+    // post an add
+    'selectAnimalType'=>'Select Your Animal Type',
+    'oneAnimal'=>'One Animal',
+    'moreThenOne'=>'More Than One Animal',
+    // post one Animal
+    'uploadAnimalImage'=>'Upload photos of your animal ',
+    'maxImageSize'=>'Please Note Maximum file size is 2 MB per file',
+    'uploadVideo'=>'Upload Video of your animal',
+    'genderSet'=>'Gender Set as Female',
+    'gender'=>'Gender',
+    'female'=>'Female',
+    'male'=>'Male',
+    'selectGender'=>'Please Select Gender',
+    'areYou'=>'Are You',
+    'mediator'=>'Mediator',
+    'cross'=>'Cross',
+
+
+
+    // error message
+    'imageRequired'=>'Image is required',
+    'videoRequired'=>'Video is Required',
+    'priceRequired'=>'Price is Required',
+    'breedRequired'=>'Breed is required',
+    'areaRequired'=>"Area is Required",
+    'talukaRequired'=>'Taluka is required',
+    'cityRequired'=>'City is required',
+    'districtRequired'=>"district is required",
+    'pinRequired'=>"Pincode is Required",
+    'breedRequired'=>'Breed type is required',
+    'ownerRequired'=>'OWnerShip status is Required',
+    'vacinationRequired'=>"Vacination status required",
+    'tagNumber'=>"Tag number is required",
+    // edit profile
+        'updateProfile'=>'Update Profile',
+        'ownerOrAgent'=>'Are you the Owner/Agent',
 
 
 
@@ -347,7 +407,91 @@ return [
 
 
 
-    
+
+
+
+
+// -------------------- end buyer & seller -----------------------------
+
+
+
+
+
+// states
+    'andhraPradesh'=>'Andhra Pradesh',
+    'arunachalPradesh'=>'Arunachal Pradesh',
+    'assam'=>'Assam',
+    'bihar'=>'Bihar',
+    'chandigarh'=>'Chandigarh',
+    'chhattisgarh'=>'Chhattisgarh',
+    'dadar'=>'Dadar and Nagar Haveli',
+    'daman'=>'Daman and Diu',
+    'delhi'=>'Delhi',
+    'lakshadweep'=>'Lakshadweep',
+    'puducherry'=>'puducherry',
+    'goa'=>'Goa',
+    'gujarat'=>'Gujarat',
+    'haryana'=>'Haryana',
+    'himachal'=>'Himachal Pradesh',
+    'jammu'=>'Jammu and Kashmir',
+    'jharkhand'=>'Jharkhand',
+    'karnataka'=>'Karnataka',
+    'kerala'=>'Kerala',
+    'madhya'=>'Madhya Pradesh',
+    'maharashtra'=>'Maharashtra',
+    'manipur'=>"Manipur",
+    'meghalaya'=>"Meghalaya",
+    'mizoram'=>'Mizoram',
+    'nagaland'=>"Nagaland",
+    'odisha'=>'Odisha',
+    'punjab'=>'Punjab',
+    'rajasthan'=>'Rajasthan',
+    'sikkim'=>'Sikkim',
+    'tamil'=>'Tamil Nadu',
+    'telangana'=>'Telangana',
+    'tripura'=>'Tripura',
+    'uttarPradesh'=>'Uttar Pradesh',
+    'uttarakhand'=>"Uttarakhand",
+    'westBengal'=>'West Bengal',
+    'pune'=>'Pune',
+
+    // login pages
+    'indianFarm'=>'Indian Farm Animal',
+    'resetLink'=>'Reset password Link' ,
+    'ifaLogin'=>"IFA-Login",
+
+
+    // forgot pass
+    'ifaForgot'=>'IFA-Forgot',
+    'registerEmail'=>'Enter Your Registerd Email',
+    'forgotPass'=>' Forgot Password? ',
+    'register'=>"Register",
+    'dontHaveAccount'=>"If You Don't Have an Account please",
+    'clickHere'=>"Click Here",
+    'ifaVerify'=>'IFA-Login Verification',
+    'verifcationCode'=>'Enter Your Verification Code',
+    'resendOtp'=>'Resend OTP',
+    'enterName'=>'Enter Your Full Name',
+    'enterNumber'=>'Enter Your Mobile Number',
+    'agree'=>'I agree',
+    'agreeStatement'=>' By selecting agree you are agreeing to our',
+    'terms'=>'Terms & Condition ',
+    'policy'=>'Privacy Policy',
+    'sendVerificationMsg'=>"We have sent you an Verification Code on your Mobile No & Email Id",
+    'enterMobileOtp'=>'Enter Mobile No OTP',
+    'enterEmailOtp'=>'Enter Email Id OTP',
+    'informationProvided'=>'Buy Clicking I Agree you consent that all the information provided by you is accurate & Correct',
+
+    // plans
+    'planName'=>'Plan Name',
+    'amount'=>'Amount',
+    'confirmPay'=>'Confirm & Pay',
+    'activeSub'=>'Your Active Subscription',
+    'sellFastSub'=>"Sell Faster with our Premium Subscription",
+    'purchaseDate'=>'Purchase Date',
+    'endDate'=>'End Date',
+    // chat
+    'inbox'=>'Inbox',
 
 
 
@@ -358,7 +502,6 @@ return [
 
 
 
-    
 
 
 
@@ -384,7 +527,16 @@ return [
 
 
 
-    
+
+
+
+
+
+
+
+
+
+
 
 
 

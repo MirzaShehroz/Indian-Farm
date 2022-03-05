@@ -10,7 +10,7 @@
 
             <div class="nav flex-column nav-pills border border-dark" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
-                <h4 class="tcolor mb-4 text-center mt-3">Inbox</h4>
+                <h4 class="tcolor mb-4 text-center mt-3">{{__('eng.inbox')}}</h4>
 
                 <button class="nav-link active border col-12" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
 

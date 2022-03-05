@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login Verification</title>
+    <title>{{__('ifaVerfiy')}}</title>
 </head>
 <body>
 
@@ -40,19 +40,19 @@
 @endif
                     <form action="{{url('checkotp')}}" method="post">
                         @csrf
-            <?php 
+            <?php
               $id= request()->segment(3);
               $type= request()->segment(2);
               ?>
             <input type="hidden" value="{{$type}}" name="type">
             <input type="hidden" value="{{$id}}" name="id">
-                        <input type="text" class="mobileno_input border_color form-control py-3 " name="otp" placeholder="Enter Your Verification Code" required>
+                        <input type="text" class="mobileno_input border_color form-control py-3 " name="otp" placeholder="{{__('eng.verifcationCode')}}" required>
 
 
                         <span class="d-block text-dark mt-5 mb-3 d-flex">
-              <a href="{{url('buyer/seller/resend/otp/'.$id)}}" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2" id="resend"> Resend OTP </a>
+              <a href="{{url('buyer/seller/resend/otp/'.$id)}}" class="btn btnhover tcolor  text-decoration-none fw-bold me-auto border_color2" id="resend"> {{__('eng.resendOtp')}} </a>
 
-              <button href="user-login.html" id="submit" name="submit" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2"> Submit </button>
+              <button href="user-login.html" id="submit" name="submit" class="btn btnhover tcolor  text-decoration-none fw-bold border_color2"> {{__('eng.submit')}} </button>
             </span>
 
                         <p class="text-start text-secondary"><span id="countdowntimer">160</span>&nbspSeconds</p>
@@ -120,7 +120,7 @@
     timeleft--;
     document.getElementById("countdowntimer").textContent = timeleft;
     if(timeleft==0){
-      
+
       $("#submit").attr("disabled", true)
       }
       else{
@@ -129,9 +129,9 @@
     if(timeleft <= 0)
         clearInterval(downloadTimer);
     },1000);
-   
-   
-    
+
+
+
 </script>
 
 </body>

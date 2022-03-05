@@ -22,22 +22,22 @@
     <div class="col-12 col-md-8">
 
 
-   <h5 class="mb-4">{{__('guest.personalDetail')}}</h5>
+   <h5 class="mb-4">{{__('eng.personalDetail')}}</h5>
         <div class="row">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="first_name" placeholder="{{__('guest.firstName')}}" value="{{old('first_name')}}" aria-label="First name">
+            <input type="text" class="form-control" name="first_name" placeholder="{{__('eng.firstName')}}" value="{{old('first_name')}}" aria-label="First name">
             @error('first_name')
                 <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="middle_name" placeholder="{{__('guest.middleName')}}" value="{{old('middle_name')}}" aria-label="Middle name">
+            <input type="text" class="form-control" name="middle_name" placeholder="{{__('eng.middleName')}}" value="{{old('middle_name')}}" aria-label="Middle name">
             @error('middle_name')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="last_name" placeholder="{{__('guest.lastName')}}" value="{{old('last_name')}}" aria-label="Last name">
+            <input type="text" class="form-control" name="last_name" placeholder="{{__('eng.lastName')}}" value="{{old('last_name')}}" aria-label="Last name">
             @error('last_name')
             <span>{{$message}}</span>
         @enderror
@@ -47,47 +47,47 @@
       
         <div class="row my-2">
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="license_no" placeholder="{{__('guest.licenseNo')}}" value="{{old('license_no')}}" aria-label="License">
+            <input type="text" class="form-control" name="license_no" placeholder="{{__('eng.licenseNo')}}" value="{{old('license_no')}}" aria-label="License">
             @error('license_no')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="vehicle" placeholder="{{__('guest.vehicleType')}} " value="{{old('vehicle')}}" aria-label="Vehicle">
+            <input type="text" class="form-control" name="vehicle" placeholder="{{__('eng.vehicleType')}} " value="{{old('vehicle')}}" aria-label="Vehicle">
             @error('vehicle')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-4 my-2">
-            <input type="text" class="form-control" name="make" placeholder="{{__('guest.vehicleMake')}}" value="{{old('makee')}}" aria-label="Model">
+            <input type="text" class="form-control" name="make" placeholder="{{__('eng.vehicleMake')}}" value="{{old('makee')}}" aria-label="Model">
             @error('make')
             <span>{{$message}}</span>
         @enderror
           </div>
         </div>
 
-        <h5 class="my-4">{{__('guest.contactDetail')}}</h5>
+        <h5 class="my-4">{{__('eng.contactDetail')}}</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="contact_no" placeholder="{{__('guest.contactNum')}}" value="{{old('contact_no')}}" aria-label="Contact Number">
+            <input type="text" class="form-control" name="contact_no" placeholder="{{__('eng.contactNum')}}" value="{{old('contact_no')}}" aria-label="Contact Number">
             @error('contact_no')
             <span>{{$message}}</span>
         @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="email" placeholder="{{__('guest.emailId')}}" value="{{old('email')}}" aria-label="Email Id">
+            <input type="text" class="form-control" name="email" placeholder="{{__('eng.emailId')}}" value="{{old('email')}}" aria-label="Email Id">
             @error('email')
             <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" id="password" class="form-control" name="password"  placeholder="{{__('guest.password')}}" aria-label="Password">
+            <input type="password" id="password" class="form-control" name="password"  placeholder="{{__('eng.password')}}" aria-label="Password">
             @error('password')
             <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="password" id="c_password" class="form-control" name="password_confirmation" placeholder="{{__('guest.confirmPass')}}" aria-label="Confirm Password">
+            <input type="password" id="c_password" class="form-control" name="password_confirmation" placeholder="{{__('eng.confirmPass')}}" aria-label="Confirm Password">
             <span id="message"></span>
             @error('password_confirmation')
             <span>{{$message}}</span>
@@ -98,26 +98,26 @@
 
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address1" placeholder="{{__('guest.address1')}}" value="{{old('address1')}}" aria-label="Address Line 1 ">
+            <input type="text" class="form-control" name="address1" placeholder="{{__('eng.address1')}}" value="{{old('address1')}}" aria-label="Address Line 1 ">
             @error('address1')
             <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="address2" placeholder="{{__('guest.address2')}}" value="{{old('address2')}}" aria-label="Address Line 2">
+            <input type="text" class="form-control" name="address2" placeholder="{{__('eng.address2')}}" value="{{old('address2')}}" aria-label="Address Line 2">
             @error('address2')
             <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="text" class="form-control" name="area" placeholder="{{__('guest.area')}}" value="{{old('area')}}" aria-label="area">
+            <input type="text" class="form-control" name="area" placeholder="{{__('eng.area')}}" value="{{old('area')}}" aria-label="area">
             @error('area')
             <span>{{$message}}</span>
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputCity" name="city" value="{{old('city')}}" class="form-select overflow-scroll ">
-              <option value="" selected disabled>{{__('guest.city')}}</option>
+              <option value="" selected disabled>{{__('eng.city')}}</option>
               <option value="Pune">Pune</option>]
             </select>
             @error('city')
@@ -130,7 +130,7 @@
         <div class="row my-2">
           <div class="col-12 col-md-3 my-2">
             <select id="inputState" name="state" value="{{old('state')}}" class="form-select overflow-scroll ">
-              <option value="" selected disabled>{{__('guest.selectState')}}</option>
+              <option value="" selected disabled>{{__('eng.selectState')}}</option>
               <option value="Andhra Pradesh">Andhra Pradesh</option>
               <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
               <option value="Arunachal Pradesh">Arunachal Pradesh</option>
@@ -175,7 +175,7 @@
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputDistrict" name="district" value="{{old('district')}}" class="form-select overflow-scroll ">
-              <option value="" selected disabled>{{__('guest.selectDist')}}</option>
+              <option value="" selected disabled>{{__('eng.selectDist')}}</option>
               <option value="Pune">Pune</option>
             </select>
             @error('district')
@@ -184,7 +184,7 @@
           </div>
           <div class="col-12 col-md-3 my-2">
             <select id="inputTaluka" name="taluka" value="{{old('taluka')}}" class="form-select overflow-scroll ">
-              <option value="" selected disabled>{{__('guest.selectTaluka')}}</option>
+              <option value="" selected disabled>{{__('eng.selectTaluka')}}</option>
               <option value="Pune">Pune</option>
             </select>
             @error('taluka')
@@ -192,7 +192,7 @@
             @enderror
           </div>
           <div class="col-12 col-md-3 my-2">
-            <input type="number" class="form-control" name="pincode" value="{{old('pincode')}}" placeholder="{{__('guest.pinCode')}}" aria-label="Pin Code">
+            <input type="number" class="form-control" name="pincode" value="{{old('pincode')}}" placeholder="{{__('eng.pinCode')}}" aria-label="Pin Code">
             @error('pincode')
             <span>{{$message}}</span>
             @enderror
@@ -200,7 +200,7 @@
         </div>
 
       
-        <h5 class="my-4"> {{__('guest.documents')}}</h5>
+        <h5 class="my-4"> {{__('eng.documents')}}</h5>
         <div class="row">
           <div class="col-12 col-md-3 my-2">
             <input type="file" class="form-control" name="doc1" required>
@@ -218,7 +218,7 @@
       
         <div class="col-12 text-center ">
 
-          <a href="transport_post_submit.html" class="text-decoration-none  text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2 hoverbtna" type="submit">{{__('guest.submit')}}</button></a>
+          <a href="transport_post_submit.html" class="text-decoration-none  text-light"> <button class="bgcolor px-5 py-2 text-light mt-5 border_color2 hoverbtna" type="submit">{{__('eng.submit')}}</button></a>
 
         </div>
         <!-- end of col  -->

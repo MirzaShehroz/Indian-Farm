@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login</title>
+    <title>{{__('eng.ifaLogin')}}</title>
   </head>
   <body>
 
@@ -41,11 +41,11 @@
 
             <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
 
-            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
+            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold">{{__('eng.forgotPass')}}</a> 
 
             <br>
               
-            <button class="px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
+            <button class="px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">{{__('eng.submit')}}</a></button>
 
         
 

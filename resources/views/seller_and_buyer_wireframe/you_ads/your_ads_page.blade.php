@@ -9,8 +9,11 @@
             <div class="col-12 col-md-4">
 
                 <div class="input-group mb-3 position-relative">
-                    <input type="text" class="form-control rounded-pill ps-4 btn-outline-light border py-2"  placeholder="Search Your Posted Ad" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                    <span class="input-group-text btn position-absolute end-0" style="z-index: 1100;"  id="basic-addon2"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control rounded-pill ps-4 btn-outline-light border py-2"
+                        placeholder="{{ __('eng.searchPost') }}" aria-label="Recipient's username"
+                        aria-describedby="basic-addon2">
+                    <span class="input-group-text btn position-absolute end-0" style="z-index: 1100;"
+                        id="basic-addon2"><i class="fas fa-search"></i></span>
                 </div>
 
             </div>
@@ -20,151 +23,161 @@
         <!-- end of inner row  -->
 
         @foreach ($data as $item)
-        <div class="row mt-5 py-4 px-md-3 pt-md-3 border queryrow1" id="user_ad" style="border-radius: 10px; box-shadow: 1px 1px 20px lightgrey;">
+            <div class="row mt-5 py-4 px-md-3 pt-md-3 border queryrow1" id="user_ad"
+                style="border-radius: 10px; box-shadow: 1px 1px 20px lightgrey;">
 
-            <div class="col-12 col-md-2 border-end border-dark">
+                <div class="col-12 col-md-2 border-end border-dark">
 
-                <h6 class="mb-3 text-center tcolor fw-bold">Add Posted Date</h6>
+                    <h6 class="mb-3 text-center tcolor fw-bold">{{ __('eng.addPostedDate') }}</h6>
+
+                    <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
+
+                        <span>{{ $item->created_at }}</span>
+                        <span><img src="{{ asset('images/calendar.png') }}" class="d-md-none d-lg-flex"
+                                alt="img not found"></span>
+
+                    </div>
 
 
 
-
-                <div class=" px-4 border_color2 px-md-0 px-xl-4 mb-3 mb-md-0 d-flex justify-content-between py-2">
-
-                    <span>{{$item->created_at}}</span>
-                    <span><img src="{{asset('images/calendar.png')}}" class="d-md-none d-lg-flex" alt="img not found"></span>
 
                 </div>
+                <!-- end of inner col  -->
+
+
+                <div class="col-12 col-md-10">
+
+                    <div class="row justify-content-around">
+
+                        <div class="col-6 col-md-2 text-center ">
+
+                            <img src="{{ asset($item->photo1) }}" class="your_ad_img" alt="img not found">
+
+
+                        </div>
+                        <!-- end of col  -->
+
+                        <div class="col-6 col-md-2  border-start border-dark">
+                            <h6 class="mb-3 tcolor fw-bold">{{ __('eng.price') }}</h6>
+
+                            <strong><span><i class="fas fa-rupee-sign me-2"></i></span> <span>{{ $item->price }}</span>
+                            </strong>
+
+                        </div>
+                        <!-- end of col  -->
+
+                        <div class="col-6 mt-4 mt-md-0 col-md-2  border-start border-dark">
+                            <h6 class="mb-3 tcolor fw-bold">{{ __('eng.quality') }} =<span
+                                    class="ms-2 text-dark">{{ $item->no_animals }}</span> </h6>
+
+                            <div class="form-check mb-2">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                                <label class="form-check-label" for="flexCheckDefault1">
+                                    {{ __('eng.premium') }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2"
+                                    {{ $item->certified ? 'checked' : null }}>
+                                <label class="form-check-label" for="flexCheckChecked2">
+                                    {{ __('eng.certified') }}
+                                </label>
+                            </div>
+
+                        </div>
+                        <!-- end of col  -->
+
+                        <div class="col-6 mt-4 mt-md-0 col-md-2  border-start border-dark">
+                            <h6 class="mb-3 tcolor fw-bold">{{ __('eng.adStatus') }}</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="" name="flexRadioDefault"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    {{ __('eng.active') }}
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    {{ __('eng.inActive') }}
+                                </label>
+                            </div>
+
+                        </div>
+                        <!-- end of col  -->
+
+                        <div class="col-12 col-md-2 mt-4 mt-md-0 border-start border-dark ">
+                            <h6 class="mb-4 tcolor fw-bold text-center">{{ __('eng.adOption') }}</h6>
+
+                            <div class="d-flex d-md-block d-lg-flex justify-content-around">
+
+                                <form action="{{ route('B&SEditAds')}}" method="get">
+                                    @csrf
+                                    <input type="hidden" name="photo_id" value="{{ $item->ads_photo_id }}">
+                                    <button type="submit"  class="btnhover px-4 px-md-3 px-lg-2 px-xl-3 border border-secondary bg-transparent rounded-pill mb-md-3 me-2 mb-lg-0">{{ __('eng.edit') }}</button>
+                                </form>
+
+                                <form action="{{ route('B&S.remove') }}" method="POST">
+                                    @csrf
+                                    <input type="hidden" value="{{ $item->ads_photo_id }}" name="photo_id">
+                                    <button type="submit"
+                                        class="btnhover px-3 px-md-2 px-lg-2 px-xl-3 border border-secondary bg-transparent rounded-pill">{{ __('eng.remove') }}</button>
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <!-- end of col inner -->
+
+                    </div>
+                    <!-- end of row innner -->
+
+                    <div class="row mt-3 pb-0 justify-content-between border-top border-dark align-items-center">
+
+                        <div class="col-12 mt-3 col-md-6 col-lg-5 col-xxl-6 align-items-center">
+
+                            <p><i class="fas fa-eye me-2 tcolor"></i> <strong> {{ __('eng.noView') }} = <span>10</span>
+                                </strong> </p>
+
+
+                        </div>
+                        <!-- end of col inner  -->
+                        @if ($item->certified == 0)
+                            <div class="col-6 col-md-3">
+                                <a href="{{ route('certifyAnimal') }}">
+                                    <button
+                                        class="btnhover3 btnfast yellow border border-dark px-4 py-1">{{ __('eng.certifyAnimal') }}</button>
+                                </a>
+
+                            </div>
+                        @endif
+
+                        <!-- end of col inner  -->
+
+                        <div class="col-6 col-md-3 col-lg-4 col-xxl-3 mt-md-0">
+
+                            <button
+                                class="btnhover3 btnfast greencolor text-light border border-dark px-4 py-1">{{ __('eng.sellFast') }}</button>
+
+
+                        </div>
+                        <!-- end of col inner  -->
+
+
+                    </div>
+                    <!-- end of row inner -->
+
+
+                </div>
+                <!-- end of col-10 -->
+
 
 
 
 
             </div>
-            <!-- end of inner col  -->
-
-
-            <div class="col-12 col-md-10">
-
-                <div class="row justify-content-around">
-
-                    <div class="col-6 col-md-2 text-center ">
-
-                        <img src="{{asset($item->photo1)}}" class="your_ad_img" alt="img not found">
-
-
-                    </div>
-                    <!-- end of col  -->
-
-                    <div class="col-6 col-md-2  border-start border-dark">
-                        <h6 class="mb-3 tcolor fw-bold">Price</h6>
-
-                        <strong><span><i class="fas fa-rupee-sign me-2"></i></span> <span>{{$item->price}}</span> </strong>
-
-                    </div>
-                    <!-- end of col  -->
-
-                    <div class="col-6 mt-4 mt-md-0 col-md-2  border-start border-dark">
-                        <h6 class="mb-3 tcolor fw-bold">Quantity =<span class="ms-2 text-dark">{{$item->no_animals}}</span> </h6>
-
-                        <div class="form-check mb-2">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1" >
-                            <label class="form-check-label" for="flexCheckDefault1">
-                                Premium
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked2" {{ $item->certified ? 'checked' :null }} >
-                            <label class="form-check-label" for="flexCheckChecked2">
-                                Certified
-                            </label>
-                        </div>
-
-                    </div>
-                    <!-- end of col  -->
-
-                    <div class="col-6 mt-4 mt-md-0 col-md-2  border-start border-dark">
-                        <h6 class="mb-3 tcolor fw-bold">Ad Status</h6>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" value="" name="flexRadioDefault" id="flexRadioDefault1">
-                            <label class="form-check-label" for="flexRadioDefault1">
-                              Active
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-                            <label class="form-check-label" for="flexRadioDefault2">
-                              Inactive
-                            </label>
-                          </div>
-
-                    </div>
-                    <!-- end of col  -->
-
-                    <div class="col-12 col-md-2 mt-4 mt-md-0 border-start border-dark ">
-                        <h6 class="mb-4 tcolor fw-bold text-center">Ad Options</h6>
-
-                        <div class="d-flex d-md-block d-lg-flex justify-content-around">
-
-                            <button type="button" class="btnhover px-4 px-md-3 px-lg-2 px-xl-3 border border-secondary bg-transparent rounded-pill mb-md-3 me-2 mb-lg-0">Edit</button>
-
-                            <form action="{{route('B&S.remove')}}" method="POST">
-                                @csrf
-                                <input type="hidden" value="{{$item->ads_photo_id}}" name="photo_id">
-                                <button type="submit" class="btnhover px-3 px-md-2 px-lg-2 px-xl-3 border border-secondary bg-transparent rounded-pill">Remove</button>
-                            </form>
-
-                        </div>
-
-                    </div>
-                    <!-- end of col inner -->
-
-
-                </div>
-                <!-- end of row innner -->
-
-                <div class="row mt-3 pb-0 justify-content-between border-top border-dark align-items-center">
-
-                    <div class="col-12 mt-3 col-md-6 col-lg-5 col-xxl-6 align-items-center">
-
-                        <p><i class="fas fa-eye me-2 tcolor"></i> <strong> No Of Views = <span>10</span> </strong> </p>
-
-
-                    </div>
-                    <!-- end of col inner  -->
-                    @if ($item->certified==0)
-                    <div class="col-6 col-md-3">
-                        <a href="{{route('certifyAnimal')}}">
-                            <button class="btnhover3 btnfast yellow border border-dark px-4 py-1">Certify Your Animal</button>
-                        </a>
-
-                    </div>                        
-                    @endif
-
-                    <!-- end of col inner  -->
-
-                    <div class="col-6 col-md-3 col-lg-4 col-xxl-3 mt-md-0">
-
-                        <button class="btnhover3 btnfast greencolor text-light border border-dark px-4 py-1">Sell Faster With Premium</button>
-
-
-                    </div>
-                    <!-- end of col inner  -->
-
-
-                </div>
-                <!-- end of row inner -->
-
-
-            </div>
-            <!-- end of col-10 -->
-
-
-
-
-
-        </div>
-        <!-- end of row inner -->
-            
+            <!-- end of row inner -->
         @endforeach
 
 

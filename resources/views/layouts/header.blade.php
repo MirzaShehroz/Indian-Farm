@@ -10,7 +10,7 @@
                 <form class="d-flex">
                     <div class="input-group">
                         <input type="text" class="form-control border-dark rounded-pill"
-                            placeholder="{{__('guest.search')}}..." aria-label="Search" aria-describedby="basic-addon2">
+                            placeholder="{{__('eng.search')}}..." aria-label="Search" aria-describedby="basic-addon2">
                         <span
                             class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"
                             id="basic-addon2"><i class="fas fa-search"></i></span>
@@ -48,18 +48,18 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                               {{__('guest.all_cat')}}
+                               {{__('eng.all_cat')}}
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item border-bottom" href="{{route('adds.cow')}}">{{__('guest.cow')}}</a>
+                                <li><a class="dropdown-item border-bottom" href="{{route('adds.cow')}}">{{__('eng.cow')}}</a>
                                 </li>
                                 <li><a class="dropdown-item  border-bottom"
-                                        href="{{route('adds.sheep')}}">{{__('guest.sheep')}}</a></li>
-                                <li><a class="dropdown-item  border-bottom" href="{{route('adds.goat')}}">{{__('guest.goat')}}</a>
+                                        href="{{route('adds.sheep')}}">{{__('eng.sheep')}}</a></li>
+                                <li><a class="dropdown-item  border-bottom" href="{{route('adds.goat')}}">{{__('eng.goat')}}</a>
                                 </li>
                                 <li><a class="dropdown-item  border-bottom"
-                                        href="{{route('adds.buffalo')}}">{{__('guest.buffalo')}}</a></li>
-                                <li><a class="dropdown-item" href="{{route('adds.bull')}}">{{__('guest.bull')}}</a></li>
+                                        href="{{route('adds.buffalo')}}">{{__('eng.buffalo')}}</a></li>
+                                <li><a class="dropdown-item" href="{{route('adds.bull')}}">{{__('eng.bull')}}</a></li>
 
                             </ul>
                         </li>
@@ -68,17 +68,17 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="{{route('searchVet')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{__('guest.vetService')}}
+                                {{__('eng.vetService')}}
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
 
 
-                                <li><a class="dropdown-item border-bottom" href="{{route('searchVet')}}">{{__('guest.searchVet')}}</a></li>
+                                <li><a class="dropdown-item border-bottom" href="{{route('searchVet')}}">{{__('eng.searchVet')}}</a></li>
                                 <li><a class="dropdown-item border-bottom"
-                                        href="{{route('bookAppointment')}}">{{__('guest.bookVet')}}</a></li>
+                                        href="{{route('bookAppointment')}}">{{__('eng.bookVet')}}</a></li>
                                 <li><a class="dropdown-item border-bottom"
-                                        href="{{route('certifyAnimal')}}">{{__('guest.certifyAnimal')}}</a></li>
-                                <li><a class="dropdown-item" href="{{route('registerVet')}}">{{__('guest.vetRegister')}}</a></li>
+                                        href="{{route('certifyAnimal')}}">{{__('eng.certifyAnimal')}}</a></li>
+                                <li><a class="dropdown-item" href="{{route('registerVet')}}">{{__('eng.vetRegister')}}</a></li>
 
 
                             </ul>
@@ -88,13 +88,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{__('guest.transport')}}
+                                {{__('eng.transport')}}
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item border-bottom"
-                                        href="{{route('transport-search')}}">{{__('guest.searchTrans')}}</a></li>
-                                <li><a class="dropdown-item border-bottom" href="{{route('transport-book')}}">{{__('guest.bookTrans')}}</a></li>
-                                <li><a class="dropdown-item" href="{{route('vendor-register')}}">{{__('guest.registerVend')}}</a></li>
+                                        href="{{route('transport-search')}}">{{__('eng.searchTrans')}}</a></li>
+                                <li><a class="dropdown-item border-bottom" href="{{route('transport-book')}}">{{__('eng.bookTrans')}}</a></li>
+                                <li><a class="dropdown-item" href="{{route('vendor-register')}}">{{__('eng.registerVend')}}</a></li>
                             </ul>
                         </li>
 
@@ -102,23 +102,23 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-dark" href="{{url('education')}}" id="navbarDropdown"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {{__('guest.education')}}
+                                {{__('eng.education')}}
                             </a>
                             <ul class="dropdown-menu w-100" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="online_courses.html">{{__('guest.course')}}</a></li>
+                                <li><a class="dropdown-item" href="online_courses.html">{{__('eng.course')}}</a></li>
                             </ul>
                         </li>
 
                         <hr class="bg-dark py-0" style="opacity: 1;">
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="forum_disscussion.html">
-                               {{__('guest.community')}}
+                               {{__('eng.community')}}
                             </a>
                         </li>
                         <hr class="bg-dark py-0" style="opacity: 1;">
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="news_updates.html">
-                               {{__('guest.news')}}
+                               {{__('eng.news')}}
                             </a>
                         </li>
                         <hr class="bg-dark" style="opacity: 0.4;">
@@ -130,7 +130,7 @@
                         <a href="{{route('login')}}"
                             class="text-decoration-none btn border border-dark w-100 ms-lg-5"
                             style="border-radius: 10px;">
-                            <button class="bg-transparent border-0 fw-bold">{{__('guest.login')}}</button>
+                            <button class="bg-transparent border-0 fw-bold">{{__('eng.login')}}</button>
                         </a>
                     </div>
 
@@ -204,11 +204,11 @@
                                     </div>
                                 </a>
                             </li>
-                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditProfilePage')}}"><i class="fas fa-user-edit me-3"></i>{{__('guest.editProfile')}}</a></li>
-                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditYourAddPage')}}"><i class="fas fa-ad me-3"></i>{{__('guest.yourAdds')}}</a></li>
-                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SPostAnAddPage')}}"><i class="fas fa-address-card me-3"></i>{{__('guest.postAdd')}}</a></li>
-                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SYourSubscriptionPage')}}"><i class="fas fa-vote-yea me-3"></i>{{__('guest.yourSub')}}</a></li>
-                            <li class="my-3"><a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt me-3"></i>{{__('guest.logout')}}</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditProfilePage')}}"><i class="fas fa-user-edit me-3"></i>{{__('eng.editProfile')}}</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SEditYourAddPage')}}"><i class="fas fa-ad me-3"></i>{{__('eng.yourAdds')}}</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SPostAnAddPage')}}"><i class="fas fa-address-card me-3"></i>{{__('eng.postAdd')}}</a></li>
+                            <li class="my-3"><a class="dropdown-item border-bottom" href="{{route('B&SYourSubscriptionPage')}}"><i class="fas fa-vote-yea me-3"></i>{{__('eng.yourSub')}}</a></li>
+                            <li class="my-3"><a class="dropdown-item" href="{{url('logout')}}"><i class="fas fa-sign-out-alt me-3"></i>{{__('eng.logout')}}</a></li>
                         </ul>
                     </div>
                     <!-- user dropdown  -->
@@ -222,13 +222,13 @@
 
                     <a href="{{route('addView')}}"
                         class="text-decoration-none ms-xl-5 me-3 d-none d-lg-flex rounded-pill px-4 px-lg-2 py-2 bg-white">
-                        <button class="bg-transparent border-0 btnsell tcolor fw-bold"> <span>{{__('guest.Add')}}
+                        <button class="bg-transparent border-0 btnsell tcolor fw-bold"> <span>{{__('eng.Add')}}
                             </span></button>
                     </a>
 
                     <a href="{{route('B&SLoginPage')}}" class="text-decoration-none  ms-xl-1">
                         <button
-                            class="bg-transparent border-0 btnlogin fw-bold border-bottom border-2 tcolor">{{__('guest.login')}}
+                            class="bg-transparent border-0 btnlogin fw-bold border-bottom border-2 tcolor">{{__('eng.login')}}
                         </button>
                     </a>
 
@@ -251,7 +251,7 @@
     <div class="col-12 py-0 d-md-none col-md-6 mx-auto">
         <form class="d-flex">
             <div class="input-group">
-                <input type="text" class="form-control border-dark rounded-pill" placeholder=" {{__('guest.search')}}..."
+                <input type="text" class="form-control border-dark rounded-pill" placeholder=" {{__('eng.search')}}..."
                     aria-label="Search" aria-describedby="basic-addon2">
                 <span class="input-group-text btn bg-transparent rounded-pill position-absolute end-0 me-2"
                     id="basic-addon2"><i class="fas fa-search"></i></span>
@@ -276,28 +276,28 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    {{__('guest.all_cat')}}
+                    {{__('eng.all_cat')}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{route('adds.cow')}}">{{__('guest.cow')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('adds.sheep')}}">{{__('guest.sheep')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('adds.goat')}}">{{__('guest.goat')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('adds.buffalo')}}">{{__('guest.buffalo')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('adds.bull')}}">{{__('guest.bull')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.cow')}}">{{__('eng.cow')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.sheep')}}">{{__('eng.sheep')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.goat')}}">{{__('eng.goat')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.buffalo')}}">{{__('eng.buffalo')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('adds.bull')}}">{{__('eng.bull')}}</a></li>
 
                 </ul>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                   {{__('guest.vetService')}}
+                   {{__('eng.vetService')}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 
-                    <li><a class="dropdown-item" href="{{route('searchVet')}}">{{__('guest.searchVet')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('bookAppointment')}}">{{__('guest.bookVet')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('certifyAnimal')}}">{{__('guest.certifyAnimal')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('registerVet')}}">{{__('guest.vetRegister')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('searchVet')}}">{{__('eng.searchVet')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('bookAppointment')}}">{{__('eng.bookVet')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('certifyAnimal')}}">{{__('eng.certifyAnimal')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('registerVet')}}">{{__('eng.vetRegister')}}</a></li>
 
 
                 </ul>
@@ -305,30 +305,30 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button"
                     data-bs-toggle="dropdown" aria-expanded="false">
-                    {{__('guest.transport')}}
+                    {{__('eng.transport')}}
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{route('transport-search')}}"> {{__('guest.searchTrans')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('transport-book')}}">  {{__('guest.bookTrans')}}</a></li>
-                    <li><a class="dropdown-item" href="{{route('vendor-register')}}"> {{__('guest.registerVend')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('transport-search')}}"> {{__('eng.searchTrans')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('transport-book')}}">  {{__('eng.bookTrans')}}</a></li>
+                    <li><a class="dropdown-item" href="{{route('vendor-register')}}"> {{__('eng.registerVend')}}</a></li>
 
 
                 </ul>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{url('education')}}" id="navbarDropdown">
-                    {{__('guest.education')}}
+                    {{__('eng.education')}}
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{url('forum_community')}}">
-                    {{__('guest.community')}}
+                    {{__('eng.community')}}
                 </a>
 
             </li>
             <li class="nav-item">
                 <a class="nav-link text-dark" href="{{url('news_updates')}}">
-                    {{__('guest.news')}}
+                    {{__('eng.news')}}
                 </a>
 
             </li>

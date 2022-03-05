@@ -37,15 +37,15 @@
 
                 <div class="col-12 col-md-3">
 
-                    <strong style="border-bottom: 2px solid #0572B2;">{{__('guest.visionHead')}}</strong>
+                    <strong style="border-bottom: 2px solid #0572B2;">{{__('eng.visionHead')}}</strong>
 
-                    <p>{{__('guest.visionBody')}}</p>
+                    <p>{{__('eng.visionBody')}}</p>
 
 
 
-                    <strong style="border-bottom: 2px solid #0572B2;">{{__('guest.missionHead')}}</strong>
+                    <strong style="border-bottom: 2px solid #0572B2;">{{__('eng.missionHead')}}</strong>
 
-                    <p>{{__('guest.missionBody')}}</p>
+                    <p>{{__('eng.missionBody')}}</p>
 
                 </div>
                 <!-- end of col  -->
@@ -56,19 +56,19 @@
 
                     <ul class="list-unstyled mt-3">
                         <li class="my-2">
-                            <a href="about_us.html" class="text-decoration-none text-dark">{{__('guest.about')}}</a>
+                            <a href="about_us.html" class="text-decoration-none text-dark">{{__('eng.about')}}</a>
                         </li>
                         <li class="my-2">
-                            <a href="contact_us.html" class="text-decoration-none text-dark">{{__('guest.contact')}}</a>
+                            <a href="contact_us.html" class="text-decoration-none text-dark">{{__('eng.contact')}}</a>
                         </li>
                         <li class="my-2">
-                            <a href="privacy_policy.html" class="text-decoration-none text-dark">{{__('guest.policy')}}</a>
+                            <a href="privacy_policy.html" class="text-decoration-none text-dark">{{__('eng.policy')}}</a>
                         </li>
                         <li class="my-2">
-                            <a href="terms_condition.html" class="text-decoration-none text-dark">{{__('guest.term')}}</a>
+                            <a href="terms_condition.html" class="text-decoration-none text-dark">{{__('eng.term')}}</a>
                         </li>
                         <li class="my-2">
-                            <a href="faq.html" class="text-decoration-none text-dark">{{__('guest.faq')}}</a>
+                            <a href="faq.html" class="text-decoration-none text-dark">{{__('eng.faq')}}</a>
                         </li>
                     </ul>
 
@@ -80,15 +80,15 @@
                 <div class="col-12 col-md-3 pt-3 overflow-hidden">
 
                     <p class="my-0">
-                        <strong>{{__('guest.phone')}}<br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="tel"
+                        <strong>{{__('eng.phone')}}<br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="tel"
                             class="text-decoration-none text-dark ms-2">123456789</a>
                     </p>
                     <p class="my-0">
-                        <strong>{{__('guest.email')}} <br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="email"
+                        <strong>{{__('eng.email')}} <br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="email"
                             class="text-decoration-none text-dark ms-2">abc@gmail.com</a>
                     </p>
                     <address class="my-0">
-                        <strong>{{__('guest.address')}}<br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="address"
+                        <strong>{{__('eng.address')}}<br class="d-none d-md-block d-lg-none"> </strong><a href="#" type="address"
                             class="text-decoration-none text-dark ms-2">XYZ Street</a>
                     </address>
 
@@ -102,10 +102,10 @@
 
 
                     <div class="position-relative mt-3">
-                        <strong class="text-start">{{__('guest.newsLetter')}}</strong>
+                        <strong class="text-start">{{__('eng.newsLetter')}}</strong>
                         <form class="newsletter mt-2" method="post" enctype="multipart/form-data">
                             <i class="far fa-envelope tcolor"></i>
-                            <input type="email" name="email" Placeholder="{{__('guest.subEmail')}}" class="border-0"
+                            <input type="email" name="email" Placeholder="{{__('eng.subEmail')}}" class="border-0"
                                 style="border-bottom: 2px solid #0572B2 !important;" required="">
                             <button type="submit" class="border-0 bg-transparent tcolor" name="submit"><i
                                     class="fas fa-arrow-right"></i></button>
@@ -119,7 +119,7 @@
 
                 <div class="col-12 text-center my-2 order-last">
 
-                    <small class="">{{__('guest.copyright')}} </small>
+                    <small class="">{{__('eng.copyright')}} </small>
 
 
                 </div>

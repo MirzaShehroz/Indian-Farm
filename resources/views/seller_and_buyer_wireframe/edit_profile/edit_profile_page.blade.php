@@ -8,12 +8,12 @@
           background-image: linear-gradient(315deg, #aee1f9 0%, #f6ebe6 74%);
            border-radius: 20px;  box-shadow: 1px 1px 10px rgb(218, 218, 218) !important;">
 
-    <h4 class="border-start border-5 mt-2 tcolor" style="border-color: #0572B2 !important;">Edit Your Profile</h4>
+    <h4 class="border-start border-5 mt-2 tcolor" style="border-color: #0572B2 !important;">{{__('eng.editProfile')}}</h4>
         <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
     <img src="{{asset( $data->image ? $data->image :'images/user-img.png')}}"  class="profile_img my-3" alt="img not found">
 
         <input type="file" name="profile" class="bg-transparent  profilebtn btnhover px-3 py-2" style="border-radius: 5px;"/ value="Upload Profile Picture">
-        <button type="submit" id="personal_submit" class=" px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2">Update Profile</button>        
+        <button type="submit" id="personal_submit" class=" px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2">{{__('eng.updateProfile')}}</button>        
         {{-- {{dd($data)}} --}}
     </div>
     <!-- end of col-3 -->
@@ -27,28 +27,28 @@
                         @csrf
                             <input type="hidden" name="user_id" id="user_id" value="{{Auth::user()->id}}">
                             <div class="mb-3">
-                                <label for="fullname"  class="form-label fw-bold fs-5">Personal Details</label>
+                                <label for="fullname"  class="form-label fw-bold fs-5">{{__('eng.personalDetail')}}</label>
                                 <input type="text" id="full_name" name="full_name" value="{{$data->first_name}}" class="form-control mb-4" id="fullname" placeholder="Full Name">
-                                <input type="text" id="farm_name" name="farm_name" value="{{$seller->farm_name}}" class="form-control" id="fullname" placeholder="Farm Name">
+                                <input type="text" id="farm_name" name="farm_name" value="{{$seller->farm_name}}" class="form-control" id="fullname" placeholder="{{__('eng.farmName')}}">
                             </div>
-                            <button type="submit" id="personal_submit" class="px-3 border border-secondary btnhover float-end bg-transparent py-2">Update/Change</button>
+                            <button type="submit" id="personal_submit" class="px-3 border border-secondary btnhover float-end bg-transparent py-2">{{__('eng.updateChange')}}</button>
                         </div>
                         <!-- end of inner col  -->
                 <hr class="my-3 bgcolor" style="opacity: 1;">
 
                 <div class="col-12 d-flex py-2 align-items-center">
 
-                    <span class="fw-bold me-3">Are you the Owner/Agent</span>
+                    <span class="fw-bold me-3">{{__('eng.ownerOrAgent')}}</span>
                     <div class="form-check ms-3">
                                 <input class="form-check-input" id="owner_status" value="owner" {{ $data->owner_status==='owner' ? 'checked' : null }} type="radio" name="status" id="flexRadioDefault1"  >
                                 <label class="form-check-label" for="flexRadioDefault1">
-                                    Owner
+                                    {{__('eng.owner')}}
                                 </label>
                             </div>
                             <div class="form-check ms-4">
                                 <input class="form-check-input" id="agent_status" type="radio" name="status" value="agent" {{ $data->owner_status==='agent' ? 'checked' : null }} id="flexRadioDefault2">
                                 <label class="form-check-label" for="flexRadioDefault2">
-                                    Agent
+                                    {{__('eng.agent')}}
                                 </label>
                             </div>
                         </div>
@@ -65,14 +65,14 @@
 
                 <div class="col-12 col-lg-10 ">
 
-                    <label class="form-label fw-bold fs-5">Contact Details</label>
+                    <label class="form-label fw-bold fs-5">{{__('eng.contactDetail')}}</label>
 
                     <div class="input-group d-block mb-3 d-md-flex">
                         <input type="number" name="contact_no" class="form-control inputno1" value="{{$data->contact_no}}" placeholder="Contact Number"  aria-describedby="basic-addon4">
 
                         <button type="button"  class="px-3 btnhover py-2 py-md-0 float-end mt-2 float-md-none mt-md-0 border border-secondary bg-transparent ms-2" id="basic-addon4">Update/Change</button>
                         <br class="d-md-none">
-                        <span class="ms-3 text-secondary">Requires OTP</span>
+                        <span class="ms-3 text-secondary">{{__('eng.requireOtp')}}</span>
                     </div>
 
                     <div class="input-group d-block mb-3 d-md-flex">

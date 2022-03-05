@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login</title>
+    <title>{{__('eng.ifaLogin')}}</title>
 </head>
 <body>
 
@@ -42,10 +42,10 @@
                         @csrf
                         <input type="text" class="mobileno_input border_color form-control py-3 "  name="mobileno" placeholder="Enter Your Mobile Number" required>
 
-                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
+                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color"><a href="#" class="text-decoration-none text-light">{{__('eng.submit')}}</a></button>
 
                         <span class="d-block text-dark mt-5">
-              If You Don't Have an Account please <a href="{{route('B&SRegisterPage')}}" class="tcolor btnclick text-decoration-none fw-bold"> CLICK HERE </a> Register
+              {{__('eng.dontHaveAccount')}} <a href="{{route('B&SRegisterPage')}}" class="tcolor btnclick text-decoration-none fw-bold">{{__('eng.clickHere')}} </a> {{__('eng.register')}}
             </span>
 
 

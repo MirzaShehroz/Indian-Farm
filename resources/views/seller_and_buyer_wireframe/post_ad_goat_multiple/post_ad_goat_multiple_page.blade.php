@@ -8,7 +8,7 @@
                 
             <div class="row justify-content-around  shadow py-3">
     
-                <h5 class="mb-3">Upload photos of your animal <i class="fas fa-images ms-3"></i></h5>
+                <h5 class="mb-3">  {{__('eng.uploadAnimalimage')}} <i class="fas fa-images ms-3"></i></h5>
     
                 <div class="col-4 text-center border p-3 upload">
                     {{-- <input type="file" name="img1" id="img1"> --}}
@@ -87,7 +87,7 @@
                 </div>
                 <!-- end of col inner  -->
     
-                <h6 class="text-secondary mt-3" style="font-size: 14px;">Please Note Maximum file size is 2 MB per file</h6>
+                <h6 class="text-secondary mt-3" style="font-size: 14px;">{{__('eng.maxImageSize')}}</h6>
     
             </div>
             <!-- end of row images inner  -->
@@ -97,7 +97,7 @@
 
             <div class="row shadow py-3">
 
-                <h5 class="mb-3">Upload Video of your animal<i class="fas fa-file-video ms-3"></i></h5>
+                <h5 class="mb-3">{{__('eng.uploadVideo')}}<i class="fas fa-file-video ms-3"></i></h5>
 
                 <div class="col-12 border video_upload">
 
@@ -105,7 +105,7 @@
                         <input type='file' name="video"  id='videoUpload' required/>
                         <video width="320" id="video" height="240" controls style="margin-right:20px" hidden>
                             <source  src="" type="video/mp4">
-                         Your browser does not support the video tag.
+                                {{__('eng.videoTag')}}
                         </video>
 
                     </div>
@@ -114,7 +114,7 @@
                 </div>
                 <!-- end of col inner -->
 
-                <h6 class="text-secondary mt-3" style="font-size: 14px;">Please Note Maximum file size is 20 MB</h6>
+                <h6 class="text-secondary mt-3" style="font-size: 14px;">{{__('eng.maxImageSize')}}</h6>
 
             </div>
             <!-- end of row video inner -->

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login</title>
+    <title>{{__('eng.ifaLogin')}}</title>
 </head>
 <body>
 
@@ -37,26 +37,26 @@
 @endif
                     <form action="{{url('buyer/seller/register')}}" method="post">
                             @csrf
-                        <input type="text" class="mobileno_input border_color form-control py-3 mb-4" name="fname" placeholder="Enter Your Full Name" required>
+                        <input type="text" class="mobileno_input border_color form-control py-3 mb-4" name="fname" placeholder="{{__('eng.enterName')}}" required>
                         @error('fname')
                             <div class="alert-danger">{{ $message }}</div>
                         @enderror
-                                                <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="contact_no" placeholder="Enter Your Mobile Number" required>
+                                                <input type="text" class="mobileno_input border_color form-control py-3 mt-4" name="contact_no" placeholder="{{__('eng.enterNumber')}}" required>
                         @error('contact_no')
                             <div class="alert-danger">{{ $message }}</div>
                         @enderror
                         <input id="agree" name="agree" type="hidden" style="display:none">
-                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit"><a href="#" class="text-decoration-none text-light">SUBMIT</a></button>
+                        <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit"><a href="#" class="text-decoration-none text-light">{{__('eng.submit')}}</a></button>
 
                         <div class="form-check text-start mt-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" onclick="check()">
                             <label class="form-check-label " for="flexCheckChecked">
-                                I Agree
+                                {{__('eng.agree')}}
                             </label>
                         </div>
 
                         <span class="d-block text-dark mt-3">
-              By selecting agree you are agreeing to our <a href="{{route('TermAndCondition')}}" class="tcolor btnclick text-decoration-none fw-bold"> Terms & Conditions </a> & <a href="{{route('PrivacyPolicy')}}" class="tcolor btnclick text-decoration-none fw-bold"> Privacy Policy </a>
+             {{__('eng.agreeStatement')}} <a href="{{route('TermAndCondition')}}" class="tcolor btnclick text-decoration-none fw-bold"> {{__('eng.terms')}} </a> & <a href="{{route('PrivacyPolicy')}}" class="tcolor btnclick text-decoration-none fw-bold">{{__('eng.policy')}} </a>
             </span>
 
 

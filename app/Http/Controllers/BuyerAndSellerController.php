@@ -20,13 +20,13 @@ use Auth;
 use Illuminate\Support\Facades\URL;
 class BuyerAndSellerController extends Controller
 {
-    
+
     // register form
     public function registerForm() {
         return view('seller_and_buyer_wireframe.register');
     }
     public function sendotp(Request $req){
-      
+
         $req->validate([
             'contact_no'=>"required|unique:App\Models\User,contact_no",
             'fname'=>'required',
@@ -36,7 +36,7 @@ class BuyerAndSellerController extends Controller
                 'contact_no.required'=>'Mobile Number Required',
                 'fname.unique'=>'Name Required'
             ]
-        
+
         );
 
         $data=$req->all();
@@ -46,7 +46,7 @@ class BuyerAndSellerController extends Controller
             return back()->with('error','Kindly agree with term & conditions');;
         }
         else{
-            
+
             $otp=mt_rand( 100000, 999999 );
             $seller=new Sellers;
             DB::beginTransaction();
@@ -66,12 +66,12 @@ class BuyerAndSellerController extends Controller
                     return back()->with('erros','There is some error in login');
                 }
 
-               
+
                 $seller->user_id=$user->id;
                 $id=Crypt::encryptString($user->id);
                 $seller->save();
                 DB::commit();
-            
+
                 return redirect('b&s/register-verification-form/'.$id);
 
             }catch(\Exception $e){
@@ -79,11 +79,11 @@ class BuyerAndSellerController extends Controller
                 DB::rollback();
                 return back()->with('error','There is some error in login');
             }
-           
-            
+
+
         }
     }
-    
+
     // edit-profile page
     public function editProfilePage() {
 
@@ -102,11 +102,11 @@ class BuyerAndSellerController extends Controller
         $user->save();
         $seller=Sellers::where('user_id',$req->id)->first();
         $seller->farm_name=$req->farm_name;
-        $seller->status=1;   
+        $seller->status=1;
         $seller->save();
         return response()->json('success');
     }
-    
+
     // edit address
     public function addressDetails(Request $req){
         $user=User::where('id',$req->id)->first();
@@ -151,7 +151,7 @@ class BuyerAndSellerController extends Controller
 
     public function edit(Request $req){
         // dd($req);
-       
+
     }
 
     // your-add page
@@ -196,54 +196,54 @@ class BuyerAndSellerController extends Controller
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo1 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo1 = $filepath.$name;
+
                 }
                 if($req->hasfile('img2')) {
                     $file=$req->img2;
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo2 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo2 = $filepath.$name;
+
                 }
                 if($req->hasfile('img3')) {
                     $file=$req->img3;
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo3 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo3 = $filepath.$name;
+
                 }
                 if($req->hasfile('img4')) {
                     $file=$req->img4;
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo4 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo4 = $filepath.$name;
+
                 }
                 if($req->hasfile('img5')) {
                     $file=$req->img5;
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo5 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo5 = $filepath.$name;
+
                 }
                 if($req->hasfile('img6')) {
                     $file=$req->img6;
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/images/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsphoto->photo6 = $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo6 = $filepath.$name;
+
                 }
                // dd($adsphoto);
                $adsphoto->save();
@@ -262,15 +262,15 @@ class BuyerAndSellerController extends Controller
                     $ran=mt_rand( 10000000, 99999999 );
                     $name=time().$ran.'.'.$file->getClientOriginalExtension();
                     $filepath='Ads/video/';
-                    $file->move(public_path().'/'.$filepath,$name);  
-                    $adsvideo->video= $filepath.$name;  
-                
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsvideo->video= $filepath.$name;
+
                 }
                // dd($adsvideo);
                 $adsvideo->save();
                 DB::commit();
             }catch(\Exception $e){
-       
+
         DB::rollback();
         return back()->with('warningMsg','There some Problem try again');;
          }
@@ -289,7 +289,7 @@ class BuyerAndSellerController extends Controller
             $adsaddress->city=$req->city;
             $adsaddress->zipcode=$req->pincode;
             $adsaddress->state=$req->state;
-            $adsaddress->save();    
+            $adsaddress->save();
             DB::commit();
          }catch(\Exception $e){
             dd($e);
@@ -314,7 +314,7 @@ class BuyerAndSellerController extends Controller
                 $ads->animal_type=4;
             }
 
-            
+
             if($req->no_animals){
             $ads->no_animals=$req->no_animals;
             }
@@ -364,7 +364,7 @@ class BuyerAndSellerController extends Controller
 
     public function AdCowMultiple(Request $req){
         dd($req);
-        
+
     }
     // post ad buffalo one
     public function postAdBuffaloOne() {
@@ -418,17 +418,17 @@ class BuyerAndSellerController extends Controller
 
     // login verification form
     public function loginVerificationForm() {
-        
+
         return view('seller_and_buyer_wireframe.login_verification');
     }
 
     public function checkotp(Request $req){
-      
-       
+
+
         $data=$req->all();
-     
+
         if($data['type']=='login-verification-form'){
-            $id=Crypt::decryptString($data['id']); 
+            $id=Crypt::decryptString($data['id']);
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
                 Auth::login($user);
@@ -439,7 +439,7 @@ class BuyerAndSellerController extends Controller
             }
         }
         elseif($data['type']=='register-verification-form'){
-            $id=Crypt::decryptString($data['id']); 
+            $id=Crypt::decryptString($data['id']);
             $user=User::where('id',$id)->first();
             if($user->mob_otp==$data['otp']){
                 Auth::login($user);
@@ -448,7 +448,7 @@ class BuyerAndSellerController extends Controller
                 return back()->with('error','Wrong Otp');
             }
         }
-        
+
     }
 
     public function resendotp($id){
@@ -461,8 +461,8 @@ class BuyerAndSellerController extends Controller
     }
 
     public function loginuser(Request $req){
-        
-        
+
+
         $user=User::where('contact_no',$req->mobileno)->first();
 
         if($user!=null){
@@ -475,7 +475,7 @@ class BuyerAndSellerController extends Controller
         else{
             return back()->with('error','you are not register');
         }
-       
+
     }
 
     public function loginotp(){
@@ -510,6 +510,159 @@ class BuyerAndSellerController extends Controller
     public function chat() {
         return view('seller_and_buyer_wireframe.chat');
     }
+
+	public function editAdd(Request $req)
+	{
+        $ads=Ads::join('ads_adress','ads.ads_address_id','ads_adress.id')
+        ->join('ads_photo','ads.ads_photo_id','ads_photo.id')
+        ->join('ads_videos','ads.ads_video_id','ads_videos.id')
+        ->where('ads_photo_id',$req->photo_id)->first();
+        // dd($ads);
+		return view("seller_and_buyer_wireframe.edit_add.edit_ads",compact('ads'));
+	}
+
+	public function updateAds(Request $req)
+	{
+        // dd($req->id);
+
+        $ads=Ads::where('ads_photo_id',$req->id)->first();
+        // dd($ads);
+        DB::beginTransaction();
+        try{
+
+            $adsphoto=AdsPhoto::where('id',$ads->ads_photo_id)->first();
+            // dd($adsphoto);
+            DB::beginTransaction();
+            try{
+
+                if($req->hasfile('image1')) {
+                    $file=$req->image1;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/images/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo1 = $filepath.$name;
+
+                }
+                if($req->hasfile('image2')) {
+                    $file=$req->image2;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/images/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo2 = $filepath.$name;
+
+                }
+                if($req->hasfile('image3')) {
+                    $file=$req->image3;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/images/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo3 = $filepath.$name;
+
+                }
+                if($req->hasfile('image4')) {
+                    $file=$req->image4;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/images/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo4 = $filepath.$name;
+
+                }
+                if($req->hasfile('image5')) {
+                    $file=$req->image5;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/images/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsphoto->photo5 = $filepath.$name;
+
+                }
+            //    dd($adsphoto);
+               $adsphoto->save();
+               DB::commit();
+            }catch(\Exception $e){
+                dd($e);
+                DB::rollback();
+                return "failed1";
+            }
+               $adsvideo=AdsVideo::where('id',$ads->ads_video_id)->first();
+
+               DB::beginTransaction();
+            try{
+
+                if($req->hasfile('video')) {
+                    $file=$req->video;
+                    $ran=mt_rand( 10000000, 99999999 );
+                    $name=time().$ran.'.'.$file->getClientOriginalExtension();
+                    $filepath='Ads/video/';
+                    $file->move(public_path().'/'.$filepath,$name);
+                    $adsvideo->video= $filepath.$name;
+
+                }
+            //    dd($adsvideo);
+                $adsvideo->save();
+                DB::commit();
+            }catch(\Exception $e){
+                dd($e);
+        DB::rollback();
+        return back()->with('warningMsg','There some Problem try again');;
+         }
+
+
+
+         $adsaddress =AdsAddress::where('id',$ads->ads_address_id)->first();
+         DB::beginTransaction();
+         try{
+
+            $adsaddress->addressline1=$req->address_line1;
+            $adsaddress->addressline2=$req->address_line2;
+            $adsaddress->area=$req->area;
+            $adsaddress->takula=$req->taluka;
+            $adsaddress->district=$req->district;
+            $adsaddress->zipcode=$req->zipcode;
+            $adsaddress->state=$req->state;
+            $adsaddress->save();
+            DB::commit();
+         }catch(\Exception $e){
+            dd($e);
+        DB::rollback();
+        return back()->with('warningMsg','There some Problem try again');;
+         }
+
+
+            $ads->user_id=Auth::user()->id;
+            $ads->animal_type=$req->animal_type;
+            $ads->no_animals=$req->no_animals;
+            $ads->age=$req->age;
+            $ads->price=$req->price;
+            $ads->breed=$req->breed;
+            $ads->milk_capacity=$req->milk_capacity;
+            $ads->pregnant=$req->pregnant;
+            $ads->due_month_pregnancy=$req->month_pregnancy;
+            $ads->gender=$req->gender;
+            $ads->breed_type=$req->breed_type;
+            $ads->vaccinated=$req->vaccinated;
+            $ads->weight=$req->weight;
+            $ads->certified=$req->certified;
+            $ads->certified_reg_no=$req->certified_reg_no;
+            $ads->status=1;
+            $ads->ads_photo_id=$adsphoto->id;
+            $ads->ads_address_id=$adsaddress->id;
+            $ads->ads_video_id=$adsvideo->id;
+
+            $ads->save();
+          //  dd($ads,$adsaddress,$adsphoto,$adsvideo);
+          DB::commit();
+           return back()->with('successMsg','Ad updated Successfully');
+        }catch(\Exception $e){
+            dd($e);
+        DB::rollback();
+        return back()->with('warningMsg','There some Problem try again');
+    }
+	}
 
 
 }

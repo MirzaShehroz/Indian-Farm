@@ -1,7 +1,7 @@
 @extends('app.dashboard')
 @section('title','Ads')
        @section('pill')
-         
+
        <div class="px-4 pt-4 position-relative" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
 
                         <div class="row">
@@ -20,20 +20,20 @@
                                   <option value="3" >{{__('eng.sheep')}}</option>
                                   <option  value="4"> {{__('eng.goat')}}</option>
                                 </select>
-                              </div>                                
+                              </div>
                               <input type="text" name="breed" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchBreed')}}" id="">
                                 <!-- <input type="text" name="gender" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="Search By Gender " id=""> -->
-                                
+
                                 <div class="col-md-4 col-lg-3 my-1">
-                        
+
                                   <select id="animaltype"  class="form-select" onchange="showDiv('hidden_div', this)" name="pragnent">
                                     <option value="" disabled  selected>{{__('eng.pregnant')}}</option>
                                     <option value="0">{{__('eng.no')}}</option>
                                     <option value="1">{{__('eng.yes')}}</option>
-                               
+
                                   </select>
                                 </div>
-                               
+
                             </div>
                             <!-- end of col  -->
 
@@ -43,7 +43,7 @@
                                 <input type="text" name="state" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchState')}}" id="">
                                 <input type="text" name="district" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchDist')}}" id="">
                                 <input type="text" name="taluka" class="me-3 border ps-2 mb-3 py-2 inputs1" placeholder="{{__('eng.searchTaluka')}}" id="">
-          
+
                             </div>
                             <!-- end of col  -->
 
@@ -79,7 +79,7 @@
                                         <!-- <th scope="col">Farm Owner</th> -->
                                         <th scope="col">{{__('eng.displayAnimalType')}}</th>
                                         <th scope="col">{{__('eng.breed')}}</th>
-                                      
+
                                         <!-- <th scope="col">Gender</th> -->
                                         <th scope="col">{{__('eng.pregnant')}}</th>
                                         <th scope="col"> {{__('eng.dueMonth')}}</th>
@@ -109,7 +109,7 @@
                                         <td>{{$ad->created_at}}</td>
                                         <td>{{$ad->status}}</td>
                                         <td>{{$ad->price}}</td>
-                                     
+
                                         @if($ad->animal_type==0)
                                         <td>{{__('eng.bull')}}</td>
                                         @elseif($ad->animal_type==1)
@@ -123,8 +123,8 @@
                                         @endif
 
                                        <td>{{$ad->breed}}</td>
-                                    
-                                       
+
+
 
                                         @if($ad->pregnant==0)
                                         <td>{{__('eng.no')}}</td>
@@ -152,9 +152,9 @@
                                         @elseif($ad->certified==1)
                                         <td>{{__('eng.yes')}}</td>
                                         @endif
-                                        
+
                                         <td>{{$ad->certified_reg_no}}</td>
-                                        
+
                                         <td class="d-flex">
                                             <button  class="bg_danger text-light me-2"  onclick="hello({{getadsid($ad->ads_address_id)}})" type="button"  data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="add_ads"><i " class="fas fa-pencil-alt"></i></button>
                                             <button class="bg_danger text-light me-2" data-bs-toggle="offcanvas" data-bs-target="#view_ads" aria-controls="view_ads"  type="button"><i class="fas fa-eye"></i></button>
@@ -177,9 +177,9 @@
                                                   <p class="fw-bold text-secondary">{{__('eng.deleteMsg')}}</p>
                                                 </div>
                                                 <div class="modal-foote d-flex">
-                                                  <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a> 
-                                                  <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">{{__('eng.yes')}}</button></a> 
-                                                  
+                                                  <a href="#" class="text-decoration-none col-6"><button type="button" class="btn border form-control btnhover" data-bs-dismiss="modal">{{__('eng.no')}}</button></a>
+                                                  <a href="#" class="text-decoration-none col-6"><button type="submit" class="btn border form-control btnhover">{{__('eng.yes')}}</button></a>
+
                                                 </div>
                                               </form>
                                               </div>
@@ -191,8 +191,8 @@
                                       @else
                                       {{__('eng.noData')}}
                                       @endif
-                                      
-                                    
+
+
                                     </tbody>
                                   </table>
 
@@ -206,7 +206,7 @@
                         <div class="row mt-5 justify-content-around ext-centert">
 
                             <div class="col-7 col-md-4 col-lg-3 col-xl-2 text-center">
-                        
+
 {{--                              <nav aria-label="Page navigation example">--}}
 {{--                                <ul class="pagination">--}}
 {{--                                  <li class="page-item">--}}
@@ -225,29 +225,29 @@
 {{--                                </ul>--}}
 {{--                              </nav>--}}
                                  {{ $ads->render("pagination::bootstrap-4") }}
-                        
-                        
+
+
                             </div>
                             <!-- end of col  -->
-                        
-                        
+
+
                           </div>
                           <!-- end of row paggi  -->
-                          
 
-                       
+
+
                         <!-- end of from  -->
 
 
-                     
+
 
 
                         </div>
                         <!-- end of row  -->
-                       
 
-                        
-                 
+
+
+
 
                       </div>
 
@@ -257,7 +257,7 @@
             <div class="offcanvas offcanvas-end" tabindex="-1" id="add_ads" aria-labelledby="offcanvasExampleLabel">
                     <div class="offcanvas-header">
                       <h5 class="offcanvas-title" id="offcanvasExampleLabel">{{__('eng.addAds')}}</h5>
-              
+
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
@@ -265,7 +265,7 @@
                       @foreach ($errors->all() as $error)
                         <div class="text-danger">{{$error}}<br></div>
                       @endforeach
-                    @endif                         
+                    @endif
                     <form method="post" action="{{url('add/ads')}}" enctype="multipart/form-data">
                       @csrf
                         <div class="row">
@@ -364,7 +364,7 @@
 
                       <div class="row justify-content-around mt-5">
 
-                             
+
 
                         <div class="col-12 col-md-6 p-lg-4">
 
@@ -374,7 +374,7 @@
 
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon1">{{__('eng.displayAnimalType')}}</span>
-                                       
+
                                         <select name="animal_type" class="form-control py-2" aria-describedby="basic-addon1" type="text" required>
                                           <option disable>{{__('eng.animalType')}}</option>
                                           <option value="0">{{__('eng.bull')}}</option>
@@ -384,29 +384,29 @@
                                           <option value="4">{{__('eng.goat')}}</option>
                                         </select>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon2">{{__('eng.weight')}}</span>
                                         <input type="text" name="weight" class="form-control py-2" aria-describedby="basic-addon2" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon3">{{__('eng.noAnimal')}} </span>
                                         <input type="text" name="no_animals" class="form-control py-2" aria-describedby="basic-addon3" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon4">{{__('eng.breedType')}} </span>
                                         <!-- <input type="text" name="breed_type" class="form-control py-2" aria-describedby="basic-addon4"> -->
@@ -414,87 +414,87 @@
                                             <option>{{__('eng.selectBreedType')}} </option>
                                             <option value="0">{{__('eng.pure')}} </option>
                                             <option value="1">{{__('eng.mixed')}} </option>
-                                         </select> 
+                                         </select>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon5">{{__('eng.dueMonth')}}   </span>
                                         <input type="date" name="month_pregnancy" class="form-control py-2" aria-describedby="basic-addon5" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 {{-- <div class="col-12">
-        
+
                                     <!-- <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon5">Due Month  </span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon5">
                                       </div> -->
-                                      
+
                                 </div> --}}
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon7">{{__('eng.vacinated')}}  </span>
                                         <!-- <input type="text" name="vaccinated" class="form-control py-2" aria-describedby="basic-addon7"> -->
                                         <select name="vaccinated" class="form-control py-2" aria-describedby="basic-addon4" required >
                                             <option value="0">{{__('eng.no')}} </option>
                                             <option value="1">{{__('eng.yes')}} </option>
-                                         </select> 
+                                         </select>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon8">{{__('eng.certifyRegisNum')}}  </span>
                                         <input type="text" name="certified_reg_no" class="form-control py-2" aria-describedby="basic-addon8" required>
                                       </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                             
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon9">{{__('eng.address1')}} </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line11" required>
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon10">{{__('eng.state')}}  </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" required>
-                                      </div>
-                                      
-                                </div>
-                                <!-- end of col  -->
-                                <div class="col-12">
-        
-                                    <div class="input-group mb-3">
-                                        <span class="input-group-text" id="basic-addon11">{{__('eng.pinCode')}}  </span>
-                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" required>
-                                      </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
 
                                 <div class="col-12">
-                    
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon9">{{__('eng.address1')}} </span>
+                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line11" required>
+                                      </div>
+
+                                </div>
+                                <!-- end of col  -->
+                                <div class="col-12">
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon10">{{__('eng.state')}}  </span>
+                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" required>
+                                      </div>
+
+                                </div>
+                                <!-- end of col  -->
+                                <div class="col-12">
+
+                                    <div class="input-group mb-3">
+                                        <span class="input-group-text" id="basic-addon11">{{__('eng.pinCode')}}  </span>
+                                        <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" required>
+                                      </div>
+
+                                </div>
+                                <!-- end of col  -->
+
+                                <div class="col-12">
+
                                   <div class="input-group mb-3">
                                       <span class="input-group-text" id="basic-addon11">{{__('eng.tagNum')}} </span>
                                       <input type="text" class="form-control py-2" aria-describedby="taluka" name="tag_num" required>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -514,29 +514,29 @@
                                         <span class="input-group-text" id="basic-addon12">{{__('eng.price')}} </span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon12" name="price" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon13">{{__('eng.age')}}</span>
                                         <input type="number" class="form-control py-2" aria-describedby="basic-addon13" name="age" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon14">{{__('eng.breed')}} </span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon14" name="breed" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon15">{{__('eng.pregnant')}} </span>
                                         <!-- <input type="text" class="form-control py-2" aria-describedby="basic-addon15" name="pregnant"> -->
@@ -545,30 +545,30 @@
                                           <option value="1">{{__('eng.yes')}}</option>
                                         </select>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
-                            
+
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon16">{{__('eng.area')}}</span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="area" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon17">{{__('eng.milkCap')}}  </span>
                                         <input type="number" class="form-control py-2" aria-describedby="basic-addon17" name="milk_capacity" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon18">{{__('eng.certified')}} </span>
                                         <select name="certified" type="text" class="form-control py-2" aria-describedby="basic-addon15" required>
@@ -576,45 +576,45 @@
                                           <option value="1">{{__('eng.yes')}}</option>
                                         </select>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
-                             
+
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon19">{{__('eng.address1')}} </span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon19" name="address_line2" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon10">{{__('eng.district')}} </span>
                                         <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="district" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
                                 <div class="col-12">
-        
+
                                     <div class="input-group mb-3">
                                         <span class="input-group-text" id="basic-addon11">{{__('eng.taluka')}} </span>
                                         <input type="text" class="form-control py-2" aria-describedby="taluka" name="taluka" required>
                                       </div>
-                                      
+
                                 </div>
                                 <!-- end of col  -->
-                           
+
                             </div>
                             <!-- end of row  -->
                         </div>
                         <!-- end of col  -->
                       <!-- end of col  -->
                         <div class="col-12 text-center mx-auto col-md-3 mb-5">
-                         
+
                             <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">{{__('eng.save')}} </button>
                          </div>
                     </form>
@@ -734,7 +734,7 @@
 
                       <div class="row justify-content-around mt-5">
 
-                             
+
 
                         <div class="col-12 col-md-6 p-lg-4">
 
@@ -744,7 +744,7 @@
 
                             <div class="input-group mb-3">
                               <span class="input-group-text" id="basic-addon1">{{__('eng.displayAnimalType')}} </span>
-       
+
                                   <select name="animal_type" class="form-control py-2" aria-describedby="basic-addon1" type="text" id="animal_type" required>
                                     <option disable>{{__('eng.animalType')}}</option>
                                      <option value="0">{{__('eng.bull')}}</option>
@@ -754,7 +754,7 @@
                                      <option value="4">{{__('eng.goat')}}</option>
                                   </select>
                             </div>
-      
+
                           </div>
                           <!-- end of col  -->
                           <div class="col-12">
@@ -763,7 +763,7 @@
                                <span class="input-group-text" id="basic-addon2">{{__('eng.weight')}}</span>
                                 <input type="text" name="weight" id="weight" class="form-control py-2" aria-describedby="basic-addon2" required>
                               </div>
-      
+
                           </div>
                           <!-- end of col  -->
                           <div class="col-12">
@@ -772,7 +772,7 @@
                                <span class="input-group-text" id="basic-addon3">{{__('eng.noAnimal')}} </span>
                                 <input type="text" name="no_animals"  id="no_animals" class="form-control py-2" aria-describedby="basic-addon3" required>
                              </div>
-      
+
                           </div>
                          <!-- end of col  -->
                           <div class="col-12">
@@ -784,9 +784,9 @@
                               <option>{{__('eng.selectBreedType')}}</option>
                               <option value="0">{{__('eng.pure')}}</option>
                               <option value="1">{{__('eng.mixed')}}</option>
-                              </select> 
+                              </select>
                             </div>
-      
+
                           </div>
                           <!-- end of col  -->
                           <div class="col-12">
@@ -795,7 +795,7 @@
                             <span class="input-group-text" id="basic-addon5">{{__('eng.dueMonth')}}  </span>
                            <input type="date" name="month_pregnancy" id="month_pregnancy" class="form-control py-2" aria-describedby="basic-addon5" required>
                           </div>
-      
+
                           </div>
                           <!-- end of col  -->
                           {{-- <div class="col-12">
@@ -804,7 +804,7 @@
                            <span class="input-group-text" id="basic-addon5">Due Month  </span>
                           <input type="text" class="form-control py-2" aria-describedby="basic-addon5">
                            </div> -->
-      
+
                           </div> --}}
                           <!-- end of col  -->
                         <div class="col-12">
@@ -815,9 +815,9 @@
                             <select name="vaccinated" id="vaccinated" class="form-control py-2" aria-describedby="basic-addon4" required >
                              <option value="0">{{__('eng.no')}}</option>
                              <option value="1">{{__('eng.yes')}}</option>
-                            </select> 
+                            </select>
                           </div>
-      
+
                         </div>
                         <!-- end of col  -->
                         <div class="col-12">
@@ -826,7 +826,7 @@
                            <span class="input-group-text" id="basic-addon8">{{__('eng.certifyRegisNum')}} </span>
                           <input type="text" name="certified_reg_no"  id="certified_reg_no" class="form-control py-2" aria-describedby="basic-addon8"  required>
                           </div>
-      
+
                         </div>
                         <!-- end of col  -->
 
@@ -836,7 +836,7 @@
                             <span class="input-group-text" id="basic-addon9">{{__('eng.address1')}}</span>
                             <input type="text" class="form-control py-2" aria-describedby="basic-addon9" name="address_line1" id="address_line11" required>
                          </div>
-      
+
                         </div>
                         <!-- end of col  -->
                         <div class="col-12">
@@ -845,7 +845,7 @@
                              <span class="input-group-text" id="basic-addon10">{{__('eng.state')}} </span>
                            <input type="text" class="form-control py-2" aria-describedby="basic-addon10" name="state" id="state" required>
                           </div>
-      
+
                         </div>
                         <!-- end of col  -->
                         <div class="col-12">
@@ -854,7 +854,7 @@
                               <span class="input-group-text" id="basic-addon11">{{__('eng.pinCode')}} </span>
                               <input type="text" class="form-control py-2" aria-describedby="basic-addon11" name="zipcode" id="zipcode" required>
                           </div>
-      
+
                         </div>
                         <!-- end of col  -->
                       </div>
@@ -874,7 +874,7 @@
                            <span class="input-group-text" id="basic-addon12">{{__('eng.price')}} </span>
                            <input type="text" class="form-control py-2" aria-describedby="basic-addon12" name="price" id="price" required>
                           </div>
-      
+
                         </div>
                         <!-- end of col  -->
                         <div class="col-12">
@@ -883,7 +883,7 @@
                            <span class="input-group-text" id="basic-addon13">{{__('eng.age')}}</span>
                             <input type="number" class="form-control py-2" aria-describedby="basic-addon13" name="age"  id="age" required>
                           </div>
-      
+
                         </div>
                           <!-- end of col  -->
                         <div class="col-12">
@@ -892,7 +892,7 @@
                             <span class="input-group-text" id="basic-addon14">{{__('eng.breed')}} </span>
                             <input type="text" class="form-control py-2" aria-describedby="basic-addon14" name="breed" id="breed" required>
                           </div>
-      
+
                         </div>
 <!-- end of col  -->
                         <div class="col-12">
@@ -905,7 +905,7 @@
                              <option value="1">Yes</option>
                            </select>
                            </div>
-      
+
                         </div>
                           <!-- end of col  -->
 
@@ -915,7 +915,7 @@
                                <span class="input-group-text" id="basic-addon16">{{__('eng.area')}}</span>
                                <input type="text" class="form-control py-2" aria-describedby="basic-addon16" name="area" id="area" required>
                               </div>
-      
+
                         </div>
                           <!-- end of col  -->
                         <div class="col-12">
@@ -924,7 +924,7 @@
                              <span class="input-group-text" id="basic-addon17">{{__('eng.milkCap')}}</span>
                               <input type="number" class="form-control py-2" aria-describedby="basic-addon17" name="milk_capacity" id="milk_capacity" required>
                           </div>
-      
+
                         </div>
                                 <!-- end of col  -->
                         <div class="col-12">
@@ -936,7 +936,7 @@
                                  <option value="1">{{__('eng.yes')}}</option>
                                 </select>
                             </div>
-      
+
                         </div>
                             <!-- end of col  -->
 
@@ -946,7 +946,7 @@
                               <span class="input-group-text" id="basic-addon19">{{__('eng.address2')}}</span>
                              <input type="text" class="form-control py-2" aria-describedby="basic-addon19" id="address_line2" name="address_line2" required>
                               </div>
-      
+
                         </div>
                           <!-- end of col  -->
                         <div class="col-12">
@@ -955,7 +955,7 @@
                              <span class="input-group-text" id="basic-addon10">{{__('eng.district')}} </span>
                              <input type="text" class="form-control py-2" aria-describedby="basic-addon10" id="district" name="district" required>
                             </div>
-      
+
                         </div>
                         <!-- end of col  -->
                         <div class="col-12">
@@ -964,10 +964,10 @@
                                 <span class="input-group-text" id="basic-addon11">{{__('eng.taluka')}} </span>
                                  <input type="text" class="form-control py-2" aria-describedby="taluka" id="taluka" name="taluka" required>
                                </div>
-      
+
                           </div>
                             <!-- end of col  -->
-                    
+
                       </div>
                             <!-- end of row  -->
 
@@ -981,7 +981,7 @@
                             <button type="submit"  class="px-3 px-md-5 text-light py-2 border bg_danger border-secondary">{{__('eng.save')}} </button>
                       </div>
                       <!-- end of row  -->
-                    </form>          
+                    </form>
 
                     </div>
                   </div>
@@ -991,7 +991,7 @@
 @section('script')
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script>
-  
+
 
 var loadFile = function(event) {
 	var image = document.getElementById('output');
@@ -1001,56 +1001,56 @@ var loadFile = function(event) {
 var loadFile1 = function(event) {
 	var image = document.getElementById('output1');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 
 var loadFile2 = function(event) {
 	var image = document.getElementById('output2');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 
 var loadFile3 = function(event) {
 	var image = document.getElementById('output3');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 
 var loadFile4 = function(event) {
 	var image = document.getElementById('output4');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 var loadFile5 = function(event) {
 	var image = document.getElementById('output5');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 var loadFile6 = function(event) {
 	var image = document.getElementById('output6');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 var loadFile7= function(event) {
 	var image = document.getElementById('output7');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 var loadFile8 = function(event) {
 	var image = document.getElementById('output8');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 var loadFile9 = function(event) {
 	var image = document.getElementById('output9');
 	image.src = URL.createObjectURL(event.target.files[0]);
- 
+
 };
 
 var deleteimg=function(id){
- 
-  
-  
+
+
+
   if(id==0){
     img=document.getElementById('output');
     img.removeAttribute("src");
@@ -1089,7 +1089,7 @@ var deleteimg=function(id){
     img=document.getElementById('output4');
     img.removeAttribute("src");
   }
-  
+
 }
 
 document.getElementById("videoUpload")
@@ -1112,7 +1112,7 @@ function hello(id){
                url:"{{url('/getads/')}}"+ '/'+id,
                data:{_token: "{{ csrf_token() }}"},
                success:function(data) {
-                  
+
                   console.log(data.adsaddress.addressline1);
                   // alert("Your Data : "+data.ads.id);
                   // console.log(id);
@@ -1129,10 +1129,10 @@ function hello(id){
                   console.log(date);
                   document.getElementById('month_pregnancy').value=date;
                   document.getElementById('area').value= data.ads.area;
-                  
+
                    document.getElementById('milk_capacity').value=data.ads.milk_capacity;
                    document.getElementById('certified_reg_no').value=data.ads.certified_reg_no;
-                  
+
                    document.getElementById('area').value=data.adsaddress.area;
                    document.getElementById('address_line11').value=data.adsaddress.addressline2;
                    document.getElementById('address_line2').value=data.adsaddress.addressline2;

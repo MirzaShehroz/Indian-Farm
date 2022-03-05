@@ -92,7 +92,7 @@
 
         <div class="row mt-5">
 
-            <h5>{{__('guest.desc')}}</h5>
+            <h5>{{__('eng.desc')}}</h5>
 
             <div class="col-12">
 
@@ -115,23 +115,23 @@
 
             <tbody>
             <tr class="mb-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guest.price')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('eng.price')}}</td>
                 <td class="">INR {{$item->price}}</td>
 
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guest.breed')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('eng.breed')}}</td>
                 <td>{{$item->breed}}</td>
 
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guest.breedType')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('eng.breedType')}}</td>
                 <td>{{$item->breed_type}}</td>
 
             </tr>
           @if ($item->pregnant)
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guest.pregnant')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('eng.pregnant')}}</td>
                 <td>
                     @if ($item->pregnant==1)
                         Yes
@@ -143,19 +143,19 @@
            @endif  
            @if ($item->due_month_pregnancy)
                 <tr class="mt-1">
-                    <td class="bggary border-bottom border-light text-light">{{__('guest.dueMonth')}}</td>
+                    <td class="bggary border-bottom border-light text-light">{{__('eng.dueMonth')}}</td>
                     <td>{{$item->due_month_pregnancy}}</td>
                 </tr>
             @endif
             
             @if ($item->milk_capacity)
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light">{{__('guest.milkCap')}}</td>
+                <td class="bggary border-bottom border-light text-light">{{__('eng.milkCap')}}</td>
                 <td>{{$item->milk_capacity}} ltrs</td>
             </tr>
             @endif
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light" >{{__('guest.vacinated')}}</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('eng.vacinated')}}</td>
                 @if ($item->vaccinated==1)
                 <td>Yes</td>
                 @else
@@ -163,7 +163,7 @@
                 @endif
             </tr>
             <tr class="mt-1">
-                <td class="bggary border-bottom border-light text-light" >{{__('guest.certified')}}</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('eng.certified')}}</td>
                 @if ($item->certified==1)
                     <td>Yes</td>
                 @else
@@ -176,7 +176,7 @@
 
             </tr>
             <tr class="mt-15">
-                <td class="bggary border-bottom border-light text-light" >{{__('guest.certifyRegisNum')}}</td>
+                <td class="bggary border-bottom border-light text-light" >{{__('eng.certifyRegisNum')}}</td>
                 <td>00866</td>
 
             </tr>
@@ -186,7 +186,7 @@
 
 
         <div class="text-center mt-5 mb-5 mb-md-0">
-            <button class="px-4 py-2  border_color2 bg-transparent btn btnhover4"><a href="chat.html" class="text-decoration-none tcolor fw-bold">{{__('guest.contactSeller')}}</a></button>
+            <button class="px-4 py-2  border_color2 bg-transparent btn btnhover4"><a href="chat.html" class="text-decoration-none tcolor fw-bold">{{__('eng.contactSeller')}}</a></button>
         </div>
 
 

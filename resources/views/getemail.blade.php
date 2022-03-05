@@ -35,7 +35,7 @@
     border-color: #0572B2 !important;
 }
     </style>
-    <title>IFA-Forgot</title>
+    <title>{{__('eng.ifaForgot')}}</title>
   </head>
   <body class="bg-light">
 
@@ -52,7 +52,7 @@
             <img src="{{asset('images/India-Farm-Logo.png')}}" class="card-img-top mx-auto" alt="img not found">
             <div class="card-body mt-4">
 
-              <h5 class="mb-4">Enter Your Registerd Email</h5>
+              <h5 class="mb-4">{{__('eng.registerEmail')}}</h5>
            <form action="{{url('check/email')}}" method="post" >
             @csrf
             @if(session('error'))
@@ -64,7 +64,7 @@
             <input type="email" class="border_color form-control py-3 "name="email" placeholder="Enter Your Email">
 
               
-            <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color text-light" type="submit" name="submit">SUBMIT</button>
+            <button class="mt-4 px-5 py-2 btnhover3 bgcolor fw-bold border_color text-light" type="submit" name="submit">{{__('eng.submit')}}</button>
 
 
 

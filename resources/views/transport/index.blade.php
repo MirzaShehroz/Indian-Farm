@@ -16,7 +16,7 @@
                                     <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                                        <h5>Total Appointments</h5>
+                                        <h5>{{__('totalAppoint')}}</h5>
 
                                         <h1>
                                         {{$allappoint}}
@@ -28,8 +28,7 @@
                                     <div class="col-12 col-md-3 noticecol text-center bg_danger p-3 text-light my-3" style="box-shadow: 1px 1px1px 10px lightgray; border-radius: 10px;">
 
 
-                                        <h5>Appointments Today </h5>
-
+                                        <h5>{{__('totalAppointToday')}}</h5>
                                         <h1>{{$today}}</h1>
 
 
@@ -61,7 +60,7 @@
                                                                   <div id="calendar" class="fc-calendar-container"></div>
                                                             </div>
                                                       </div>
-                                    </div>
+                                                     </div>
                                               </section>
 
                                </div>

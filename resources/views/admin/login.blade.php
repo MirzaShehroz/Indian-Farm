@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{asset('css/owl.theme.default.min.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
 
-    <title>IFA-Login</title>
+    <title>{{__('eng.ifaLogin')}}</title>
   </head>
   <body>
 
@@ -37,15 +37,15 @@
 @endif 
            <form action="{{url('login/admin')}}" method="post">
             @csrf
-            <input type="text" class="mobileno_input border_color form-control py-3 " name="email" placeholder="Email Id" required>
+            <input type="text" class="mobileno_input border_color form-control py-3 " name="email" placeholder="{{__('eng.emailId')}}" required>
 
-            <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="Password" required>
+            <input type="password" class="mobileno_input border_color form-control py-3 my-4"  name="password" placeholder="{{__('eng.password')}}" required>
 
-            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> Forgot Password? </a> 
+            <a href="{{url('forget/password')}}" class="tcolor d-block text-start my-3 btnclick text-decoration-none fw-bold"> {{__('eng.forgotPass')}}</a> 
 
             <br>
               
-            <button class="px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit">Submit</button>
+            <button class="px-5 py-2 btnhover3 bgcolor fw-bold border_color" type="submit">{{__('eng.submit')}}</button>
 
         
 

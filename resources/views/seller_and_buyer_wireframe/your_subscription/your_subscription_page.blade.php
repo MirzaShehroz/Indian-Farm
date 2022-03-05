@@ -3,7 +3,7 @@
 
     <div class="col-12 col-md-4 text-center text-md-start mt-5 my-md-2">
 
-        <h5>Your Active Subscription</h5>
+        <h5>{{__('eng.activeSub')}}</h5>
 
         <div class="input-group mb-3 mt-4">
             <span class="input-group-text bgcolor text-light py-2 pe-lg-4" id="namesub">Plan Name </span>
@@ -16,14 +16,14 @@
 
     <div class="col-12 col-md-8 mt-5 mt-md-0 text-center py-0">
 
-        <h5>Sell Faster with our Premium Subscription</h5>
+        <h5>{{__('eng.sellFastSub')}}</h5>
 
         <div class="row">
 
             <div class="col-12 col-md-6 my-3 my-md-0">
 
                 <div class="input-group mb-3 mt-4">
-                    <span class="input-group-text bgcolor text-light py-2 pe-lg-4" id="pdate">Purchase Date</span>
+                    <span class="input-group-text bgcolor text-light py-2 pe-lg-4" id="pdate">{{__('eng.purchaseDate')}}</span>
                     <input type="text" class="form-control py-2" placeholder="" aria-label="pdate " aria-describedby="pdate">
                 </div>
 
@@ -35,7 +35,7 @@
             <div class="col-12 col-md-6 my-3 my-md-0">
 
                 <div class="input-group mb-3 mt-4">
-                    <span class="input-group-text bgcolor text-light py-2 pe-lg-4" id="pdate">End Date</span>
+                    <span class="input-group-text bgcolor text-light py-2 pe-lg-4" id="pdate">{{__('eng.endDate')}}</span>
                     <input type="text" class="form-control py-2" placeholder="" aria-label="pdate " aria-describedby="pdate">
                 </div>
 

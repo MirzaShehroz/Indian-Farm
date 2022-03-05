@@ -79,7 +79,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         Route::post('admin/user/update',[AdminController::class,'update'])->name('update_user');
         Route::get('admin/users',[AdminController::class,'user'])->name('user');
         Route::post('admin/user/delete',[AdminController::class,'deleteUser'])->name('deleteUser');
-        
+
         // vet routes
         Route::post('add/vet',[VetController::class,'addVet'])->name('addvet');
         Route::Get('admin/vets',[VetController::class,'index'])->name('index');
@@ -110,7 +110,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
 
         Route::get('changepassword',[AdminController::class,'changepassword']);
-        // adds 
+        // adds
         Route::post('add/ads',[AdminCOntroller::class,'addads']);
         Route::any('adds/search',[AdminController::class,'searchAdd'])->name('search-ads');
         Route::post('admin/add/delete',[AdminController::class,'deleteadd'])->name('deleteadd');
@@ -129,17 +129,17 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
         return redirect('/');
     });
-    
-    
+
+
     Route::get('admin/ads',function(){
-    
+
         $ads=Ads::join('ads_adress', 'ads.ads_address_id' ,'=','ads_adress.id')->paginate(5);
-    
+
         //$ads=Ads::all();
-    
+
         return view('admin.ads',compact('ads'));
     });
-    
+
     Route::get('admin/appointmentbooked',function(){
         $appointment=AppointmentBook::join('appointment_address','appointments.appointment_address_id','appointment_address.id')->paginate(5);
         $vets=Vet::all();
@@ -150,7 +150,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
         $transport=TransportBooked::paginate(5);
         return view('admin.transport_booked',compact('transport','drivers'));
     });
-    
+
     Route::get('admin/profile',function(){
        // $id=User::where('id',Auth::user()->id)->first();
         $user=User::where('id',Auth::user()->id)->first();
@@ -158,7 +158,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
           //  dd(Auth::user()->id);
         return view('admin.myprofile',compact('user'));
     });
-    
+
     Route::get('admin/contentmanagement',function(){
         $education=EducationVideo::paginate(5);
 
@@ -170,25 +170,25 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
     Route::post('edit/forum/{id}',[CommunityForumController::class,'admin_edit']);
     Route::post('delete/forum',[CommunityForumController::class,'admin_delete']);
-    
-    
+
+
     //////////////////////////////////////Transport////////////////////////////
-    
-    
+
+
     Route::post('getads/{id}',[AdminController::class,'getads']);
-    
+
     //admin update profile
     Route::post('admin/profile/update',[AdminController::class,'updateprofile']);
-    
-    
+
+
     Route::post('add/appointments',[AppointmentBookController::class,'add']);
-    
+
     Route::post('getappointment/{id}',[AppointmentBookController::class,'getappointment']);
     Route::post('update/appointment',[AppointmentBookController::class,'updateappointment']);
     Route::post('delete/appointment',[AppointmentBookController::class,'delete']);
     Route::any('search/appointment',[AppointmentBookController::class,'search']);
-    
-    
+
+
     //transport booked
     Route::post('add/transport/booked',[TransportBookedController::class,'add'])->name('transport_book');
 
@@ -238,23 +238,23 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
             $allappoint=TransportBooked::where('driver_id',Auth::user()->id)->count();
             $date=date("Y-m-d");
             $today=TransportBooked::where('driver_id',Auth::user()->id)->where('date_of_transport',$date)->count();
-      
+
             return view('transport.index',compact('allappoint','today'));
         });
 
         Route::get('transport/appointment',function(){
             $detail=TransportBooked::where('book_transport.driver_id',Auth::user()->id)->get();
-            
+
 
             //dd($booked);
             return view('transport.appointments',compact('detail'));
         });
 
         Route::post('transport/booking/detail/{id}',[TransportController::class,'getdata']);
-    
+
         Route::post('transport/update/detail',[TransportController::class,'updatedata']);
-    
-    
+
+
         Route::get('trans/profile',function(){
             $user=User::join('transports','transports.user_id','=','users.id')
             ->join('user_address','user_address.id','=','users.address_id')
@@ -263,7 +263,7 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
             ->first();
             return view('transport.myprofile',compact('user'));
         })->name('transportprofile');
-    
+
          //change email
          Route::post('transport/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
         //change email otp
@@ -271,14 +271,14 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
 
         //update profile
         Route::post('update/trasport/profile',[TransportController::class,'updateprofile']);
-        
+
         //change password
         Route::post('transport/change/passowrd',[TransportController::class,'changePassword']);
-    
+
 
     });
 
-//--------------------------------------------------------------------------------------------//    
+//--------------------------------------------------------------------------------------------//
 
     // guest accounts route
     Route::get('transport/search',[GuestController::class,'search'])->name('transport-search');
@@ -291,19 +291,19 @@ Route::group(['middleware' => 'prevent-back-history'],function(){
     Route::get('transport-verify/{id}',function(){
         return view('guest.transport.verify_otp');
     })->name('verify_otp');
-    
+
     // guest vendor registration
     route::post('transport/vendor/register',[TransportController::class,'guestRegister'])->name('guestRegister');
     route::match(['get', 'post'],'trasport/vendor/verify',[TransportController::class,'verifyotp'])->name('transport-verifyotp');
 
     Route::post('transport/vendor/booked',[GuestController::class,'add'])->name('book-vendor');
-    
+
     Route::get('transport/profile',function(){
         return view('transport.myprofile');
     });
     Route::post('vendor/search',[GuestController::class,'searchResult'])->name('searchResult');
     Route::get('logout',function(){
-       
+
         Auth::logout();
 
         return redirect('/');
@@ -316,13 +316,13 @@ Route::group(['middleware'=>['VetAuth']],function(){
         $appointments=AppointmentBook::where('vet_id',Auth::user()->id)->count();
         $date=date("Y-m-d");
         $today=AppointmentBook::where('vet_id',Auth::user()->id)->where('appointment_date',$date)->count();
-  
+
         return view('vet.index',compact('appointments','today'));
     });
     Route::get('vet/appointment',function(){
-      
+
         $detail=AppointmentBook::where('vet_id',Auth::user()->id)->get();
-    
+
         return view('vet.appointments',compact('detail'));
     });
     Route::get('vet/certify',function(){
@@ -335,26 +335,26 @@ Route::group(['middleware'=>['VetAuth']],function(){
         ->where('users.id',Auth::user()->id)
         ->where('users.user_role','vet')
         ->first();
-      
+
         return view('vet.myprofile',compact('user'));
     });
     //change password
     Route::post('vet/change/password',[VetController::class,'vetChangePassword']);
     Route::post('update/vet/profile',[VetController::class,'updateprofile']);
-    
+
     //edit
     Route::post('vetappointment/{id}',[AppointmentBookController::class,'getappointment']);
     Route::post('vet/edit/appointment',[VetController::class,'editappointment']);
     Route::post('cerify/update/detail',[VetController::class,'updateappointment']);
-    
-    
+
+
     Route::post('certify/appointment/{id}',[VetController::class,'getcertify']);
 
      //change email
      Route::post('vet/change/email/{id}/{semail}',[AdminController::class,'changeemail']);
      //change email otp
      Route::post('vet/change/email/otp/{id}/{semail}',[AdminController::class,'changeEmailOtp'])->name('emailOtp');
-    
+
 });
 
 });
@@ -453,6 +453,10 @@ Route::get('/b&s/post-add-sheep-multiple-form',[BuyerAndSellerController::class,
 
 // B&S Subscription Purchase Form
 Route::get('/b&s/subscription-purchase-form',[BuyerAndSellerController::class,'subscriptionPurchase'])->name('B&SSubscriptionPurchasePage');
+
+Route::get('/b&s/edit-add',[BuyerAndSellerController::class,'editAdd'])->name('B&SEditAds');
+Route::post('/b&s/edit-add',[BuyerAndSellerController::class,'updateAds'])->name('B&SUpdateAds');
+
 
 // B&S Login Form
 Route::get('/b&s/login-form',[BuyerAndSellerController::class,'loginForm'])->name('B&SLoginPage');

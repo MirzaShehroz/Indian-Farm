@@ -1,6 +1,6 @@
-<h1>Indian Farm Animal</h1>
+<h1>{{__('eng.indianFarm')}}</h1>
 
 <p> 
-    Dear :{{$name}} <br>
-    Reset password Link <a href="{{url($link)}}">{{$link}}</a>
+    {{__('eng.date')}}{{$name}} <br>
+    {{__('eng.resetLink')}} <a href="{{url($link)}}">{{$link}}</a>
 </p>
